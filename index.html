@@ -650,16 +650,74 @@
     aspect-ratio: 16/10;
     position: relative;
     overflow: hidden;
-    background: var(--bg-2);
+    background: #edf1f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 10px;
   }
-  .project-image img {
-    width: 100%;
-    height: 100%;
+  /* Laptop frame wrapper inside card */
+  .project-laptop {
+    position: relative;
+    width: 86%;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project-card:hover .project-laptop {
+    transform: translateY(-4px) scale(1.02);
+  }
+  .project-laptop__screenshot {
+    position: absolute;
+    top: 11%; left: 8.2%;
+    width: 83.6%; height: 53%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    object-position: top center;
+    z-index: 1;
   }
-  .project-card:hover .project-image img {
-    transform: scale(1.05);
+  .project-laptop__device {
+    position: relative;
+    width: 100%;
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ── Locked card state ─────────────────────── */
+  .project-card--locked .project-laptop {
+    filter: blur(7px) drop-shadow(0 8px 20px rgba(0,0,0,0.15));
+    pointer-events: none;
+  }
+  .project-lock-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(5, 12, 24, 0.45);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    cursor: pointer;
+  }
+  .project-lock-overlay__icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(45,212,191,0.15);
+    border: 1px solid rgba(45,212,191,0.35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2dd4bf;
+  }
+  .project-lock-overlay__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
   }
   .project-image::after {
     content: '';
@@ -1352,7 +1410,10 @@
       <article class="project-card reveal">
         <div class="project-image">
           <span class="project-tag">Internal · AI · Lextech</span>
-          <img src="images/ai-practice-hero.jpeg" alt="AI Practice website" onerror="this.style.display='none'" />
+          <div class="project-laptop">
+          <img class="project-laptop__screenshot" src="images/ai-practice-hero.jpeg" alt="AI Practice website" onerror="this.style.display='none'" />
+          <img class="project-laptop__device" src="images/laptop-frame.jpg" alt="" aria-hidden="true" />
+        </div>
         </div>
         <div class="project-body">
           <h3>An internal initiative promoting AI</h3>
@@ -1369,10 +1430,19 @@
       </article>
 
       <!-- AI Insights Dashboard -->
-      <article class="project-card reveal">
+      <article class="project-card project-card--locked reveal">
         <div class="project-image">
           <span class="project-tag">AI · Healthcare · Enterprise</span>
-          <img src="images/data-viz-hero.jpeg" alt="AI insights dashboard" onerror="this.style.display='none'" />
+          <div class="project-laptop">
+            <img class="project-laptop__screenshot" src="images/data-viz-hero.jpeg" alt="AI insights dashboard" onerror="this.style.display='none'" />
+            <img class="project-laptop__device" src="images/laptop-frame.jpg" alt="" aria-hidden="true" />
+          </div>
+          <div class="project-lock-overlay">
+            <div class="project-lock-overlay__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <span class="project-lock-overlay__label">Available upon request</span>
+          </div>
         </div>
         <div class="project-body">
           <h3>AI-generated insights dashboard for an enterprise healthcare client</h3>
@@ -1392,7 +1462,10 @@
       <article class="project-card reveal">
         <div class="project-image">
           <span class="project-tag">Telecom · E-commerce</span>
-          <img src="images/cspire-hero.jpeg" alt="C Spire website" onerror="this.style.display='none'" />
+          <div class="project-laptop">
+          <img class="project-laptop__screenshot" src="images/cspire-hero.jpeg" alt="C Spire website" onerror="this.style.display='none'" />
+          <img class="project-laptop__device" src="images/laptop-frame.jpg" alt="" aria-hidden="true" />
+        </div>
         </div>
         <div class="project-body">
           <h3>Eight years of digital at C Spire</h3>
@@ -1412,7 +1485,10 @@
       <article class="project-card reveal">
         <div class="project-image">
           <span class="project-tag">Retail · E-commerce</span>
-          <img src="images/autozone-hero.jpeg" alt="AutoZone website" onerror="this.style.display='none'" />
+          <div class="project-laptop">
+          <img class="project-laptop__screenshot" src="images/autozone-hero.jpeg" alt="AutoZone website" onerror="this.style.display='none'" />
+          <img class="project-laptop__device" src="images/laptop-frame.jpg" alt="" aria-hidden="true" />
+        </div>
         </div>
         <div class="project-body">
           <h3>Leading Product Discovery design at AutoZone</h3>
@@ -1429,10 +1505,19 @@
       </article>
 
       <!-- Healthcare iPad -->
-      <article class="project-card reveal">
+      <article class="project-card project-card--locked reveal">
         <div class="project-image">
           <span class="project-tag">Healthcare · iPadOS</span>
-          <img src="images/healthcare-ipad-hero.jpeg" alt="Healthcare iPad app" onerror="this.style.display='none'" />
+          <div class="project-laptop">
+            <img class="project-laptop__screenshot" src="images/healthcare-ipad-hero.jpeg" alt="Healthcare iPad app" onerror="this.style.display='none'" />
+            <img class="project-laptop__device" src="images/laptop-frame.jpg" alt="" aria-hidden="true" />
+          </div>
+          <div class="project-lock-overlay">
+            <div class="project-lock-overlay__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <span class="project-lock-overlay__label">Available upon request</span>
+          </div>
         </div>
         <div class="project-body">
           <h3>iPad tools for healthcare field reps</h3>
@@ -1453,7 +1538,10 @@
       <article class="project-card reveal">
         <div class="project-image">
           <span class="project-tag">Healthcare · Web · iOS · Android</span>
-          <img src="images/easyvax-hero.jpeg" alt="EasyVax Scheduler" onerror="this.style.display='none'" />
+          <div class="project-laptop">
+          <img class="project-laptop__screenshot" src="images/easyvax-hero.jpeg" alt="EasyVax Scheduler" onerror="this.style.display='none'" />
+          <img class="project-laptop__device" src="images/laptop-frame.jpg" alt="" aria-hidden="true" />
+        </div>
         </div>
         <div class="project-body">
           <h3>Simplifying vaccine scheduling with progressive disclosure</h3>

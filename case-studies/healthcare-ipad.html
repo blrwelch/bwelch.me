@@ -25,8 +25,148 @@
     } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   })();
 </script>
+
+<style>
+/* ── PASSWORD GATE ──────────────────────────── */
+.pw-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 12, 24, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.pw-gate__card {
+  background: #0f1e36;
+  border: 1px solid rgba(176,193,212,0.2);
+  border-radius: 20px;
+  padding: 48px 40px;
+  width: min(420px, 90vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+.pw-gate__lock {
+  width: 56px;
+  height: 56px;
+  background: rgba(45,212,191,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+.pw-gate__lock svg { color: #2dd4bf; }
+.pw-gate__card h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+.pw-gate__card p {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+.pw-gate__card input[type="password"] {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(176,193,212,0.22);
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-size: 15px;
+  color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  text-align: center;
+  letter-spacing: 0.1em;
+  transition: border-color 0.2s;
+  margin-top: 4px;
+}
+.pw-gate__card input[type="password"]::placeholder { letter-spacing: 0; color: #64748b; }
+.pw-gate__card input[type="password"]:focus { border-color: #2dd4bf; }
+.pw-gate__btn {
+  width: 100%;
+  background: #2dd4bf;
+  color: #0a1628;
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pw-gate__btn:hover { background: #5eead4; }
+.pw-gate__error {
+  font-size: 13px;
+  color: #f87171;
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin: 0;
+  min-height: 18px;
+}
+
+/* ── WATERMARK (screenshot deterrent) ────────── */
+.pw-watermark {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 80px,
+    rgba(255,255,255,0.018) 80px,
+    rgba(255,255,255,0.018) 160px
+  );
+  background-size: 200px 200px;
+}
+/* Repeating text watermark via pseudo — shows in screenshots */
+.pw-watermark::after {
+  content: 'CONFIDENTIAL · bwelch.me · CONFIDENTIAL · bwelch.me · CONFIDENTIAL · bwelch.me';
+  position: absolute;
+  width: 200%;
+  top: 50%;
+  left: -50%;
+  transform: rotate(-30deg) translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.04);
+  white-space: nowrap;
+  word-spacing: 3em;
+  line-height: 4;
+  pointer-events: none;
+}
+</style>
 </head>
 <body>
+<!-- PASSWORD GATE -->
+<div id="pw-gate" class="pw-gate">
+  <div class="pw-gate__card">
+    <div class="pw-gate__lock">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h2>Protected Work</h2>
+    <p>This case study contains confidential client work.<br>Enter the password to continue.</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="off" />
+    <button class="pw-gate__btn" onclick="checkPW()">View Case Study</button>
+    <p class="pw-gate__error" id="pw-error">Incorrect password — try again</p>
+  </div>
+</div>
+<!-- Watermark overlay -->
+<div class="pw-watermark" aria-hidden="true"></div>
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -404,5 +544,7 @@
 </script>
 
 <script src="device-animate.js"></script>
+
+<script src="pw-gate.js"></script>
 </body>
 </html>
