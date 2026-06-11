@@ -1184,20 +1184,34 @@
     color: var(--text-dim);
     padding: 10px 14px 4px;
   }
-  .theme-menu button[aria-pressed] {
-    justify-content: space-between;
+  .hand-seg {
+    display: flex;
+    gap: 4px;
+    padding: 6px 10px 8px;
   }
-  .theme-menu button[aria-pressed="true"] {
+  .hand-seg-btn {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .hand-seg-btn[aria-pressed="true"] {
+    background: var(--teal-soft);
     color: var(--teal-bright);
-  }
-  .theme-menu button[aria-pressed="true"] .hand-state::before { content: 'On'; }
-  .theme-menu button[aria-pressed="false"] .hand-state::before { content: 'Off'; }
-  .hand-state {
-    font-size: 11px;
+    border-color: var(--teal);
     font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    opacity: 0.6;
+  }
+  .hand-seg-btn:hover {
+    background: var(--teal-soft);
+    color: var(--teal-bright);
   }
   .theme-menu {
     position: absolute;
@@ -1734,8 +1748,13 @@
         '<li><button type="button" data-set-theme="light" role="menuitem">Light</button></li>' +
         '<li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li>' +
         '<li class="theme-menu-divider hand-pref-item" aria-hidden="true"></li>' +
-        '<li class="theme-menu-section-label hand-pref-item" aria-hidden="true">Preferences</li>' +
-        '<li class="hand-pref-item"><button type="button" id="handMenuBtn" role="menuitem" aria-pressed="' + String(hand === 'left') + '"><span class="hand-label">' + (hand === 'left' ? 'Left-hand menu' : 'Right-hand menu') + '</span><span class="hand-state"></span></button></li>' +
+        '<li class="theme-menu-section-label hand-pref-item" aria-hidden="true">Menu side</li>' +
+        '<li class="hand-pref-item">' +
+          '<div class="hand-seg" role="group" aria-label="Menu side">' +
+            '<button type="button" class="hand-seg-btn" data-hand-val="left" aria-pressed="' + String(hand === 'left') + '">← Left</button>' +
+            '<button type="button" class="hand-seg-btn" data-hand-val="right" aria-pressed="' + String(hand === 'right') + '">Right →</button>' +
+          '</div>' +
+        '</li>' +
       '</ul>';
     var navToggleBtn = navInner.querySelector('.nav-toggle');
     if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
@@ -1768,14 +1787,19 @@
       });
     });
 
-    var handBtn = document.getElementById('handMenuBtn');
-    if (handBtn) {
-      handBtn.addEventListener('click', function() {
-        hand = hand === 'right' ? 'left' : 'right';
-        try { localStorage.setItem(HAND_KEY, hand); } catch(e) {}
-        applyHand(hand);
+    function updateHandSeg() {
+      switcher.querySelectorAll('.hand-seg-btn').forEach(function(b) {
+        b.setAttribute('aria-pressed', String(b.dataset.handVal === hand));
       });
     }
+    switcher.querySelectorAll('.hand-seg-btn').forEach(function(b) {
+      b.addEventListener('click', function() {
+        hand = b.dataset.handVal;
+        try { localStorage.setItem(HAND_KEY, hand); } catch(e) {}
+        applyHand(hand);
+        updateHandSeg();
+      });
+    });
 
     document.addEventListener('click', function(e) {
       if (!switcher.contains(e.target) && !menu.hidden) {
