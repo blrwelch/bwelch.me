@@ -432,9 +432,9 @@ body::after {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 40px;
-  margin: 56px 0 72px;
-  padding: 48px 32px 32px;
+  gap: 32px;
+  margin: 40px 0 56px;
+  padding: 32px 24px 20px;
   background: #f0f4f8;
   border: 1px solid rgba(0,0,0,0.07);
   border-radius: var(--radius-lg);
@@ -447,7 +447,7 @@ body::after {
   position: relative;
   z-index: 2;
   flex: 0 0 auto;
-  width: min(620px, 65%);
+  width: min(520px, 62%);
   perspective: 1400px;
   filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));
 }
@@ -683,8 +683,8 @@ body::after {
 .device-showcase--iphone .mockup-iphone { width: min(200px, 36%); margin-bottom: 0; }
 
 /* Solo variants */
-.device-showcase--laptop { padding: 40px 32px 24px; }
-.device-showcase--laptop .mockup-laptop { width: min(820px, 92%); }
+.device-showcase--laptop { padding: 32px 24px 20px; }
+.device-showcase--laptop .mockup-laptop { width: min(680px, 88%); }
 
 .device-showcase--ipad { padding: 40px 32px; }
 .device-showcase--ipad .mockup-ipad { width: min(280px, 48%); margin-bottom: 0; }
@@ -703,6 +703,19 @@ body::after {
 /* Laptop: lid swings up from closed angle */
 .device-showcase.animated .mockup-laptop__frame {
   transform: rotateX(0deg);
+}
+
+/* Screen image fades in after lid opens */
+.mockup-laptop__screen img,
+.mockup-ipad__screen img,
+.mockup-iphone__screen img {
+  opacity: 0;
+  transition: opacity 0.6s ease 0.9s;
+}
+.device-showcase.animated .mockup-laptop__screen img,
+.device-showcase.animated .mockup-ipad__screen img,
+.device-showcase.animated .mockup-iphone__screen img {
+  opacity: 1;
 }
 
 /* iPad: floats up after laptop opens */
@@ -737,6 +750,9 @@ body::after {
   .mockup-laptop__frame { transform: none; transition: none; }
   .mockup-ipad { opacity: 1; transform: none; transition: none; }
   .mockup-iphone { opacity: 1; transform: none; transition: none; }
+  .mockup-laptop__screen img,
+  .mockup-ipad__screen img,
+  .mockup-iphone__screen img { opacity: 1; transition: none; }
 }
 
 /* ============ SECTIONS ============ */

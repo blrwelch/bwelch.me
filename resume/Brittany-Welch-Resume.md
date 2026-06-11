@@ -9,19 +9,19 @@ Brandon, MS · 662-550-0523 · blrwelch@gmail.com · [bwelch.me](https://bwelch.
 
 ## Profile
 
-Senior product designer with 17+ years of experience making complex systems feel simple — from Fortune 500 e-commerce platforms and flagship wireless sites, to the AI agents and dashboards now reshaping how organizations work. I partner with cross-functional teams to design products that are both rigorous and human, and I consult with mid-market companies to help them integrate AI in ways that are practical, accessible, and built around real people.
+Senior product designer with 17 years of experience across e-commerce, wireless, healthcare, and AI. I've led design on Fortune 500 platforms, flagship carrier sites, and the AI tools and dashboards companies are using to change how they work. I care about building things that are clear, functional, and made for real people.
 
 ---
 
 ## Experience
 
 ### Senior Product Designer
-**Lextech Global Services** · Chicago, IL (Remote) · 2021 – Present
+**Enterprise Software Company** · Chicago, IL (Remote) · 2021 – Present
 
-- Designed the internal website for Lextech's AI Practice, establishing IA, content strategy, and UX for the hub powering the company's AI agent and AI Skills division.
+- Designed the internal website for the company's AI Practice, establishing IA, content strategy, and UX for the hub powering the AI agent and AI Skills division.
 - Consult with mid-market clients to identify and develop agentic AI solutions across Finance, HR, Engineering, and Leadership, delivering agent profiles, workflow frameworks, and integration roadmaps.
 - Facilitated cross-departmental discovery interviews to validate AI use cases, using collaborative facilitation techniques that built stakeholder trust and produced stronger, more targeted solutions.
-- Led end-to-end design across a diverse client portfolio — from research and strategy through delivery — in fast-moving agile environments.
+- Led end-to-end design across a diverse client portfolio, from research and strategy through delivery, in fast-moving agile environments.
 
 ### Senior UI Designer
 **AutoZone** · Memphis, TN · 2019 – 2021
@@ -33,7 +33,7 @@ Senior product designer with 17+ years of experience making complex systems feel
 ### UX Developer II
 **C Spire** · Ridgeland, MS · 2011 – 2019
 
-- Led UX design and front-end development on the full redesign and launch of C Spire's flagship wireless site, careers site, and business services site — all responsive, user-centered, and brand-aligned.
+- Led UX design and front-end development on the full redesign and launch of C Spire's flagship wireless site, careers site, and business services site. All three were responsive, user-centered, and on-brand.
 - Built deep domain expertise in wireless industry UX: product catalogs, account management flows, upgrade eligibility, and complex promotional mechanics.
 - Collaborated cross-functionally with marketing, product, and engineering to deliver cohesive, high-quality digital experiences across a broad portfolio.
 
