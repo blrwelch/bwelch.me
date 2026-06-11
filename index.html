@@ -262,7 +262,7 @@
     background: none;
     border: 1px solid var(--border-strong);
     color: var(--text);
-    width: 40px; height: 40px;
+    width: 44px; height: 44px;
     border-radius: 8px;
     cursor: pointer;
     align-items: center;
@@ -1055,9 +1055,16 @@
       border: 1px solid var(--border-strong);
       border-radius: 16px;
       padding: 12px;
-      gap: 4px;
+      gap: 6px;
     }
-    .nav-links.open a { padding: 12px 14px; }
+    .nav-links.open a {
+      padding: 14px 18px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      border-radius: 10px;
+    }
     .contact-card { padding: 48px 24px; }
     .container { padding: 0 20px; }
     .floating-card.fc-1 { left: -10px; }
@@ -1580,9 +1587,9 @@
     </button>
 
     <div class="modal-form-container" id="modalFormContainer">
-      <span class="eyebrow">Request case study</span>
-      <h3 id="modalTitle">Let's get you the work.</h3>
-      <p class="modal-sub">I'll send a password-protected PDF to the email you provide.</p>
+      <span class="eyebrow">Request references</span>
+      <h3 id="modalTitle">Happy to connect you with people I've worked with.</h3>
+      <p class="modal-sub">Drop your info below and I'll follow up with a reference list tailored to the type of work you're evaluating.</p>
 
       <form id="caseStudyForm" novalidate>
         <div class="form-group">
@@ -1598,21 +1605,12 @@
           <input type="text" id="form-company" name="company" autocomplete="organization" />
         </div>
         <div class="form-group">
-          <label for="form-project">Which case study?</label>
-          <select id="form-project" name="project">
-            <option value="E-commerce">E-commerce</option>
-            <option value="Healthcare iPad app">Healthcare iPad app</option>
-            <option value="Data Visualization">Data Visualization</option>
-            <option value="Full portfolio">Full portfolio</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="form-message">Anything else? <span class="opt">optional</span></label>
-          <textarea id="form-message" name="message" rows="3" placeholder="Quick note about your team or the role you're hiring for..."></textarea>
+          <label for="form-message">Anything helpful to know? <span class="opt">optional</span></label>
+          <textarea id="form-message" name="message" rows="3" placeholder="Type of role, team size, what you're evaluating for..."></textarea>
         </div>
 
         <!-- FormSubmit configuration -->
-        <input type="hidden" name="_subject" value="Portfolio Request from bwelch.me" />
+        <input type="hidden" name="_subject" value="Reference Request from bwelch.me" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
 
@@ -1632,7 +1630,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h3>Request received!</h3>
-      <p>Thanks! I'll be in touch shortly with your case study. Keep an eye on your inbox.</p>
+      <p>Thanks! I'll be in touch shortly with references. Keep an eye on your inbox.</p>
       <button type="button" class="btn btn-primary" id="modalDone">Done</button>
     </div>
   </div>
