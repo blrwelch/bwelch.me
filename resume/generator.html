@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cover Letter Generator — Brittany Welch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<style>
+  body { display: flex; align-items: flex-start; justify-content: center; padding: 64px 24px; }
+
+  .gen-wrap {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .gen-header {
+    margin-bottom: 40px;
+  }
+
+  .gen-header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-strong);
+    margin-bottom: 8px;
+  }
+
+  .gen-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .gen-header a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  .field {
+    margin-bottom: 24px;
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  textarea:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-dim);
+  }
+
+  .api-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .api-row .field {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .api-note {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  .api-note a { color: var(--teal); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.15s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .btn:hover:not(:disabled) { opacity: 0.88; }
+  .btn:active:not(:disabled) { transform: scale(0.98); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-primary { background: var(--teal); color: #0a1628; width: 100%; margin-top: 8px; }
+  .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+
+  /* Output */
+  .output-section {
+    margin-top: 48px;
+    display: none;
+  }
+
+  .output-section.visible { display: block; }
+
+  .output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .output-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .output-actions { display: flex; gap: 8px; }
+
+  .output-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    white-space: pre-wrap;
+    min-height: 200px;
+  }
+
+  .output-box.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-style: italic;
+    gap: 12px;
+  }
+
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-box {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #fca5a5;
+    margin-top: 16px;
+    display: none;
+  }
+
+  .error-box.visible { display: block; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  .tone-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tone-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .tone-btn:hover,
+  .tone-btn.active {
+    background: var(--teal-soft);
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+</style>
+</head>
+<body>
+
+<div class="gen-wrap">
+
+  <div class="gen-header">
+    <h1>Cover Letter Generator</h1>
+    <p>Paste a job description and generate a tailored cover letter using Claude. Uses the <a href="https://console.anthropic.com" target="_blank">Anthropic API</a> — your key is never stored.</p>
+  </div>
+
+  <div class="field">
+    <label for="apiKey">Anthropic API Key</label>
+    <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off" />
+    <p class="api-note">Get a key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Stored only in your browser session — never sent anywhere except Anthropic.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="field">
+    <label for="company">Company & Role</label>
+    <input type="text" id="company" placeholder="e.g. Stripe — Senior Product Designer" />
+  </div>
+
+  <div class="field">
+    <label for="jobDesc">Job Description</label>
+    <textarea id="jobDesc" rows="10" placeholder="Paste the full job description here…"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Tone</label>
+    <div class="tone-row">
+      <button class="tone-btn active" data-tone="confident and warm">Confident & warm</button>
+      <button class="tone-btn" data-tone="direct and concise">Direct & concise</button>
+      <button class="tone-btn" data-tone="enthusiastic and energetic">Enthusiastic</button>
+      <button class="tone-btn" data-tone="formal and professional">Formal</button>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="notes">Any extra context? (optional)</label>
+    <textarea id="notes" rows="3" placeholder="e.g. I know someone at this company, I'm especially excited about their design system work, I want to emphasize my healthcare experience…"></textarea>
+  </div>
+
+  <button class="btn btn-primary" id="generateBtn" onclick="generate()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    Generate Cover Letter
+  </button>
+
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="output-section" id="outputSection">
+    <div class="output-header">
+      <span class="output-label">Generated Letter</span>
+      <div class="output-actions">
+        <button class="btn btn-secondary" onclick="copyLetter()" style="padding: 8px 14px; font-size: 13px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy
+        </button>
+        <button class="btn btn-secondary" onclick="sendToTemplate()" style="padding: 8px 14px; font-size: 13px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open in Template
+        </button>
+      </div>
+    </div>
+    <div class="output-box" id="outputBox"></div>
+  </div>
+
+</div>
+
+<script>
+const RESUME_CONTEXT = `
+Brittany Welch — Senior Product Designer
+Location: Brandon, MS | Phone: 662-550-0523 | Email: blrwelch@gmail.com | Website: bwelch.me | LinkedIn: linkedin.com/in/blrwelch
+
+Tagline: Turning complex systems into intuitive products, and helping organizations design their future with AI.
+
+PROFILE:
+Senior product designer with 17+ years of experience making complex systems feel simple — from Fortune 500 e-commerce platforms and flagship wireless sites, to the AI agents and dashboards now reshaping how organizations work. I partner with cross-functional teams to design products that are both rigorous and human, and I consult with mid-market companies to help them integrate AI in ways that are practical, accessible, and built around real people.
+
+EXPERIENCE:
+
+Senior Product Designer — Lextech Global Services (Chicago, IL, Remote) | 2021–Present
+- Designed the internal website for Lextech's AI Practice, establishing IA, content strategy, and UX for the hub powering the company's AI agent and AI Skills division.
+- Consult with mid-market clients to identify and develop agentic AI solutions across Finance, HR, Engineering, and Leadership, delivering agent profiles, workflow frameworks, and integration roadmaps.
+- Facilitated cross-departmental discovery interviews to validate AI use cases, using collaborative facilitation techniques that built stakeholder trust and produced stronger, more targeted solutions.
+- Led end-to-end design across a diverse client portfolio — from research and strategy through delivery — in fast-moving agile environments.
+
+Senior UI Designer — AutoZone (Memphis, TN) | 2019–2021
+- Designed and shipped digital experiences for a high-traffic Fortune 500 e-commerce platform; served as design lead within a cross-functional Product Discovery team.
+- Co-led redesign and launch of a fully responsive site with zero reported traffic loss, a significant result at that scale and pace.
+- Mentored junior designers and managed design reviews and new-hire onboarding.
+
+UX Developer II — C Spire (Ridgeland, MS) | 2011–2019
+- Led UX design and front-end development on the full redesign and launch of C Spire's flagship wireless site, careers site, and business services site — all responsive, user-centered, and brand-aligned.
+- Built deep domain expertise in wireless industry UX: product catalogs, account management flows, upgrade eligibility, and complex promotional mechanics.
+- Collaborated cross-functionally with marketing, product, and engineering to deliver cohesive, high-quality digital experiences across a broad portfolio.
+
+SKILLS: AI Agent Design, AI Strategy, Product Design, UX Research, Design Systems, Rapid Prototyping, Responsive UI, iOS & Android, Agile/Scrum, Stakeholder Facilitation, User-Centered Design, E-commerce UX
+
+TOOLS: Figma, Adobe Creative Cloud, Sketch/Zeplin, Jira/Azure DevOps, Claude/ChatGPT/Gemini, Cursor/VS Code, Notion
+
+EDUCATION: B.S. Graphic Design — Samford University, Birmingham AL (2008)
+
+EXPERIENCE HIGHLIGHTS:
+- 17+ years designing digital products across agency, Fortune 500, and consulting contexts
+- E-commerce specialist with experience at AutoZone (Fortune 500) and C Spire wireless platforms
+- Currently designing AI agents and integration frameworks for mid-market clients
+`;
+
+let selectedTone = 'confident and warm';
+let lastGenerated = '';
+
+document.querySelectorAll('.tone-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedTone = btn.dataset.tone;
+  });
+});
+
+async function generate() {
+  const apiKey = document.getElementById('apiKey').value.trim();
+  const company = document.getElementById('company').value.trim();
+  const jobDesc = document.getElementById('jobDesc').value.trim();
+  const notes = document.getElementById('notes').value.trim();
+  const btn = document.getElementById('generateBtn');
+  const errorBox = document.getElementById('errorBox');
+  const outputSection = document.getElementById('outputSection');
+  const outputBox = document.getElementById('outputBox');
+
+  errorBox.classList.remove('visible');
+
+  if (!apiKey) { showError('Please enter your Anthropic API key.'); return; }
+  if (!jobDesc) { showError('Please paste a job description.'); return; }
+
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Generating…';
+  outputSection.classList.add('visible');
+  outputBox.className = 'output-box loading';
+  outputBox.innerHTML = '<div class="spinner"></div> Writing your letter…';
+
+  const prompt = `You are helping Brittany Welch write a tailored cover letter for a job application.
+
+Here is Brittany's resume:
+${RESUME_CONTEXT}
+
+Job they're applying for: ${company || 'the role described below'}
+
+Job description:
+${jobDesc}
+
+${notes ? `Additional context from Brittany: ${notes}` : ''}
+
+Write a cover letter that:
+- Is ${selectedTone} in tone
+- Is 3–4 paragraphs, no more than 350 words
+- Feels personal and specific, not generic
+- Opens with genuine interest in this specific company/role (not "I am writing to apply for…")
+- Weaves in 1–2 specific, relevant experiences from her resume that map to the job requirements
+- Ends with a clear, confident call to action
+- Does NOT use tired phrases like "I am passionate about", "results-driven", "leverage", or "synergy"
+- Does NOT include the date, address blocks, or "Dear Hiring Manager" — just the letter body starting after the salutation
+
+Start with: "Dear [Name or Hiring Team],"
+
+Output only the letter body — no commentary, no notes, no subject line.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1024,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || `API error ${res.status}`);
+    }
+
+    const data = await res.json();
+    lastGenerated = data.content[0].text;
+    outputBox.className = 'output-box';
+    outputBox.textContent = lastGenerated;
+
+  } catch (err) {
+    outputSection.classList.remove('visible');
+    showError(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Generate Cover Letter';
+  }
+}
+
+function showError(msg) {
+  const box = document.getElementById('errorBox');
+  box.textContent = msg;
+  box.classList.add('visible');
+}
+
+function copyLetter() {
+  if (!lastGenerated) return;
+  navigator.clipboard.writeText(lastGenerated).then(() => {
+    const btn = event.target.closest('button');
+    const orig = btn.innerHTML;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.innerHTML = orig, 2000);
+  });
+}
+
+function sendToTemplate() {
+  if (!lastGenerated) return;
+  sessionStorage.setItem('generatedLetter', lastGenerated);
+  window.open('cover-letter.html?generated=1', '_blank');
+}
+</script>
+
+</body>
+</html>

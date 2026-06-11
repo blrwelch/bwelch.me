@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brittany Welch | Resume 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #18181B;
+    --ink-mid:  #3F3F46;
+    --ink-soft: #71717A;
+    --accent:   #1D4ED8;
+    --accent2:  #DBEAFE;
+    --border:   #E4E4E7;
+    --bg:       #FFFFFF;
+    --sidebar:  #F8FAFF;
+  }
+
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    display: grid;
+    grid-template-columns: 2.1in 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ─────────────────────────────────── */
+  .header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 2.1in 1fr;
+    align-items: end;
+    padding: 0;
+  }
+
+  .header-left {
+    background: var(--accent);
+    padding: 0.38in 0.28in 0.26in;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .header-left .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .header-left h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26pt;
+    font-weight: 400;
+    line-height: 1.0;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .header-right {
+    background: var(--ink);
+    padding: 0.38in 0.32in 0.26in;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .header-right .tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.3;
+    max-width: 4.8in;
+  }
+
+  .header-right .contact-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    font-size: 7pt;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .contact-item strong {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent2);
+    opacity: 0.6;
+    display: inline-block;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────── */
+  .sidebar {
+    background: var(--sidebar);
+    padding: 0.22in 0.22in 0.2in 0.28in;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .sidebar-section {
+    margin-bottom: 0.15in;
+  }
+
+  .sidebar-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .sidebar h3 {
+    font-size: 6.5pt;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 7px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar p, .sidebar li {
+    font-size: 7.8pt;
+    color: var(--ink-mid);
+    line-height: 1.55;
+    list-style: none;
+  }
+
+  .sidebar a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    background: var(--accent2);
+    color: var(--accent);
+    font-size: 6.8pt;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 99px;
+    margin: 2px 2px 2px 0;
+    letter-spacing: 0.02em;
+  }
+
+  .tool-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 0;
+    font-size: 7.8pt;
+    color: var(--ink-mid);
+  }
+
+  .tool-item::before {
+    content: '';
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .edu-degree {
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .edu-school {
+    font-size: 7.5pt;
+    color: var(--ink-soft);
+    margin-top: 1px;
+  }
+
+  /* ── MAIN ────────────────────────────────────── */
+  .main {
+    padding: 0.22in 0.32in 0.18in 0.28in;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .main-section {
+    margin-bottom: 0.12in;
+  }
+
+  .main-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    font-size: 6.5pt;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 7px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .profile-text {
+    font-size: 8pt;
+    line-height: 1.6;
+    color: var(--ink-mid);
+    font-weight: 300;
+  }
+
+  /* Job entry */
+  .job {
+    margin-bottom: 0.16in;
+  }
+
+  .job:last-child {
+    margin-bottom: 0;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .job-title {
+    font-size: 9pt;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .job-dates {
+    font-size: 7pt;
+    color: var(--ink-soft);
+    font-weight: 400;
+    white-space: nowrap;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  .job-company {
+    font-size: 7.5pt;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .job-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .job-bullets li {
+    font-size: 7.5pt;
+    line-height: 1.55;
+    color: var(--ink-mid);
+    font-weight: 300;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .job-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ── PRINT ───────────────────────────────────── */
+  @media print {
+    html, body { width: 8.5in; height: 11in; }
+    .page { page-break-after: avoid; }
+    @page { margin: 0; size: 8.5in 11in; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <span class="eyebrow">Product Designer</span>
+      <h1>Brittany<br>Welch</h1>
+    </div>
+    <div class="header-right">
+      <p class="tagline">Turning complex systems into intuitive products, and helping organizations design their future with AI.</p>
+      <div class="contact-row">
+        <span class="contact-item"><strong>Brandon, MS</strong></span>
+        <span class="dot"></span>
+        <span class="contact-item"><strong>662-550-0523</strong></span>
+        <span class="dot"></span>
+        <span class="contact-item"><strong>blrwelch@gmail.com</strong></span>
+        <span class="dot"></span>
+        <span class="contact-item"><strong>bwelch.me</strong></span>
+        <span class="dot"></span>
+        <span class="contact-item"><strong>linkedin.com/in/blrwelch</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section">
+      <h3>Core Skills</h3>
+      <div>
+        <span class="skill-tag">AI Agent Design</span>
+        <span class="skill-tag">AI Strategy</span>
+        <span class="skill-tag">Product Design</span>
+        <span class="skill-tag">UX Research</span>
+        <span class="skill-tag">Design Systems</span>
+        <span class="skill-tag">Rapid Prototyping</span>
+        <span class="skill-tag">Responsive UI</span>
+        <span class="skill-tag">iOS &amp; Android</span>
+        <span class="skill-tag">Agile / Scrum</span>
+        <span class="skill-tag">Stakeholder Facilitation</span>
+        <span class="skill-tag">User-Centered Design</span>
+        <span class="skill-tag">E-commerce UX</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Tools</h3>
+      <div class="tool-item">Figma</div>
+      <div class="tool-item">Adobe Creative Cloud</div>
+      <div class="tool-item">Sketch / Zeplin</div>
+      <div class="tool-item">Jira / Azure DevOps</div>
+      <div class="tool-item">MS Office Suite</div>
+      <div class="tool-item">Claude / ChatGPT / Gemini</div>
+      <div class="tool-item">Cursor / VS Code</div>
+      <div class="tool-item">Notion</div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Education</h3>
+      <p class="edu-degree">B.S. Graphic Design</p>
+      <p class="edu-school">Samford University<br>Birmingham, AL · 2008</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Experience Highlights</h3>
+      <ul style="display:flex;flex-direction:column;gap:5px;list-style:none;">
+        <li style="font-size:7.5pt;color:var(--ink-mid);line-height:1.4;font-weight:300;">17+ years designing digital products across agency, Fortune 500, and consulting contexts.</li>
+        <li style="font-size:7.5pt;color:var(--ink-mid);line-height:1.4;font-weight:300;">Ecommerce specialist with experience at AutoZone (Fortune 500) and C Spire wireless platforms.</li>
+        <li style="font-size:7.5pt;color:var(--ink-mid);line-height:1.4;font-weight:300;">Currently designing AI agents and integration frameworks for mid-market clients.</li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <div class="main-section">
+      <div class="section-label">Profile</div>
+      <p class="profile-text">Senior product designer with 17+ years of experience making complex systems feel simple from Fortune 500 e-commerce platforms and flagship wireless sites, to the AI agents and dashboards now reshaping how organizations work. I partner with cross-functional teams to design products that are both rigorous and human, and I consult with mid-market companies to help them integrate AI in ways that are practical, accessible, and built around real people.</p>
+    </div>
+
+    <div class="main-section">
+      <div class="section-label">Experience</div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Senior Product Designer</span>
+          <span class="job-dates">2021 – Present</span>
+        </div>
+        <div class="job-company">Lextech Global Services · Chicago, IL (Remote)</div>
+        <ul class="job-bullets">
+          <li>Led UX for an AI-generated insights dashboard for GSK, partnering with engineering and data science to translate complex pharmaceutical data into a clear, decision-ready interface for executive stakeholders.</li>
+          <li>Designed the internal website for Lextech's AI Practice, establishing IA, content strategy, and UX for the hub powering the company's AI agent and AI Skills division.</li>
+          <li>Consult with mid-market clients to identify and develop agentic AI solutions across Finance, HR, Engineering, and Leadership, delivering agent profiles, workflow frameworks, and integration roadmaps.</li>
+          <li>Facilitated cross-departmental discovery interviews to validate AI use cases, using collaborative facilitation techniques that built stakeholder trust and produced stronger, more targeted solutions.</li>
+          <li>Led end-to-end design across a diverse client portfolio, from research and strategy through delivery, in fast-moving agile environments.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Senior UI Designer</span>
+          <span class="job-dates">2019 – 2021</span>
+        </div>
+        <div class="job-company">AutoZone · Memphis, TN</div>
+        <ul class="job-bullets">
+          <li>Designed and shipped digital experiences for a high-traffic Fortune 500 e-commerce platform; served as design lead within a cross-functional Product Discovery team.</li>
+          <li>Co-led redesign and launch of a fully responsive site with zero reported traffic loss, a significant result at that scale and pace.</li>
+          <li>Mentored junior designers and managed design reviews and new-hire onboarding.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">UX Developer II</span>
+          <span class="job-dates">2011 – 2019</span>
+        </div>
+        <div class="job-company">C Spire · Ridgeland, MS</div>
+        <ul class="job-bullets">
+          <li>Led UX design and front-end development on the full redesign and launch of C Spire's flagship wireless site, careers site, and business services site all responsive, user-centered, and brand-aligned.</li>
+          <li>Built deep domain expertise in wireless industry UX: product catalogs, account management flows, upgrade eligibility, and complex promotional mechanics.</li>
+          <li>Collaborated cross-functionally with marketing, product, and engineering to deliver cohesive, high-quality digital experiences across a broad portfolio.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+</body>
+</html>
