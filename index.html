@@ -1887,7 +1887,7 @@
     }, 300);
   }
 
-  document.querySelectorAll('.project-cta[data-project]').forEach(btn => {
+  document.querySelectorAll('[data-project]').forEach(btn => {
     btn.addEventListener('click', () => openModal(btn.dataset.project));
   });
 
