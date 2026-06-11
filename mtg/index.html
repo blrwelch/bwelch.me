@@ -875,10 +875,10 @@
   function mkStatBtn(text, label, onClick) { return mkBtn('stat-btn', text, label, onClick); }
 
   // ── Screen helpers ──
-  function showLobby()      { lobbyEl.style.display=''; connectEl.style.display='none'; gameEl.style.display='none'; }
-  function showConnecting() { lobbyEl.style.display='none'; connectEl.style.display=''; gameEl.style.display='none'; errEl.style.display='none'; startMana(); }
+  function showLobby()      { lobbyEl.style.display='block'; connectEl.style.display='none'; gameEl.style.display='none'; }
+  function showConnecting() { lobbyEl.style.display='none'; connectEl.style.display='block'; gameEl.style.display='none'; errEl.style.display='none'; startMana(); }
   function showGame()       {
-    lobbyEl.style.display='none'; connectEl.style.display='none'; gameEl.style.display='';
+    lobbyEl.style.display='none'; connectEl.style.display='none'; gameEl.style.display='block';
     roomDisp.textContent = roomCode;
     const url = new URL(location); url.searchParams.set('room', roomCode); history.replaceState({},''  ,url);
   }
