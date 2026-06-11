@@ -697,6 +697,43 @@
     .cmd-dmg-num.warning { color: #d4820d; }
     .cmd-dmg-num.danger  { color: #c0392b; }
 
+    /* ── Placeholder card ── */
+    .placeholder-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 2px dashed var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-faint);
+    }
+
+    .placeholder-card .ph-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      opacity: 0.5;
+    }
+
+    .placeholder-card .ph-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+
+    .placeholder-card .ph-sub {
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* ── Game loading skeleton ── */
+    .game-loading {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-faint);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
     /* ── Toast ── */
     #toast {
       position: fixed;
@@ -961,6 +998,8 @@
         roomCode = msg.roomCode;
         stopManaCycle();
         showGame();
+        // Show an immediate card from lobby values while waiting for room_state
+        showEarlyCard();
       } else if (msg.type === 'room_state') {
         roomState = msg.room;
         isHost = roomState.hostId === myId;
@@ -1034,6 +1073,18 @@
     return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"><use href="#${id}"/></svg>`;
   }
 
+  // ── Show card immediately from lobby values (before room_state) ──
+  function showEarlyCard() {
+    playersGrid.innerHTML = '';
+    const name = playerNameEl.value.trim() || 'You';
+    const fakePlayer = { name, color: selectedColor, life: 40, poison: 0, commanderDamage: {}, eliminated: false };
+    // Render a non-interactive preview card
+    const card = buildCard('__early__', fakePlayer, { '__early__': fakePlayer }, false);
+    card.style.opacity = '0.7';
+    playersGrid.appendChild(card);
+    playersGrid.appendChild(makePlaceholder('⏳', 'Syncing with server…', 'Your controls will appear in a moment.'));
+  }
+
   // ── Render Room ──
   function renderRoom() {
     if (!roomState) return;
@@ -1048,9 +1099,26 @@
     if (players[myId]) {
       playersGrid.appendChild(buildCard(myId, players[myId], players, true));
     }
+
     otherIds.forEach(id => {
       playersGrid.appendChild(buildCard(id, players[id], players, false));
     });
+
+    // Placeholder when alone
+    if (otherIds.length === 0) {
+      playersGrid.appendChild(makePlaceholder(
+        '🃏',
+        'Waiting for other players',
+        'Share the room code or copy the link — others’ cards will appear here when they join.'
+      ));
+    }
+  }
+
+  function makePlaceholder(icon, title, sub) {
+    const div = document.createElement('div');
+    div.className = 'placeholder-card';
+    div.innerHTML = `<div class="ph-icon">${icon}</div><div class="ph-title">${title}</div><div class="ph-sub">${sub}</div>`;
+    return div;
   }
 
   function buildCard(id, player, allPlayers, isMe) {
