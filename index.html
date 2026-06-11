@@ -268,6 +268,7 @@
     align-items: center;
     justify-content: center;
   }
+  .hand-toggle { display: none; }
 
   /* ============ HERO ============ */
   .hero {
@@ -831,10 +832,12 @@
   }
   .contact-ctas {
     display: flex;
+    align-items: center;
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
   }
+  .contact-ctas .btn { width: auto; }
 
   /* ============ FOOTER ============ */
   footer {
@@ -1064,6 +1067,41 @@
       align-items: center;
       font-size: 16px;
       border-radius: 10px;
+    }
+
+    /* Hand preference toggle — mobile only */
+    .hand-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 1px solid var(--border-strong);
+      color: var(--text-muted);
+      width: 44px; height: 44px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+      flex-shrink: 0;
+    }
+    .hand-toggle:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: var(--teal-soft);
+    }
+    .hand-toggle[aria-pressed="true"] {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: var(--teal-soft);
+    }
+
+    /* Left-hand mode: move hamburger before the logo */
+    [data-hand="left"] .nav-inner { flex-direction: row-reverse; }
+    [data-hand="left"] .nav-links.open {
+      left: 16px;
+      right: 16px;
+      border-radius: 16px;
     }
     .contact-card { padding: 48px 24px; }
     .container { padding: 0 20px; }
@@ -1718,6 +1756,43 @@
         toggleBtn.focus();
       }
     });
+  })();
+
+  // ===== HAND PREFERENCE (mobile only) =====
+  (function() {
+    var HAND_KEY = 'bwelch-hand-pref';
+    var current = 'right';
+    try { current = localStorage.getItem(HAND_KEY) || 'right'; } catch(e) {}
+    function applyHand(h) {
+      document.documentElement.setAttribute('data-hand', h);
+      var btn = document.getElementById('handToggle');
+      if (btn) {
+        btn.setAttribute('aria-label', h === 'left' ? 'Switch to right-hand menu' : 'Switch to left-hand menu');
+        btn.setAttribute('aria-pressed', String(h === 'left'));
+        btn.title = h === 'left' ? 'Right-hand mode' : 'Left-hand mode';
+        btn.querySelector('.hand-icon').textContent = h === 'left' ? '🫲' : '🫱';
+      }
+    }
+    applyHand(current);
+
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner) return;
+    var btn = document.createElement('button');
+    btn.id = 'handToggle';
+    btn.type = 'button';
+    btn.className = 'hand-toggle';
+    btn.setAttribute('aria-pressed', String(current === 'left'));
+    btn.setAttribute('aria-label', current === 'left' ? 'Switch to right-hand menu' : 'Switch to left-hand menu');
+    btn.title = current === 'left' ? 'Right-hand mode' : 'Left-hand mode';
+    btn.innerHTML = '<span class="hand-icon" aria-hidden="true">' + (current === 'left' ? '🫲' : '🫱') + '</span>';
+    btn.addEventListener('click', function() {
+      current = current === 'right' ? 'left' : 'right';
+      try { localStorage.setItem(HAND_KEY, current); } catch(e) {}
+      applyHand(current);
+    });
+    var navToggleBtn = document.getElementById('navToggle');
+    if (navToggleBtn) navInner.insertBefore(btn, navToggleBtn);
+    else navInner.appendChild(btn);
   })();
 
   // Mobile nav toggle (with aria-expanded sync)

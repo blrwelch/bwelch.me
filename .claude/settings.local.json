@@ -82,7 +82,10 @@
       "Bash(curl -s https://bwelchme-production.up.railway.app)",
       "Bash(curl -v --max-time 5 -H 'Upgrade: websocket' -H 'Connection: Upgrade' -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' -H 'Sec-WebSocket-Version: 13' https://bwelchme-production.up.railway.app)",
       "Bash(kill 16253)",
-      "mcp__Claude_in_Chrome__browser_batch"
+      "mcp__Claude_in_Chrome__browser_batch",
+      "Bash(curl -s http://localhost:5500/)",
+      "mcp__Claude_in_Chrome__read_console_messages",
+      "mcp__Claude_in_Chrome__javascript_tool"
     ]
   }
 }
