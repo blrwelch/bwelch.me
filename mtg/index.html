@@ -5,103 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commander Tracker</title>
   <style>
-    /* ── Base tokens (default: forest green) ── */
+    /* ── Base tokens (default: forest green — dark vivid) ── */
     :root {
-      --bg:           #edf7ee;
-      --bg2:          #dff0e2;
-      --surface:      #ffffff;
-      --surface2:     #f2faf3;
-      --border:       #b0d8b8;
-      --border2:      #8ec898;
-      --accent:       #1e6b35;
+      --bg:           #070d08;
+      --bg2:          #0e1a0f;
+      --surface:      #111e12;
+      --surface2:     #182a1a;
+      --border:       #2a5030;
+      --border2:      #3a7040;
+      --accent:       #34e06a;
       --accent2:      #27ae60;
-      --accent-light: #d0ecd5;
-      --accent-glow:  rgba(30,107,53,0.18);
-      --text:         #0d2515;
-      --text-muted:   #4a7a58;
-      --text-faint:   #8ab89a;
+      --accent-light: #0e2a12;
+      --accent-glow:  rgba(52,224,106,0.22);
+      --text:         #c8f0d0;
+      --text-muted:   #70c888;
+      --text-faint:   #3a7048;
       --radius:       18px;
       --radius-sm:    10px;
-      --shadow:       0 2px 16px rgba(0,0,0,0.07);
-      --shadow-md:    0 6px 32px rgba(0,0,0,0.13);
-      --shadow-card:  0 4px 24px rgba(30,107,53,0.10);
+      --shadow:       0 2px 16px rgba(0,0,0,0.35);
+      --shadow-md:    0 6px 32px rgba(0,0,0,0.5);
+      --shadow-card:  0 4px 24px rgba(52,224,106,0.12);
     }
 
     /* ── Deck themes ── */
+    /* Plains — aged parchment dark, sunburst gold */
     .theme-white {
-      --bg:           #faf8f0;
-      --bg2:          #f0ecd8;
-      --surface:      #ffffff;
-      --surface2:     #fdf9ee;
-      --border:       #ddd0a0;
-      --border2:      #c9b870;
-      --accent:       #b8960c;
+      --bg:           #14100a;
+      --bg2:          #1e180c;
+      --surface:      #221c0e;
+      --surface2:     #2c2412;
+      --border:       #504020;
+      --border2:      #705a28;
+      --accent:       #e8c030;
       --accent2:      #d4ac0d;
-      --accent-light: #fdf3d0;
-      --accent-glow:  rgba(184,150,12,0.18);
-      --text:         #2c2510;
-      --text-muted:   #7a6830;
-      --text-faint:   #b8a870;
-      --shadow-card:  0 4px 24px rgba(184,150,12,0.10);
+      --accent-light: #302208;
+      --accent-glow:  rgba(232,192,48,0.25);
+      --text:         #f5eec0;
+      --text-muted:   #c8a840;
+      --text-faint:   #786030;
+      --shadow-card:  0 4px 24px rgba(232,192,48,0.14);
     }
+    /* Island — deep ocean, azure */
     .theme-blue {
-      --bg:           #e8f2fb;
-      --bg2:          #d5e8f8;
-      --surface:      #f5f9ff;
-      --surface2:     #eaf3fd;
-      --border:       #a0c4e8;
-      --border2:      #6aaad8;
-      --accent:       #1a5fa8;
+      --bg:           #05090f;
+      --bg2:          #0a1220;
+      --surface:      #0d1828;
+      --surface2:     #122034;
+      --border:       #1a3a60;
+      --border2:      #285888;
+      --accent:       #48b8ec;
       --accent2:      #2980b9;
-      --accent-light: #d0e8f8;
-      --accent-glow:  rgba(26,95,168,0.18);
-      --text:         #0d1f35;
-      --text-muted:   #3a6090;
-      --text-faint:   #7aaad0;
-      --shadow-card:  0 4px 24px rgba(26,95,168,0.10);
+      --accent-light: #0a1e38;
+      --accent-glow:  rgba(72,184,236,0.25);
+      --text:         #c8e8f8;
+      --text-muted:   #60a8d8;
+      --text-faint:   #284870;
+      --shadow-card:  0 4px 24px rgba(72,184,236,0.14);
     }
+    /* Swamp — deep void, vivid violet */
     .theme-black {
-      --bg:           #141020;
-      --bg2:          #1c1728;
-      --surface:      #221d30;
-      --surface2:     #2c2540;
-      --border:       #483a60;
-      --border2:      #6a5090;
-      --accent:       #9b59b6;
-      --accent2:      #b06fd0;
-      --accent-light: #3d2858;
-      --accent-glow:  rgba(155,89,182,0.25);
-      --text:         #e8ddf5;
-      --text-muted:   #a898c8;
-      --text-faint:   #6a5888;
-      --shadow-card:  0 4px 24px rgba(155,89,182,0.18);
+      --bg:           #0d0914;
+      --bg2:          #140f1e;
+      --surface:      #1a1428;
+      --surface2:     #221a34;
+      --border:       #3a2858;
+      --border2:      #5a3e80;
+      --accent:       #c070e8;
+      --accent2:      #9b59b6;
+      --accent-light: #2a1840;
+      --accent-glow:  rgba(192,112,232,0.28);
+      --text:         #ecddf8;
+      --text-muted:   #a870d0;
+      --text-faint:   #503868;
+      --shadow-card:  0 4px 24px rgba(192,112,232,0.18);
     }
+    /* Mountain — volcanic dark, ember orange */
     .theme-red {
-      --bg:           #fdf0ec;
-      --bg2:          #fae0d8;
-      --surface:      #fff5f2;
-      --surface2:     #feeee8;
-      --border:       #e8a898;
-      --border2:      #d07060;
-      --accent:       #c0392b;
+      --bg:           #0f0503;
+      --bg2:          #1e0a05;
+      --surface:      #280d06;
+      --surface2:     #341208;
+      --border:       #601a10;
+      --border2:      #882818;
+      --accent:       #ff7038;
       --accent2:      #e74c3c;
-      --accent-light: #fde0d8;
-      --accent-glow:  rgba(192,57,43,0.18);
-      --text:         #2c1008;
-      --text-muted:   #8a3828;
-      --text-faint:   #c09088;
-      --shadow-card:  0 4px 24px rgba(192,57,43,0.10);
+      --accent-light: #380d06;
+      --accent-glow:  rgba(255,112,56,0.28);
+      --text:         #fde8cc;
+      --text-muted:   #e07040;
+      --text-faint:   #703018;
+      --shadow-card:  0 4px 24px rgba(255,112,56,0.18);
     }
-    .theme-green {
-      /* same as :root defaults — already set */
+    /* Multicolor — arcane gold, prismatic dark */
+    .theme-multi {
+      --bg:           #0e0c08;
+      --bg2:          #181408;
+      --surface:      #1e1a0c;
+      --surface2:     #282212;
+      --border:       #4a3c18;
+      --border2:      #6a5820;
+      --accent:       #e8c038;
+      --accent2:      #c9a227;
+      --accent-light: #2e2408;
+      --accent-glow:  rgba(232,192,56,0.28);
+      --text:         #f8f0c8;
+      --text-muted:   #c8a040;
+      --text-faint:   #685830;
+      --shadow-card:  0 4px 24px rgba(232,192,56,0.18);
     }
 
-    /* ── Per-player card accent colors ── */
-    [data-pcolor="white"] { --paccent: #b8960c; --plight: #fdf3d0; --pborder: #ddd0a0; }
-    [data-pcolor="blue"]  { --paccent: #1a5fa8; --plight: #d0e8f8; --pborder: #a0c4e8; }
-    [data-pcolor="black"] { --paccent: #9b59b6; --plight: #3d2858; --pborder: #6a5090; }
-    [data-pcolor="red"]   { --paccent: #c0392b; --plight: #fde0d8; --pborder: #e8a898; }
-    [data-pcolor="green"] { --paccent: #1e6b35; --plight: #d0ecd5; --pborder: #8ec898; }
+    /* ── Per-player card accent colors (vivid, works on dark surfaces) ── */
+    [data-pcolor="white"] { --paccent: #e8c030; --plight: #2a1e06; --pborder: #604a18; }
+    [data-pcolor="blue"]  { --paccent: #48b8ec; --plight: #081428; --pborder: #1a3a60; }
+    [data-pcolor="black"] { --paccent: #c070e8; --plight: #1e1030; --pborder: #4a2870; }
+    [data-pcolor="red"]   { --paccent: #ff7038; --plight: #280a04; --pborder: #701810; }
+    [data-pcolor="green"] { --paccent: #34e06a; --plight: #081a0a; --pborder: #205030; }
+    [data-pcolor="multi"] { --paccent: #e8c038; --plight: #281c04; --pborder: #604a18; }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -756,6 +775,29 @@
       <polygon points="24,8 12,24 20,24 14,36 34,36 28,24 36,24" fill="#1e6b35"/>
       <rect x="21.5" y="36" width="5" height="6" rx="1.5" fill="#1e6b35"/>
     </symbol>
+    <!-- Multi: 5-color arc ring -->
+    <symbol id="mana-multi" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22" fill="#1e1a0a" stroke="#c9a227" stroke-width="2"/>
+      <!-- 5 colored arcs, each ~68° of the inner ring -->
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#c9a227" stroke-width="5.5"
+        stroke-dasharray="17.6 70.4" stroke-dashoffset="0"
+        stroke-linecap="butt"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#1a5fa8" stroke-width="5.5"
+        stroke-dasharray="17.6 70.4" stroke-dashoffset="-17.6"
+        stroke-linecap="butt"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#6b35a0" stroke-width="5.5"
+        stroke-dasharray="17.6 70.4" stroke-dashoffset="-35.2"
+        stroke-linecap="butt"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#c0392b" stroke-width="5.5"
+        stroke-dasharray="17.6 70.4" stroke-dashoffset="-52.8"
+        stroke-linecap="butt"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#1e6b35" stroke-width="5.5"
+        stroke-dasharray="17.6 70.4" stroke-dashoffset="-70.4"
+        stroke-linecap="butt"/>
+      <!-- center star -->
+      <polygon points="24,17 25.5,22 30.5,22 26.5,25 28,30 24,27 20,30 21.5,25 17.5,22 22.5,22"
+        fill="#c9a227"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -795,6 +837,10 @@
       <button class="mana-choice selected" data-color="green" aria-label="Forest – Green">
         <svg><use href="#mana-green"/></svg>
         <span class="mana-name">Forest</span>
+      </button>
+      <button class="mana-choice" data-color="multi" aria-label="Multicolor – All five colors">
+        <svg><use href="#mana-multi"/></svg>
+        <span class="mana-name">Multi</span>
       </button>
     </div>
 
@@ -906,8 +952,7 @@
 
   // ── WebSocket ──
   function connect(onOpen) {
-    const proto = location.protocol === 'https:' ? 'wss' : 'ws';
-    ws = new WebSocket(`${proto}://${location.host}`);
+    ws = new WebSocket('wss://bwelchme-production.up.railway.app');
     ws.onopen = () => onOpen();
     ws.onmessage = e => {
       const msg = JSON.parse(e.data);
