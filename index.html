@@ -226,8 +226,9 @@
     gap: 24px;
   }
   @media (max-width: 768px) {
-    .nav-inner { gap: 8px; }
-    .logo { font-size: 18px; }
+    .nav-inner { gap: 6px; }
+    .logo { font-size: 17px; }
+    .theme-switcher { margin-right: 0; }
   }
   .logo {
     font-family: 'Fraunces', serif;
@@ -1165,11 +1166,15 @@
   @media (max-width: 640px) {
     .theme-toggle { padding: 0; width: 44px; height: 44px; }
     .theme-label { display: none; }
+    .theme-menu { left: auto; right: 0; transform: none; max-width: calc(100vw - 32px); }
   }
   .theme-menu-divider {
     height: 1px;
     background: var(--border);
     margin: 6px 8px;
+  }
+  @media (min-width: 769px) {
+    .hand-pref-item { display: none; }
   }
   .theme-menu-section-label {
     font-size: 11px;
@@ -1177,7 +1182,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-dim);
-    padding: 6px 14px 2px;
+    padding: 10px 14px 4px;
   }
   .theme-menu button[aria-pressed] {
     justify-content: space-between;
@@ -1197,11 +1202,13 @@
   .theme-menu {
     position: absolute;
     top: calc(100% + 8px);
-    right: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
     background: var(--surface);
     border: 1px solid var(--border-strong);
     border-radius: 12px;
-    padding: 6px;
+    padding: 8px;
     min-width: 220px;
     list-style: none;
     margin: 0;
@@ -1216,7 +1223,7 @@
     color: var(--text);
     width: 100%;
     text-align: left;
-    padding: 10px 14px;
+    padding: 12px 16px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
@@ -1726,9 +1733,9 @@
         '<li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li>' +
         '<li><button type="button" data-set-theme="light" role="menuitem">Light</button></li>' +
         '<li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li>' +
-        '<li class="theme-menu-divider" aria-hidden="true"></li>' +
-        '<li class="theme-menu-section-label" aria-hidden="true">Preferences</li>' +
-        '<li><button type="button" id="handMenuBtn" role="menuitem" aria-pressed="' + String(hand === 'left') + '"><span class="hand-label">' + (hand === 'left' ? 'Left-hand menu' : 'Right-hand menu') + '</span><span class="hand-state"></span></button></li>' +
+        '<li class="theme-menu-divider hand-pref-item" aria-hidden="true"></li>' +
+        '<li class="theme-menu-section-label hand-pref-item" aria-hidden="true">Preferences</li>' +
+        '<li class="hand-pref-item"><button type="button" id="handMenuBtn" role="menuitem" aria-pressed="' + String(hand === 'left') + '"><span class="hand-label">' + (hand === 'left' ? 'Left-hand menu' : 'Right-hand menu') + '</span><span class="hand-state"></span></button></li>' +
       '</ul>';
     var navToggleBtn = navInner.querySelector('.nav-toggle');
     if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
