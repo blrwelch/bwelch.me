@@ -80,7 +80,8 @@
       "mcp__Claude_in_Chrome__tabs_create_mcp",
       "Bash(curl -v --max-time 5 https://bwelchme-production.up.railway.app)",
       "Bash(curl -s https://bwelchme-production.up.railway.app)",
-      "Bash(curl -v --max-time 5 -H 'Upgrade: websocket' -H 'Connection: Upgrade' -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' -H 'Sec-WebSocket-Version: 13' https://bwelchme-production.up.railway.app)"
+      "Bash(curl -v --max-time 5 -H 'Upgrade: websocket' -H 'Connection: Upgrade' -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' -H 'Sec-WebSocket-Version: 13' https://bwelchme-production.up.railway.app)",
+      "Bash(kill 16253)"
     ]
   }
 }
