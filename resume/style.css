@@ -612,23 +612,25 @@ hr.divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; 
   .toolbar-fixed,
   .nav-btn { display: none !important; }
 
-  /* Resume layout: full bleed, tight, one page */
+  /* Resume layout: force two-column regardless of viewport width */
   .resume-layout {
-    display: grid;
-    grid-template-columns: 2in 1fr;
-    max-width: none;
-    margin: 0;
-    padding: 0.38in 0.35in 0.3in 0.3in;
-    gap: 0.32in;
-    height: 11in;
-    overflow: hidden;
-    align-items: start;
+    display: grid !important;
+    grid-template-columns: 2in 1fr !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0.38in 0.35in 0.3in 0.3in !important;
+    gap: 0.32in !important;
+    height: 11in !important;
+    overflow: hidden !important;
+    align-items: start !important;
   }
 
   /* Sidebar: no sticky, compact */
   .sidebar {
-    position: static;
-    gap: 18pt;
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18pt !important;
   }
 
   .sidebar-section h3 {
