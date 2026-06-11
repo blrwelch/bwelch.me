@@ -51,7 +51,19 @@ function makePlayer(name, color) {
   };
 }
 
+// Heartbeat: ping all clients every 25s, drop dead ones
+const PING_INTERVAL = 25000;
+setInterval(() => {
+  wss.clients.forEach(ws => {
+    if (ws.isAlive === false) { ws.terminate(); return; }
+    ws.isAlive = false;
+    ws.ping();
+  });
+}, PING_INTERVAL);
+
 wss.on('connection', ws => {
+  ws.isAlive = true;
+  ws.on('pong', () => { ws.isAlive = true; });
   ws.playerId = null;
   ws.roomCode = null;
 

@@ -972,9 +972,25 @@
       }
     };
     ws.onclose = () => {
-      showToast('Disconnected. Reconnecting…');
-      setTimeout(() => location.reload(), 2000);
+      ws = null;
+      // If we were in a game, try to silently rejoin
+      if (roomCode && myId) {
+        showToast('Reconnecting…');
+        setTimeout(() => reconnect(), 2000);
+      } else {
+        showToast('Connection lost. Please refresh.');
+      }
     };
+  }
+
+  // ── Reconnect (silently rejoin after drop) ──
+  function reconnect() {
+    const savedName = playerNameEl.value.trim() || 'Player';
+    const savedColor = selectedColor;
+    const savedRoom = roomCode;
+    connect(() => {
+      ws.send(JSON.stringify({ type: 'join_room', name: savedName, roomCode: savedRoom, color: savedColor }));
+    });
   }
 
   // ── Lobby actions ──
