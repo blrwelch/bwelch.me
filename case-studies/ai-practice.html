@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Internal AI Initiative at Lextech | Brittany Welch</title>
+<meta name="description" content="A case study on designing the internal home for Lextech's AI Practice. IA, content strategy, and UX for a hub that supports AI agent work and helps teams put AI to use day-to-day." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved && ['dark','dark-hc','light','light-hc'].indexOf(saved) >= 0) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia) {
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var hc = window.matchMedia('(prefers-contrast: more)').matches;
+        document.documentElement.setAttribute('data-theme', (light ? 'light' : 'dark') + (hc ? '-hc' : ''));
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo">b<span>.</span>welch</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#expertise">Expertise</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="cs-header">
+  <div class="container">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="../index.html#work">Work</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span aria-current="page">Internal AI Initiative</span>
+    </nav>
+    <span class="cs-eyebrow reveal">Internal · AI · Lextech</span>
+    <h1 class="cs-title reveal">An internal initiative <span class="accent">promoting AI</span> at Lextech.</h1>
+    <p class="cs-subtitle reveal">I'm designing the internal home for Lextech's AI Practice. That includes the IA, content strategy, and UX for a hub that supports our AI agent and AI Skills work, and helps our teams put AI to use in their day-to-day projects.</p>
+
+    <div class="cs-meta reveal">
+      <div class="cs-meta-item">
+        <span class="label">Role</span>
+        <span class="value">Senior UI/UX Designer</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Company</span>
+        <span class="value">Lextech Global Services</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Timeframe</span>
+        <span class="value">2024 to Present</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Focus</span>
+        <span class="value">Internal · IA · UX · Adoption</span>
+      </div>
+    </div>
+
+    <div class="at-a-glance reveal" style="margin-top: 32px;">
+      <div class="glance-cell">
+        <span class="label">The challenge</span>
+        <p>Make AI adoption feel real for our own teams, not just something we offer externally. Build the internal home that supports our AI agent work and gives colleagues a credible place to start.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">My role</span>
+        <p>Senior UI/UX Designer leading the design of the internal AI Practice site. That includes IA, content strategy, and the UX patterns that surface our AI agent and AI Skills work.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">Outcome</span>
+        <p>An internal hub used by Lextech teams as a working reference. It's also become a credibility surface that gets pulled into our broader conversations about AI.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="cs-visual reveal" aria-hidden="true">
+    <div class="cs-visual-stage">
+      <div class="viz-rect r1"></div>
+      <div class="viz-rect r2"></div>
+      <div class="viz-rect r3"></div>
+      <div class="viz-bars"><span style="height:50%"></span><span style="height:70%"></span><span style="height:60%"></span><span style="height:85%"></span><span style="height:75%"></span><span style="height:95%"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">The challenge</h2>
+    <p class="lead reveal">AI moves fast. The hard part is making it move at the speed of your own organization, too.</p>
+    <p class="reveal">Lextech wanted an internal home for our AI practice. Somewhere our own teams could go to see what we were building, how AI agents and skills slotted into our work, and where the practice was heading next. The brief wasn't just "make a page about AI." It was: design the experience that turns AI from a buzzword into something our colleagues actually pull into their day-to-day projects.</p>
+    <p class="reveal">My job was to lead the design of that internal hub end to end. Information architecture, content strategy, and the UI/UX patterns that make the practice make sense to the rest of the company.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">How I approached it</h2>
+    <p class="lead reveal">An internal product gets all the same design rigor as anything we'd ship externally. Internal teams are users too.</p>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">01 · IA</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <h3>Information architecture</h3>
+        <p>Structured the practice around how our teams actually use it. Agents, skills, and patterns up front, with the deeper "why we built it this way" content one click away.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">02 · Content</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Content strategy</h3>
+        <p>Shaped what every page should say and in what order. The site reads like a confident, working reference, not a marketing page trying to sound smart about AI.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">03 · UX</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>UX patterns</h3>
+        <p>Designed the patterns for showing agents, skills, and use cases. Recognizable surfaces that hold up as the practice grows.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">04 · Adoption</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Driving adoption</h3>
+        <p>Closed the loop with teams using the site. Refined the IA, the content, and the prompts that get colleagues to actually try the agents and patterns we'd built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">Decisions that mattered</h2>
+
+    <div class="decisions">
+      <div class="decision reveal">
+        <h3>Treat the internal site like a product, not a wiki</h3>
+        <p>It would've been easy to ship this as documentation and move on. We chose to give it real product thinking. Clean IA, intentional content, designed patterns. Internal teams deserve the same UX care as anything we'd send out the door.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Lead with patterns, not theory</h3>
+        <p>Most "AI at work" content starts with what AI is. We led with what AI does. Specific agents, specific patterns, specific use cases. The philosophy moved further down the page for the people who wanted it.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Make adoption the actual design goal</h3>
+        <p>The success metric for this site isn't traffic. It's whether a colleague clicked through and actually used an agent or pattern in their own work that week. Every design decision came back to that.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">What's changed</h2>
+    <p class="lead reveal">Specific examples are covered in the full case study (request access below). Public highlights:</p>
+
+    <div class="outcomes">
+      <div class="outcome-card reveal">
+        <div class="qual">Internal hub</div>
+        <p>A living internal site our teams reference as part of their AI work. Not a static one-pager.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Credibility surface</div>
+        <p>The practice site gets pulled into broader conversations about how we approach AI as an organization.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Patterns that scale</div>
+        <p>UX patterns for agents, skills, and use cases that hold up as the practice keeps expanding.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Adoption focus</div>
+        <p>The design was anchored on whether teammates would actually use what we showed. Not just whether they'd read about it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">What I'd carry forward</h2>
+    <div class="reflections-list">
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Internal products deserve real product thinking. The instinct is to ship them quickly and informally. The better move is to design them with the same care as anything you'd ship outside the building.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Promoting AI internally is a design problem. Adoption isn't a function of how much you talk about AI. It's a function of how easy you make it for someone to try something today.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>17 years of "translate complex systems into human-centered products" applies directly to AI. The category is new. The discipline isn't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cs-cta reveal">
+      <span class="cs-eyebrow">Request full case study</span>
+      <h2>Want to see the actual work?</h2>
+      <p>The full case study, including IA artifacts, content strategy decisions, and detail on the internal AI Practice site, is available as a password-protected, watermarked PDF.</p>
+
+      <form id="csForm" novalidate>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Email" aria-label="Email address" required autocomplete="email" />
+        </div>
+        <input type="text" name="company" placeholder="Company / role (optional)" aria-label="Company or role, optional" autocomplete="organization" />
+        <textarea name="message" placeholder="Anything else? (optional)" aria-label="Additional message, optional"></textarea>
+        <input type="hidden" name="_subject" value="Portfolio Request | Internal AI Initiative case study" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="case_study" value="Internal AI Initiative at Lextech" />
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary" id="csSubmit">
+            <span class="submit-label">Request the PDF</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">Password-protected &amp; watermarked. Sent within 1 business day. Password follows in a separate message.</p>
+        </div>
+        <p class="form-error" id="csError">Something went wrong. Please try again or email blrwelch@gmail.com.</p>
+      </form>
+
+      <div class="form-success" id="csSuccess" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Request received. I'll be in touch shortly.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-next">
+  <div class="container">
+    <a href="data-viz.html" class="cs-next-link reveal">
+      <div>
+        <span class="label">Next case study</span>
+        <div class="title">AI insights dashboard for an enterprise healthcare client →</div>
+      </div>
+      <div class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span class="js-year">2026</span> Brittany Welch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:blrwelch@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/blrwelch@gmail.com';
+  document.querySelectorAll('svg:not([aria-label]):not([role="img"])').forEach(svg => {
+    if (!svg.hasAttribute('aria-hidden')) svg.setAttribute('aria-hidden', 'true');
+  });
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  // ===== THEME SWITCHER =====
+  (function() {
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner) return;
+    var switcher = document.createElement('div');
+    switcher.className = 'theme-switcher';
+    switcher.innerHTML = '<button class="theme-toggle" type="button" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false" title="Choose theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg><span class="theme-label">Theme</span></button><ul class="theme-menu" role="menu" hidden><li><button type="button" data-set-theme="dark" role="menuitem">Dark</button></li><li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li><li><button type="button" data-set-theme="light" role="menuitem">Light</button></li><li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li></ul>';
+    var navToggleBtn = navInner.querySelector('.nav-toggle');
+    if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
+    else navInner.appendChild(switcher);
+    var tb = switcher.querySelector('.theme-toggle');
+    var menu = switcher.querySelector('.theme-menu');
+    function mark() {
+      var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      menu.querySelectorAll('button[data-set-theme]').forEach(function(b){ b.setAttribute('aria-current', String(b.dataset.setTheme === cur)); });
+    }
+    mark();
+    tb.addEventListener('click', function() { var o = !menu.hidden; menu.hidden = o; tb.setAttribute('aria-expanded', String(!o)); });
+    menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = b.dataset.setTheme;
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('theme', t); } catch(e) {}
+        mark(); menu.hidden = true; tb.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) { if (!switcher.contains(e.target) && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); tb.focus(); } });
+  })();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  const csForm = document.getElementById('csForm');
+  const csError = document.getElementById('csError');
+  const csSuccess = document.getElementById('csSuccess');
+  const csSubmit = document.getElementById('csSubmit');
+  const submitLabel = csSubmit.querySelector('.submit-label');
+  csForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    csError.classList.remove('visible');
+    if (!csForm.checkValidity()) { csForm.reportValidity(); return; }
+    const data = Object.fromEntries(new FormData(csForm));
+    const cs = data.case_study || 'Portfolio';
+    data._subject = `Portfolio Request | ${cs} | ${data.name}${data.company ? ` (${data.company})` : ''}`;
+    data._autoresponse = `Hi ${data.name},\n\nThanks for requesting my ${cs} case study. I'll send a password-protected, watermarked PDF within one business day, with the password in a separate message for security.\n\nIf you have any questions in the meantime, just reply to this email.\n\nBrittany Welch\nbwelch.me`;
+    const formBody = new FormData();
+    Object.entries(data).forEach(([k, v]) => formBody.append(k, v));
+    csSubmit.style.opacity = '0.6'; csSubmit.style.pointerEvents = 'none';
+    submitLabel.textContent = 'Sending...';
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: formBody });
+      if (!res.ok) throw new Error();
+      csForm.style.display = 'none';
+      csSuccess.classList.add('visible');
+    } catch (err) { csError.classList.add('visible'); }
+    finally { csSubmit.style.opacity = ''; csSubmit.style.pointerEvents = ''; submitLabel.textContent = 'Request the PDF'; }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Designing for a Lot of Data | Brittany Welch</title>
+<meta name="description" content="A case study on turning sprawling datasets into clear, decision-ready interfaces. Dashboards that decision-makers actually use." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved && ['dark','dark-hc','light','light-hc'].indexOf(saved) >= 0) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia) {
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var hc = window.matchMedia('(prefers-contrast: more)').matches;
+        document.documentElement.setAttribute('data-theme', (light ? 'light' : 'dark') + (hc ? '-hc' : ''));
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo">b<span>.</span>welch</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#expertise">Expertise</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="cs-header">
+  <div class="container">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="../index.html#work">Work</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span aria-current="page">Data Visualization</span>
+    </nav>
+    <span class="cs-eyebrow reveal">Data Visualization · SaaS</span>
+    <h1 class="cs-title reveal">Designing for <span class="accent">a lot of data</span>.</h1>
+    <p class="cs-subtitle reveal">Turning sprawling spreadsheets and databases into clear interfaces. Making sure the right information surfaces first.</p>
+
+    <div class="cs-meta reveal">
+      <div class="cs-meta-item">
+        <span class="label">Role</span>
+        <span class="value">Product Designer</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Focus</span>
+        <span class="value">Dashboards &amp; Reporting</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Timeframe</span>
+        <span class="value">[Year(s)]</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Platform</span>
+        <span class="value">Web</span>
+      </div>
+    </div>
+
+    <div class="at-a-glance reveal" style="margin-top: 32px;">
+      <div class="glance-cell">
+        <span class="label">The challenge</span>
+        <p>Take large, messy datasets (from spreadsheets to live databases) and design interfaces that make the important information impossible to miss.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">My role</span>
+        <p>Product designer working closely with users, PMs, and analysts to prioritize what to surface, how to structure it, and how to make it act-on-able.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">Outcome</span>
+        <p>Dashboards users actually opened daily (not just at month-end), with the most-used data structured for fast, confident decisions.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="cs-visual reveal" aria-hidden="true">
+    <div class="cs-visual-stage">
+      <div class="viz-rect r1" style="width: 100%; height: 100%; left: 0; top: 0; background: linear-gradient(135deg, rgba(45, 212, 191, 0.08), rgba(56, 189, 248, 0.05));"></div>
+      <div class="viz-rect" style="top: 8%; left: 6%; width: 28%; height: 35%; background: rgba(45, 212, 191, 0.18);"></div>
+      <div class="viz-rect" style="top: 8%; left: 38%; width: 28%; height: 35%; background: rgba(56, 189, 248, 0.15);"></div>
+      <div class="viz-rect" style="top: 8%; right: 6%; width: 22%; height: 35%; background: rgba(45, 212, 191, 0.12);"></div>
+      <div class="viz-bars" style="left: 8%; bottom: 12%; height: 40%;">
+        <span style="height: 30%"></span><span style="height: 60%"></span><span style="height: 45%"></span><span style="height: 80%"></span><span style="height: 65%"></span><span style="height: 90%"></span><span style="height: 75%"></span><span style="height: 55%"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">The challenge</h2>
+    <p class="lead reveal">Every project started the same way: a massive dataset, a team that had been living with it in spreadsheets for years, and a creeping sense that the data was being underused because no one could see it clearly.</p>
+    <p class="reveal">The goal wasn't to visualize more data. It was to figure out which data the user actually depended on, then design interfaces that turned that data into a next action. Not just descriptive charts. Doing that well means staying close to the people who'll use the dashboard every day, not guessing what "looks like a good dashboard" from the outside.</p>
+    <p class="reveal">Across these projects, the work spanned operational dashboards, reporting tools, and analytics-style interfaces. Different shapes of the same fundamental design problem: making density legible.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">How I approached it</h2>
+    <p class="lead reveal">Data design lives or dies on the prioritization work that happens *before* anyone touches a chart library.</p>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">01 · Listen</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3>User input first</h3>
+        <p>Workshops and interviews with the actual day-to-day users: analysts, ops leads, decision-makers. The goal was to surface which fields they actually used, not which ones existed.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">02 · Prioritize</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+        </div>
+        <h3>Information hierarchy</h3>
+        <p>Mapped the dataset to a visual hierarchy. What shows up at a glance, what's one click away, what stays in detail views. Most of the design work happens here.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">03 · Prototype</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Real data, real fast</h3>
+        <p>Prototyped with the user's actual numbers, not lorem ipsum. We could feel how filters, sort order, and drill-ins behaved at real scale.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">04 · Refine</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Iterate with users</h3>
+        <p>Live walk-throughs with the same users who shaped the brief. We refined until the dashboard answered their first three questions without scrolling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">Decisions that mattered</h2>
+
+    <div class="decisions">
+      <div class="decision reveal">
+        <h3>Designing the absence of data, not just its presence</h3>
+        <p>Empty states, zero values, and "no results" views got as much attention as the loaded views. In data tools, those moments are where users lose confidence. So they earned first-class treatment.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>One question per screen</h3>
+        <p>The temptation in data design is to show everything. We held the line on focus. Each surface answered one primary question, with secondary questions one interaction away.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Filters that match how users think</h3>
+        <p>Default filter sets matched the user's actual mental model (by team, by time, by status), not the database's schema. A small thing visually, a huge thing for adoption.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">What changed</h2>
+    <p class="lead reveal">Specific impact data is shared in the full case study (request access below). Public-facing highlights:</p>
+
+    <div class="outcomes">
+      <div class="outcome-card reveal">
+        <div class="qual">Daily, not monthly</div>
+        <p>Tools shifted from "open it at month-end" to part of the daily routine. That's the truest signal a dashboard is doing its job.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Spreadsheets retired</div>
+        <p>Teams stopped running parallel spreadsheets to make sense of the data. The dashboards became the source of truth.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Faster decisions</div>
+        <p>Self-reported time-to-decision dropped meaningfully across the user groups we interviewed post-launch.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Scaled gracefully</div>
+        <p>The visual system held up as new data sources, new filters, and new user roles got added over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">What I'd carry forward</h2>
+    <div class="reflections-list">
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Prioritization is the work. Once you know which two or three things the user actually needs to see, the visual design becomes obvious. Without that, no chart library will save you.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Real data exposes everything. Designs that look beautiful with placeholder data fall apart at scale. Prototyping against live datasets is the only honest way to design these tools.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Adoption is a design metric. A "successful" dashboard that no one opens is a design failure, full stop. Designing for the daily use case is where the value lives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cs-cta reveal">
+      <span class="cs-eyebrow">Request full case study</span>
+      <h2>Want to see the actual dashboards?</h2>
+      <p>The complete case study, with screens, IA artifacts, and measured outcomes, is available as a password-protected PDF. Drop your details and I'll send it over.</p>
+
+      <form id="csForm" novalidate>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Email" aria-label="Email address" required autocomplete="email" />
+        </div>
+        <input type="text" name="company" placeholder="Company / role (optional)" aria-label="Company or role, optional" autocomplete="organization" />
+        <textarea name="message" placeholder="Anything else? (optional)" aria-label="Additional message, optional"></textarea>
+        <input type="hidden" name="_subject" value="Portfolio Request | Data Visualization case study" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="case_study" value="Data Visualization" />
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary" id="csSubmit">
+            <span class="submit-label">Request the PDF</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">Password-protected &amp; watermarked. Sent within 1 business day; password follows in a separate message.</p>
+        </div>
+        <p class="form-error" id="csError">Something went wrong. Please try again or email blrwelch@gmail.com.</p>
+      </form>
+
+      <div class="form-success" id="csSuccess" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Request received. I'll be in touch shortly.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-next">
+  <div class="container">
+    <a href="cspire.html" class="cs-next-link reveal">
+      <div>
+        <span class="label">Next case study</span>
+        <div class="title">A mobile-first rebrand for C Spire →</div>
+      </div>
+      <div class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span class="js-year">2026</span> Brittany Welch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:blrwelch@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/blrwelch@gmail.com';
+  document.querySelectorAll('svg:not([aria-label]):not([role="img"])').forEach(svg => {
+    if (!svg.hasAttribute('aria-hidden')) svg.setAttribute('aria-hidden', 'true');
+  });
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  // ===== THEME SWITCHER =====
+  (function() {
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner) return;
+    var switcher = document.createElement('div');
+    switcher.className = 'theme-switcher';
+    switcher.innerHTML = '<button class="theme-toggle" type="button" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false" title="Choose theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg><span class="theme-label">Theme</span></button><ul class="theme-menu" role="menu" hidden><li><button type="button" data-set-theme="dark" role="menuitem">Dark</button></li><li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li><li><button type="button" data-set-theme="light" role="menuitem">Light</button></li><li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li></ul>';
+    var navToggleBtn = navInner.querySelector('.nav-toggle');
+    if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
+    else navInner.appendChild(switcher);
+    var tb = switcher.querySelector('.theme-toggle');
+    var menu = switcher.querySelector('.theme-menu');
+    function mark() {
+      var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      menu.querySelectorAll('button[data-set-theme]').forEach(function(b){ b.setAttribute('aria-current', String(b.dataset.setTheme === cur)); });
+    }
+    mark();
+    tb.addEventListener('click', function() { var o = !menu.hidden; menu.hidden = o; tb.setAttribute('aria-expanded', String(!o)); });
+    menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = b.dataset.setTheme;
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('theme', t); } catch(e) {}
+        mark(); menu.hidden = true; tb.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) { if (!switcher.contains(e.target) && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); tb.focus(); } });
+  })();
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const csForm = document.getElementById('csForm');
+  const csError = document.getElementById('csError');
+  const csSuccess = document.getElementById('csSuccess');
+  const csSubmit = document.getElementById('csSubmit');
+  const submitLabel = csSubmit.querySelector('.submit-label');
+
+  csForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    csError.classList.remove('visible');
+    if (!csForm.checkValidity()) { csForm.reportValidity(); return; }
+    const data = Object.fromEntries(new FormData(csForm));
+    const cs = data.case_study || 'Portfolio';
+    data._subject = `Portfolio Request | ${cs} | ${data.name}${data.company ? ` (${data.company})` : ''}`;
+    data._autoresponse = `Hi ${data.name},\n\nThanks for requesting my ${cs} case study. I'll send a password-protected, watermarked PDF within one business day, with the password in a separate message for security.\n\nIf you have any questions in the meantime, just reply to this email.\n\nBrittany Welch\nbwelch.me`;
+    const formBody = new FormData();
+    Object.entries(data).forEach(([k, v]) => formBody.append(k, v));
+    csSubmit.style.opacity = '0.6'; csSubmit.style.pointerEvents = 'none';
+    submitLabel.textContent = 'Sending...';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formBody
+      });
+      if (!res.ok) throw new Error();
+      csForm.style.display = 'none';
+      csSuccess.classList.add('visible');
+    } catch (err) {
+      csError.classList.add('visible');
+    } finally {
+      csSubmit.style.opacity = ''; csSubmit.style.pointerEvents = '';
+      submitLabel.textContent = 'Request the PDF';
+    }
+  });
+</script>
+
+</body>
+</html>

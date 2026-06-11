@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brittany Welch | Senior UI/UX Designer</title>
+<meta name="description" content="Brittany Welch. Senior UI/UX Designer based in Brandon, Mississippi. 17 years of experience across telecom, Fortune 500 e-commerce, healthcare, and complex data products. Currently leading internal AI design work at Lextech." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<script>
+  // Apply saved theme synchronously to prevent FOUC
+  (function() {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved && ['dark','dark-hc','light','light-hc'].indexOf(saved) >= 0) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia) {
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var hc = window.matchMedia('(prefers-contrast: more)').matches;
+        document.documentElement.setAttribute('data-theme', (light ? 'light' : 'dark') + (hc ? '-hc' : ''));
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch(e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<style>
+  :root, [data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0a1628;
+    --bg-2: #0f1e36;
+    --surface: #142845;
+    --surface-2: #1a3358;
+    --border: rgba(176, 193, 212, 0.20);
+    --border-strong: rgba(176, 193, 212, 0.36);
+    --teal: #2dd4bf;
+    --teal-bright: #5eead4;
+    --teal-soft: rgba(45, 212, 191, 0.14);
+    --teal-glow: rgba(45, 212, 191, 0.35);
+    --text: #f1f5f9;
+    --text-strong: #ffffff;
+    --text-muted: #cbd5e1;
+    --text-dim: #b0c1d4;
+    --on-teal: #0a1628;
+    --gradient-end: #38bdf8;
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+    --shadow-glow: 0 0 40px rgba(45, 212, 191, 0.15);
+    --ambient-1: radial-gradient(circle, rgba(45, 212, 191, 0.10) 0%, transparent 70%);
+    --ambient-2: radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, transparent 70%);
+    --nav-bg: rgba(10, 22, 40, 0.72);
+    --nav-bg-scrolled: rgba(10, 22, 40, 0.88);
+    --modal-backdrop: rgba(5, 12, 24, 0.78);
+    --floating-bg: rgba(20, 40, 69, 0.95);
+    --portrait-overlay: linear-gradient(135deg, transparent 50%, rgba(45, 212, 191, 0.10) 100%);
+    --radius: 16px;
+    --radius-lg: 24px;
+    --maxw: 1180px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-theme="dark-hc"] {
+    color-scheme: dark;
+    --bg: #000000;
+    --bg-2: #050810;
+    --surface: #0d1117;
+    --surface-2: #161b22;
+    --border: rgba(255, 255, 255, 0.42);
+    --border-strong: rgba(255, 255, 255, 0.70);
+    --teal: #7fffd4;
+    --teal-bright: #ccfff5;
+    --teal-soft: rgba(127, 255, 212, 0.18);
+    --teal-glow: rgba(127, 255, 212, 0.45);
+    --text: #ffffff;
+    --text-strong: #ffffff;
+    --text-muted: #f1f5f9;
+    --text-dim: #e5e7eb;
+    --on-teal: #000000;
+    --gradient-end: #87ceeb;
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.95);
+    --shadow-glow: 0 0 0 1px rgba(127, 255, 212, 0.5);
+    --ambient-1: none;
+    --ambient-2: none;
+    --nav-bg: rgba(0, 0, 0, 0.92);
+    --nav-bg-scrolled: rgba(0, 0, 0, 0.98);
+    --modal-backdrop: rgba(0, 0, 0, 0.92);
+    --floating-bg: rgba(13, 17, 23, 0.98);
+    --portrait-overlay: none;
+  }
+
+  [data-theme="light"] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-2: #f8fafc;
+    --surface: #f1f5f9;
+    --surface-2: #e2e8f0;
+    --border: rgba(15, 23, 42, 0.14);
+    --border-strong: rgba(15, 23, 42, 0.32);
+    --teal: #115e59;
+    --teal-bright: #0f766e;
+    --teal-soft: rgba(17, 94, 89, 0.08);
+    --teal-glow: rgba(17, 94, 89, 0.30);
+    --text: #0f172a;
+    --text-strong: #000000;
+    --text-muted: #1e293b;
+    --text-dim: #334155;
+    --on-teal: #ffffff;
+    --gradient-end: #0369a1;
+    --shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.18);
+    --shadow-glow: 0 0 40px rgba(17, 94, 89, 0.10);
+    --ambient-1: radial-gradient(circle, rgba(17, 94, 89, 0.06) 0%, transparent 70%);
+    --ambient-2: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+    --nav-bg: rgba(255, 255, 255, 0.78);
+    --nav-bg-scrolled: rgba(255, 255, 255, 0.92);
+    --modal-backdrop: rgba(15, 23, 42, 0.50);
+    --floating-bg: rgba(255, 255, 255, 0.97);
+    --portrait-overlay: linear-gradient(135deg, transparent 50%, rgba(17, 94, 89, 0.08) 100%);
+    --radius: 16px;
+    --radius-lg: 24px;
+    --maxw: 1180px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-theme="light-hc"] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-2: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f5f5f5;
+    --border: rgba(0, 0, 0, 0.55);
+    --border-strong: rgba(0, 0, 0, 0.85);
+    --teal: #004a4a;
+    --teal-bright: #003333;
+    --teal-soft: rgba(0, 74, 74, 0.10);
+    --teal-glow: rgba(0, 74, 74, 0.40);
+    --text: #000000;
+    --text-strong: #000000;
+    --text-muted: #000000;
+    --text-dim: #1a1a1a;
+    --on-teal: #ffffff;
+    --gradient-end: #0c4a6e;
+    --shadow-lg: 0 0 0 2px rgba(0, 0, 0, 0.35);
+    --shadow-glow: 0 0 0 2px rgba(0, 74, 74, 0.50);
+    --ambient-1: none;
+    --ambient-2: none;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --nav-bg-scrolled: rgba(255, 255, 255, 0.99);
+    --modal-backdrop: rgba(0, 0, 0, 0.75);
+    --floating-bg: rgba(255, 255, 255, 1);
+    --portrait-overlay: none;
+    --radius: 16px;
+    --radius-lg: 24px;
+    --maxw: 1180px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  /* ambient background glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 60%;
+    height: 60%;
+    background: var(--ambient-1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: var(--ambient-2);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 0;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: var(--nav-bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition), background var(--transition);
+  }
+  .nav.scrolled {
+    background: var(--nav-bg-scrolled);
+    border-bottom-color: var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text-strong);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--teal); }
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: color var(--transition), background var(--transition);
+  }
+  .nav-links a:hover { color: var(--teal-bright); background: var(--teal-soft); }
+  .nav-cta {
+    background: var(--teal);
+    color: var(--on-teal) !important;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: var(--teal-bright) !important; color: var(--on-teal) !important; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--teal-soft);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--teal-bright);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--teal);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text-strong);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-style: italic;
+    padding-right: 0.12em;
+    margin-right: -0.04em;
+  }
+  .hero p.lead {
+    font-size: 19px;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+    max-width: 540px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all var(--transition);
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--teal);
+    color: var(--on-teal);
+    box-shadow: 0 10px 30px -10px var(--teal-glow);
+  }
+  .btn-primary:hover {
+    background: var(--teal-bright);
+    color: var(--on-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px -10px var(--teal-glow);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-strong);
+    border-color: var(--border-strong);
+  }
+  .btn-secondary:hover {
+    background: var(--teal-soft);
+    border-color: var(--teal);
+    color: var(--teal-bright);
+  }
+  .btn svg { width: 16px; height: 16px; }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--teal-bright);
+    line-height: 1;
+  }
+  .stat .label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Hero portrait */
+  .hero-portrait {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 380px;
+    margin-left: auto;
+  }
+  .portrait-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .portrait-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--portrait-overlay);
+  }
+  .floating-card {
+    position: absolute;
+    background: var(--floating-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-lg);
+    font-size: 13px;
+    animation: float 6s ease-in-out infinite;
+  }
+  .floating-card.fc-1 {
+    top: 30px;
+    left: -40px;
+  }
+  .floating-card.fc-2 {
+    bottom: 40px;
+    right: -30px;
+    animation-delay: 2s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .fc-icon {
+    width: 32px; height: 32px;
+    background: var(--teal-soft);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal-bright);
+    flex-shrink: 0;
+  }
+  .fc-text strong { color: var(--text-strong); display: block; font-weight: 600; }
+  .fc-text span { color: var(--text-muted); font-size: 12px; }
+
+  /* ============ SECTION COMMON ============ */
+  section { padding: 100px 0; position: relative; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--teal);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--teal);
+  }
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.1;
+    color: var(--text-strong);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    max-width: 720px;
+  }
+  .section-lead {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+  .section-header { margin-bottom: 64px; }
+
+  /* ============ ABOUT ============ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--text);
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--text-strong); font-weight: 600; }
+  .about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    position: sticky;
+    top: 100px;
+  }
+  .about-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--text-strong);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .about-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .meta-item:last-child { border-bottom: none; }
+  .meta-label {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .meta-value {
+    color: var(--text-strong);
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  /* ============ SKILLS ============ */
+  .skills {
+    background: linear-gradient(180deg, transparent 0%, var(--bg-2) 50%, transparent 100%);
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: all var(--transition);
+  }
+  .skill-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .skill-icon {
+    width: 48px; height: 48px;
+    background: var(--teal-soft);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal-bright);
+    margin-bottom: 20px;
+  }
+  .skill-icon svg { width: 24px; height: 24px; }
+  .skill-card h3 {
+    color: var(--text-strong);
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .skill-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .toolbox {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+  }
+  .toolbox h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--text-strong);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .toolbox-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag {
+    padding: 8px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--text);
+    transition: all var(--transition);
+  }
+  .tag:hover {
+    border-color: var(--teal);
+    color: var(--teal-bright);
+    background: var(--teal-soft);
+  }
+
+  /* ============ PORTFOLIO ============ */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 28px;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+  }
+  .project-image {
+    aspect-ratio: 16/10;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+  .project-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(10, 22, 40, 0.7) 100%);
+    pointer-events: none;
+  }
+  .project-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(10, 22, 40, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-strong);
+    color: var(--teal-bright);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2;
+  }
+  .project-body {
+    padding: 28px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--text-strong);
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .project-body p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .project-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .project-meta div { color: var(--text-muted); }
+  .project-meta strong {
+    color: var(--text-strong);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .project-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 18px;
+    background: var(--teal-soft);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    color: var(--teal-bright);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .project-cta:hover {
+    background: var(--teal);
+    color: var(--bg);
+    border-color: var(--teal);
+  }
+  .project-cta svg {
+    width: 16px; height: 16px;
+    transition: transform var(--transition);
+  }
+  .project-cta:hover svg { transform: translateX(4px); }
+
+  /* ============ CONTACT ============ */
+  .contact {
+    text-align: center;
+  }
+  .contact-card {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    padding: 72px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, var(--teal-soft) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .contact-card > * { position: relative; z-index: 1; }
+  .contact-card .eyebrow { justify-content: center; }
+  .contact-card .eyebrow::before { display: none; }
+  .contact-card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--text-strong);
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .contact-card p {
+    color: var(--text-muted);
+    font-size: 19px;
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+  .contact-ctas {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color var(--transition);
+  }
+  .footer-links a:hover { color: var(--teal-bright); }
+
+  /* ============ MODAL FORM ============ */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: var(--modal-backdrop);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .modal-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    transform: translateY(20px) scale(0.96);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal-backdrop.open .modal {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+  .modal-close:hover {
+    background: var(--teal-soft);
+    color: var(--teal-bright);
+    border-color: var(--border-strong);
+  }
+  .modal h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    color: var(--text-strong);
+    margin-bottom: 8px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .modal-sub {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .req { color: var(--teal); }
+  .opt { color: var(--text-dim); font-weight: 400; font-size: 12px; margin-left: 4px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-strong);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color var(--transition), background var(--transition);
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: var(--bg);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .form-error {
+    color: #fca5a5;
+    font-size: 13px;
+    margin-top: 12px;
+    text-align: center;
+  }
+  .modal-success {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--teal-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+    margin: 0 auto 20px;
+  }
+  .success-icon svg { width: 32px; height: 32px; }
+  .modal-success h3 { margin-bottom: 8px; }
+  .modal-success p {
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .submit-loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  body.modal-open { overflow: hidden; }
+
+  /* ============ REVEAL ANIMATION ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    .hero-portrait { max-width: 320px; margin: 0 auto; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-card { position: static; }
+    section { padding: 72px 0; }
+    .hero { padding: 110px 0 60px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links.open {
+      display: flex;
+      position: absolute;
+      top: 70px; left: 16px; right: 16px;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 12px;
+      gap: 4px;
+    }
+    .nav-links.open a { padding: 12px 14px; }
+    .contact-card { padding: 48px 24px; }
+    .container { padding: 0 20px; }
+    .floating-card.fc-1 { left: -10px; }
+    .floating-card.fc-2 { right: -10px; }
+  }
+
+  @media (max-width: 540px) {
+    .hero-stats { flex-wrap: wrap; gap: 24px; }
+    .stat .num { font-size: 30px; }
+    .toolbox { padding: 28px 24px; }
+    .project-body { padding: 22px; }
+    .modal { padding: 28px 24px; }
+    .modal h3 { font-size: 24px; }
+    .form-actions { flex-direction: column-reverse; }
+    .form-actions .btn { width: 100%; justify-content: center; }
+  }
+
+  /* Focus states for a11y */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Screen-reader-only utility */
+  .sr-only {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Skip-to-content link */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 12px;
+    background: var(--teal);
+    color: var(--on-teal);
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 1000;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus { top: 12px; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ============ THEME SWITCHER ============ */
+  .theme-switcher { position: relative; margin-right: 8px; }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    height: 40px;
+    padding: 0 14px;
+    gap: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition), color var(--transition);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .theme-toggle:hover { background: var(--teal-soft); color: var(--teal-bright); }
+  .theme-label { white-space: nowrap; }
+  @media (max-width: 640px) {
+    .theme-toggle { padding: 0; width: 40px; }
+    .theme-label { display: none; }
+  }
+  .theme-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 6px;
+    min-width: 220px;
+    list-style: none;
+    margin: 0;
+    box-shadow: var(--shadow-lg);
+    z-index: 200;
+  }
+  .theme-menu[hidden] { display: none; }
+  .theme-menu li { margin: 0; padding: 0; list-style: none; }
+  .theme-menu button {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .theme-menu button:hover, .theme-menu button:focus-visible {
+    background: var(--teal-soft);
+    color: var(--teal-bright);
+  }
+  .theme-menu button[aria-current="true"] {
+    color: var(--teal-bright);
+    font-weight: 600;
+  }
+  .theme-menu button[aria-current="true"]::after {
+    content: '';
+    width: 10px; height: 10px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">b<span>.</span>welch</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<main id="main">
+
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content reveal">
+        <!--><span class="hero-badge"><span class="dot" aria-hidden="true"></span> Open to lead/senior UI/UX design roles</span>-->
+        <h1>Designing the AI tools people <span class="accent">actually trust</span> to use.</h1>
+        <p class="lead">Hi, I'm Brittany. I'm a Lead/Senior Product Designer based in Brandon, Mississippi. For 17 years I've been designing products that people use and come back to. That's included big e-commerce sites, mobile-first launches for wireless carriers, healthcare apps, and lately, the AI tools my team is building at Lextech.</p>
+        <div class="hero-ctas">
+          <a href="#work" class="btn btn-primary">
+            View my work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-secondary">Let's connect</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="num">17+</div>
+            <div class="label">Years designing</div>
+          </div>
+          <div class="stat">
+            <div class="num">5</div>
+            <div class="label">Industries shipped</div>
+          </div>
+          <div class="stat">
+            <div class="num">AI</div>
+            <div class="label">Agent &amp; skill design</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-portrait reveal">
+        <div class="portrait-frame">
+          <img src="https://bwelch.me/images/avatar.jpg" alt="Portrait of Brittany Welch" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%)'" />
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">About me</span>
+      <h2 class="section-title">Making complicated things make sense, from Fortune 500 retail to AI tools.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a UI/UX designer with <strong>17 years of experience</strong>. Most of what I do comes down to one thing: helping teams figure out what users actually need, then designing the product that gives it to them. That sounds simple, but it usually isn't. It's where I'm at my best.</p>
+        <p>I'm currently a <strong>Senior UI/UX Designer</strong>, where I'm collaborating with our team on an internal initiative to bring AI into how our teams work every day. In this new frontier, it is important to figure out how to make AI feel like a useful coworker instead of a (scary?) buzzword.</p>
+        <p>My research approach is built on <strong>collaboration</strong>. Projects are more successful when teammates feel like partners, not subjects. Pair that with a front-end background that keeps my designs grounded in what's actually buildable, and you get someone who can hold a real conversation with engineering, design with confidence, and ship work that lasts.</p>
+      </div>
+      <aside class="about-card reveal">
+        <h3>Quick facts</h3>
+        <div class="about-meta">
+          <div class="meta-item">
+            <span class="meta-label">Based in</span>
+            <span class="meta-value">Brandon, MS</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Experience</span>
+            <span class="meta-value">17+ years</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Current role</span>
+            <span class="meta-value">Senior UI/UX Designer<br><span style="color: var(--text-muted); font-size: 12px; font-weight: 400;">Lextech Global Services</span></span>
+          </div>
+          <!--<div class="meta-item">
+            <span class="meta-label">Availability</span>
+            <span class="meta-value" style="color: var(--teal-bright);">● Open to roles</span>-->
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Remote</span>
+            <span class="meta-value">Preferred</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS / EXPERTISE ============ -->
+<section id="expertise" class="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">What I do</span>
+      <h2 class="section-title">I have built a toolkit shaped by 17 years of shipping, plus a year going deep on AI.</h2>
+      <p class="section-lead">I work across the whole design process. Research, strategy, UX, and the front-end fluency to keep my designs grounded in what's actually buildable. I've used that on everything from e-commerce sites used by millions to the internal AI tools we're building today.</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg>
+        </div>
+        <h3>AI Agent &amp; Skill Design</h3>
+        <p>Designing agent profiles, workflow patterns, and rollout plans for teams adopting AI without breaking how they already work.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <h3>UX Research &amp; Strategy</h3>
+        <p>Discovery and facilitation that feels collaborative, not like an interrogation. Especially important when you're asking people about AI in their job.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>UI Design Systems</h3>
+        <p>Scalable design systems and pattern libraries that ship faster, stay consistent, and grow with your product.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Data &amp; AI-Insights Dashboards</h3>
+        <p>Turning dense datasets (and AI-generated outputs) into clean, easy-to-read interfaces that people actually want to open.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Rapid Prototyping</h3>
+        <p>From quick wireframes to clickable Figma prototypes. Moving fast to test ideas before any code gets written.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Design + Code Fluency</h3>
+        <p>I'm comfortable in HTML/CSS and working in Cursor or VS Code. Translation: smoother handoffs, realistic specs, and a designer who can hold a real conversation with engineering.</p>
+      </div>
+    </div>
+
+    <div class="toolbox reveal">
+      <h3>My toolbox</h3>
+      <div class="toolbox-tags">
+        <span class="tag">Figma</span>
+        <span class="tag">Sketch</span>
+        <span class="tag">Adobe CC</span>
+        <span class="tag">Zeplin</span>
+        <span class="tag">Cursor / VS Code</span>
+        <span class="tag">ChatGPT</span>
+        <span class="tag">Claude</span>
+        <span class="tag">Gemini</span>
+        <span class="tag">Notion</span>
+        <span class="tag">Jira / Azure DevOps</span>
+        <span class="tag">AI Agent &amp; Skill Design</span>
+        <span class="tag">UI / UX Design</span>
+        <span class="tag">Design Systems</span>
+        <span class="tag">Rapid Prototyping</span>
+        <span class="tag">UX Research &amp; Strategy</span>
+        <span class="tag">Stakeholder Facilitation</span>
+        <span class="tag">Responsive / Adaptive UI</span>
+        <span class="tag">iOS &amp; Android</span>
+        <span class="tag">Agile / Scrum</span>
+        <span class="tag">Front-end (HTML/CSS)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="work">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Selected work</span>
+      <h2 class="section-title">A look at what I've shipped.</h2>
+      <p class="section-lead">Detailed case studies are available as a password-protected PDF. I'm happy to share with hiring teams and recruiters on request.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- Internal AI Practice -->
+      <article class="project-card reveal">
+        <div class="project-image">
+          <span class="project-tag">Internal · AI · Lextech</span>
+          <img src="https://bwelch.me/images/dashboard-1.jpeg" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="project-body">
+          <h3>An internal initiative promoting AI</h3>
+          <p>I'm currently helping lead the design of my workplace's AI marketplace. That includes the IA, content strategy, and UX for the hub that supports our AI agent and AI Skills work, and helps our teams, and our clients, put AI to use in their day-to-day projects.</p>
+          <div class="project-meta">
+            <div><strong>Role</strong>Senior UI/UX Designer</div>
+            <div><strong>Focus</strong>Internal AI · IA &amp; UX · Adoption</div>
+          </div>
+          <a class="project-cta" href="case-studies/ai-practice.html">
+            Read case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- AI Insights Dashboard -->
+      <article class="project-card reveal">
+        <div class="project-image">
+          <span class="project-tag">AI · Healthcare · Enterprise</span>
+          <img src="https://bwelch.me/images/dashboard-1.jpeg" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="project-body">
+          <h3>AI-generated insights dashboard for an enterprise healthcare client</h3>
+          <p>Led the UX for an AI-generated insights dashboard for a global healthcare brand. I worked closely with engineering and data science teams to turn complex industry data into a clear interface that executives and operations folks could actually act on.</p>
+          <div class="project-meta">
+            <div><strong>Role</strong>Senior UI/UX Designer</div>
+            <div><strong>Focus</strong>AI insights · Data viz · Healthcare</div>
+          </div>
+          <a class="project-cta" href="case-studies/data-viz.html">
+            Read case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- C Spire -->
+      <article class="project-card reveal">
+        <div class="project-image">
+          <span class="project-tag">Telecom · E-commerce</span>
+          <img src="https://bwelch.me/images/ecommerce-1.jpeg" alt="C Spire e-commerce work" onerror="this.style.display='none'" />
+        </div>
+        <div class="project-body">
+          <h3>Eight years of digital at C Spire</h3>
+          <p>I was a UX Developer II at C Spire from 2011 to 2019. Over that time I designed and developed the front-end for three full flagship site redesigns (consumer, business, careers), plus a steady run of feature launches including telehealth, the Repair Center, and the Techmvmt scholarship program.</p>
+          <div class="project-meta">
+            <div><strong>Role</strong>UX Developer II</div>
+            <div><strong>Years</strong>2011 – 2019</div>
+          </div>
+          <a class="project-cta" href="case-studies/cspire.html">
+            Read case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- AutoZone -->
+      <article class="project-card reveal">
+        <div class="project-image">
+          <span class="project-tag">Retail · E-commerce</span>
+          <img src="https://bwelch.me/images/ecommerce-1.jpeg" alt="AutoZone e-commerce work" onerror="this.style.display='none'" />
+        </div>
+        <div class="project-body">
+          <h3>Leading Product Discovery design at AutoZone</h3>
+          <p>I was a Senior UI Designer for the Product Discovery group at this Fortune 500 e-commerce site. I shipped the Product Finder, the AZ Rewards flows, and contributed to a full site relaunch that went out with no reported loss in traffic (in the middle of a global pandemic).</p>
+          <div class="project-meta">
+            <div><strong>Role</strong>Senior UI Designer</div>
+            <div><strong>Years</strong>2019 – 2021</div>
+          </div>
+          <a class="project-cta" href="case-studies/autozone.html">
+            Read case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Healthcare iPad -->
+      <article class="project-card reveal">
+        <div class="project-image">
+          <span class="project-tag">Healthcare · iPadOS</span>
+          <img src="https://bwelch.me/images/healthcare-4.jpeg" alt="Healthcare iPad app design" onerror="this.style.display='none'" />
+        </div>
+        <div class="project-body">
+          <h3>iPad tools for healthcare field reps</h3>
+          <p>Designed a custom iPadOS dashboard for healthcare field reps. A fleet of iPads turned into a real, purpose-built tool that made reps more effective on-site. It took a lot of ride-along research to actually get this right.</p>
+          <div class="project-meta">
+            <div><strong>Role</strong>Lead UX Designer</div>
+            <div><strong>Platform</strong>iPadOS</div>
+          </div>
+          <a class="project-cta" href="case-studies/healthcare-ipad.html">
+            Read case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Let's build something users love.</h2>
+      <p>I'm currently exploring senior UI/UX design opportunities. If you're hiring, collaborating, or just want to chat about design, I'd love to hear from you.</p>
+      <div class="contact-ctas">
+        <a href="mailto:blrwelch@gmail.com?subject=Hello%20Brittany" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email me
+        </a>
+        <a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          Connect on LinkedIn
+        </a>
+        <button type="button" class="btn btn-secondary project-cta" data-project="Full portfolio" style="background: transparent; color: var(--text-strong); border-color: var(--border-strong); width: auto; padding: 14px 24px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Request portfolio
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <p>© <span class="js-year">2026</span> Brittany Welch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:blrwelch@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<!-- ============ REQUEST CASE STUDY MODAL ============ -->
+<div class="modal-backdrop" id="formModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close form">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-form-container" id="modalFormContainer">
+      <span class="eyebrow">Request case study</span>
+      <h3 id="modalTitle">Let's get you the work.</h3>
+      <p class="modal-sub">I'll send a password-protected PDF to the email you provide.</p>
+
+      <form id="caseStudyForm" novalidate>
+        <div class="form-group">
+          <label for="form-name">Your name <span class="req">*</span></label>
+          <input type="text" id="form-name" name="name" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="form-email">Email <span class="req">*</span></label>
+          <input type="email" id="form-email" name="email" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="form-company">Company / Role <span class="opt">optional</span></label>
+          <input type="text" id="form-company" name="company" autocomplete="organization" />
+        </div>
+        <div class="form-group">
+          <label for="form-project">Which case study?</label>
+          <select id="form-project" name="project">
+            <option value="E-commerce">E-commerce</option>
+            <option value="Healthcare iPad app">Healthcare iPad app</option>
+            <option value="Data Visualization">Data Visualization</option>
+            <option value="Full portfolio">Full portfolio</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="form-message">Anything else? <span class="opt">optional</span></label>
+          <textarea id="form-message" name="message" rows="3" placeholder="Quick note about your team or the role you're hiring for..."></textarea>
+        </div>
+
+        <!-- FormSubmit configuration -->
+        <input type="hidden" name="_subject" value="Portfolio Request from bwelch.me" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="modalCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="modalSubmit">
+            <span class="submit-label">Send request</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <p class="form-error" id="formError" hidden>Something went wrong. Please try again or email me directly at blrwelch@gmail.com.</p>
+      </form>
+    </div>
+
+    <div class="modal-success" id="modalSuccess" hidden>
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Request received!</h3>
+      <p>Thanks! I'll be in touch shortly with your case study. Keep an eye on your inbox.</p>
+      <button type="button" class="btn btn-primary" id="modalDone">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // A11y: hide decorative SVGs from screen readers
+  document.querySelectorAll('svg:not([aria-label]):not([role="img"])').forEach(svg => {
+    if (!svg.hasAttribute('aria-hidden')) svg.setAttribute('aria-hidden', 'true');
+  });
+
+  // Auto-update footer copyright year
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  // ===== THEME SWITCHER (injects UI, persists choice) =====
+  (function() {
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner) return;
+    var switcher = document.createElement('div');
+    switcher.className = 'theme-switcher';
+    switcher.innerHTML =
+      '<button class="theme-toggle" type="button" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false" title="Choose theme">' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">' +
+          '<circle cx="12" cy="12" r="4"/>' +
+          '<line x1="12" y1="2" x2="12" y2="4"/>' +
+          '<line x1="12" y1="20" x2="12" y2="22"/>' +
+          '<line x1="2" y1="12" x2="4" y2="12"/>' +
+          '<line x1="20" y1="12" x2="22" y2="12"/>' +
+          '<line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>' +
+          '<line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>' +
+          '<line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>' +
+          '<line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>' +
+        '</svg>' +
+        '<span class="theme-label">Theme</span>' +
+      '</button>' +
+      '<ul class="theme-menu" role="menu" hidden>' +
+        '<li><button type="button" data-set-theme="dark" role="menuitem">Dark</button></li>' +
+        '<li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li>' +
+        '<li><button type="button" data-set-theme="light" role="menuitem">Light</button></li>' +
+        '<li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li>' +
+      '</ul>';
+    var navToggleBtn = navInner.querySelector('.nav-toggle');
+    if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
+    else navInner.appendChild(switcher);
+    var toggleBtn = switcher.querySelector('.theme-toggle');
+    var menu = switcher.querySelector('.theme-menu');
+    function markCurrent() {
+      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
+        b.setAttribute('aria-current', String(b.dataset.setTheme === current));
+      });
+    }
+    markCurrent();
+    toggleBtn.addEventListener('click', function() {
+      var isOpen = !menu.hidden;
+      menu.hidden = isOpen;
+      toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+    menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = b.dataset.setTheme;
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('theme', t); } catch(e) {}
+        markCurrent();
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!switcher.contains(e.target) && !menu.hidden) {
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !menu.hidden) {
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.focus();
+      }
+    });
+  })();
+
+  // Mobile nav toggle (with aria-expanded sync)
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ============ REQUEST CASE STUDY MODAL ============
+  // FormSubmit delivers form posts straight to your inbox. No signup required.
+  // The very first submission will trigger a confirmation email to blrwelch@gmail.com.
+  // Click "Confirm your email" once, and all future submissions will arrive normally.
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/blrwelch@gmail.com';
+
+  const modal = document.getElementById('formModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalCancel = document.getElementById('modalCancel');
+  const modalDone = document.getElementById('modalDone');
+  const caseStudyForm = document.getElementById('caseStudyForm');
+  const formError = document.getElementById('formError');
+  const modalSuccess = document.getElementById('modalSuccess');
+  const modalFormContainer = document.getElementById('modalFormContainer');
+  const projectSelect = document.getElementById('form-project');
+  const submitBtn = document.getElementById('modalSubmit');
+  const submitLabel = submitBtn.querySelector('.submit-label');
+
+  function openModal(project) {
+    if (project) {
+      const match = projectSelect.querySelector('option[value="' + CSS.escape(project) + '"]');
+      if (match) projectSelect.value = project;
+    }
+    modalFormContainer.hidden = false;
+    modalSuccess.hidden = true;
+    formError.hidden = true;
+    modal.removeAttribute('hidden');
+    // double-rAF so the transition runs reliably
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+    }));
+    setTimeout(() => document.getElementById('form-name').focus(), 250);
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    setTimeout(() => {
+      modal.setAttribute('hidden', '');
+      caseStudyForm.reset();
+    }, 300);
+  }
+
+  document.querySelectorAll('.project-cta[data-project]').forEach(btn => {
+    btn.addEventListener('click', () => openModal(btn.dataset.project));
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modalCancel.addEventListener('click', closeModal);
+  modalDone.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  caseStudyForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formError.hidden = true;
+
+    if (!caseStudyForm.checkValidity()) {
+      caseStudyForm.reportValidity();
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(caseStudyForm));
+    const cs = data.project || 'Portfolio';
+    data._subject = `Portfolio Request | ${cs} | ${data.name}${data.company ? ` (${data.company})` : ''}`;
+    data._autoresponse = `Hi ${data.name},\n\nThanks for requesting my ${cs} case study. I'll send a password-protected, watermarked PDF within one business day, with the password in a separate message for security.\n\nIf you have any questions in the meantime, just reply to this email.\n\nBrittany Welch\nbwelch.me`;
+    submitBtn.classList.add('submit-loading');
+    submitLabel.textContent = 'Sending...';
+
+    // Use FormData body (simple request, no CORS preflight)
+    const formBody = new FormData();
+    Object.entries(data).forEach(([k, v]) => formBody.append(k, v));
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formBody
+      });
+      let body = {};
+      try { body = await res.json(); } catch (_) {}
+      console.log('[FormSubmit] status:', res.status, 'body:', body);
+      const ok = res.ok && body.success !== 'false' && body.success !== false;
+      if (!ok) {
+        const msg = (body.message || '').toLowerCase();
+        // FormSubmit "first submission" response. They sent Brittany a confirmation email.
+        // From the visitor's perspective, treat this as success.
+        if (msg.includes('confirm')) {
+          modalFormContainer.hidden = true;
+          modalSuccess.hidden = false;
+          return;
+        }
+        throw new Error(body.message || `HTTP ${res.status}`);
+      }
+      modalFormContainer.hidden = true;
+      modalSuccess.hidden = false;
+    } catch (err) {
+      console.error('[FormSubmit] error:', err);
+      formError.hidden = false;
+      formError.textContent = `Couldn't send: ${err.message}. Please try again or email blrwelch@gmail.com.`;
+    } finally {
+      submitBtn.classList.remove('submit-loading');
+      submitLabel.textContent = 'Send request';
+    }
+  });
+</script>
+
+</body>
+</html>

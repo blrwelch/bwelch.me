@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--
+  ====================================================================
+  CASE STUDY TEMPLATE — E-commerce (AutoZone + C Spire)
+  --------------------------------------------------------------------
+  This page is BOTH your e-commerce case study AND the template you'll
+  copy + customize for new case studies. Each <section> below has a
+  HTML comment explaining what to put in it. Tighten copy where you
+  have firmer details — and replace any [bracketed] placeholders.
+  ====================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>E-commerce at Scale — Brittany Welch</title>
+<meta name="description" content="A case study on scaling e-commerce experiences at AutoZone and C Spire — from pandemic relaunches to mobile-first rebrands." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ NAV (reuse across all case studies) ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo">brittany<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#expertise">Expertise</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!--
+  ============ 1. HEADER ============
+  - Back link to home
+  - Eyebrow: industry / tag (e.g. "E-commerce · Retail")
+  - Title: the project's headline (Fraunces serif, large)
+  - Subtitle: the problem in ONE sentence
+  - Meta strip: Role | Timeframe | Industry | Platform
+  Replace [brackets] with your specifics.
+-->
+<header class="cs-header">
+  <div class="container">
+    <a href="../index.html#work" class="back-link reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      All work
+    </a>
+    <span class="cs-eyebrow reveal">E-commerce · Retail &amp; Telecom</span>
+    <h1 class="cs-title reveal">Scaling e-commerce for <span class="accent">millions</span> of shoppers.</h1>
+    <p class="cs-subtitle reveal">Two chapters of e-commerce work — a wireless carrier's mobile-first rebrand, and a parts retailer's full-site relaunch shipped during a pandemic.</p>
+
+    <div class="cs-meta reveal">
+      <div class="cs-meta-item">
+        <span class="label">Role</span>
+        <span class="value">Senior Product Designer</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Companies</span>
+        <span class="value">AutoZone · C Spire</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Timeframe</span>
+        <span class="value">[Years, e.g. 2011–2022]</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Platforms</span>
+        <span class="value">Web · Mobile Web</span>
+      </div>
+    </div>
+
+    <!-- ============ AT-A-GLANCE TL;DR ============
+         Three short answers: Challenge / My role / Outcome.
+         Each ~1–2 sentences. This is the "no time to read further"
+         version that a recruiter can absorb in 10 seconds.
+    -->
+    <div class="at-a-glance reveal" style="margin-top: 48px;">
+      <div class="glance-cell">
+        <span class="label">The challenge</span>
+        <p>Modernize two flagship e-commerce experiences serving millions of customers — under brand and timeline pressure, with no room for downtime.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">My role</span>
+        <p>Senior product designer leading visual systems, key flows (cart, search, promotions), and partnering with engineering through ship.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">Outcome</span>
+        <p>Two successful platform relaunches, modernized cart and discovery experiences, and a mobile site that anchored a major rebrand.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!--
+  ============ 2. ABSTRACT HERO VISUAL ============
+  Stylized "screenshot" — no real client UI. When you have public
+  assets, swap this <div> for an <img>. Keep the aspect ratio 16:9.
+-->
+<div class="container">
+  <div class="cs-visual reveal" aria-hidden="true">
+    <div class="cs-visual-stage">
+      <div class="viz-rect r1"></div>
+      <div class="viz-rect r2"></div>
+      <div class="viz-rect r3"></div>
+      <div class="viz-bars"><span style="height:40%"></span><span style="height:65%"></span><span style="height:55%"></span><span style="height:80%"></span><span style="height:70%"></span><span style="height:90%"></span></div>
+    </div>
+  </div>
+</div>
+
+<!--
+  ============ 3. CONTEXT — "The challenge" ============
+  2–3 paragraphs. What was the situation? Why did this work matter?
+  Don't reveal proprietary specifics — focus on the *kind* of problem
+  and the stakes. Mention scale: users, traffic, business pressure.
+-->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">The challenge</h2>
+    <p class="lead reveal">Both stories share a common thread: large customer bases, high-stakes timing, and the kind of legacy patterns that quietly bleed conversion if you don't fix them.</p>
+
+    <h3 class="reveal" style="margin-top: 32px;">C Spire — a mobile-first rebrand</h3>
+    <p class="reveal">When I joined C Spire (then Cellular South), the company was in the middle of a major rebrand and needed a digital home that matched. The existing experience predated the era of "mobile-first" as a serious discipline, and customers were increasingly shopping for plans and devices on phones — sometimes the very phones they were trying to upgrade.</p>
+    <p class="reveal">On top of the rebrand, the team had landed a category-defining moment: C Spire would be one of the first smaller wireless carriers in the U.S. trusted with the iPhone 4S launch. The new site had to be ready not just to look the part, but to handle the launch-day load and the high-stakes user expectations that came with it.</p>
+
+    <h3 class="reveal" style="margin-top: 40px;">AutoZone — modernizing during a pandemic</h3>
+    <p class="reveal">At AutoZone, the e-commerce experience served millions of customers who depend on quick, confident parts decisions — often in moments of automotive emergency. The legacy site was workhorse-functional, but cart, promotions, and parts-finding flows had layers of accumulated complexity.</p>
+    <p class="reveal">I joined the design team as work was underway on a complete platform redesign — a relaunch that ultimately shipped during the height of the COVID-19 pandemic, when DIY auto repair was surging and any disruption to the buying experience would have outsized consequences.</p>
+  </div>
+</section>
+
+<!--
+  ============ 4. APPROACH — "How I approached it" ============
+  3–4 process cards. Tailor titles to the actual work; keep each card
+  to 2–3 sentences. Common pattern: Discover / Define / Design / Deliver.
+-->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">How I approached it</h2>
+    <p class="lead reveal">Different products, similar playbook: understand the actual user, design for the real-world context, validate before commitment, and stay close to engineering through ship.</p>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">01 · Discover</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Understand the user</h3>
+        <p>Customer journeys, support-ticket themes, and on-the-ground feedback to surface where the experience was actually breaking down.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">02 · Define</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9 9 8.5"/></svg>
+        </div>
+        <h3>Frame the priorities</h3>
+        <p>Aligning with PM, engineering, and stakeholders on which flows would move the business — cart, promotions, search, and fit-to-vehicle.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">03 · Design</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>Wireframe to high-fi</h3>
+        <p>Lo-fi flow first, then visual design within a consistent system. Particular attention to mobile breakpoints, since that's where most traffic lived.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">04 · Ship</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Partner through launch</h3>
+        <p>Working with engineering on edge cases, QA on accessibility, and stakeholders on rollout — keeping the experience steady at go-live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  ============ 5. KEY DECISIONS ============
+  2–3 design decisions with the reasoning. This is the most valuable
+  section for a hiring manager — it shows how you THINK, not just what
+  you SHIPPED. Tighten with your actual decisions.
+-->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">Decisions that mattered</h2>
+    <p class="lead reveal">A few of the calls I'd point to when explaining the work.</p>
+
+    <div class="decisions">
+      <div class="decision reveal">
+        <h3>Designing for the parking lot, not the desk</h3>
+        <p>At AutoZone, many customers shop from a vehicle's hood or a parts counter — phone in one hand, dirty hands, distracted attention. We optimized for thumb-reach, large tap targets, and fast confirmation states, treating mobile as the canonical experience rather than a desktop trim-down.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Rebrand + relaunch as one motion</h3>
+        <p>At C Spire, separating the visual rebrand from the platform redesign would have stretched the project and dulled the impact. We built the new design system and the new site in parallel — risky in theory, but it meant the rebrand actually landed on a product that supported it.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Protecting users through a pandemic-era launch</h3>
+        <p>Launching AutoZone's redesigned site during COVID raised the bar on "minimal disruption." We staged the rollout carefully, prioritized backward compatibility in critical paths, and held the line on regressions in flows users were depending on more than ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  ============ 6. OUTCOMES ============
+  3–4 cards. Each is EITHER a number (.num) OR a qualitative win (.qual).
+  Numbers are best. If you don't have them, use qualitative wins — they
+  still land if you're specific.
+-->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">What changed</h2>
+    <p class="lead reveal">Quantitative impact is shared in the full case study (request access below). Public-facing highlights:</p>
+
+    <div class="outcomes">
+      <div class="outcome-card reveal">
+        <span class="num">2</span>
+        <p>Major e-commerce relaunches shipped, both with minimal user disruption.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Mobile-first</div>
+        <p>Modernized mobile commerce experiences in two distinct industries with very different customer behaviors.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">iPhone 4S launch</div>
+        <p>Helped C Spire become one of the first smaller carriers trusted with a flagship Apple launch.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Cart + promo</div>
+        <p>Reworked checkout and weekly promotional surfaces at AutoZone — touch-points that drive real revenue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  ============ 7. REFLECTIONS ============
+  2–3 things you'd carry forward, learned, or would do differently.
+  Optional but powerful — shows self-awareness, which hiring managers
+  notice immediately.
+-->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">What I'd carry forward</h2>
+    <div class="reflections-list">
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Cross-functional alignment is design work. The redesigns shipped clean because PM, engineering, and design were in the same room — not because the designs were perfect on paper.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Real-world context matters more than any persona doc. Watching customers shop from a parking lot reshaped how I designed every confirmation, error, and tap target afterward.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>"Minimal disruption" is a design discipline. Especially during the pandemic launch, treating stability as a design value — not just a QA concern — paid off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  ============ 8. CTA — "Request the full case study" ============
+  Inline form. Posts to FormSubmit (same endpoint as main site).
+  The hidden "_subject" field tags which case study was requested
+  so you can tell them apart in your inbox.
+-->
+<section>
+  <div class="container">
+    <div class="cs-cta reveal">
+      <span class="cs-eyebrow">Request full case study</span>
+      <h2>Want to see the actual work?</h2>
+      <p>The complete case study — with screens, metrics, and decision artifacts — is available as a password-protected PDF. Drop your details and I'll send it over.</p>
+
+      <form id="csForm" novalidate>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Email" required autocomplete="email" />
+        </div>
+        <input type="text" name="company" placeholder="Company / role (optional)" autocomplete="organization" />
+        <textarea name="message" placeholder="Anything else? (optional)"></textarea>
+        <input type="hidden" name="_subject" value="Portfolio Request — E-commerce case study" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="case_study" value="E-commerce (AutoZone + C Spire)" />
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary" id="csSubmit">
+            <span class="submit-label">Request the PDF</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">Password-protected. Typically sent within 1 business day.</p>
+        </div>
+        <p class="form-error" id="csError">Something went wrong. Please try again or email blrwelch@gmail.com.</p>
+      </form>
+
+      <div class="form-success" id="csSuccess" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Request received — I'll be in touch shortly.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  ============ 9. NEXT CASE STUDY ============
+  Quick link to keep the visitor moving through your work.
+-->
+<section class="cs-next">
+  <div class="container">
+    <a href="healthcare-ipad.html" class="cs-next-link reveal">
+      <div>
+        <span class="label">Next case study</span>
+        <div class="title">An iPad-native tool for healthcare field reps →</div>
+      </div>
+      <div class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <p>© 2025 Brittany Welch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:blrwelch@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // ===== Reusable JS for all case study pages =====
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/blrwelch@gmail.com';
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== Case-study request form =====
+  const csForm = document.getElementById('csForm');
+  const csError = document.getElementById('csError');
+  const csSuccess = document.getElementById('csSuccess');
+  const csSubmit = document.getElementById('csSubmit');
+  const submitLabel = csSubmit.querySelector('.submit-label');
+
+  csForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    csError.classList.remove('visible');
+
+    if (!csForm.checkValidity()) {
+      csForm.reportValidity();
+      return;
+    }
+    const data = Object.fromEntries(new FormData(csForm));
+    csSubmit.style.opacity = '0.6';
+    csSubmit.style.pointerEvents = 'none';
+    submitLabel.textContent = 'Sending...';
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error('Submission failed');
+      csForm.style.display = 'none';
+      csSuccess.classList.add('visible');
+    } catch (err) {
+      csError.classList.add('visible');
+    } finally {
+      csSubmit.style.opacity = '';
+      csSubmit.style.pointerEvents = '';
+      submitLabel.textContent = 'Request the PDF';
+    }
+  });
+</script>
+
+</body>
+</html>

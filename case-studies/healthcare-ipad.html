@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Healthcare iPad App | Brittany Welch</title>
+<meta name="description" content="A case study on designing an iPad-native dashboard for healthcare field representatives. Purpose-built for life on the road." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved && ['dark','dark-hc','light','light-hc'].indexOf(saved) >= 0) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia) {
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var hc = window.matchMedia('(prefers-contrast: more)').matches;
+        document.documentElement.setAttribute('data-theme', (light ? 'light' : 'dark') + (hc ? '-hc' : ''));
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo">b<span>.</span>welch</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#expertise">Expertise</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="cs-header">
+  <div class="container">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="../index.html#work">Work</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span aria-current="page">Healthcare iPad app</span>
+    </nav>
+    <span class="cs-eyebrow reveal">Healthcare · iPadOS</span>
+    <h1 class="cs-title reveal">An iPad-native tool for <span class="accent">field representatives</span>.</h1>
+    <p class="cs-subtitle reveal">Designing a tablet dashboard for healthcare reps who needed real information, in real time, on the road.</p>
+
+    <div class="cs-meta reveal">
+      <div class="cs-meta-item">
+        <span class="label">Role</span>
+        <span class="value">Lead UX Designer</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Industry</span>
+        <span class="value">Healthcare</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Timeframe</span>
+        <span class="value">[Year(s)]</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Platform</span>
+        <span class="value">iPadOS</span>
+      </div>
+    </div>
+
+    <div class="at-a-glance reveal" style="margin-top: 32px;">
+      <div class="glance-cell">
+        <span class="label">The challenge</span>
+        <p>Equip a fleet of healthcare field reps with a purpose-built iPad tool. Something designed for the realities of on-site work, not a desktop port.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">My role</span>
+        <p>Lead UX designer responsible for research, information architecture, and end-to-end interaction design across the iPadOS experience.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">Outcome</span>
+        <p>A tailored dashboard that gave reps measurable wins in efficiency and confidence during on-site engagements.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="cs-visual reveal" aria-hidden="true">
+    <div class="cs-visual-stage">
+      <div class="viz-rect r1" style="width: 70%; height: 100%; left: 0; top: 0;"></div>
+      <div class="viz-rect r3" style="top: 15%; right: 5%; width: 25%; height: 35%;"></div>
+      <div class="viz-rect r3" style="top: 55%; right: 5%; width: 25%; height: 35%; background: rgba(56, 189, 248, 0.18);"></div>
+      <div class="viz-bars" style="left: 6%; bottom: 14%; height: 24%;">
+        <span style="height: 50%"></span><span style="height: 70%"></span><span style="height: 60%"></span><span style="height: 85%"></span><span style="height: 75%"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">The challenge</h2>
+    <p class="lead reveal">Healthcare field reps work in clinics, hospitals, and offices. Short windows of time, complex information, constant context-switching. Their tools have historically been built for desks, not for them.</p>
+    <p class="reveal">Collaborating with a healthcare company, we set out to design a tailored iPad experience that gave the field team a tool actually shaped around how they work: portable, glanceable, fast to navigate between accounts, and credible enough to be pulled out in front of a clinician without explanation.</p>
+    <p class="reveal">The brief wasn't just "make a tablet version of the desktop tool." It was: design what these reps would have asked for, if they'd ever been asked.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">How I approached it</h2>
+    <p class="lead reveal">The work hinged on contextual research. We needed to understand the actual moment a rep would use this thing.</p>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">01 · Research</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Ride-alongs &amp; interviews</h3>
+        <p>Time with reps in the field surfaced the real problems. Too many taps, brittle offline behavior, and info buried where they couldn't reach it quickly.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">02 · IA</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <h3>Information architecture</h3>
+        <p>Restructured the data model around the rep's mental model: by account, by visit, by next action. Instead of just mirroring the back-end schema.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">03 · Design</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>iPadOS-native patterns</h3>
+        <p>Using native interactions like split views, drag-and-drop, and contextual menus, so the tool felt at home on the device. Not like a web app in a frame.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">04 · Validate</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Test with real reps</h3>
+        <p>Prototypes back in front of the same field team. Did tasks that used to take six taps now take two?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">Decisions that mattered</h2>
+
+    <div class="decisions">
+      <div class="decision reveal">
+        <h3>Designing for one-handed use, not two</h3>
+        <p>Reps often hold the iPad in one arm while talking. Critical actions were placed within thumb-reach on the non-dominant side, and dangerous actions (delete, send) were placed deliberately further away.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Glanceable over comprehensive</h3>
+        <p>The default dashboard view is intentionally sparse. What does this rep need to know in the next 30 seconds? Detail is one tap away, but the surface stays calm.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Offline-first, sync-quietly</h3>
+        <p>Field locations have unreliable signal. We designed the interaction model assuming offline as the default state, with sync as a background process the rep never has to babysit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">What changed</h2>
+    <p class="lead reveal">Specific metrics covered in the full case study (request access below). Public-facing highlights:</p>
+
+    <div class="outcomes">
+      <div class="outcome-card reveal">
+        <div class="qual">Field-ready</div>
+        <p>A tool the reps actually picked up. They adopted it as their default rather than running it parallel to their old workflow.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Fewer taps</div>
+        <p>Core workflows compressed significantly compared to the prior tool. Task-completion time dropped in usability testing.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Native feel</div>
+        <p>Reps described the app as feeling like "an actual iPad app." Not a generic web view. Credibility in front of clinicians went up.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Reliable offline</div>
+        <p>Field locations with poor signal stopped being a blocker. Sync became something the rep didn't have to think about.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">What I'd carry forward</h2>
+    <div class="reflections-list">
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>You can't design for a context you've never seen. Ride-alongs were worth more than any number of stakeholder reviews. They'd be table-stakes on any field-tool project I work on going forward.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>"Native patterns" is a UX decision, not a styling decision. Choosing iPadOS interactions over web abstractions changed what the tool *felt* like in the rep's hand.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Restraint scales. Resisting the urge to surface every available data point made every screen more useful.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cs-cta reveal">
+      <span class="cs-eyebrow">Request full case study</span>
+      <h2>Want to see the actual designs?</h2>
+      <p>The complete case study, including screens, IA artifacts, and impact data, is available as a password-protected PDF. Drop your details and I'll send it over.</p>
+
+      <form id="csForm" novalidate>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Email" aria-label="Email address" required autocomplete="email" />
+        </div>
+        <input type="text" name="company" placeholder="Company / role (optional)" aria-label="Company or role, optional" autocomplete="organization" />
+        <textarea name="message" placeholder="Anything else? (optional)" aria-label="Additional message, optional"></textarea>
+        <input type="hidden" name="_subject" value="Portfolio Request | Healthcare iPad case study" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="case_study" value="Healthcare iPad app" />
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary" id="csSubmit">
+            <span class="submit-label">Request the PDF</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">Password-protected &amp; watermarked. Sent within 1 business day; password follows in a separate message.</p>
+        </div>
+        <p class="form-error" id="csError">Something went wrong. Please try again or email blrwelch@gmail.com.</p>
+      </form>
+
+      <div class="form-success" id="csSuccess" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Request received. I'll be in touch shortly.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-next">
+  <div class="container">
+    <a href="ai-practice.html" class="cs-next-link reveal">
+      <div>
+        <span class="label">Next case study</span>
+        <div class="title">Designing the AI practice at Lextech →</div>
+      </div>
+      <div class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span class="js-year">2026</span> Brittany Welch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:blrwelch@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/blrwelch@gmail.com';
+  document.querySelectorAll('svg:not([aria-label]):not([role="img"])').forEach(svg => {
+    if (!svg.hasAttribute('aria-hidden')) svg.setAttribute('aria-hidden', 'true');
+  });
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  // ===== THEME SWITCHER =====
+  (function() {
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner) return;
+    var switcher = document.createElement('div');
+    switcher.className = 'theme-switcher';
+    switcher.innerHTML = '<button class="theme-toggle" type="button" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false" title="Choose theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg><span class="theme-label">Theme</span></button><ul class="theme-menu" role="menu" hidden><li><button type="button" data-set-theme="dark" role="menuitem">Dark</button></li><li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li><li><button type="button" data-set-theme="light" role="menuitem">Light</button></li><li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li></ul>';
+    var navToggleBtn = navInner.querySelector('.nav-toggle');
+    if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
+    else navInner.appendChild(switcher);
+    var tb = switcher.querySelector('.theme-toggle');
+    var menu = switcher.querySelector('.theme-menu');
+    function mark() {
+      var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      menu.querySelectorAll('button[data-set-theme]').forEach(function(b){ b.setAttribute('aria-current', String(b.dataset.setTheme === cur)); });
+    }
+    mark();
+    tb.addEventListener('click', function() { var o = !menu.hidden; menu.hidden = o; tb.setAttribute('aria-expanded', String(!o)); });
+    menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = b.dataset.setTheme;
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('theme', t); } catch(e) {}
+        mark(); menu.hidden = true; tb.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) { if (!switcher.contains(e.target) && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); tb.focus(); } });
+  })();
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const csForm = document.getElementById('csForm');
+  const csError = document.getElementById('csError');
+  const csSuccess = document.getElementById('csSuccess');
+  const csSubmit = document.getElementById('csSubmit');
+  const submitLabel = csSubmit.querySelector('.submit-label');
+
+  csForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    csError.classList.remove('visible');
+    if (!csForm.checkValidity()) { csForm.reportValidity(); return; }
+    const data = Object.fromEntries(new FormData(csForm));
+    const cs = data.case_study || 'Portfolio';
+    data._subject = `Portfolio Request | ${cs} | ${data.name}${data.company ? ` (${data.company})` : ''}`;
+    data._autoresponse = `Hi ${data.name},\n\nThanks for requesting my ${cs} case study. I'll send a password-protected, watermarked PDF within one business day, with the password in a separate message for security.\n\nIf you have any questions in the meantime, just reply to this email.\n\nBrittany Welch\nbwelch.me`;
+    const formBody = new FormData();
+    Object.entries(data).forEach(([k, v]) => formBody.append(k, v));
+    csSubmit.style.opacity = '0.6'; csSubmit.style.pointerEvents = 'none';
+    submitLabel.textContent = 'Sending...';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formBody
+      });
+      if (!res.ok) throw new Error();
+      csForm.style.display = 'none';
+      csSuccess.classList.add('visible');
+    } catch (err) {
+      csError.classList.add('visible');
+    } finally {
+      csSubmit.style.opacity = ''; csSubmit.style.pointerEvents = '';
+      submitLabel.textContent = 'Request the PDF';
+    }
+  });
+</script>
+
+</body>
+</html>
