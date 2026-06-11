@@ -631,9 +631,9 @@ body::after {
 /* iPad landscape variant */
 .mockup-ipad--landscape .mockup-ipad__shell {
   flex-direction: row;
-  padding: 8px 18px;
-  border-radius: 22px;
-  gap: 10px;
+  padding: 5px 10px;
+  border-radius: 16px;
+  gap: 6px;
   align-items: center;
 }
 .mockup-ipad--landscape .mockup-ipad__camera {
@@ -648,7 +648,7 @@ body::after {
 }
 .device-showcase--ipad-landscape { padding: 40px 32px; }
 .device-showcase--ipad-landscape .mockup-ipad--landscape {
-  width: min(680px, 90%);
+  width: min(820px, 92%);
   margin-bottom: 0;
 }
 @media (max-width: 640px) {
@@ -661,7 +661,7 @@ body::after {
   gap: 20px;
 }
 .device-showcase--with-iphone .mockup-ipad--landscape {
-  width: min(580px, 72%);
+  width: min(720px, 80%);
   margin-bottom: 0;
   flex-shrink: 1;
 }
