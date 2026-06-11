@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EasyVax Scheduler | Brittany Welch</title>
+<meta name="description" content="A case study on redesigning the EasyVax vaccine scheduling flow using progressive disclosure to reduce overwhelm and improve completion rates across web, iOS, iPad, and Android." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved && ['dark','dark-hc','light','light-hc'].indexOf(saved) >= 0) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia) {
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var hc = window.matchMedia('(prefers-contrast: more)').matches;
+        document.documentElement.setAttribute('data-theme', (light ? 'light' : 'dark') + (hc ? '-hc' : ''));
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo">b<span>.</span>welch</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#expertise">Expertise</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="cs-header">
+  <div class="container">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="../index.html#work">Work</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span aria-current="page">EasyVax Scheduler</span>
+    </nav>
+    <span class="cs-eyebrow reveal">Healthcare · Web · iOS · Android</span>
+    <h1 class="cs-title reveal">Simplifying vaccine scheduling with <span class="accent">progressive disclosure</span>.</h1>
+    <p class="cs-subtitle reveal">Redesigning a multi-step scheduling flow so users could focus on one decision at a time — reducing drop-off and support burden across web, iOS, iPad, and Android.</p>
+
+    <div class="cs-meta reveal">
+      <div class="cs-meta-item">
+        <span class="label">Role</span>
+        <span class="value">UX Designer (v1 research &amp; design) · Lead Designer (redesign)</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Industry</span>
+        <span class="value">Healthcare</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="label">Platform</span>
+        <span class="value">Web · iOS · iPadOS · Android</span>
+      </div>
+    </div>
+
+    <div class="at-a-glance reveal" style="margin-top: 32px;">
+      <div class="glance-cell">
+        <span class="label">The challenge</span>
+        <p>The original scheduling flow presented all steps at once, overwhelming users before they'd made a single decision. Drop-off was high, and confusion was driving avoidable support requests.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">My role</span>
+        <p>Contributed to discovery and early design on v1, then took sole ownership of the redesign — rethinking the flow structure, interaction model, and cross-platform experience.</p>
+      </div>
+      <div class="glance-cell">
+        <span class="label">Outcome</span>
+        <p>Improved scheduling completion rates and a measurable reduction in user confusion and support contacts following the redesigned flow launch.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="cs-visual reveal" aria-hidden="true">
+    <div class="cs-visual-stage" style="display: flex; gap: 12px; align-items: flex-start; padding: 24px;">
+      <!-- Step 1: Active -->
+      <div style="flex: 1.4; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px; min-height: 260px;">
+        <div style="width: 60%; height: 10px; background: var(--teal); border-radius: 4px; margin-bottom: 16px; opacity: 0.9;"></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+          <div style="height: 52px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px;"></div>
+          <div style="height: 52px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px;"></div>
+          <div style="height: 52px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px;"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+          <div style="height: 52px; background: rgba(45,212,191,0.18); border: 1px solid var(--teal); border-radius: 8px;"></div>
+          <div style="height: 52px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px;"></div>
+          <div style="height: 52px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px;"></div>
+        </div>
+      </div>
+      <!-- Steps 2–4: Collapsed -->
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 10px; padding-top: 8px;">
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
+          <div style="width: 55%; height: 8px; background: rgba(255,255,255,0.15); border-radius: 4px;"></div>
+        </div>
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
+          <div style="width: 65%; height: 8px; background: rgba(255,255,255,0.15); border-radius: 4px;"></div>
+        </div>
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
+          <div style="width: 40%; height: 8px; background: rgba(255,255,255,0.15); border-radius: 4px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">Background</h2>
+    <p class="lead reveal">EasyVax Scheduler is a vaccine appointment tool available across web, iOS, iPad, and Android. It helps users find and book vaccine appointments at local pharmacies — walking them through vaccine selection, pharmacy search, personal details, and review.</p>
+    <p class="reveal">I was part of the team from the beginning. My early contribution was user research — conducting initial interviews that shaped the product's direction and collaborating with the lead designer on the v1 experience. As the product matured, I took on full ownership of the redesign.</p>
+    <p class="reveal">The problem was clear from user data and feedback: the original flow presented the entire scheduling process up front. Users saw all four steps at once before they'd made a single choice. For someone who just wanted a flu shot, it looked like a form to fill out, not an appointment to book.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">How I approached it</h2>
+    <p class="lead reveal">The redesign started with a simple question: what does the user actually need to decide right now?</p>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">01 · Audit</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Understand where users dropped off</h3>
+        <p>Reviewed funnel data and support contacts to pinpoint where users were abandoning the flow and what questions were generating confusion.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">02 · Reframe</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>Restructure the flow</h3>
+        <p>Shifted from a "show everything" model to a sequenced accordion — one active step at a time, with upcoming steps visible but locked until they're relevant.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">03 · Design</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Cross-platform consistency</h3>
+        <p>Designed the interaction model to feel native on each platform — web, iOS, iPadOS, and Android — while keeping the core flow and mental model consistent across all four.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <span class="step-num">04 · Validate</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Test and iterate</h3>
+        <p>Usability tested with real users across device types. Validated that the progressive structure reduced perceived complexity without hiding information people needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">Decisions that mattered</h2>
+
+    <div class="decisions">
+      <div class="decision reveal">
+        <h3>Show upcoming steps, but keep them locked</h3>
+        <p>Rather than hiding future steps entirely, the redesign keeps them visible as collapsed, inactive panels. Users can see where they're going without being asked to act on everything at once. This preserves a sense of progress while eliminating premature decision-making.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Lead with vaccine selection, not user information</h3>
+        <p>The original flow opened with required personal fields, which felt clinical and high-stakes. Moving vaccine selection to step one — a low-friction grid choice — gave users an easy win before asking for anything personal.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>One layout pattern, four platforms</h3>
+        <p>Rather than designing four separate flows, I established a single interaction model and adapted the presentation layer for each platform. The accordion metaphor translates naturally to mobile without requiring a completely different mental model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">What changed</h2>
+    <p class="lead reveal">The redesign had measurable impact on two fronts. Full metrics are available in the detailed case study.</p>
+
+    <div class="outcomes">
+      <div class="outcome-card reveal">
+        <div class="qual">Higher completion</div>
+        <p>Scheduling completion rates improved after launch. Users who started the flow were more likely to finish it compared to the prior version.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Less confusion</div>
+        <p>A reduction in support contacts related to the scheduling flow, indicating users were able to complete the process without needing help.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">Cross-platform</div>
+        <p>A single, coherent flow that works across web, iOS, iPadOS, and Android — with platform-appropriate presentation on each.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="qual">One decision at a time</div>
+        <p>Progressive disclosure turned a form that felt overwhelming into a flow that felt manageable — without removing any required information.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">What I'd carry forward</h2>
+    <div class="reflections-list">
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>The early research work on v1 paid dividends on the redesign. Having done the initial interviews, I understood what users actually cared about — not just what the data showed.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Progressive disclosure isn't about hiding information. It's about earning the right to ask for it. The redesign worked because it respected the user's time and attention at each step.</p>
+      </div>
+      <div class="reflection reveal">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p>Designing for four platforms simultaneously forces disciplined thinking about what's truly core to an interaction. The constraints were clarifying, not limiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cs-cta reveal">
+      <span class="cs-eyebrow">Request full case study</span>
+      <h2>Want to see the actual designs?</h2>
+      <p>The complete case study, including before/after flows, interaction design decisions, and platform-specific considerations, is available as a password-protected PDF. Drop your details and I'll send it over.</p>
+
+      <form id="csForm" novalidate>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Email" aria-label="Email address" required autocomplete="email" />
+        </div>
+        <input type="text" name="company" placeholder="Company / role (optional)" aria-label="Company or role, optional" autocomplete="organization" />
+        <textarea name="message" placeholder="Anything else? (optional)" aria-label="Additional message, optional"></textarea>
+        <input type="hidden" name="_subject" value="Portfolio Request | EasyVax case study" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="case_study" value="EasyVax Scheduler" />
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary" id="csSubmit">
+            <span class="submit-label">Request the PDF</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">Password-protected &amp; watermarked. Sent within 1 business day; password follows in a separate message.</p>
+        </div>
+        <p class="form-error" id="csError">Something went wrong. Please try again or email blrwelch@gmail.com.</p>
+      </form>
+
+      <div class="form-success" id="csSuccess" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Request received. I'll be in touch shortly.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-next">
+  <div class="container">
+    <a href="healthcare-ipad.html" class="cs-next-link reveal">
+      <div>
+        <span class="label">Next case study</span>
+        <div class="title">An iPad-native tool for field representatives →</div>
+      </div>
+      <div class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span class="js-year">2026</span> Brittany Welch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:blrwelch@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/blrwelch@gmail.com';
+  document.querySelectorAll('svg:not([aria-label]):not([role="img"])').forEach(svg => {
+    if (!svg.hasAttribute('aria-hidden')) svg.setAttribute('aria-hidden', 'true');
+  });
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  (function() {
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner) return;
+    var switcher = document.createElement('div');
+    switcher.className = 'theme-switcher';
+    switcher.innerHTML = '<button class="theme-toggle" type="button" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false" title="Choose theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg><span class="theme-label">Theme</span></button><ul class="theme-menu" role="menu" hidden><li><button type="button" data-set-theme="dark" role="menuitem">Dark</button></li><li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li><li><button type="button" data-set-theme="light" role="menuitem">Light</button></li><li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li></ul>';
+    var navToggleBtn = navInner.querySelector('.nav-toggle');
+    if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
+    else navInner.appendChild(switcher);
+    var tb = switcher.querySelector('.theme-toggle');
+    var menu = switcher.querySelector('.theme-menu');
+    function mark() {
+      var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      menu.querySelectorAll('button[data-set-theme]').forEach(function(b){ b.setAttribute('aria-current', String(b.dataset.setTheme === cur)); });
+    }
+    mark();
+    tb.addEventListener('click', function() { var o = !menu.hidden; menu.hidden = o; tb.setAttribute('aria-expanded', String(!o)); });
+    menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = b.dataset.setTheme;
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('theme', t); } catch(e) {}
+        mark(); menu.hidden = true; tb.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) { if (!switcher.contains(e.target) && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); tb.focus(); } });
+  })();
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const csForm = document.getElementById('csForm');
+  const csError = document.getElementById('csError');
+  const csSuccess = document.getElementById('csSuccess');
+  const csSubmit = document.getElementById('csSubmit');
+  const submitLabel = csSubmit.querySelector('.submit-label');
+
+  csForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    csError.classList.remove('visible');
+    if (!csForm.checkValidity()) { csForm.reportValidity(); return; }
+    const data = Object.fromEntries(new FormData(csForm));
+    const cs = data.case_study || 'Portfolio';
+    data._subject = `Portfolio Request | ${cs} | ${data.name}${data.company ? ` (${data.company})` : ''}`;
+    data._autoresponse = `Hi ${data.name},\n\nThanks for requesting my ${cs} case study. I'll send a password-protected, watermarked PDF within one business day, with the password in a separate message for security.\n\nIf you have any questions in the meantime, just reply to this email.\n\nBrittany Welch\nbwelch.me`;
+    const formBody = new FormData();
+    Object.entries(data).forEach(([k, v]) => formBody.append(k, v));
+    csSubmit.style.opacity = '0.6'; csSubmit.style.pointerEvents = 'none';
+    submitLabel.textContent = 'Sending...';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formBody
+      });
+      if (!res.ok) throw new Error();
+      csForm.style.display = 'none';
+      csSuccess.classList.add('visible');
+    } catch (err) {
+      csError.classList.add('visible');
+    } finally {
+      csSubmit.style.opacity = ''; csSubmit.style.pointerEvents = '';
+      submitLabel.textContent = 'Request the PDF';
+    }
+  });
+</script>
+
+</body>
+</html>
