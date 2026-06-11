@@ -55,7 +55,8 @@
       "Bash(sed -i '' 's|src=\"images/easyvax-1.jpeg\" alt=\"EasyVax Scheduler vaccine appointment flow\"|src=\"images/easyvax-hero.jpeg\" alt=\"EasyVax Scheduler\"|' /Users/brittanywelch/Documents/public_html/index.html)",
       "Bash(cat)",
       "Bash(osacompile -o \"/Users/brittanywelch/Desktop/Deploy bwelch.me.app\" /tmp/deploy-bwelch.applescript)",
-      "Bash(echo \"Done: $?\")"
+      "Bash(echo \"Done: $?\")",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/Users/brittanywelch/Downloads/laptop-realistic/laptop_realistic.eps\")"
     ]
   }
 }
