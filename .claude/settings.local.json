@@ -42,7 +42,11 @@
       "Bash(sips -z 32 32 /Users/brittanywelch/Documents/public_html/favicon.png --out /Users/brittanywelch/Documents/public_html/favicon-32x32.png)",
       "Bash(sips -z 180 180 /Users/brittanywelch/Documents/public_html/favicon.png --out /Users/brittanywelch/Documents/public_html/apple-touch-icon.png)",
       "Bash(sips -z 192 192 /Users/brittanywelch/Documents/public_html/favicon.png --out /Users/brittanywelch/Documents/public_html/android-chrome-192x192.png)",
-      "Bash(sips -z 512 512 /Users/brittanywelch/Documents/public_html/favicon.png --out /Users/brittanywelch/Documents/public_html/android-chrome-512x512.png)"
+      "Bash(sips -z 512 512 /Users/brittanywelch/Documents/public_html/favicon.png --out /Users/brittanywelch/Documents/public_html/android-chrome-512x512.png)",
+      "Bash(python3 -c ' *)",
+      "Bash(pip3 install *)",
+      "Bash(mkdir -p /Users/brittanywelch/Documents/resume-site *)",
+      "Bash(cp /Users/brittanywelch/Downloads/Brittany-Welch-Resume-2026.html /Users/brittanywelch/Documents/resume-site/index.html)"
     ]
   }
 }
