@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timekeep</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal-50: #E1F5EE;
+      --teal-100: #9FE1CB;
+      --teal-400: #5DCAA5;
+      --teal-600: #1D9E75;
+      --teal-700: #0F6E56;
+      --teal-800: #085041;
+      --teal-900: #04342C;
+      --bg: #f7faf9;
+      --surface: #ffffff;
+      --surface-2: #f0f7f4;
+      --text: #1a2e28;
+      --text-muted: #4a6b62;
+      --text-faint: #8aada5;
+      --border: rgba(0,0,0,0.1);
+      --border-mid: rgba(0,0,0,0.15);
+      --radius: 10px;
+      --radius-lg: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1c17;
+        --surface: #132118;
+        --surface-2: #1a2e24;
+        --text: #e0f5ee;
+        --text-muted: #7abfa8;
+        --text-faint: #3d7060;
+        --border: rgba(255,255,255,0.08);
+        --border-mid: rgba(255,255,255,0.14);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .app {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .timer-display {
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+
+    .timer-digits {
+      font-size: 58px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--teal-700);
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      transition: color 0.4s ease;
+    }
+
+    .timer-digits.running {
+      color: var(--teal-600);
+    }
+
+    .nest-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .nest-btn {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: var(--teal-50);
+      box-shadow:
+        0 0 0 14px rgba(159,225,203,0.4),
+        0 0 0 26px rgba(225,245,238,0.3);
+      transition: transform 0.15s ease, background 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      outline: none;
+    }
+
+    .nest-btn:hover { transform: scale(1.03); }
+    .nest-btn:active { transform: scale(0.97); }
+    .nest-btn:focus-visible {
+      box-shadow: 0 0 0 14px rgba(159,225,203,0.4), 0 0 0 28px rgba(29,158,117,0.25), 0 0 0 32px rgba(29,158,117,0.15);
+    }
+
+    .nest-btn.running {
+      background: var(--teal-400);
+      box-shadow:
+        0 0 0 14px rgba(93,202,165,0.35),
+        0 0 0 26px rgba(159,225,203,0.2);
+    }
+
+    .nest-btn-icon {
+      font-size: 44px;
+      color: var(--teal-700);
+      transition: color 0.3s;
+      line-height: 1;
+    }
+
+    .nest-btn.running .nest-btn-icon { color: var(--teal-900); }
+
+    .nest-btn-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-700);
+      transition: color 0.3s;
+    }
+
+    .nest-btn.running .nest-btn-label { color: var(--teal-900); }
+
+    .project-section {
+      margin: 0.5rem 0 2rem;
+    }
+
+    .project-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .project-select {
+      flex: 1;
+      height: 42px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--teal-100);
+      background: var(--surface);
+      color: var(--text);
+      padding: 0 12px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230F6E56' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 34px;
+    }
+
+    .project-select:focus { border-color: var(--teal-600); }
+
+    .new-project-btn {
+      height: 42px;
+      width: 42px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--teal-100);
+      background: var(--surface);
+      color: var(--teal-700);
+      cursor: pointer;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .new-project-btn:hover { background: var(--teal-50); }
+
+    .new-project-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      align-items: center;
+    }
+
+    .new-project-input {
+      flex: 1;
+      height: 42px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--teal-600);
+      background: var(--surface);
+      color: var(--text);
+      padding: 0 12px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .add-btn {
+      height: 42px;
+      padding: 0 18px;
+      border-radius: var(--radius);
+      border: none;
+      background: var(--teal-600);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .add-btn:hover { background: var(--teal-700); }
+
+    .cancel-btn {
+      height: 42px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border-mid);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cancel-btn:hover { background: var(--surface-2); }
+
+    .status-bar {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-faint);
+      min-height: 22px;
+      margin: 0.75rem 0 1.5rem;
+    }
+
+    .status-bar strong { color: var(--teal-600); font-weight: 500; }
+
+    .divider {
+      border: none;
+      border-top: 0.5px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    .log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .log-header h2 {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-faint);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .clear-btn {
+      font-size: 12px;
+      color: var(--text-faint);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+
+    .clear-btn:hover { color: #c0392b; }
+
+    .log-empty {
+      text-align: center;
+      color: var(--text-faint);
+      font-size: 14px;
+      padding: 2.5rem 0;
+    }
+
+    .log-entry {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .log-entry:hover { border-color: var(--teal-100); }
+
+    .log-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal-400);
+      flex-shrink: 0;
+    }
+
+    .log-project {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .log-project.unassigned {
+      color: var(--text-faint);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .log-duration {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--teal-700);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+
+    .log-time {
+      font-size: 12px;
+      color: var(--text-faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .log-assign-btn {
+      font-size: 11px;
+      color: var(--teal-600);
+      background: none;
+      border: 1px solid var(--teal-100);
+      cursor: pointer;
+      padding: 4px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .log-assign-btn:hover { background: var(--teal-50); }
+
+    .log-entry-wrap { margin-bottom: 8px; }
+
+    .assign-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px 12px;
+    }
+
+    .assign-select {
+      flex: 1;
+      height: 36px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--teal-100);
+      background: var(--surface);
+      color: var(--text);
+      padding: 0 10px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230F6E56' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      padding-right: 28px;
+    }
+
+    .assign-confirm-btn {
+      height: 36px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      border: none;
+      background: var(--teal-600);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .assign-cancel-btn {
+      height: 36px;
+      padding: 0 12px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border-mid);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    @media (max-width: 400px) {
+      .timer-digits { font-size: 44px; }
+      .nest-btn { width: 170px; height: 170px; }
+      .nest-btn-icon { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>Timekeep</h1>
+    </div>
+
+    <div class="timer-display">
+      <div class="timer-digits" id="timerDisplay">00:00:00</div>
+    </div>
+
+    <div class="nest-btn-wrap">
+      <button class="nest-btn" id="mainBtn" aria-label="Start timer" onclick="toggleTimer()">
+        <i class="ti ti-player-play nest-btn-icon" id="btnIcon" aria-hidden="true"></i>
+        <span class="nest-btn-label" id="btnLabel">Start</span>
+      </button>
+    </div>
+
+    <div class="project-section">
+      <div class="project-row">
+        <select class="project-select" id="projectSelect">
+          <option value="">— no project —</option>
+        </select>
+        <button class="new-project-btn" title="New project" onclick="showNewProject()">
+          <i class="ti ti-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="new-project-row" id="newProjectRow" style="display:none;">
+        <input class="new-project-input" id="newProjectInput" placeholder="Project name…" maxlength="60" />
+        <button class="add-btn" onclick="addProject()">Add</button>
+        <button class="cancel-btn" onclick="hideNewProject()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="status-bar" id="statusBar">Select a project, then start timing.</div>
+
+    <hr class="divider" />
+
+    <div class="log-header">
+      <h2>Time log</h2>
+      <button class="clear-btn" onclick="clearLog()">Clear all</button>
+    </div>
+
+    <div id="logList">
+      <div class="log-empty">No entries yet. Start the timer to begin.</div>
+    </div>
+  </div>
+
+  <script>
+    var timerRunning = false;
+    var startTime = null;
+    var elapsed = 0;
+    var intervalId = null;
+    var entries = [];
+    var projects = [];
+
+    function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+
+    function formatDuration(ms) {
+      var s = Math.floor(ms / 1000);
+      return pad(s / 3600) + ':' + pad((s % 3600) / 60) + ':' + pad(s % 60);
+    }
+
+    function formatTime(ts) {
+      return new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function updateDisplay() {
+      var ms = timerRunning ? elapsed + (Date.now() - startTime) : elapsed;
+      document.getElementById('timerDisplay').textContent = formatDuration(ms);
+    }
+
+    function toggleTimer() {
+      if (!timerRunning) {
+        startTime = Date.now();
+        timerRunning = true;
+        intervalId = setInterval(updateDisplay, 1000);
+        document.getElementById('mainBtn').classList.add('running');
+        document.getElementById('mainBtn').setAttribute('aria-label', 'Stop timer');
+        document.getElementById('btnIcon').className = 'ti ti-player-pause nest-btn-icon';
+        document.getElementById('btnLabel').textContent = 'Stop';
+        document.getElementById('timerDisplay').classList.add('running');
+      } else {
+        var totalMs = elapsed + (Date.now() - startTime);
+        clearInterval(intervalId);
+        timerRunning = false;
+        elapsed = 0;
+        startTime = null;
+        var sel = document.getElementById('projectSelect');
+        entries.unshift({
+          id: Date.now(),
+          duration: totalMs,
+          project: sel.value,
+          projectLabel: getProjectLabel(sel.value),
+          timestamp: Date.now(),
+          editOpen: false
+        });
+        renderLog();
+        document.getElementById('timerDisplay').textContent = '00:00:00';
+        document.getElementById('timerDisplay').classList.remove('running');
+        document.getElementById('mainBtn').classList.remove('running');
+        document.getElementById('mainBtn').setAttribute('aria-label', 'Start timer');
+        document.getElementById('btnIcon').className = 'ti ti-player-play nest-btn-icon';
+        document.getElementById('btnLabel').textContent = 'Start';
+      }
+      updateStatus();
+    }
+
+    function getProjectLabel(val) {
+      if (!val) return null;
+      var p = projects.find(function(x) { return x.id == val; });
+      return p ? p.name : null;
+    }
+
+    function updateStatus() {
+      var label = getProjectLabel(document.getElementById('projectSelect').value);
+      var bar = document.getElementById('statusBar');
+      if (timerRunning) {
+        bar.innerHTML = label
+          ? 'Timing: <strong>' + esc(label) + '</strong>'
+          : 'Timing &mdash; <strong>no project assigned</strong>';
+      } else {
+        bar.innerHTML = label
+          ? 'Ready to time: <strong>' + esc(label) + '</strong>'
+          : 'Select a project, then start timing.';
+      }
+    }
+
+    function esc(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function showNewProject() {
+      document.getElementById('newProjectRow').style.display = 'flex';
+      document.getElementById('newProjectInput').focus();
+    }
+
+    function hideNewProject() {
+      document.getElementById('newProjectRow').style.display = 'none';
+      document.getElementById('newProjectInput').value = '';
+    }
+
+    function addProject() {
+      var name = document.getElementById('newProjectInput').value.trim();
+      if (!name) return;
+      var id = 'p' + Date.now();
+      projects.push({ id: id, name: name });
+      rebuildSelects();
+      document.getElementById('projectSelect').value = id;
+      hideNewProject();
+      updateStatus();
+    }
+
+    function rebuildSelects() {
+      var html = '<option value="">— no project —</option>';
+      projects.forEach(function(p) {
+        html += '<option value="' + p.id + '">' + esc(p.name) + '</option>';
+      });
+      document.getElementById('projectSelect').innerHTML = html;
+      document.querySelectorAll('.assign-select').forEach(function(sel) {
+        var cur = sel.value;
+        sel.innerHTML = html;
+        sel.value = cur;
+      });
+    }
+
+    function clearLog() {
+      if (entries.length === 0) return;
+      if (confirm('Clear all time log entries?')) { entries = []; renderLog(); }
+    }
+
+    function renderLog() {
+      var list = document.getElementById('logList');
+      if (entries.length === 0) {
+        list.innerHTML = '<div class="log-empty">No entries yet. Start the timer to begin.</div>';
+        return;
+      }
+      list.innerHTML = '';
+      entries.forEach(function(e) {
+        var wrap = document.createElement('div');
+        wrap.className = 'log-entry-wrap';
+
+        var pOpts = '<option value="">— no project —</option>';
+        projects.forEach(function(p) {
+          pOpts += '<option value="' + p.id + '"' + (e.project == p.id ? ' selected' : '') + '>' + esc(p.name) + '</option>';
+        });
+
+        var mainRow = '<div class="log-entry" style="' + (e.editOpen ? 'border-radius:14px 14px 0 0;border-bottom:none;' : '') + '">' +
+          '<div class="log-dot"></div>' +
+          '<div class="log-project' + (e.projectLabel ? '' : ' unassigned') + '">' + esc(e.projectLabel || 'Unassigned') + '</div>' +
+          '<div class="log-duration">' + formatDuration(e.duration) + '</div>' +
+          '<div class="log-time">' + formatTime(e.timestamp) + '</div>' +
+          '<button class="log-assign-btn" onclick="openAssign(' + e.id + ')">' + (e.projectLabel ? 'Reassign' : 'Assign') + '</button>' +
+          '</div>';
+
+        var editRow = e.editOpen
+          ? '<div style="background:var(--surface);border:1px solid var(--teal-100);border-radius:0 0 14px 14px;border-top:none;">' +
+            '<div class="assign-row">' +
+            '<select class="assign-select" id="asel_' + e.id + '">' + pOpts + '</select>' +
+            '<button class="assign-confirm-btn" onclick="confirmAssign(' + e.id + ')">Save</button>' +
+            '<button class="assign-cancel-btn" onclick="cancelAssign(' + e.id + ')">Cancel</button>' +
+            '</div></div>'
+          : '';
+
+        wrap.innerHTML = mainRow + editRow;
+        list.appendChild(wrap);
+      });
+    }
+
+    function openAssign(id) {
+      entries.forEach(function(e) { e.editOpen = (e.id === id); });
+      renderLog();
+    }
+
+    function cancelAssign(id) {
+      entries.forEach(function(e) { if (e.id === id) e.editOpen = false; });
+      renderLog();
+    }
+
+    function confirmAssign(id) {
+      var sel = document.getElementById('asel_' + id);
+      if (!sel) return;
+      entries.forEach(function(e) {
+        if (e.id === id) {
+          e.project = sel.value;
+          e.projectLabel = getProjectLabel(sel.value);
+          e.editOpen = false;
+        }
+      });
+      renderLog();
+    }
+
+    document.getElementById('projectSelect').addEventListener('change', updateStatus);
+    document.getElementById('newProjectInput').addEventListener('keydown', function(ev) {
+      if (ev.key === 'Enter') addProject();
+      if (ev.key === 'Escape') hideNewProject();
+    });
+  </script>
+</body>
+</html>
