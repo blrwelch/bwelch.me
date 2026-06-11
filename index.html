@@ -225,6 +225,10 @@
     justify-content: space-between;
     gap: 24px;
   }
+  @media (max-width: 768px) {
+    .nav-inner { gap: 8px; }
+    .logo { font-size: 18px; }
+  }
   .logo {
     font-family: 'Fraunces', serif;
     font-weight: 600;
@@ -268,7 +272,6 @@
     align-items: center;
     justify-content: center;
   }
-  .hand-toggle { display: none; }
 
   /* ============ HERO ============ */
   .hero {
@@ -1069,33 +1072,6 @@
       border-radius: 10px;
     }
 
-    /* Hand preference toggle — mobile only */
-    .hand-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: 1px solid var(--border-strong);
-      color: var(--text-muted);
-      width: 44px; height: 44px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      line-height: 1;
-      transition: border-color var(--transition), color var(--transition), background var(--transition);
-      flex-shrink: 0;
-    }
-    .hand-toggle:hover {
-      border-color: var(--teal);
-      color: var(--teal);
-      background: var(--teal-soft);
-    }
-    .hand-toggle[aria-pressed="true"] {
-      border-color: var(--teal);
-      color: var(--teal);
-      background: var(--teal-soft);
-    }
-
     /* Left-hand mode: move hamburger before the logo */
     [data-hand="left"] .nav-inner { flex-direction: row-reverse; }
     [data-hand="left"] .nav-links.open {
@@ -1187,8 +1163,36 @@
   .theme-toggle:hover { background: var(--teal-soft); color: var(--teal-bright); }
   .theme-label { white-space: nowrap; }
   @media (max-width: 640px) {
-    .theme-toggle { padding: 0; width: 40px; }
+    .theme-toggle { padding: 0; width: 44px; height: 44px; }
     .theme-label { display: none; }
+  }
+  .theme-menu-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 8px;
+  }
+  .theme-menu-section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 6px 14px 2px;
+  }
+  .theme-menu button[aria-pressed] {
+    justify-content: space-between;
+  }
+  .theme-menu button[aria-pressed="true"] {
+    color: var(--teal-bright);
+  }
+  .theme-menu button[aria-pressed="true"] .hand-state::before { content: 'On'; }
+  .theme-menu button[aria-pressed="false"] .hand-state::before { content: 'Off'; }
+  .hand-state {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.6;
   }
   .theme-menu {
     position: absolute;
@@ -1689,38 +1693,50 @@
   // Auto-update footer copyright year
   document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
 
-  // ===== THEME SWITCHER (injects UI, persists choice) =====
+  // ===== SETTINGS (theme + hand preference) =====
   (function() {
+    var HAND_KEY = 'bwelch-hand-pref';
+    var hand = 'right';
+    try { hand = localStorage.getItem(HAND_KEY) || 'right'; } catch(e) {}
+    function applyHand(h) {
+      document.documentElement.setAttribute('data-hand', h);
+      var btn = document.getElementById('handMenuBtn');
+      if (btn) {
+        btn.setAttribute('aria-pressed', String(h === 'left'));
+        btn.querySelector('.hand-label').textContent = h === 'left' ? 'Left-hand menu' : 'Right-hand menu';
+      }
+    }
+    applyHand(hand);
+
     var navInner = document.querySelector('.nav-inner');
     if (!navInner) return;
     var switcher = document.createElement('div');
     switcher.className = 'theme-switcher';
     switcher.innerHTML =
-      '<button class="theme-toggle" type="button" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false" title="Choose theme">' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">' +
-          '<circle cx="12" cy="12" r="4"/>' +
-          '<line x1="12" y1="2" x2="12" y2="4"/>' +
-          '<line x1="12" y1="20" x2="12" y2="22"/>' +
-          '<line x1="2" y1="12" x2="4" y2="12"/>' +
-          '<line x1="20" y1="12" x2="22" y2="12"/>' +
-          '<line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>' +
-          '<line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>' +
-          '<line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>' +
-          '<line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>' +
+      '<button class="theme-toggle" type="button" aria-label="Settings" aria-haspopup="true" aria-expanded="false" title="Settings">' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<circle cx="12" cy="12" r="3"/>' +
+          '<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>' +
         '</svg>' +
-        '<span class="theme-label">Theme</span>' +
+        '<span class="theme-label">Settings</span>' +
       '</button>' +
       '<ul class="theme-menu" role="menu" hidden>' +
+        '<li class="theme-menu-section-label" aria-hidden="true">Theme</li>' +
         '<li><button type="button" data-set-theme="dark" role="menuitem">Dark</button></li>' +
         '<li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li>' +
         '<li><button type="button" data-set-theme="light" role="menuitem">Light</button></li>' +
         '<li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li>' +
+        '<li class="theme-menu-divider" aria-hidden="true"></li>' +
+        '<li class="theme-menu-section-label" aria-hidden="true">Preferences</li>' +
+        '<li><button type="button" id="handMenuBtn" role="menuitem" aria-pressed="' + String(hand === 'left') + '"><span class="hand-label">' + (hand === 'left' ? 'Left-hand menu' : 'Right-hand menu') + '</span><span class="hand-state"></span></button></li>' +
       '</ul>';
     var navToggleBtn = navInner.querySelector('.nav-toggle');
     if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
     else navInner.appendChild(switcher);
+
     var toggleBtn = switcher.querySelector('.theme-toggle');
     var menu = switcher.querySelector('.theme-menu');
+
     function markCurrent() {
       var current = document.documentElement.getAttribute('data-theme') || 'dark';
       menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
@@ -1728,6 +1744,7 @@
       });
     }
     markCurrent();
+
     toggleBtn.addEventListener('click', function() {
       var isOpen = !menu.hidden;
       menu.hidden = isOpen;
@@ -1743,6 +1760,16 @@
         toggleBtn.setAttribute('aria-expanded', 'false');
       });
     });
+
+    var handBtn = document.getElementById('handMenuBtn');
+    if (handBtn) {
+      handBtn.addEventListener('click', function() {
+        hand = hand === 'right' ? 'left' : 'right';
+        try { localStorage.setItem(HAND_KEY, hand); } catch(e) {}
+        applyHand(hand);
+      });
+    }
+
     document.addEventListener('click', function(e) {
       if (!switcher.contains(e.target) && !menu.hidden) {
         menu.hidden = true;
@@ -1756,43 +1783,6 @@
         toggleBtn.focus();
       }
     });
-  })();
-
-  // ===== HAND PREFERENCE (mobile only) =====
-  (function() {
-    var HAND_KEY = 'bwelch-hand-pref';
-    var current = 'right';
-    try { current = localStorage.getItem(HAND_KEY) || 'right'; } catch(e) {}
-    function applyHand(h) {
-      document.documentElement.setAttribute('data-hand', h);
-      var btn = document.getElementById('handToggle');
-      if (btn) {
-        btn.setAttribute('aria-label', h === 'left' ? 'Switch to right-hand menu' : 'Switch to left-hand menu');
-        btn.setAttribute('aria-pressed', String(h === 'left'));
-        btn.title = h === 'left' ? 'Right-hand mode' : 'Left-hand mode';
-        btn.querySelector('.hand-icon').textContent = h === 'left' ? '🫲' : '🫱';
-      }
-    }
-    applyHand(current);
-
-    var navInner = document.querySelector('.nav-inner');
-    if (!navInner) return;
-    var btn = document.createElement('button');
-    btn.id = 'handToggle';
-    btn.type = 'button';
-    btn.className = 'hand-toggle';
-    btn.setAttribute('aria-pressed', String(current === 'left'));
-    btn.setAttribute('aria-label', current === 'left' ? 'Switch to right-hand menu' : 'Switch to left-hand menu');
-    btn.title = current === 'left' ? 'Right-hand mode' : 'Left-hand mode';
-    btn.innerHTML = '<span class="hand-icon" aria-hidden="true">' + (current === 'left' ? '🫲' : '🫱') + '</span>';
-    btn.addEventListener('click', function() {
-      current = current === 'right' ? 'left' : 'right';
-      try { localStorage.setItem(HAND_KEY, current); } catch(e) {}
-      applyHand(current);
-    });
-    var navToggleBtn = document.getElementById('navToggle');
-    if (navToggleBtn) navInner.insertBefore(btn, navToggleBtn);
-    else navInner.appendChild(btn);
   })();
 
   // Mobile nav toggle (with aria-expanded sync)
