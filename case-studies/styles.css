@@ -628,6 +628,56 @@ body::after {
 .mockup-iphone__screen img[style*="display:none"] + .mockup-placeholder,
 .mockup-iphone__screen img[style*="display: none"] + .mockup-placeholder { display: flex; }
 
+/* iPad landscape variant */
+.mockup-ipad--landscape .mockup-ipad__shell {
+  flex-direction: row;
+  padding: 8px 18px;
+  border-radius: 22px;
+  gap: 10px;
+  align-items: center;
+}
+.mockup-ipad--landscape .mockup-ipad__camera {
+  flex-shrink: 0;
+}
+.mockup-ipad--landscape .mockup-ipad__screen {
+  aspect-ratio: 4 / 3;
+  flex: 1;
+}
+.mockup-ipad--landscape .mockup-ipad__home {
+  flex-shrink: 0;
+}
+.device-showcase--ipad-landscape { padding: 40px 32px; }
+.device-showcase--ipad-landscape .mockup-ipad--landscape {
+  width: min(680px, 90%);
+  margin-bottom: 0;
+}
+@media (max-width: 640px) {
+  .device-showcase--ipad-landscape .mockup-ipad--landscape { width: 95%; }
+}
+
+/* iPad landscape + iPhone side-by-side */
+.device-showcase--with-iphone {
+  align-items: flex-end;
+  gap: 20px;
+}
+.device-showcase--with-iphone .mockup-ipad--landscape {
+  width: min(580px, 72%);
+  margin-bottom: 0;
+  flex-shrink: 1;
+}
+.device-showcase--with-iphone .mockup-iphone {
+  width: min(130px, 16%);
+  flex-shrink: 0;
+  margin-bottom: 0;
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 640px) {
+  .device-showcase--with-iphone { flex-direction: column; align-items: center; }
+  .device-showcase--with-iphone .mockup-ipad--landscape { width: 95%; }
+  .device-showcase--with-iphone .mockup-iphone { width: 110px; }
+}
+
 /* iPhone solo and responsive */
 .device-showcase--iphone { padding: 40px 32px; }
 .device-showcase--iphone .mockup-iphone { width: min(200px, 36%); margin-bottom: 0; }

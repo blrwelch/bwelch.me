@@ -59,7 +59,8 @@
       "Bash(sips -g pixelWidth -g pixelHeight \"/Users/brittanywelch/Downloads/laptop-realistic/laptop_realistic.eps\")",
       "Bash(qlmanage -t -s 3000 -o /tmp/ \"/Users/brittanywelch/Downloads/laptop-realistic/laptop_realistic.eps\")",
       "Bash(sips -z 1050 1400 \"/Users/brittanywelch/Downloads/laptop-realistic/laptop_realistic.jpg\" --out \"/Users/brittanywelch/Documents/public_html/images/laptop-frame.jpg\")",
-      "Bash(sips -g pixelWidth -g pixelHeight \"/Users/brittanywelch/Documents/public_html/images/laptop-frame.jpg\")"
+      "Bash(sips -g pixelWidth -g pixelHeight \"/Users/brittanywelch/Documents/public_html/images/laptop-frame.jpg\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['configurations'][0]['name']\\)\")"
     ]
   }
 }
