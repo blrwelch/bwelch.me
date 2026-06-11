@@ -1,252 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cover Letter Generator — Brittany Welch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
-<style>
-  body { display: flex; align-items: flex-start; justify-content: center; padding: 64px 24px; }
-
-  .gen-wrap {
-    width: 100%;
-    max-width: 800px;
-  }
-
-  .gen-header {
-    margin-bottom: 40px;
-  }
-
-  .gen-header h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--text-strong);
-    margin-bottom: 8px;
-  }
-
-  .gen-header p {
-    font-size: 15px;
-    color: var(--text-muted);
-    margin: 0;
-  }
-
-  .gen-header a {
-    color: var(--teal);
-    text-decoration: none;
-  }
-
-  .field {
-    margin-bottom: 24px;
-  }
-
-  label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-  }
-
-  input[type="text"],
-  input[type="password"],
-  textarea {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    resize: vertical;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-  }
-
-  input[type="text"]:focus,
-  input[type="password"]:focus,
-  textarea:focus {
-    border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color: var(--text-dim);
-  }
-
-  .api-row {
-    display: flex;
-    gap: 12px;
-    align-items: flex-end;
-  }
-
-  .api-row .field {
-    flex: 1;
-    margin-bottom: 0;
-  }
-
-  .api-note {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 6px;
-  }
-
-  .api-note a { color: var(--teal); }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 24px;
-    border-radius: var(--radius);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    font-family: 'Inter', sans-serif;
-    transition: opacity 0.15s, transform 0.1s;
-    white-space: nowrap;
-  }
-
-  .btn:hover:not(:disabled) { opacity: 0.88; }
-  .btn:active:not(:disabled) { transform: scale(0.98); }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  .btn-primary { background: var(--teal); color: #0a1628; width: 100%; margin-top: 8px; }
-  .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
-
-  /* Output */
-  .output-section {
-    margin-top: 48px;
-    display: none;
-  }
-
-  .output-section.visible { display: block; }
-
-  .output-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
-  .output-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--teal);
-  }
-
-  .output-actions { display: flex; gap: 8px; }
-
-  .output-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    font-size: 15px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    white-space: pre-wrap;
-    min-height: 200px;
-  }
-
-  .output-box.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-dim);
-    font-style: italic;
-    gap: 12px;
-  }
-
-  .spinner {
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--border);
-    border-top-color: var(--teal);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    flex-shrink: 0;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .error-box {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    font-size: 14px;
-    color: #fca5a5;
-    margin-top: 16px;
-    display: none;
-  }
-
-  .error-box.visible { display: block; }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 32px 0;
-  }
-
-  .tone-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .tone-btn {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-muted);
-    font-size: 13px;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-
-  .tone-btn:hover,
-  .tone-btn.active {
-    background: var(--teal-soft);
-    border-color: var(--teal);
-    color: var(--teal);
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="gen-wrap">
+<nav class="site-nav">
+  <a href="https://bwelch.me" class="nav-logo">b<span>.</span> welch</a>
+  <a href="index.html" class="nav-link">← Resume</a>
+  <a href="cover-letter.html" class="nav-link">Cover Letter</a>
+</nav>
 
-  <div class="gen-header">
+<div class="page-wrap">
+
+  <div class="page-header">
     <h1>Cover Letter Generator</h1>
     <p>Paste a job description and generate a tailored cover letter using Claude. Uses the <a href="https://console.anthropic.com" target="_blank">Anthropic API</a> — your key is never stored.</p>
   </div>
 
   <div class="field">
     <label for="apiKey">Anthropic API Key</label>
-    <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off" />
-    <p class="api-note">Get a key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Stored only in your browser session — never sent anywhere except Anthropic.</p>
+    <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off">
+    <p style="font-size:12px;color:var(--text-dim);margin-top:6px;">Get a key at <a href="https://console.anthropic.com" target="_blank" style="color:var(--teal);">console.anthropic.com</a>. Only used in this browser tab — never stored or sent anywhere except Anthropic.</p>
   </div>
 
-  <hr class="divider" />
+  <hr class="divider">
 
   <div class="field">
-    <label for="company">Company & Role</label>
-    <input type="text" id="company" placeholder="e.g. Stripe — Senior Product Designer" />
+    <label for="company">Company &amp; Role</label>
+    <input type="text" id="company" placeholder="e.g. Stripe — Senior Product Designer">
   </div>
 
   <div class="field">
@@ -257,20 +45,20 @@
   <div class="field">
     <label>Tone</label>
     <div class="tone-row">
-      <button class="tone-btn active" data-tone="confident and warm">Confident & warm</button>
-      <button class="tone-btn" data-tone="direct and concise">Direct & concise</button>
+      <button class="tone-btn active" data-tone="confident and warm">Confident &amp; warm</button>
+      <button class="tone-btn" data-tone="direct and concise">Direct &amp; concise</button>
       <button class="tone-btn" data-tone="enthusiastic and energetic">Enthusiastic</button>
       <button class="tone-btn" data-tone="formal and professional">Formal</button>
     </div>
   </div>
 
   <div class="field">
-    <label for="notes">Any extra context? (optional)</label>
-    <textarea id="notes" rows="3" placeholder="e.g. I know someone at this company, I'm especially excited about their design system work, I want to emphasize my healthcare experience…"></textarea>
+    <label for="notes">Extra context <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">(optional)</span></label>
+    <textarea id="notes" rows="3" placeholder="e.g. I know someone at this company, I want to emphasize my healthcare experience, I'm especially excited about their design system work…"></textarea>
   </div>
 
-  <button class="btn btn-primary" id="generateBtn" onclick="generate()">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+  <button class="btn btn-primary" id="generateBtn" onclick="generate()" style="width:100%;margin-top:8px;">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
     Generate Cover Letter
   </button>
 
@@ -280,11 +68,11 @@
     <div class="output-header">
       <span class="output-label">Generated Letter</span>
       <div class="output-actions">
-        <button class="btn btn-secondary" onclick="copyLetter()" style="padding: 8px 14px; font-size: 13px;">
+        <button class="btn btn-secondary" onclick="copyLetter()" style="padding:8px 14px;font-size:13px;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           Copy
         </button>
-        <button class="btn btn-secondary" onclick="sendToTemplate()" style="padding: 8px 14px; font-size: 13px;">
+        <button class="btn btn-primary" onclick="sendToTemplate()" style="padding:8px 14px;font-size:13px;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           Open in Template
         </button>
@@ -328,11 +116,6 @@ SKILLS: AI Agent Design, AI Strategy, Product Design, UX Research, Design System
 TOOLS: Figma, Adobe Creative Cloud, Sketch/Zeplin, Jira/Azure DevOps, Claude/ChatGPT/Gemini, Cursor/VS Code, Notion
 
 EDUCATION: B.S. Graphic Design — Samford University, Birmingham AL (2008)
-
-EXPERIENCE HIGHLIGHTS:
-- 17+ years designing digital products across agency, Fortune 500, and consulting contexts
-- E-commerce specialist with experience at AutoZone (Fortune 500) and C Spire wireless platforms
-- Currently designing AI agents and integration frameworks for mid-market clients
 `;
 
 let selectedTone = 'confident and warm';
@@ -424,7 +207,7 @@ Output only the letter body — no commentary, no notes, no subject line.`;
     showError(`Error: ${err.message}`);
   } finally {
     btn.disabled = false;
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Generate Cover Letter';
+    btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Generate Cover Letter';
   }
 }
 
