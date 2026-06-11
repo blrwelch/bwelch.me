@@ -46,7 +46,16 @@
       "Bash(python3 -c ' *)",
       "Bash(pip3 install *)",
       "Bash(mkdir -p /Users/brittanywelch/Documents/resume-site *)",
-      "Bash(cp /Users/brittanywelch/Downloads/Brittany-Welch-Resume-2026.html /Users/brittanywelch/Documents/resume-site/index.html)"
+      "Bash(cp /Users/brittanywelch/Downloads/Brittany-Welch-Resume-2026.html /Users/brittanywelch/Documents/resume-site/index.html)",
+      "Bash(which python3.11 python3.12 python3.13 2>/dev/null; ls /usr/local/bin/python* /opt/homebrew/bin/python* 2>/dev/null)",
+      "Bash(sed -i '' 's|src=\"https://bwelch.me/images/dashboard-1.jpeg\" alt=\"\".*onerror|src=\"images/data-viz-hero.jpeg\" alt=\"AI insights dashboard\" onerror|' /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(sed -i '' 's|src=\"https://bwelch.me/images/ecommerce-1.jpeg\" alt=\"C Spire e-commerce work\"|src=\"images/cspire-hero.jpeg\" alt=\"C Spire website\"|' /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(sed -i '' 's|src=\"https://bwelch.me/images/ecommerce-1.jpeg\" alt=\"AutoZone e-commerce work\"|src=\"images/autozone-hero.jpeg\" alt=\"AutoZone website\"|' /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(sed -i '' 's|src=\"https://bwelch.me/images/healthcare-4.jpeg\" alt=\"Healthcare iPad app design\"|src=\"images/healthcare-ipad-hero.jpeg\" alt=\"Healthcare iPad app\"|' /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(sed -i '' 's|src=\"images/easyvax-1.jpeg\" alt=\"EasyVax Scheduler vaccine appointment flow\"|src=\"images/easyvax-hero.jpeg\" alt=\"EasyVax Scheduler\"|' /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(cat)",
+      "Bash(osacompile -o \"/Users/brittanywelch/Desktop/Deploy bwelch.me.app\" /tmp/deploy-bwelch.applescript)",
+      "Bash(echo \"Done: $?\")"
     ]
   }
 }

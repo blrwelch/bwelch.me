@@ -591,14 +591,157 @@ hr.divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; 
 
 /* ── PRINT ───────────────────────────────────── */
 @media print {
-  .site-nav, .toolbar-fixed { display: none !important; }
-  body { background: #fff; color: #1a1a2e; }
-  .resume-layout { padding: 24px; gap: 32px; }
-  .resume-hero h1 { color: #000; }
-  .job-title, .edu-block strong { color: #000; }
-  .tag { background: #f0f0f0; border-color: #ccc; color: #333; }
-  .sidebar { position: static; }
-  .letter-wrap { padding: 24px; }
+  /* Remove ALL browser header/footer chrome and lock to one page */
+  @page {
+    margin: 0;
+    size: 8.5in 11in;
+  }
+
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    overflow: hidden;
+    background: #fff !important;
+    color: #1a1a2e !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide nav and any screen-only UI */
+  .site-nav,
+  .toolbar-fixed,
+  .nav-btn { display: none !important; }
+
+  /* Resume layout: full bleed, tight, one page */
+  .resume-layout {
+    display: grid;
+    grid-template-columns: 2in 1fr;
+    max-width: none;
+    margin: 0;
+    padding: 0.38in 0.35in 0.3in 0.3in;
+    gap: 0.32in;
+    height: 11in;
+    overflow: hidden;
+    align-items: start;
+  }
+
+  /* Sidebar: no sticky, compact */
+  .sidebar {
+    position: static;
+    gap: 18pt;
+  }
+
+  .sidebar-section h3 {
+    font-size: 6.5pt;
+    margin-bottom: 8pt;
+    padding-bottom: 5pt;
+    color: #1a5f7a !important;
+  }
+
+  .tag-cloud { gap: 4pt; }
+
+  .tag {
+    font-size: 6.5pt;
+    padding: 2pt 7pt;
+    background: #e8f4f8 !important;
+    border-color: #b8d8e8 !important;
+    color: #1a5f7a !important;
+    border-radius: 99pt;
+  }
+
+  .tool-list li,
+  .edu-block,
+  .edu-block strong,
+  .edu-block span { font-size: 7.5pt; color: #333 !important; }
+
+  .tool-list li::before { background: #1a5f7a !important; }
+
+  /* Hero */
+  .resume-hero {
+    padding-bottom: 14pt;
+    border-color: #ddd !important;
+    margin-bottom: 0;
+  }
+
+  .resume-hero h1 {
+    font-size: 28pt;
+    color: #000 !important;
+    margin-bottom: 3pt;
+  }
+
+  .resume-hero .title-tag {
+    font-size: 7pt;
+    color: #1a5f7a !important;
+    margin-bottom: 8pt;
+  }
+
+  .resume-hero .tagline {
+    font-size: 9pt;
+    color: #444 !important;
+    margin-bottom: 10pt;
+    max-width: none;
+  }
+
+  .contact-row { gap: 4pt 14pt; }
+
+  .contact-row a,
+  .contact-row span { font-size: 7.5pt; color: #555 !important; }
+
+  /* Sections */
+  .main-content { gap: 18pt; }
+
+  .resume-section h2 {
+    font-size: 6.5pt;
+    color: #1a5f7a !important;
+    margin-bottom: 10pt;
+    padding-bottom: 5pt;
+    border-color: #ddd !important;
+  }
+
+  .profile-text { font-size: 8pt; color: #333 !important; line-height: 1.55; }
+
+  /* Jobs */
+  .job {
+    margin-bottom: 12pt;
+    padding-bottom: 12pt;
+    border-color: #ddd !important;
+  }
+
+  .job:last-child { margin-bottom: 0; padding-bottom: 0; }
+
+  .job-title { font-size: 9.5pt; color: #000 !important; }
+  .job-dates { font-size: 7pt; color: #666 !important; }
+  .job-company { font-size: 7.5pt; color: #1a5f7a !important; margin-bottom: 7pt; }
+
+  .job-bullets { gap: 4pt; }
+
+  .job-bullets li {
+    font-size: 7.5pt;
+    color: #333 !important;
+    line-height: 1.45;
+    padding-left: 11pt;
+  }
+
+  .job-bullets li::before {
+    background: #1a5f7a !important;
+    opacity: 0.7;
+    top: 5pt;
+    width: 3.5pt;
+    height: 3.5pt;
+  }
+
+  /* Cover letter print */
+  .letter-wrap { padding: 0.5in; }
+  .letter-byline h1 { color: #000 !important; }
+  .letter-byline .title { color: #1a5f7a !important; }
+  .letter-contact a,
+  .letter-contact span { color: #555 !important; }
+  .letter-date,
+  .letter-addressee p,
+  .letter-body p,
+  .letter-close { color: #222 !important; }
+  [contenteditable]:hover,
+  [contenteditable]:focus { background: transparent !important; box-shadow: none !important; }
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */
