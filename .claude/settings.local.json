@@ -7,7 +7,12 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git branch *)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(ls ~/.ssh/*.pub 2>/dev/null || echo \"No existing SSH keys found\")",
+      "Bash(ssh-keygen -t ed25519 -C \"36413195+blrwelch@users.noreply.github.com\" -f ~/.ssh/id_ed25519 -N \"\")",
+      "Bash(ssh-keyscan github.com)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(git push *)"
     ]
   }
 }
