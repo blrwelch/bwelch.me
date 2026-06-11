@@ -5,765 +5,372 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commander Tracker</title>
   <style>
-    /* ── Base tokens (default: forest green — dark vivid) ── */
+    /* ── Tokens (green default) ── */
     :root {
-      --bg:           #070d08;
-      --bg2:          #0e1a0f;
-      --surface:      #111e12;
-      --surface2:     #182a1a;
-      --border:       #2a5030;
-      --border2:      #3a7040;
-      --accent:       #34e06a;
-      --accent2:      #27ae60;
-      --accent-light: #0e2a12;
-      --accent-glow:  rgba(52,224,106,0.22);
-      --text:         #c8f0d0;
-      --text-muted:   #70c888;
-      --text-faint:   #3a7048;
-      --radius:       18px;
-      --radius-sm:    10px;
-      --shadow:       0 2px 16px rgba(0,0,0,0.35);
-      --shadow-md:    0 6px 32px rgba(0,0,0,0.5);
-      --shadow-card:  0 4px 24px rgba(52,224,106,0.12);
+      --bg:          #070d08;
+      --surface:     #111e12;
+      --surface2:    #182a1a;
+      --border:      #2a5030;
+      --accent:      #34e06a;
+      --accent-light:#0e2a12;
+      --accent-glow: rgba(52,224,106,.22);
+      --text:        #c8f0d0;
+      --text-muted:  #70c888;
+      --text-faint:  #3a7048;
+      --frame-outer: #34e06a;
+      --frame-inner: rgba(255,255,255,.12);
+      --shadow-card: 0 6px 32px rgba(52,224,106,.15);
+      --radius:18px; --radius-sm:10px;
+      --shadow: 0 2px 16px rgba(0,0,0,.4);
+      --shadow-md: 0 6px 32px rgba(0,0,0,.55);
     }
-
-    /* ── Deck themes ── */
-    /* Plains — aged parchment dark, sunburst gold */
     .theme-white {
-      --bg:           #14100a;
-      --bg2:          #1e180c;
-      --surface:      #221c0e;
-      --surface2:     #2c2412;
-      --border:       #504020;
-      --border2:      #705a28;
-      --accent:       #e8c030;
-      --accent2:      #d4ac0d;
-      --accent-light: #302208;
-      --accent-glow:  rgba(232,192,48,0.25);
-      --text:         #f5eec0;
-      --text-muted:   #c8a840;
-      --text-faint:   #786030;
-      --shadow-card:  0 4px 24px rgba(232,192,48,0.14);
+      --bg:#14100a; --surface:#221c0e; --surface2:#2c2412;
+      --border:#504020; --accent:#e8c030; --accent-light:#302208;
+      --accent-glow:rgba(232,192,48,.25); --text:#f5eec0;
+      --text-muted:#c8a840; --text-faint:#786030;
+      --frame-outer:#e8c030; --shadow-card:0 6px 32px rgba(232,192,48,.18);
     }
-    /* Island — deep ocean, azure */
     .theme-blue {
-      --bg:           #05090f;
-      --bg2:          #0a1220;
-      --surface:      #0d1828;
-      --surface2:     #122034;
-      --border:       #1a3a60;
-      --border2:      #285888;
-      --accent:       #48b8ec;
-      --accent2:      #2980b9;
-      --accent-light: #0a1e38;
-      --accent-glow:  rgba(72,184,236,0.25);
-      --text:         #c8e8f8;
-      --text-muted:   #60a8d8;
-      --text-faint:   #284870;
-      --shadow-card:  0 4px 24px rgba(72,184,236,0.14);
+      --bg:#05090f; --surface:#0d1828; --surface2:#122034;
+      --border:#1a3a60; --accent:#48b8ec; --accent-light:#0a1e38;
+      --accent-glow:rgba(72,184,236,.25); --text:#c8e8f8;
+      --text-muted:#60a8d8; --text-faint:#284870;
+      --frame-outer:#48b8ec; --shadow-card:0 6px 32px rgba(72,184,236,.18);
     }
-    /* Swamp — deep void, vivid violet */
     .theme-black {
-      --bg:           #0d0914;
-      --bg2:          #140f1e;
-      --surface:      #1a1428;
-      --surface2:     #221a34;
-      --border:       #3a2858;
-      --border2:      #5a3e80;
-      --accent:       #c070e8;
-      --accent2:      #9b59b6;
-      --accent-light: #2a1840;
-      --accent-glow:  rgba(192,112,232,0.28);
-      --text:         #ecddf8;
-      --text-muted:   #a870d0;
-      --text-faint:   #503868;
-      --shadow-card:  0 4px 24px rgba(192,112,232,0.18);
+      --bg:#0d0914; --surface:#1a1428; --surface2:#221a34;
+      --border:#3a2858; --accent:#c070e8; --accent-light:#2a1840;
+      --accent-glow:rgba(192,112,232,.28); --text:#ecddf8;
+      --text-muted:#a870d0; --text-faint:#503868;
+      --frame-outer:#c070e8; --shadow-card:0 6px 32px rgba(192,112,232,.22);
     }
-    /* Mountain — volcanic dark, ember orange */
     .theme-red {
-      --bg:           #0f0503;
-      --bg2:          #1e0a05;
-      --surface:      #280d06;
-      --surface2:     #341208;
-      --border:       #601a10;
-      --border2:      #882818;
-      --accent:       #ff7038;
-      --accent2:      #e74c3c;
-      --accent-light: #380d06;
-      --accent-glow:  rgba(255,112,56,0.28);
-      --text:         #fde8cc;
-      --text-muted:   #e07040;
-      --text-faint:   #703018;
-      --shadow-card:  0 4px 24px rgba(255,112,56,0.18);
+      --bg:#0f0503; --surface:#280d06; --surface2:#341208;
+      --border:#601a10; --accent:#ff7038; --accent-light:#380d06;
+      --accent-glow:rgba(255,112,56,.28); --text:#fde8cc;
+      --text-muted:#e07040; --text-faint:#703018;
+      --frame-outer:#ff7038; --shadow-card:0 6px 32px rgba(255,112,56,.22);
     }
-    /* Multicolor — arcane gold, prismatic dark */
     .theme-multi {
-      --bg:           #0e0c08;
-      --bg2:          #181408;
-      --surface:      #1e1a0c;
-      --surface2:     #282212;
-      --border:       #4a3c18;
-      --border2:      #6a5820;
-      --accent:       #e8c038;
-      --accent2:      #c9a227;
-      --accent-light: #2e2408;
-      --accent-glow:  rgba(232,192,56,0.28);
-      --text:         #f8f0c8;
-      --text-muted:   #c8a040;
-      --text-faint:   #685830;
-      --shadow-card:  0 4px 24px rgba(232,192,56,0.18);
+      --bg:#0e0c08; --surface:#1e1a0c; --surface2:#282212;
+      --border:#4a3c18; --accent:#e8c038; --accent-light:#2e2408;
+      --accent-glow:rgba(232,192,56,.28); --text:#f8f0c8;
+      --text-muted:#c8a040; --text-faint:#685830;
+      --frame-outer:#e8c038; --shadow-card:0 6px 32px rgba(232,192,56,.22);
     }
 
-    /* ── Per-player card accent colors (vivid, works on dark surfaces) ── */
-    [data-pcolor="white"] { --paccent: #e8c030; --plight: #2a1e06; --pborder: #604a18; }
-    [data-pcolor="blue"]  { --paccent: #48b8ec; --plight: #081428; --pborder: #1a3a60; }
-    [data-pcolor="black"] { --paccent: #c070e8; --plight: #1e1030; --pborder: #4a2870; }
-    [data-pcolor="red"]   { --paccent: #ff7038; --plight: #280a04; --pborder: #701810; }
-    [data-pcolor="green"] { --paccent: #34e06a; --plight: #081a0a; --pborder: #205030; }
-    [data-pcolor="multi"] { --paccent: #e8c038; --plight: #281c04; --pborder: #604a18; }
+    /* ── Per-player card vars ── */
+    [data-pc="white"] { --pc:#e8c030; --pcl:#2a1e06; --pcb:#604a18; }
+    [data-pc="blue"]  { --pc:#48b8ec; --pcl:#081428; --pcb:#1a3a60; }
+    [data-pc="black"] { --pc:#c070e8; --pcl:#1e1030; --pcb:#4a2870; }
+    [data-pc="red"]   { --pc:#ff7038; --pcl:#280a04; --pcb:#701810; }
+    [data-pc="green"] { --pc:#34e06a; --pcl:#081a0a; --pcb:#205030; }
+    [data-pc="multi"] { --pc:#e8c038; --pcl:#281c04; --pcb:#604a18; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing:border-box; margin:0; padding:0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 28px 16px 56px;
-      transition: background 0.4s, color 0.4s;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--bg); color:var(--text);
+      min-height:100vh; padding:24px 16px 56px;
+      transition:background .4s,color .4s;
     }
 
-    /* ── App Header ── */
-    .app-header {
-      text-align: center;
-      margin-bottom: 36px;
+    .app-header { text-align:center; margin-bottom:28px; }
+    .app-header h1 { font-size:1.5rem; font-weight:800; color:var(--accent); letter-spacing:-.03em; }
+    .app-header .sub { font-size:.75rem; color:var(--text-muted); margin-top:4px; text-transform:uppercase; letter-spacing:.08em; font-weight:600; }
+
+    /* ════════════════════════════════
+       MTG CARD FRAME
+    ════════════════════════════════ */
+    .mtg-card {
+      border-radius:var(--radius);
+      background:var(--pc,var(--accent));          /* outer border color */
+      padding:4px;
+      box-shadow:0 0 0 3px rgba(0,0,0,.7), var(--shadow-card);
+      transition:box-shadow .25s;
+    }
+    .mtg-card.is-me {
+      box-shadow:0 0 0 3px rgba(0,0,0,.7), 0 0 20px 4px var(--pc,var(--accent)), var(--shadow-card);
+    }
+    .mtg-card.eliminated { opacity:.55; }
+    .mtg-card-inner {
+      border-radius:calc(var(--radius) - 4px);
+      border:1.5px solid var(--frame-inner,rgba(255,255,255,.12));
+      overflow:hidden;
+      background:var(--surface);
     }
 
-    .app-header h1 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--accent);
-      line-height: 1.1;
+    /* ── Name bar ── */
+    .mtg-name-bar {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 14px 9px;
+      background:linear-gradient(90deg, #110e08 0%, #1c1810 100%);
+      border-bottom:1.5px solid rgba(255,255,255,.08);
+      gap:10px;
     }
-
-    .app-header .subtitle {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 5px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    /* ── Lobby ── */
-    #lobby { max-width: 440px; margin: 0 auto; }
-
-    .card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      box-shadow: var(--shadow-card);
-      border: 1.5px solid var(--border);
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .card + .card { margin-top: 16px; }
-
-    .card h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-
-    label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 1rem;
-      background: var(--surface2);
-      color: var(--text);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-    }
-
-    input[type="text"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .input-group { margin-bottom: 18px; }
-
-    /* ── Deck Color Picker ── */
-    .deck-picker-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-    }
-
-    .deck-picker {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .mana-choice {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px 4px;
-      border-radius: var(--radius-sm);
-      border: 2px solid transparent;
-      background: transparent;
-      transition: border-color 0.15s, background 0.15s, transform 0.12s;
-      position: relative;
-    }
-
-    .mana-choice:hover { transform: translateY(-2px); }
-
-    .mana-choice.selected {
-      border-color: var(--accent);
-      background: var(--accent-light);
-    }
-
-    .mana-choice svg {
-      width: 40px;
-      height: 40px;
-      display: block;
-    }
-
-    .mana-choice .mana-name {
-      font-size: 0.62rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-    }
-
-    .mana-choice.selected .mana-name { color: var(--accent); }
-
-    /* ── Buttons ── */
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
-      letter-spacing: -0.01em;
-    }
-
-    .btn:active { transform: scale(0.97); }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 2px 12px var(--accent-glow);
-    }
-
-    .btn-primary:hover { box-shadow: 0 4px 20px var(--accent-glow); }
-
-    .btn-secondary {
-      background: var(--surface2);
-      color: var(--text);
-      border: 1.5px solid var(--border);
-    }
-
-    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-
-    .divider {
-      text-align: center;
-      color: var(--text-faint);
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin: 22px 0;
-      position: relative;
-    }
-
-    .divider::before, .divider::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 38%;
-      height: 1.5px;
-      background: var(--border);
-      border-radius: 2px;
-    }
-
-    .divider::before { left: 0; }
-    .divider::after  { right: 0; }
-
-    .error-msg {
-      background: #fdecea;
-      color: #c0392b;
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-top: 14px;
-      display: none;
-      border: 1.5px solid #f5c6c2;
-    }
-
-    /* ── Connecting screen ── */
-    #connecting {
-      display: none;
-      max-width: 340px;
-      margin: 48px auto;
-      text-align: center;
-    }
-
-    .mana-cycle {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .mana-cycle svg {
-      width: 48px;
-      height: 48px;
-      opacity: 0.25;
-      transform: scale(0.85) translateY(0px);
-      transition: opacity 0.35s, transform 0.35s;
-    }
-
-    .mana-cycle svg.active {
-      opacity: 1;
-      transform: scale(1.15) translateY(-6px);
-      filter: drop-shadow(0 4px 10px currentColor);
-    }
-
-    .connecting-text {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      animation: pulse-text 1.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse-text {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    /* ── Game Room ── */
-    #game { display: none; max-width: 600px; margin: 0 auto; }
-
-    .room-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 14px 20px;
-      box-shadow: var(--shadow);
-      border: 1.5px solid var(--border);
-      margin-bottom: 22px;
-      gap: 12px;
-    }
-
-    .room-code-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: var(--text-faint);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .room-code {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      line-height: 1;
-      margin-top: 2px;
-    }
-
-    .btn-sm {
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      border: 1.5px solid var(--border);
-      background: var(--surface2);
-      color: var(--text);
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      transition: opacity 0.15s, transform 0.1s;
-    }
-
-    .btn-sm:active { transform: scale(0.95); }
-
-    .btn-sm.danger {
-      border-color: #f5c6c2;
-      background: #fdecea;
-      color: #c0392b;
-    }
-
-    .players-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    /* ── Player Card ── */
-    .player-card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      border: 2px solid var(--pborder, var(--border));
-      box-shadow: var(--shadow-card);
-      overflow: hidden;
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
-
-    .player-card.is-me {
-      box-shadow: 0 0 0 3px var(--paccent, var(--accent)), var(--shadow-card);
-    }
-
-    .player-card.eliminated { opacity: 0.55; }
-
-    .player-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px 12px;
-      background: linear-gradient(135deg, var(--plight, var(--accent-light)), transparent 80%);
-      border-bottom: 1.5px solid var(--pborder, var(--border));
-    }
-
-    .player-name-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .player-mana-icon svg { width: 26px; height: 26px; display: block; }
-
-    .player-name {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-
+    .mtg-name-left { display:flex; align-items:center; gap:9px; }
+    .mtg-name-icon svg { width:22px; height:22px; display:block; }
+    .mtg-name-text { font-size:1rem; font-weight:800; color:var(--text); letter-spacing:-.01em; }
+    .mtg-name-right { display:flex; align-items:center; gap:6px; flex-shrink:0; }
     .you-badge {
-      font-size: 0.65rem;
-      font-weight: 800;
-      background: var(--paccent, var(--accent));
-      color: #fff;
-      padding: 3px 10px;
-      border-radius: 99px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      font-size:.62rem; font-weight:800; background:var(--pc,var(--accent));
+      color:#000; padding:3px 9px; border-radius:99px;
+      text-transform:uppercase; letter-spacing:.06em;
     }
-
     .elim-badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      background: #fdecea;
-      color: #c0392b;
-      padding: 4px 12px;
-      border-radius: 99px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size:.65rem; font-weight:700; background:#3a0a08; color:#ff6058;
+      padding:3px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:.05em;
     }
+    .mtg-name-cost svg { width:20px; height:20px; display:block; }
 
-    .player-card-body { padding: 20px; }
-
-    /* ── Life Counter ── */
-    .life-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      margin-bottom: 20px;
+    /* ── Art area (life counter) ── */
+    .mtg-art-area {
+      display:flex; align-items:center; justify-content:center; gap:16px;
+      padding:24px 20px 20px;
+      background:linear-gradient(180deg, var(--pcl,var(--accent-light)) 0%, var(--surface) 100%);
+      min-height:110px;
     }
-
     .counter-btn {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 2px solid var(--pborder, var(--border));
-      background: var(--surface2);
-      font-size: 1.5rem;
-      font-weight: 300;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.12s, border-color 0.12s, transform 0.1s, box-shadow 0.12s;
-      color: var(--text-muted);
-      user-select: none;
-      -webkit-user-select: none;
-      line-height: 1;
+      width:52px; height:52px; border-radius:50%;
+      border:2px solid var(--pcb,var(--border));
+      background:rgba(0,0,0,.25); font-size:1.5rem; font-weight:300;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:background .1s,border-color .1s,transform .1s;
+      color:var(--text-muted); user-select:none; -webkit-user-select:none; line-height:1;
     }
-
-    .counter-btn:hover {
-      border-color: var(--paccent, var(--accent));
-      color: var(--paccent, var(--accent));
-    }
-
-    .counter-btn:active { transform: scale(0.88); }
-
-    .counter-btn.minus:active {
-      background: #fdecea;
-      border-color: #c0392b;
-      color: #c0392b;
-    }
-
-    .counter-btn.plus:active {
-      background: var(--plight, var(--accent-light));
-      border-color: var(--paccent, var(--accent));
-      color: var(--paccent, var(--accent));
-    }
-
-    .life-display { text-align: center; min-width: 80px; }
-
+    .counter-btn:hover { border-color:var(--pc,var(--accent)); color:var(--pc,var(--accent)); }
+    .counter-btn:active { transform:scale(.88); }
+    .counter-btn.minus:active { background:rgba(255,80,60,.2); border-color:#ff5050; color:#ff5050; }
+    .counter-btn.plus:active  { background:var(--pcl,var(--accent-light)); border-color:var(--pc,var(--accent)); color:var(--pc,var(--accent)); }
+    .life-display { text-align:center; min-width:76px; }
     .life-number {
-      font-size: 3.4rem;
-      font-weight: 900;
-      line-height: 1;
-      color: var(--text);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: -0.03em;
-      transition: color 0.3s;
+      font-size:3.2rem; font-weight:900; line-height:1; color:var(--text);
+      font-variant-numeric:tabular-nums; letter-spacing:-.03em; transition:color .3s;
+    }
+    .life-number.danger  { color:#ff5050; }
+    .life-number.warning { color:#e08820; }
+    .life-label { font-size:.65rem; font-weight:700; color:var(--text-faint); text-transform:uppercase; letter-spacing:.1em; margin-top:3px; }
+
+    /* ── Type line ── */
+    .mtg-type-line {
+      background:linear-gradient(90deg,#110e08,#1c1810);
+      border-top:1.5px solid rgba(255,255,255,.07);
+      border-bottom:1.5px solid rgba(255,255,255,.07);
+      padding:5px 14px;
+      font-size:.65rem; font-weight:700; color:var(--text-muted);
+      text-transform:uppercase; letter-spacing:.09em;
+      display:flex; align-items:center; justify-content:space-between;
     }
 
-    .life-number.danger { color: #c0392b; }
-    .life-number.warning { color: #d4820d; }
+    /* ── Text box (stats) ── */
+    .mtg-text-box { padding:14px 14px 16px; background:var(--surface2); display:flex; flex-direction:column; gap:10px; }
 
-    .life-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: var(--text-faint);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 3px;
-    }
-
-    /* ── Sub-stats ── */
-    .stats-row { display: flex; gap: 12px; }
-
+    /* Stats row */
+    .stats-row { display:flex; gap:10px; }
     .stat-box {
-      flex: 1;
-      background: var(--surface2);
-      border-radius: var(--radius-sm);
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
+      flex:1; background:rgba(0,0,0,.25); border-radius:var(--radius-sm);
+      padding:10px 12px; border:1.5px solid var(--border);
     }
-
-    .stat-box-label {
-      font-size: 0.67rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .stat-inline {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .stat-number {
-      font-size: 1.5rem;
-      font-weight: 900;
-      font-variant-numeric: tabular-nums;
-      min-width: 32px;
-      text-align: center;
-      letter-spacing: -0.02em;
-    }
-
-    .poison-number { color: #7d35b0; }
-    .poison-number.danger { color: #c0392b; }
-
+    .stat-box-label { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-bottom:7px; }
+    .stat-inline { display:flex; align-items:center; gap:8px; }
+    .stat-number { font-size:1.4rem; font-weight:900; font-variant-numeric:tabular-nums; min-width:28px; text-align:center; }
+    .poison-num { color:#a060e8; }
+    .poison-num.danger { color:#ff5050; }
     .stat-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      border: 1.5px solid var(--border);
-      background: var(--surface);
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.1s, transform 0.1s, border-color 0.1s;
-      color: var(--text-muted);
-      user-select: none;
-      -webkit-user-select: none;
+      width:32px; height:32px; border-radius:7px; border:1.5px solid var(--border);
+      background:rgba(0,0,0,.3); font-size:.95rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .1s,transform .1s; color:var(--text-muted);
+      user-select:none; -webkit-user-select:none;
     }
-
-    .stat-btn:active { transform: scale(0.85); background: var(--surface2); }
+    .stat-btn:active { transform:scale(.85); background:rgba(255,255,255,.08); }
 
     /* Poison dots */
-    .poison-dots {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 8px;
+    .poison-dots { display:flex; flex-wrap:wrap; gap:4px; margin-top:7px; }
+    .poison-dot { width:9px; height:9px; border-radius:50%; background:var(--border); transition:background .15s; }
+    .poison-dot.filled { background:#a060e8; }
+    .poison-dot.danger { background:#ff5050; }
+
+    /* Cmd damage */
+    .cmd-section { border-top:1.5px solid var(--border); padding-top:10px; }
+    .cmd-label { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-bottom:8px; }
+    .cmd-rows { display:flex; flex-direction:column; gap:6px; }
+    .cmd-row {
+      display:flex; align-items:center; gap:8px;
+      background:rgba(0,0,0,.25); border-radius:var(--radius-sm);
+      padding:8px 10px; border:1.5px solid var(--border);
     }
+    .cmd-from { flex:1; font-size:.85rem; font-weight:700; color:var(--text); display:flex; align-items:center; gap:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .cmd-from svg { width:14px; height:14px; flex-shrink:0; }
+    .cmd-num { font-size:1rem; font-weight:900; min-width:26px; text-align:center; font-variant-numeric:tabular-nums; color:var(--text-muted); }
+    .cmd-num.warning { color:#e08820; }
+    .cmd-num.danger  { color:#ff5050; }
 
-    .poison-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--border);
-      transition: background 0.15s, transform 0.15s;
+    /* Reset btn */
+    .btn-reset {
+      padding:8px 14px; border-radius:var(--radius-sm); font-size:.78rem; font-weight:700;
+      cursor:pointer; border:1.5px solid var(--border); background:rgba(0,0,0,.3);
+      color:var(--text-muted); transition:opacity .15s,transform .1s;
     }
-
-    .poison-dot.filled { background: #7d35b0; transform: scale(1.1); }
-    .poison-dot.danger { background: #c0392b; }
-
-    /* ── Commander Damage ── */
-    .cmd-dmg-section {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1.5px solid var(--border);
-    }
-
-    .cmd-dmg-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .cmd-dmg-rows { display: flex; flex-direction: column; gap: 8px; }
-
-    .cmd-dmg-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--surface2);
-      border-radius: var(--radius-sm);
-      padding: 10px 12px;
-      border: 1.5px solid var(--border);
-    }
-
-    .cmd-dmg-from {
-      flex: 1;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .cmd-from-icon svg { width: 16px; height: 16px; display: block; flex-shrink: 0; }
-
-    .cmd-dmg-num {
-      font-size: 1.1rem;
-      font-weight: 900;
-      min-width: 30px;
-      text-align: center;
-      font-variant-numeric: tabular-nums;
-      color: var(--text-muted);
-    }
-
-    .cmd-dmg-num.warning { color: #d4820d; }
-    .cmd-dmg-num.danger  { color: #c0392b; }
+    .btn-reset:active { transform:scale(.95); }
 
     /* ── Placeholder card ── */
     .placeholder-card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      border: 2px dashed var(--border);
-      padding: 32px 24px;
-      text-align: center;
-      color: var(--text-faint);
+      border-radius:var(--radius); border:2.5px dashed var(--border);
+      padding:36px 24px; text-align:center; color:var(--text-faint);
+    }
+    .placeholder-card .ph-icon { font-size:1.8rem; margin-bottom:8px; opacity:.5; }
+    .placeholder-card .ph-title { font-size:.92rem; font-weight:700; margin-bottom:5px; color:var(--text-muted); }
+    .placeholder-card .ph-sub { font-size:.78rem; line-height:1.55; }
+
+    /* ═══════════════════════════════
+       LOBBY CARD (spell card style)
+    ═══════════════════════════════ */
+    #lobby { max-width:440px; margin:0 auto; }
+
+    .lobby-mtg-card {
+      border-radius:var(--radius);
+      background:var(--accent);
+      padding:4px;
+      box-shadow:0 0 0 3px rgba(0,0,0,.7), var(--shadow-card);
+      transition:background .4s, box-shadow .4s;
+    }
+    .lobby-mtg-inner {
+      border-radius:calc(var(--radius) - 4px);
+      border:1.5px solid rgba(255,255,255,.12);
+      overflow:hidden; background:var(--surface);
+    }
+    .lobby-name-bar {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:11px 16px;
+      background:linear-gradient(90deg,#110e08,#1c1810);
+      border-bottom:1.5px solid rgba(255,255,255,.08);
+    }
+    .lobby-title { font-size:1.05rem; font-weight:800; color:var(--text); letter-spacing:-.02em; }
+    .lobby-cost { display:flex; gap:5px; align-items:center; }
+    .lobby-cost svg { width:20px; height:20px; }
+
+    .lobby-art {
+      padding:20px 20px 16px;
+      background:linear-gradient(180deg,var(--accent-light),var(--surface));
+      text-align:center;
+    }
+    .deck-picker-label { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-bottom:10px; }
+    .deck-picker { display:flex; gap:8px; justify-content:center; }
+    .mana-choice {
+      flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
+      cursor:pointer; padding:8px 4px; border-radius:var(--radius-sm);
+      border:2px solid transparent; background:transparent;
+      transition:border-color .15s,background .15s,transform .12s;
+    }
+    .mana-choice:hover { transform:translateY(-2px); }
+    .mana-choice.selected { border-color:var(--accent); background:var(--accent-light); }
+    .mana-choice svg { width:38px; height:38px; }
+    .mana-choice .mana-name { font-size:.58rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); }
+    .mana-choice.selected .mana-name { color:var(--accent); }
+
+    .lobby-type-line {
+      background:linear-gradient(90deg,#110e08,#1c1810);
+      border-top:1.5px solid rgba(255,255,255,.07);
+      border-bottom:1.5px solid rgba(255,255,255,.07);
+      padding:5px 16px;
+      font-size:.63rem; font-weight:700; color:var(--text-muted);
+      text-transform:uppercase; letter-spacing:.09em;
+    }
+    .lobby-text-box { padding:18px 16px 20px; background:var(--surface2); display:flex; flex-direction:column; gap:14px; }
+
+    label {
+      display:block; font-size:.68rem; font-weight:700; color:var(--text-muted);
+      text-transform:uppercase; letter-spacing:.08em; margin-bottom:7px;
+    }
+    input[type="text"] {
+      width:100%; padding:13px 14px; border:1.5px solid var(--border);
+      border-radius:var(--radius-sm); font-size:1rem; background:rgba(0,0,0,.25);
+      color:var(--text); transition:border-color .2s,box-shadow .2s; outline:none;
+    }
+    input[type="text"]:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-glow); }
+    input[type="text"]::placeholder { color:var(--text-faint); }
+
+    .btn {
+      display:block; width:100%; padding:14px; border:none;
+      border-radius:var(--radius-sm); font-size:.95rem; font-weight:700;
+      cursor:pointer; transition:opacity .15s,transform .1s,box-shadow .15s; letter-spacing:-.01em;
+    }
+    .btn:active { transform:scale(.97); }
+    .btn-primary { background:var(--accent); color:#000; box-shadow:0 2px 12px var(--accent-glow); }
+    .btn-secondary { background:rgba(0,0,0,.3); color:var(--text); border:1.5px solid var(--border); }
+    .btn:disabled { opacity:.45; cursor:not-allowed; }
+
+    .divider {
+      text-align:center; color:var(--text-faint); font-size:.68rem; font-weight:700;
+      text-transform:uppercase; letter-spacing:.08em; position:relative;
+    }
+    .divider::before,.divider::after {
+      content:''; position:absolute; top:50%; width:38%; height:1.5px;
+      background:var(--border); border-radius:2px;
+    }
+    .divider::before { left:0; } .divider::after { right:0; }
+
+    .error-msg {
+      background:rgba(255,80,60,.12); color:#ff7060; padding:11px 14px;
+      border-radius:var(--radius-sm); font-size:.85rem; font-weight:600;
+      display:none; border:1.5px solid rgba(255,80,60,.3);
     }
 
-    .placeholder-card .ph-icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      opacity: 0.5;
-    }
+    /* ── Connecting ── */
+    #connecting { display:none; max-width:320px; margin:48px auto; text-align:center; }
+    .mana-cycle { display:flex; justify-content:center; gap:14px; margin-bottom:24px; }
+    .mana-cycle svg { width:46px; height:46px; opacity:.2; transform:scale(.85) translateY(0); transition:opacity .35s,transform .35s; }
+    .mana-cycle svg.active { opacity:1; transform:scale(1.18) translateY(-7px); filter:drop-shadow(0 4px 10px currentColor); }
+    .connecting-text { font-size:.95rem; font-weight:600; color:var(--text-muted); animation:pulse 1.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
 
-    .placeholder-card .ph-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text-muted);
-    }
+    /* ── Game room ── */
+    #game { display:none; max-width:600px; margin:0 auto; }
 
-    .placeholder-card .ph-sub {
-      font-size: 0.8rem;
-      line-height: 1.5;
+    .room-bar {
+      background:var(--surface); border-radius:var(--radius);
+      padding:14px 18px; box-shadow:var(--shadow);
+      border:1.5px solid var(--border); margin-bottom:20px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
+    .room-code-label { font-size:.62rem; font-weight:700; color:var(--text-faint); text-transform:uppercase; letter-spacing:.1em; }
+    .room-code { font-size:1.6rem; font-weight:900; color:var(--accent); letter-spacing:.15em; line-height:1; margin-top:2px; }
+    .room-code-hint { font-size:.7rem; color:var(--text-faint); margin-top:3px; font-weight:500; }
+    .room-bar-btns { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+    .btn-sm {
+      padding:8px 14px; border-radius:var(--radius-sm); font-size:.75rem; font-weight:700;
+      cursor:pointer; border:1.5px solid var(--border); background:rgba(0,0,0,.3);
+      color:var(--text-muted); letter-spacing:.02em; transition:opacity .15s,transform .1s;
+      white-space:nowrap;
+    }
+    .btn-sm:active { transform:scale(.93); }
+    .btn-sm.danger { border-color:rgba(255,80,60,.4); background:rgba(255,80,60,.1); color:#ff7060; }
 
-    /* ── Game loading skeleton ── */
-    .game-loading {
-      text-align: center;
-      padding: 40px 0;
-      color: var(--text-faint);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
+    .players-grid { display:flex; flex-direction:column; gap:18px; }
 
     /* ── Toast ── */
     #toast {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%) translateY(90px);
-      background: var(--text);
-      color: var(--bg);
-      padding: 12px 24px;
-      border-radius: 99px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
-      z-index: 999;
-      white-space: nowrap;
+      position:fixed; bottom:24px; left:50%;
+      transform:translateX(-50%) translateY(90px);
+      background:var(--text); color:var(--bg);
+      padding:11px 22px; border-radius:99px; font-size:.85rem; font-weight:700;
+      box-shadow:var(--shadow-md); transition:transform .28s cubic-bezier(.34,1.56,.64,1);
+      z-index:999; white-space:nowrap;
     }
+    #toast.show { transform:translateX(-50%) translateY(0); }
 
-    #toast.show { transform: translateX(-50%) translateY(0); }
-
-    /* ── Responsive ── */
-    @media (min-width: 480px) {
-      .counter-btn { width: 62px; height: 62px; }
-      .life-number { font-size: 4rem; }
+    @media(min-width:480px) {
+      .counter-btn { width:58px; height:58px; }
+      .life-number { font-size:3.6rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── Mana SVG Defs (reusable) ── -->
+<!-- SVG Defs -->
 <svg style="display:none" aria-hidden="true">
   <defs>
     <!-- W Plains: Sun -->
@@ -775,25 +382,22 @@
         <line x1="24" y1="37" x2="24" y2="45"/>
         <line x1="3"  y1="24" x2="11" y2="24"/>
         <line x1="37" y1="24" x2="45" y2="24"/>
-        <line x1="8.5"  y1="8.5"  x2="14.1" y2="14.1"/>
+        <line x1="8.5" y1="8.5"  x2="14.1" y2="14.1"/>
         <line x1="33.9" y1="33.9" x2="39.5" y2="39.5"/>
         <line x1="39.5" y1="8.5"  x2="33.9" y2="14.1"/>
         <line x1="14.1" y1="33.9" x2="8.5"  y2="39.5"/>
       </g>
     </symbol>
-    <!-- U Island: Wave -->
+    <!-- U Island: Water drop -->
     <symbol id="mana-blue" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="22" fill="#cce3f5" stroke="#1a5fa8" stroke-width="2.5"/>
-      <g stroke="#1a5fa8" stroke-width="2.8" fill="none" stroke-linecap="round">
-        <path d="M6 18 Q12 13 18 18 Q24 23 30 18 Q36 13 42 18"/>
-        <path d="M6 24 Q12 19 18 24 Q24 29 30 24 Q36 19 42 24"/>
-        <path d="M6 30 Q12 25 18 30 Q24 35 30 30 Q36 25 42 30"/>
-      </g>
+      <circle cx="24" cy="24" r="22" fill="#0d1828" stroke="#48b8ec" stroke-width="2.5"/>
+      <path d="M24 9 C24 9 12 23 12 30.5 C12 37.5 17.4 40.5 24 40.5 C30.6 40.5 36 37.5 36 30.5 C36 23 24 9 24 9Z" fill="#48b8ec"/>
+      <ellipse cx="19" cy="29" rx="2.8" ry="4.5" fill="white" opacity="0.32" transform="rotate(-20 19 29)"/>
     </symbol>
     <!-- B Swamp: Skull -->
     <symbol id="mana-black" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="22" fill="#2a1d38" stroke="#9b59b6" stroke-width="2.5"/>
-      <path d="M24 10 C16 10 11 16 11 22 C11 27 14 30 15 32 L15 38 L33 38 L33 32 C34 30 37 27 37 22 C37 16 32 10 24 10Z" fill="#9b59b6"/>
+      <circle cx="24" cy="24" r="22" fill="#2a1d38" stroke="#c070e8" stroke-width="2.5"/>
+      <path d="M24 10 C16 10 11 16 11 22 C11 27 14 30 15 32 L15 38 L33 38 L33 32 C34 30 37 27 37 22 C37 16 32 10 24 10Z" fill="#c070e8"/>
       <circle cx="19.5" cy="22" r="3.5" fill="#2a1d38"/>
       <circle cx="28.5" cy="22" r="3.5" fill="#2a1d38"/>
       <rect x="17" y="33" width="3" height="5" rx="1" fill="#2a1d38"/>
@@ -802,97 +406,99 @@
     </symbol>
     <!-- R Mountain: Flame -->
     <symbol id="mana-red" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="22" fill="#ffe4dc" stroke="#c0392b" stroke-width="2.5"/>
-      <path d="M24 7 C24 7 31 14 31 21 C31 21 35.5 17 33 12 C37 16 39 23 37 29 C35.5 33.5 31 38 24 39 C17 38 12.5 33.5 11 29 C9 23 11 16 15 12 C12.5 17 17 21 17 21 C17 14 24 7 24 7Z" fill="#c0392b"/>
-      <path d="M24 21 C24 21 27.5 24.5 27.5 28 C27.5 30.7 26 32.5 24 32.5 C22 32.5 20.5 30.7 20.5 28 C20.5 24.5 24 21 24 21Z" fill="#ff7f5e"/>
+      <circle cx="24" cy="24" r="22" fill="#280d06" stroke="#ff7038" stroke-width="2.5"/>
+      <path d="M24 7 C24 7 31 14 31 21 C31 21 35.5 17 33 12 C37 16 39 23 37 29 C35.5 33.5 31 38 24 39 C17 38 12.5 33.5 11 29 C9 23 11 16 15 12 C12.5 17 17 21 17 21 C17 14 24 7 24 7Z" fill="#ff7038"/>
+      <path d="M24 21 C24 21 27.5 24.5 27.5 28 C27.5 30.7 26 32.5 24 32.5 C22 32.5 20.5 30.7 20.5 28 C20.5 24.5 24 21 24 21Z" fill="#ffe0c0"/>
     </symbol>
     <!-- G Forest: Tree -->
     <symbol id="mana-green" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="22" fill="#ccecd5" stroke="#1e6b35" stroke-width="2.5"/>
-      <polygon points="24,8 12,24 20,24 14,36 34,36 28,24 36,24" fill="#1e6b35"/>
-      <rect x="21.5" y="36" width="5" height="6" rx="1.5" fill="#1e6b35"/>
+      <circle cx="24" cy="24" r="22" fill="#081a0a" stroke="#34e06a" stroke-width="2.5"/>
+      <polygon points="24,8 12,24 20,24 14,36 34,36 28,24 36,24" fill="#34e06a"/>
+      <rect x="21.5" y="36" width="5" height="6" rx="1.5" fill="#34e06a"/>
     </symbol>
-    <!-- Multi: 5-color arc ring -->
+    <!-- Multi: 5-color ring + star -->
     <symbol id="mana-multi" viewBox="0 0 48 48">
       <circle cx="24" cy="24" r="22" fill="#1e1a0a" stroke="#c9a227" stroke-width="2"/>
-      <!-- 5 colored arcs, each ~68° of the inner ring -->
-      <circle cx="24" cy="24" r="14" fill="none" stroke="#c9a227" stroke-width="5.5"
-        stroke-dasharray="17.6 70.4" stroke-dashoffset="0"
-        stroke-linecap="butt"/>
-      <circle cx="24" cy="24" r="14" fill="none" stroke="#1a5fa8" stroke-width="5.5"
-        stroke-dasharray="17.6 70.4" stroke-dashoffset="-17.6"
-        stroke-linecap="butt"/>
-      <circle cx="24" cy="24" r="14" fill="none" stroke="#6b35a0" stroke-width="5.5"
-        stroke-dasharray="17.6 70.4" stroke-dashoffset="-35.2"
-        stroke-linecap="butt"/>
-      <circle cx="24" cy="24" r="14" fill="none" stroke="#c0392b" stroke-width="5.5"
-        stroke-dasharray="17.6 70.4" stroke-dashoffset="-52.8"
-        stroke-linecap="butt"/>
-      <circle cx="24" cy="24" r="14" fill="none" stroke="#1e6b35" stroke-width="5.5"
-        stroke-dasharray="17.6 70.4" stroke-dashoffset="-70.4"
-        stroke-linecap="butt"/>
-      <!-- center star -->
-      <polygon points="24,17 25.5,22 30.5,22 26.5,25 28,30 24,27 20,30 21.5,25 17.5,22 22.5,22"
-        fill="#c9a227"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#c9a227" stroke-width="5.5" stroke-dasharray="17.6 70.4" stroke-dashoffset="0"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#48b8ec" stroke-width="5.5" stroke-dasharray="17.6 70.4" stroke-dashoffset="-17.6"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#6b35a0" stroke-width="5.5" stroke-dasharray="17.6 70.4" stroke-dashoffset="-35.2"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#c0392b" stroke-width="5.5" stroke-dasharray="17.6 70.4" stroke-dashoffset="-52.8"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#1e6b35" stroke-width="5.5" stroke-dasharray="17.6 70.4" stroke-dashoffset="-70.4"/>
+      <polygon points="24,17 25.5,22 30.5,22 26.5,25 28,30 24,27 20,30 21.5,25 17.5,22 22.5,22" fill="#c9a227"/>
     </symbol>
   </defs>
 </svg>
 
 <div class="app-header">
   <h1>⚔ Commander Tracker</h1>
-  <p class="subtitle">Magic: The Gathering · Multiplayer</p>
+  <p class="sub">Magic: The Gathering · Multiplayer</p>
 </div>
 
 <!-- ── Lobby ── -->
 <div id="lobby">
-  <div class="card">
-    <h2>Join the Table</h2>
+  <div class="lobby-mtg-card">
+    <div class="lobby-mtg-inner">
 
-    <div class="input-group">
-      <label for="playerName">Your name</label>
-      <input type="text" id="playerName" placeholder="Planeswalker name…" maxlength="20" autocomplete="off" />
+      <div class="lobby-name-bar">
+        <span class="lobby-title">Commander Tracker</span>
+        <div class="lobby-cost">
+          <svg><use href="#mana-white"/></svg>
+          <svg><use href="#mana-blue"/></svg>
+          <svg><use href="#mana-black"/></svg>
+          <svg><use href="#mana-red"/></svg>
+          <svg><use href="#mana-green"/></svg>
+        </div>
+      </div>
+
+      <div class="lobby-art">
+        <div class="deck-picker-label">Choose your deck color</div>
+        <div class="deck-picker" id="deckPicker">
+          <button class="mana-choice" data-color="white" aria-label="Plains">
+            <svg><use href="#mana-white"/></svg>
+            <span class="mana-name">Plains</span>
+          </button>
+          <button class="mana-choice" data-color="blue" aria-label="Island">
+            <svg><use href="#mana-blue"/></svg>
+            <span class="mana-name">Island</span>
+          </button>
+          <button class="mana-choice" data-color="black" aria-label="Swamp">
+            <svg><use href="#mana-black"/></svg>
+            <span class="mana-name">Swamp</span>
+          </button>
+          <button class="mana-choice" data-color="red" aria-label="Mountain">
+            <svg><use href="#mana-red"/></svg>
+            <span class="mana-name">Mountain</span>
+          </button>
+          <button class="mana-choice selected" data-color="green" aria-label="Forest">
+            <svg><use href="#mana-green"/></svg>
+            <span class="mana-name">Forest</span>
+          </button>
+          <button class="mana-choice" data-color="multi" aria-label="Multicolor">
+            <svg><use href="#mana-multi"/></svg>
+            <span class="mana-name">Multi</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="lobby-type-line">Sorcery — Enter the Battlefield</div>
+
+      <div class="lobby-text-box">
+        <div>
+          <label for="playerName">Your name</label>
+          <input type="text" id="playerName" placeholder="Planeswalker name…" maxlength="20" autocomplete="off"/>
+        </div>
+        <button class="btn btn-primary" id="createBtn">Create New Game</button>
+        <div class="divider">or join one</div>
+        <div>
+          <label for="roomInput">Room code</label>
+          <input type="text" id="roomInput" placeholder="ABC123" maxlength="6" autocomplete="off"
+            style="text-transform:uppercase;letter-spacing:.18em;font-size:1.25rem;font-weight:800;"/>
+        </div>
+        <button class="btn btn-secondary" id="joinBtn">Join Game</button>
+        <div class="error-msg" id="errorMsg"></div>
+      </div>
+
     </div>
-
-    <div class="deck-picker-label">Choose your deck color</div>
-    <div class="deck-picker" id="deckPicker">
-      <button class="mana-choice" data-color="white" aria-label="Plains – White">
-        <svg><use href="#mana-white"/></svg>
-        <span class="mana-name">Plains</span>
-      </button>
-      <button class="mana-choice" data-color="blue" aria-label="Island – Blue">
-        <svg><use href="#mana-blue"/></svg>
-        <span class="mana-name">Island</span>
-      </button>
-      <button class="mana-choice" data-color="black" aria-label="Swamp – Black">
-        <svg><use href="#mana-black"/></svg>
-        <span class="mana-name">Swamp</span>
-      </button>
-      <button class="mana-choice" data-color="red" aria-label="Mountain – Red">
-        <svg><use href="#mana-red"/></svg>
-        <span class="mana-name">Mountain</span>
-      </button>
-      <button class="mana-choice selected" data-color="green" aria-label="Forest – Green">
-        <svg><use href="#mana-green"/></svg>
-        <span class="mana-name">Forest</span>
-      </button>
-      <button class="mana-choice" data-color="multi" aria-label="Multicolor – All five colors">
-        <svg><use href="#mana-multi"/></svg>
-        <span class="mana-name">Multi</span>
-      </button>
-    </div>
-
-    <button class="btn btn-primary" id="createBtn">Create New Game</button>
-
-    <div class="divider">or join one</div>
-
-    <div class="input-group">
-      <label for="roomInput">Room code</label>
-      <input type="text" id="roomInput" placeholder="ABC123" maxlength="6" autocomplete="off"
-             style="text-transform:uppercase;letter-spacing:0.18em;font-size:1.3rem;font-weight:800;" />
-    </div>
-    <button class="btn btn-secondary" id="joinBtn">Join Game</button>
-
-    <div class="error-msg" id="errorMsg"></div>
   </div>
 </div>
 
@@ -900,22 +506,23 @@
 <div id="connecting">
   <div class="mana-cycle" id="manaCycle">
     <svg style="color:#c9a227"><use href="#mana-white"/></svg>
-    <svg style="color:#1a5fa8"><use href="#mana-blue"/></svg>
-    <svg style="color:#9b59b6"><use href="#mana-black"/></svg>
-    <svg style="color:#c0392b"><use href="#mana-red"/></svg>
-    <svg style="color:#1e6b35"><use href="#mana-green"/></svg>
+    <svg style="color:#48b8ec"><use href="#mana-blue"/></svg>
+    <svg style="color:#c070e8"><use href="#mana-black"/></svg>
+    <svg style="color:#ff7038"><use href="#mana-red"/></svg>
+    <svg style="color:#34e06a"><use href="#mana-green"/></svg>
   </div>
   <div class="connecting-text">Connecting to game…</div>
 </div>
 
-<!-- ── Game Room ── -->
+<!-- ── Game room ── -->
 <div id="game">
   <div class="room-bar">
     <div>
       <div class="room-code-label">Room Code</div>
       <div class="room-code" id="roomCodeDisplay">—</div>
+      <div class="room-code-hint">Share with friends so they can join</div>
     </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+    <div class="room-bar-btns">
       <button class="btn-sm" id="copyLinkBtn">Copy Link</button>
       <button class="btn-sm danger" id="resetAllBtn" style="display:none">Reset All</button>
     </div>
@@ -926,29 +533,22 @@
 <div id="toast"></div>
 
 <script>
-  // ── Mana cycle animation ──
-  const manaSymbols = document.querySelectorAll('#manaCycle svg');
-  let manaIdx = 0;
-  let manaCycleTimer = null;
-
-  function startManaCycle() {
-    manaSymbols.forEach(s => s.classList.remove('active'));
-    manaSymbols[manaIdx].classList.add('active');
-    manaCycleTimer = setInterval(() => {
-      manaSymbols[manaIdx].classList.remove('active');
-      manaIdx = (manaIdx + 1) % manaSymbols.length;
-      manaSymbols[manaIdx].classList.add('active');
+  // ── Mana cycle ──
+  const manaSyms = document.querySelectorAll('#manaCycle svg');
+  let manaIdx = 0, manaTmr = null;
+  function startMana() {
+    manaSyms.forEach(s => s.classList.remove('active'));
+    manaSyms[manaIdx].classList.add('active');
+    manaTmr = setInterval(() => {
+      manaSyms[manaIdx].classList.remove('active');
+      manaIdx = (manaIdx + 1) % manaSyms.length;
+      manaSyms[manaIdx].classList.add('active');
     }, 450);
   }
+  function stopMana() { clearInterval(manaTmr); manaSyms.forEach(s => s.classList.remove('active')); }
 
-  function stopManaCycle() {
-    clearInterval(manaCycleTimer);
-    manaSymbols.forEach(s => s.classList.remove('active'));
-  }
-
-  // ── Deck color picker ──
+  // ── Deck picker ──
   let selectedColor = 'green';
-
   document.getElementById('deckPicker').addEventListener('click', e => {
     const btn = e.target.closest('.mana-choice');
     if (!btn) return;
@@ -957,429 +557,339 @@
     selectedColor = btn.dataset.color;
     applyTheme(selectedColor);
   });
-
-  function applyTheme(color) {
-    document.body.className = `theme-${color}`;
-  }
+  function applyTheme(c) { document.body.className = `theme-${c}`; }
 
   // ── State ──
-  let ws = null;
-  let myId = null;
-  let roomCode = null;
-  let roomState = null;
-  let isHost = false;
+  let ws = null, myId = null, roomCode = null, roomState = null, isHost = false;
 
-  // ── DOM refs ──
-  const lobbyEl     = document.getElementById('lobby');
-  const connectEl   = document.getElementById('connecting');
-  const gameEl      = document.getElementById('game');
-  const playerNameEl= document.getElementById('playerName');
-  const roomInputEl = document.getElementById('roomInput');
-  const errorMsgEl  = document.getElementById('errorMsg');
-  const roomCodeDisp= document.getElementById('roomCodeDisplay');
-  const playersGrid = document.getElementById('playersGrid');
-  const copyLinkBtn = document.getElementById('copyLinkBtn');
-  const resetAllBtn = document.getElementById('resetAllBtn');
-  const toastEl     = document.getElementById('toast');
+  // ── DOM ──
+  const lobbyEl    = document.getElementById('lobby');
+  const connectEl  = document.getElementById('connecting');
+  const gameEl     = document.getElementById('game');
+  const nameEl     = document.getElementById('playerName');
+  const roomInEl   = document.getElementById('roomInput');
+  const errEl      = document.getElementById('errorMsg');
+  const roomDisp   = document.getElementById('roomCodeDisplay');
+  const grid       = document.getElementById('playersGrid');
+  const copyBtn    = document.getElementById('copyLinkBtn');
+  const resetAllBtn= document.getElementById('resetAllBtn');
+  const toastEl    = document.getElementById('toast');
 
-  // ── URL pre-fill ──
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlRoom = urlParams.get('room');
-  if (urlRoom) roomInputEl.value = urlRoom.toUpperCase();
+  // Pre-fill room from URL
+  const urlRoom = new URLSearchParams(location.search).get('room');
+  if (urlRoom) roomInEl.value = urlRoom.toUpperCase();
 
   // ── WebSocket ──
   function connect(onOpen) {
-    ws = new WebSocket('wss://bwelchme-production.up.railway.app');
+    try {
+      ws = new WebSocket('wss://bwelchme-production.up.railway.app');
+    } catch(e) {
+      showError('Could not connect. Check your network.');
+      showLobby(); return;
+    }
     ws.onopen = () => onOpen();
+    ws.onerror = () => {
+      // onerror always fires before onclose on failure
+    };
     ws.onmessage = e => {
-      const msg = JSON.parse(e.data);
+      let msg; try { msg = JSON.parse(e.data); } catch { return; }
       if (msg.type === 'joined') {
-        myId = msg.playerId;
-        roomCode = msg.roomCode;
-        stopManaCycle();
-        showGame();
-        // Show an immediate card from lobby values while waiting for room_state
-        showEarlyCard();
+        myId = msg.playerId; roomCode = msg.roomCode;
+        stopMana(); showGame(); showEarlyCard();
       } else if (msg.type === 'room_state') {
-        roomState = msg.room;
-        isHost = roomState.hostId === myId;
+        roomState = msg.room; isHost = roomState.hostId === myId;
         renderRoom();
       } else if (msg.type === 'error') {
-        showError(msg.message);
-        stopManaCycle();
+        stopMana(); showError(msg.message); showLobby();
+      }
+    };
+    ws.onclose = (e) => {
+      ws = null;
+      if (roomCode && myId) {
+        showToast('Reconnecting…');
+        setTimeout(reconnect, 2500);
+      } else {
+        showError('Could not connect to server. Make sure the game server is running.');
         showLobby();
       }
     };
-    ws.onclose = () => {
-      ws = null;
-      // If we were in a game, try to silently rejoin
-      if (roomCode && myId) {
-        showToast('Reconnecting…');
-        setTimeout(() => reconnect(), 2000);
-      } else {
-        showToast('Connection lost. Please refresh.');
-      }
-    };
   }
 
-  // ── Reconnect (silently rejoin after drop) ──
   function reconnect() {
-    const savedName = playerNameEl.value.trim() || 'Player';
-    const savedColor = selectedColor;
-    const savedRoom = roomCode;
-    connect(() => {
-      ws.send(JSON.stringify({ type: 'join_room', name: savedName, roomCode: savedRoom, color: savedColor }));
-    });
+    const name = nameEl.value.trim() || 'Player';
+    const rc = roomCode;
+    connect(() => ws.send(JSON.stringify({ type: 'join_room', name, roomCode: rc, color: selectedColor })));
   }
 
-  // ── Lobby actions ──
+  // ── Lobby buttons ──
   document.getElementById('createBtn').addEventListener('click', () => {
-    const name = playerNameEl.value.trim();
+    const name = nameEl.value.trim();
     if (!name) { showError('Please enter your name.'); return; }
     showConnecting();
     connect(() => ws.send(JSON.stringify({ type: 'create_room', name, color: selectedColor })));
   });
-
-  document.getElementById('joinBtn').addEventListener('click', joinRoom);
-  roomInputEl.addEventListener('keydown', e => { if (e.key === 'Enter') joinRoom(); });
-
-  function joinRoom() {
-    const name = playerNameEl.value.trim();
-    const code = roomInputEl.value.trim().toUpperCase();
+  document.getElementById('joinBtn').addEventListener('click', doJoin);
+  roomInEl.addEventListener('keydown', e => { if (e.key === 'Enter') doJoin(); });
+  function doJoin() {
+    const name = nameEl.value.trim();
+    const code = roomInEl.value.trim().toUpperCase();
     if (!name) { showError('Please enter your name.'); return; }
     if (!code) { showError('Please enter a room code.'); return; }
     showConnecting();
     connect(() => ws.send(JSON.stringify({ type: 'join_room', name, roomCode: code, color: selectedColor })));
   }
 
-  copyLinkBtn.addEventListener('click', () => {
+  copyBtn.addEventListener('click', () => {
     const url = `${location.origin}${location.pathname}?room=${roomCode}`;
     navigator.clipboard.writeText(url).then(() => showToast('Link copied! Share with your table.'));
   });
-
   resetAllBtn.addEventListener('click', () => {
-    if (confirm('Reset all players to 40 life?')) {
-      ws.send(JSON.stringify({ type: 'reset_all' }));
-    }
+    if (confirm('Reset all players to 40 life?')) ws.send(JSON.stringify({ type: 'reset_all' }));
   });
 
-  function sendUpdate(field, data) {
-    ws.send(JSON.stringify({ type: 'update_player', field, ...data }));
+  function send(field, data) { ws.send(JSON.stringify({ type: 'update_player', field, ...data })); }
+
+  // ── Helpers ──
+  function manaIcon(c, size=24) {
+    return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"><use href="#mana-${c||'green'}"/></svg>`;
   }
 
-  // ── Mana symbol helper ──
-  function manaIcon(color, size = 24) {
-    const id = `mana-${color || 'green'}`;
-    return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"><use href="#${id}"/></svg>`;
-  }
-
-  // ── Show card immediately from lobby values (before room_state) ──
+  // ── Early card (shown immediately after join, before room_state) ──
   function showEarlyCard() {
-    playersGrid.innerHTML = '';
-    const name = playerNameEl.value.trim() || 'You';
-    const fakePlayer = { name, color: selectedColor, life: 40, poison: 0, commanderDamage: {}, eliminated: false };
-    // Render a non-interactive preview card
-    const card = buildCard('__early__', fakePlayer, { '__early__': fakePlayer }, false);
-    card.style.opacity = '0.7';
-    playersGrid.appendChild(card);
-    playersGrid.appendChild(makePlaceholder('⏳', 'Syncing with server…', 'Your controls will appear in a moment.'));
+    grid.innerHTML = '';
+    const fp = { name: nameEl.value.trim()||'You', color: selectedColor, life:40, poison:0, commanderDamage:{}, eliminated:false };
+    const c = buildCard('__early__', fp, {'__early__':fp}, false);
+    c.style.opacity = '.65';
+    grid.appendChild(c);
+    grid.appendChild(placeholder('⏳','Syncing with server…','Your controls will appear in a moment.'));
   }
 
-  // ── Render Room ──
+  // ── Render room ──
   function renderRoom() {
     if (!roomState) return;
-    roomCodeDisp.textContent = roomCode;
+    roomDisp.textContent = roomCode;
     resetAllBtn.style.display = isHost ? 'inline-flex' : 'none';
-
     const players = roomState.players;
-    const otherIds = Object.keys(players).filter(id => id !== myId);
-
-    playersGrid.innerHTML = '';
-
-    if (players[myId]) {
-      playersGrid.appendChild(buildCard(myId, players[myId], players, true));
-    }
-
-    otherIds.forEach(id => {
-      playersGrid.appendChild(buildCard(id, players[id], players, false));
-    });
-
-    // Placeholder when alone
-    if (otherIds.length === 0) {
-      playersGrid.appendChild(makePlaceholder(
-        '🃏',
-        'Waiting for other players',
-        'Share the room code or copy the link — others’ cards will appear here when they join.'
-      ));
+    const others = Object.keys(players).filter(id => id !== myId);
+    grid.innerHTML = '';
+    if (players[myId]) grid.appendChild(buildCard(myId, players[myId], players, true));
+    others.forEach(id => grid.appendChild(buildCard(id, players[id], players, false)));
+    if (others.length === 0) {
+      grid.appendChild(placeholder('🃏','Waiting for players','Share the room code or copy the link above — others will appear here when they join.'));
     }
   }
 
-  function makePlaceholder(icon, title, sub) {
-    const div = document.createElement('div');
-    div.className = 'placeholder-card';
-    div.innerHTML = `<div class="ph-icon">${icon}</div><div class="ph-title">${title}</div><div class="ph-sub">${sub}</div>`;
-    return div;
+  function placeholder(icon, title, sub) {
+    const d = document.createElement('div');
+    d.className = 'placeholder-card';
+    d.innerHTML = `<div class="ph-icon">${icon}</div><div class="ph-title">${title}</div><div class="ph-sub">${sub}</div>`;
+    return d;
   }
 
+  // ── Build card ──
   function buildCard(id, player, allPlayers, isMe) {
     const color = player.color || 'green';
-    const card = document.createElement('div');
-    card.className = 'player-card' + (isMe ? ' is-me' : '') + (player.eliminated ? ' eliminated' : '');
-    card.setAttribute('data-pcolor', color);
+    const wrap = document.createElement('div');
+    wrap.className = 'mtg-card' + (isMe ? ' is-me' : '') + (player.eliminated ? ' eliminated' : '');
+    wrap.setAttribute('data-pc', color);
 
-    // Header
-    const header = document.createElement('div');
-    header.className = 'player-card-header';
+    const inner = document.createElement('div');
+    inner.className = 'mtg-card-inner';
 
-    const nameRow = document.createElement('div');
-    nameRow.className = 'player-name-row';
+    // ── Name bar ──
+    const namebar = document.createElement('div');
+    namebar.className = 'mtg-name-bar';
 
-    const iconWrap = document.createElement('div');
-    iconWrap.className = 'player-mana-icon';
-    iconWrap.innerHTML = manaIcon(color, 26);
+    const nameLeft = document.createElement('div');
+    nameLeft.className = 'mtg-name-left';
+    nameLeft.innerHTML = `<div class="mtg-name-icon">${manaIcon(color, 22)}</div>`;
+    const nameText = document.createElement('div');
+    nameText.className = 'mtg-name-text';
+    nameText.textContent = player.name;
+    nameLeft.appendChild(nameText);
 
-    const nameEl = document.createElement('div');
-    nameEl.className = 'player-name';
-    nameEl.textContent = player.name;
-
-    nameRow.appendChild(iconWrap);
-    nameRow.appendChild(nameEl);
-
-    const badgeEl = document.createElement('div');
+    const nameRight = document.createElement('div');
+    nameRight.className = 'mtg-name-right';
     if (player.eliminated) {
-      badgeEl.className = 'elim-badge';
-      const reason = { life: 'No Life', poison: 'Poisoned', commander: 'Cmd Dmg' };
-      badgeEl.textContent = reason[player.eliminatedBy] || 'Eliminated';
+      const eb = document.createElement('div');
+      eb.className = 'elim-badge';
+      eb.textContent = {life:'No Life',poison:'Poisoned',commander:'Cmd Dmg'}[player.eliminatedBy] || 'Eliminated';
+      nameRight.appendChild(eb);
     } else if (isMe) {
-      badgeEl.className = 'you-badge';
-      badgeEl.textContent = 'You';
+      const yb = document.createElement('div');
+      yb.className = 'you-badge';
+      yb.textContent = 'You';
+      nameRight.appendChild(yb);
     }
+    const costIcon = document.createElement('div');
+    costIcon.className = 'mtg-name-cost';
+    costIcon.innerHTML = manaIcon(color, 20);
+    nameRight.appendChild(costIcon);
 
-    header.appendChild(nameRow);
-    header.appendChild(badgeEl);
-    card.appendChild(header);
+    namebar.appendChild(nameLeft);
+    namebar.appendChild(nameRight);
 
-    // Body
-    const body = document.createElement('div');
-    body.className = 'player-card-body';
+    // ── Art area (life) ──
+    const art = document.createElement('div');
+    art.className = 'mtg-art-area';
 
-    // Life
-    const lifeSection = document.createElement('div');
-    lifeSection.className = 'life-section';
-
-    const lifeClass = player.life <= 0 ? 'danger' : player.life <= 10 ? 'danger' : player.life <= 20 ? 'warning' : '';
     const lifeWrap = document.createElement('div');
     lifeWrap.className = 'life-display';
-
     const lifeNum = document.createElement('div');
-    lifeNum.className = `life-number ${lifeClass}`.trim();
+    const lc = player.life <= 10 ? 'danger' : player.life <= 20 ? 'warning' : '';
+    lifeNum.className = `life-number${lc ? ' '+lc : ''}`;
     lifeNum.textContent = player.life;
-
     const lifeLbl = document.createElement('div');
     lifeLbl.className = 'life-label';
     lifeLbl.textContent = 'Life';
-
     lifeWrap.appendChild(lifeNum);
     lifeWrap.appendChild(lifeLbl);
 
     if (isMe && !player.eliminated) {
-      const minusBtn = mkBtn('counter-btn minus', '−', 'Lose 1 life', () => sendUpdate('life', { delta: -1 }));
-      const plusBtn  = mkBtn('counter-btn plus',  '+', 'Gain 1 life', () => sendUpdate('life', { delta: 1 }));
-      lifeSection.appendChild(minusBtn);
-      lifeSection.appendChild(lifeWrap);
-      lifeSection.appendChild(plusBtn);
+      art.appendChild(mkBtn('counter-btn minus','−','Lose 1 life', () => send('life',{delta:-1})));
+      art.appendChild(lifeWrap);
+      art.appendChild(mkBtn('counter-btn plus','+','Gain 1 life', () => send('life',{delta:1})));
     } else {
-      lifeSection.appendChild(lifeWrap);
+      art.appendChild(lifeWrap);
     }
 
-    body.appendChild(lifeSection);
+    // ── Type line ──
+    const typeLine = document.createElement('div');
+    typeLine.className = 'mtg-type-line';
+    typeLine.innerHTML = `<span>Planeswalker — Commander</span>`;
+    if (isMe && !player.eliminated) {
+      const rb = document.createElement('button');
+      rb.className = 'btn-reset';
+      rb.textContent = 'Reset';
+      rb.addEventListener('click', () => { if (confirm('Reset your life to 40?')) send('reset',{}); });
+      typeLine.appendChild(rb);
+    }
 
-    // Stats row
+    // ── Text box (stats) ──
+    const textbox = document.createElement('div');
+    textbox.className = 'mtg-text-box';
+
+    // Poison
     const statsRow = document.createElement('div');
     statsRow.className = 'stats-row';
 
-    // Poison box
     const poisonBox = document.createElement('div');
     poisonBox.className = 'stat-box';
-
     const poisonLbl = document.createElement('div');
     poisonLbl.className = 'stat-box-label';
-    poisonLbl.textContent = '☠ Poison';
+    poisonLbl.textContent = '☠ Poison Counters';
     poisonBox.appendChild(poisonLbl);
 
     const poisonInline = document.createElement('div');
     poisonInline.className = 'stat-inline';
-
-    if (isMe && !player.eliminated) {
-      poisonInline.appendChild(mkStatBtn('−', 'Remove poison', () => sendUpdate('poison', { delta: -1 })));
-    }
-
-    const pNum = document.createElement('div');
-    pNum.className = `stat-number poison-number${player.poison >= 7 ? ' danger' : ''}`;
-    pNum.textContent = player.poison;
-    poisonInline.appendChild(pNum);
-
-    if (isMe && !player.eliminated) {
-      poisonInline.appendChild(mkStatBtn('+', 'Add poison', () => sendUpdate('poison', { delta: 1 })));
-    }
-
+    if (isMe && !player.eliminated) poisonInline.appendChild(mkStatBtn('−','Remove poison', () => send('poison',{delta:-1})));
+    const pnum = document.createElement('div');
+    pnum.className = `stat-number poison-num${player.poison>=7?' danger':''}`;
+    pnum.textContent = player.poison;
+    poisonInline.appendChild(pnum);
+    if (isMe && !player.eliminated) poisonInline.appendChild(mkStatBtn('+','Add poison', () => send('poison',{delta:1})));
     poisonBox.appendChild(poisonInline);
 
     const dots = document.createElement('div');
     dots.className = 'poison-dots';
-    for (let i = 0; i < 10; i++) {
+    for (let i=0;i<10;i++) {
       const d = document.createElement('div');
-      d.className = 'poison-dot' + (i < player.poison ? (player.poison >= 7 ? ' danger' : ' filled') : '');
+      d.className = 'poison-dot' + (i < player.poison ? (player.poison>=7 ? ' danger' : ' filled') : '');
       dots.appendChild(d);
     }
     poisonBox.appendChild(dots);
     statsRow.appendChild(poisonBox);
-
-    // Reset (me) or life display (opponent)
-    if (isMe) {
-      const resetBox = document.createElement('div');
-      resetBox.className = 'stat-box';
-      resetBox.style.cssText = 'display:flex;align-items:center;justify-content:center;';
-      const rb = document.createElement('button');
-      rb.className = 'btn-sm';
-      rb.style.width = '100%';
-      rb.textContent = 'Reset Me';
-      rb.addEventListener('click', () => { if (confirm('Reset your life to 40?')) sendUpdate('reset', {}); });
-      resetBox.appendChild(rb);
-      statsRow.appendChild(resetBox);
-    }
-
-    body.appendChild(statsRow);
+    textbox.appendChild(statsRow);
 
     // Commander damage
     if (isMe) {
       const others = Object.entries(allPlayers).filter(([pid]) => pid !== myId);
       if (others.length > 0) {
         const sec = document.createElement('div');
-        sec.className = 'cmd-dmg-section';
+        sec.className = 'cmd-section';
         const lbl = document.createElement('div');
-        lbl.className = 'cmd-dmg-label';
+        lbl.className = 'cmd-label';
         lbl.textContent = '⚔ Commander Damage Received';
         sec.appendChild(lbl);
-
         const rows = document.createElement('div');
-        rows.className = 'cmd-dmg-rows';
-
-        others.forEach(([fromId, fromPlayer]) => {
-          const dmg = (player.commanderDamage?.[fromId]) || 0;
+        rows.className = 'cmd-rows';
+        others.forEach(([fid, fp]) => {
+          const dmg = (player.commanderDamage?.[fid]) || 0;
           const row = document.createElement('div');
-          row.className = 'cmd-dmg-row';
-
-          const fromDiv = document.createElement('div');
-          fromDiv.className = 'cmd-dmg-from';
-          const fromIcon = document.createElement('span');
-          fromIcon.className = 'cmd-from-icon';
-          fromIcon.innerHTML = manaIcon(fromPlayer.color, 16);
-          const fromName = document.createElement('span');
-          fromName.textContent = fromPlayer.name;
-          fromDiv.appendChild(fromIcon);
-          fromDiv.appendChild(fromName);
-          row.appendChild(fromDiv);
-
-          const dmgNum = document.createElement('div');
-          dmgNum.className = 'cmd-dmg-num' + (dmg >= 21 ? ' danger' : dmg >= 14 ? ' warning' : '');
-          dmgNum.textContent = dmg;
-          row.appendChild(dmgNum);
-
+          row.className = 'cmd-row';
+          const from = document.createElement('div');
+          from.className = 'cmd-from';
+          from.innerHTML = manaIcon(fp.color, 14);
+          from.appendChild(document.createTextNode(fp.name));
+          const dnum = document.createElement('div');
+          dnum.className = `cmd-num${dmg>=21?' danger':dmg>=14?' warning':''}`;
+          dnum.textContent = dmg;
+          row.appendChild(from);
+          row.appendChild(dnum);
           if (!player.eliminated) {
-            row.appendChild(mkStatBtn('−', `Remove cmd dmg from ${fromPlayer.name}`, () => sendUpdate('commander_damage', { fromId, delta: -1 })));
-            row.appendChild(mkStatBtn('+', `Add cmd dmg from ${fromPlayer.name}`, () => sendUpdate('commander_damage', { fromId, delta: 1 })));
+            row.appendChild(mkStatBtn('−',`Remove cmd dmg from ${fp.name}`, () => send('commander_damage',{fromId:fid,delta:-1})));
+            row.appendChild(mkStatBtn('+',`Add cmd dmg from ${fp.name}`, () => send('commander_damage',{fromId:fid,delta:1})));
           }
           rows.appendChild(row);
         });
-
         sec.appendChild(rows);
-        body.appendChild(sec);
+        textbox.appendChild(sec);
       }
     } else {
-      // Show my commander damage against this opponent
       const dmgFromMe = (player.commanderDamage?.[myId]) || 0;
-      if (Object.keys(allPlayers).length > 1) {
+      if (Object.keys(allPlayers).length > 1 && id !== '__early__') {
         const sec = document.createElement('div');
-        sec.className = 'cmd-dmg-section';
+        sec.className = 'cmd-section';
         const lbl = document.createElement('div');
-        lbl.className = 'cmd-dmg-label';
+        lbl.className = 'cmd-label';
         lbl.textContent = '⚔ Your Cmd Damage to Them';
         sec.appendChild(lbl);
-
         const row = document.createElement('div');
-        row.className = 'cmd-dmg-row';
-        const fn = document.createElement('div');
-        fn.className = 'cmd-dmg-from';
-        fn.textContent = `${player.name}`;
-        row.appendChild(fn);
-        const dn = document.createElement('div');
-        dn.className = 'cmd-dmg-num' + (dmgFromMe >= 21 ? ' danger' : dmgFromMe >= 14 ? ' warning' : '');
-        dn.textContent = dmgFromMe;
-        row.appendChild(dn);
+        row.className = 'cmd-row';
+        const from = document.createElement('div');
+        from.className = 'cmd-from';
+        from.textContent = player.name;
+        const dnum = document.createElement('div');
+        dnum.className = `cmd-num${dmgFromMe>=21?' danger':dmgFromMe>=14?' warning':''}`;
+        dnum.textContent = dmgFromMe;
+        row.appendChild(from);
+        row.appendChild(dnum);
         sec.appendChild(row);
-        body.appendChild(sec);
+        textbox.appendChild(sec);
       }
     }
 
-    card.appendChild(body);
-    return card;
+    inner.appendChild(namebar);
+    inner.appendChild(art);
+    inner.appendChild(typeLine);
+    inner.appendChild(textbox);
+    wrap.appendChild(inner);
+    return wrap;
   }
 
-  // ── Helpers ──
   function mkBtn(cls, text, label, onClick) {
     const b = document.createElement('button');
-    b.className = cls;
-    b.setAttribute('aria-label', label);
-    b.innerHTML = text;
-    b.addEventListener('click', onClick);
-    return b;
+    b.className = cls; b.setAttribute('aria-label', label); b.innerHTML = text;
+    b.addEventListener('click', onClick); return b;
   }
-
-  function mkStatBtn(text, label, onClick) {
-    return mkBtn('stat-btn', text, label, onClick);
-  }
+  function mkStatBtn(text, label, onClick) { return mkBtn('stat-btn', text, label, onClick); }
 
   // ── Screen helpers ──
-  function showLobby() {
-    lobbyEl.style.display = '';
-    connectEl.style.display = 'none';
-    gameEl.style.display = 'none';
+  function showLobby()      { lobbyEl.style.display=''; connectEl.style.display='none'; gameEl.style.display='none'; }
+  function showConnecting() { lobbyEl.style.display='none'; connectEl.style.display=''; gameEl.style.display='none'; errEl.style.display='none'; startMana(); }
+  function showGame()       {
+    lobbyEl.style.display='none'; connectEl.style.display='none'; gameEl.style.display='';
+    roomDisp.textContent = roomCode;
+    const url = new URL(location); url.searchParams.set('room', roomCode); history.replaceState({},''  ,url);
   }
+  function showError(msg)   { errEl.textContent=msg; errEl.style.display='block'; }
 
-  function showConnecting() {
-    lobbyEl.style.display = 'none';
-    connectEl.style.display = '';
-    gameEl.style.display = 'none';
-    errorMsgEl.style.display = 'none';
-    startManaCycle();
-  }
-
-  function showGame() {
-    lobbyEl.style.display = 'none';
-    connectEl.style.display = 'none';
-    gameEl.style.display = '';
-    roomCodeDisp.textContent = roomCode;
-    const url = new URL(window.location);
-    url.searchParams.set('room', roomCode);
-    history.replaceState({}, '', url);
-  }
-
-  function showError(msg) {
-    errorMsgEl.textContent = msg;
-    errorMsgEl.style.display = 'block';
-    showLobby();
-  }
-
-  let toastTimer;
+  let toastTmr;
   function showToast(msg) {
-    toastEl.textContent = msg;
-    toastEl.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
+    toastEl.textContent=msg; toastEl.classList.add('show');
+    clearTimeout(toastTmr); toastTmr = setTimeout(()=>toastEl.classList.remove('show'), 2800);
   }
 
-  // Apply default theme
   applyTheme(selectedColor);
 </script>
 </body>

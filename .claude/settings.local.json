@@ -77,7 +77,10 @@
       "Bash(which python3.11 || which python3.9 || ls /opt/homebrew/bin/python* 2>/dev/null || ls /usr/local/bin/python* 2>/dev/null)",
       "Bash(python3 -c \"import os,http.server,socketserver; os.chdir\\('/Users/brittanywelch/Documents/public_html'\\); socketserver.TCPServer\\(\\('',5500\\),http.server.SimpleHTTPRequestHandler\\).serve_forever\\(\\)\")",
       "Bash(curl -s http://localhost:5500/mtg/index.html)",
-      "mcp__Claude_in_Chrome__tabs_create_mcp"
+      "mcp__Claude_in_Chrome__tabs_create_mcp",
+      "Bash(curl -v --max-time 5 https://bwelchme-production.up.railway.app)",
+      "Bash(curl -s https://bwelchme-production.up.railway.app)",
+      "Bash(curl -v --max-time 5 -H 'Upgrade: websocket' -H 'Connection: Upgrade' -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' -H 'Sec-WebSocket-Version: 13' https://bwelchme-production.up.railway.app)"
     ]
   }
 }
