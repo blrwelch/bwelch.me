@@ -507,6 +507,7 @@ body::after {
   z-index: 2;
   pointer-events: none;
   user-select: none;
+  mix-blend-mode: multiply; /* white areas become transparent, revealing screenshot behind */
 }
 
 /* ── iPad (CSS frame — keeping existing realistic feel) ─ */
