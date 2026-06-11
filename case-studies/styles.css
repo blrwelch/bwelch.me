@@ -427,6 +427,175 @@ body::after {
   opacity: 0.85;
 }
 
+/* ============ DEVICE MOCKUPS ============ */
+.device-showcase {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 32px;
+  margin: 56px 0 72px;
+  padding: 48px 24px;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.device-showcase::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, var(--teal-soft) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Laptop */
+.mockup-laptop {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  width: min(560px, 60%);
+}
+.mockup-laptop__shell {
+  background: #1a1f2e;
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.mockup-laptop__browser-bar {
+  background: #111827;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mockup-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+.mockup-address-bar {
+  flex: 1;
+  margin-left: 8px;
+  height: 20px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 4px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.01em;
+}
+.mockup-laptop__screen {
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+.mockup-laptop__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.mockup-laptop__base {
+  height: 16px;
+  background: linear-gradient(180deg, #1a1f2e 0%, #111520 100%);
+  border: 2px solid rgba(255,255,255,0.10);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mockup-laptop__notch {
+  width: 60px;
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 0 0 6px 6px;
+}
+
+/* iPad */
+.mockup-ipad {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  width: min(220px, 25%);
+  margin-bottom: 16px;
+}
+.mockup-ipad__shell {
+  background: #1a1f2e;
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.mockup-ipad__camera {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+}
+.mockup-ipad__screen {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--surface);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.mockup-ipad__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.mockup-ipad__home {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+}
+
+/* Shared placeholder shown when no image is present */
+.mockup-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+}
+.mockup-laptop__screen img + .mockup-placeholder,
+.mockup-ipad__screen img + .mockup-placeholder {
+  display: none;
+}
+.mockup-laptop__screen img[style*="display:none"] + .mockup-placeholder,
+.mockup-laptop__screen img[style*="display: none"] + .mockup-placeholder,
+.mockup-ipad__screen img[style*="display:none"] + .mockup-placeholder,
+.mockup-ipad__screen img[style*="display: none"] + .mockup-placeholder {
+  display: flex;
+}
+
+@media (max-width: 640px) {
+  .device-showcase { flex-direction: column; align-items: center; gap: 24px; padding: 32px 16px; }
+  .mockup-laptop { width: 100%; }
+  .mockup-ipad { width: 160px; margin-bottom: 0; }
+}
+
 /* ============ SECTIONS ============ */
 .cs-section { padding: 64px 0; }
 .cs-section--narrow { padding: 48px 0; }
