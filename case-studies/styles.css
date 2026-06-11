@@ -590,10 +590,18 @@ body::after {
   display: flex;
 }
 
+/* Solo variants */
+.device-showcase--laptop { padding: 40px 32px 32px; }
+.device-showcase--laptop .mockup-laptop { width: min(780px, 90%); }
+
+.device-showcase--ipad { padding: 40px 32px; }
+.device-showcase--ipad .mockup-ipad { width: min(300px, 50%); margin-bottom: 0; }
+
 @media (max-width: 640px) {
   .device-showcase { flex-direction: column; align-items: center; gap: 24px; padding: 32px 16px; }
   .mockup-laptop { width: 100%; }
   .mockup-ipad { width: 160px; margin-bottom: 0; }
+  .device-showcase--ipad .mockup-ipad { width: 200px; }
 }
 
 /* ============ SECTIONS ============ */
