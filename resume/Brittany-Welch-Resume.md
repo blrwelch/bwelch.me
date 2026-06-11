@@ -18,10 +18,10 @@ Senior product designer with 17 years of experience across e-commerce, wireless,
 ### Senior Product Designer
 **Enterprise Software Company** · Chicago, IL (Remote) · 2021 – Present
 
-- Designed the internal website for the company's AI Practice, establishing IA, content strategy, and UX for the hub powering the AI agent and AI Skills division.
+- Design and maintain the internal website for the company's AI Practice, including IA, content strategy, and UX for the hub powering the AI agent and AI Skills division.
 - Consult with mid-market clients to identify and develop agentic AI solutions across Finance, HR, Engineering, and Leadership, delivering agent profiles, workflow frameworks, and integration roadmaps.
-- Facilitated cross-departmental discovery interviews to validate AI use cases, using collaborative facilitation techniques that built stakeholder trust and produced stronger, more targeted solutions.
-- Led end-to-end design across a diverse client portfolio, from research and strategy through delivery, in fast-moving agile environments.
+- Facilitate cross-departmental discovery interviews to validate AI use cases, building stakeholder trust and producing stronger, more targeted solutions.
+- Lead end-to-end design across a diverse client portfolio, from research and strategy through delivery, in fast-moving agile environments.
 
 ### Senior UI Designer
 **AutoZone** · Memphis, TN · 2019 – 2021
