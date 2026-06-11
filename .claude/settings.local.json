@@ -70,7 +70,13 @@
       "Bash(rm /private/tmp/claude-501/-Users-brittanywelch-Documents-public-html/d4b08464-daf6-471c-86c1-3234d4db95d3/tasks/b974lo67t.output)",
       "WebFetch(domain:www.indeed.com)",
       "mcp__visualize__read_me",
-      "mcp__visualize__show_widget"
+      "mcp__visualize__show_widget",
+      "WebSearch",
+      "Bash(npm install *)",
+      "Bash(which node *)",
+      "Bash(which python3.11 || which python3.9 || ls /opt/homebrew/bin/python* 2>/dev/null || ls /usr/local/bin/python* 2>/dev/null)",
+      "Bash(python3 -c \"import os,http.server,socketserver; os.chdir\\('/Users/brittanywelch/Documents/public_html'\\); socketserver.TCPServer\\(\\('',5500\\),http.server.SimpleHTTPRequestHandler\\).serve_forever\\(\\)\")",
+      "Bash(curl -s http://localhost:5500/mtg/index.html)"
     ]
   }
 }

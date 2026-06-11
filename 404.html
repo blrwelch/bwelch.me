@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 — Page Not Found | Brittany Welch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a1628;
+    --bg-2: #0f1e36;
+    --surface: #142845;
+    --border: rgba(176, 193, 212, 0.20);
+    --teal: #2dd4bf;
+    --teal-bright: #5eead4;
+    --teal-soft: rgba(45, 212, 191, 0.14);
+    --teal-glow: rgba(45, 212, 191, 0.35);
+    --text: #f1f5f9;
+    --text-strong: #ffffff;
+    --text-muted: #cbd5e1;
+    --text-dim: #b0c1d4;
+    --on-teal: #0a1628;
+    --gradient-end: #38bdf8;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -20%; left: -10%;
+    width: 60%; height: 60%;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%; right: -10%;
+    width: 60%; height: 60%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nav-logo {
+    position: fixed;
+    top: 24px; left: 32px;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-strong);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--teal); }
+
+  .error-code {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(100px, 20vw, 180px);
+    font-weight: 600;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 40px rgba(45, 212, 191, 0.3));
+  }
+
+  .grid-lines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image:
+      linear-gradient(var(--teal) 1px, transparent 1px),
+      linear-gradient(90deg, var(--teal) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 56px;
+    max-width: 520px;
+    width: 100%;
+    margin-top: -16px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 600;
+    color: var(--text-strong);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 32px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: var(--on-teal);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+  .pixel-guy {
+    font-size: 48px;
+    margin-bottom: 24px;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 36px 28px; }
+    .actions { flex-direction: column; }
+    .btn-primary, .btn-ghost { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-lines" aria-hidden="true"></div>
+
+<a href="/" class="nav-logo">b<span>.</span> welch</a>
+
+<div class="page">
+  <div class="error-code" aria-hidden="true">404</div>
+  <div class="card">
+    <span class="pixel-guy" aria-hidden="true">🧩</span>
+    <p class="eyebrow">Page not found</p>
+    <h1>This page got lost in the wireframes.</h1>
+    <p>It might have been moved, renamed, or maybe it was just a really early prototype that didn't make the cut. Either way, it's not here.</p>
+    <div class="actions">
+      <a href="/" class="btn-primary">← Back to portfolio</a>
+      <a href="mailto:blrwelch@gmail.com" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

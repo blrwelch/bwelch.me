@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "website",
+      "name": "mtg-preview",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "/Users/brittanywelch/Documents/public_html"],
-      "port": 8080
+      "runtimeArgs": ["/Users/brittanywelch/Documents/public_html/serve.py"],
+      "port": 5500
     }
   ]
 }

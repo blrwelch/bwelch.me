@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commander Tracker</title>
+  <style>
+    /* ── Base tokens (default: forest green) ── */
+    :root {
+      --bg:           #edf7ee;
+      --bg2:          #dff0e2;
+      --surface:      #ffffff;
+      --surface2:     #f2faf3;
+      --border:       #b0d8b8;
+      --border2:      #8ec898;
+      --accent:       #1e6b35;
+      --accent2:      #27ae60;
+      --accent-light: #d0ecd5;
+      --accent-glow:  rgba(30,107,53,0.18);
+      --text:         #0d2515;
+      --text-muted:   #4a7a58;
+      --text-faint:   #8ab89a;
+      --radius:       18px;
+      --radius-sm:    10px;
+      --shadow:       0 2px 16px rgba(0,0,0,0.07);
+      --shadow-md:    0 6px 32px rgba(0,0,0,0.13);
+      --shadow-card:  0 4px 24px rgba(30,107,53,0.10);
+    }
+
+    /* ── Deck themes ── */
+    .theme-white {
+      --bg:           #faf8f0;
+      --bg2:          #f0ecd8;
+      --surface:      #ffffff;
+      --surface2:     #fdf9ee;
+      --border:       #ddd0a0;
+      --border2:      #c9b870;
+      --accent:       #b8960c;
+      --accent2:      #d4ac0d;
+      --accent-light: #fdf3d0;
+      --accent-glow:  rgba(184,150,12,0.18);
+      --text:         #2c2510;
+      --text-muted:   #7a6830;
+      --text-faint:   #b8a870;
+      --shadow-card:  0 4px 24px rgba(184,150,12,0.10);
+    }
+    .theme-blue {
+      --bg:           #e8f2fb;
+      --bg2:          #d5e8f8;
+      --surface:      #f5f9ff;
+      --surface2:     #eaf3fd;
+      --border:       #a0c4e8;
+      --border2:      #6aaad8;
+      --accent:       #1a5fa8;
+      --accent2:      #2980b9;
+      --accent-light: #d0e8f8;
+      --accent-glow:  rgba(26,95,168,0.18);
+      --text:         #0d1f35;
+      --text-muted:   #3a6090;
+      --text-faint:   #7aaad0;
+      --shadow-card:  0 4px 24px rgba(26,95,168,0.10);
+    }
+    .theme-black {
+      --bg:           #141020;
+      --bg2:          #1c1728;
+      --surface:      #221d30;
+      --surface2:     #2c2540;
+      --border:       #483a60;
+      --border2:      #6a5090;
+      --accent:       #9b59b6;
+      --accent2:      #b06fd0;
+      --accent-light: #3d2858;
+      --accent-glow:  rgba(155,89,182,0.25);
+      --text:         #e8ddf5;
+      --text-muted:   #a898c8;
+      --text-faint:   #6a5888;
+      --shadow-card:  0 4px 24px rgba(155,89,182,0.18);
+    }
+    .theme-red {
+      --bg:           #fdf0ec;
+      --bg2:          #fae0d8;
+      --surface:      #fff5f2;
+      --surface2:     #feeee8;
+      --border:       #e8a898;
+      --border2:      #d07060;
+      --accent:       #c0392b;
+      --accent2:      #e74c3c;
+      --accent-light: #fde0d8;
+      --accent-glow:  rgba(192,57,43,0.18);
+      --text:         #2c1008;
+      --text-muted:   #8a3828;
+      --text-faint:   #c09088;
+      --shadow-card:  0 4px 24px rgba(192,57,43,0.10);
+    }
+    .theme-green {
+      /* same as :root defaults — already set */
+    }
+
+    /* ── Per-player card accent colors ── */
+    [data-pcolor="white"] { --paccent: #b8960c; --plight: #fdf3d0; --pborder: #ddd0a0; }
+    [data-pcolor="blue"]  { --paccent: #1a5fa8; --plight: #d0e8f8; --pborder: #a0c4e8; }
+    [data-pcolor="black"] { --paccent: #9b59b6; --plight: #3d2858; --pborder: #6a5090; }
+    [data-pcolor="red"]   { --paccent: #c0392b; --plight: #fde0d8; --pborder: #e8a898; }
+    [data-pcolor="green"] { --paccent: #1e6b35; --plight: #d0ecd5; --pborder: #8ec898; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 28px 16px 56px;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    /* ── App Header ── */
+    .app-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .app-header h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+
+    .app-header .subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── Lobby ── */
+    #lobby { max-width: 440px; margin: 0 auto; }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      border: 1.5px solid var(--border);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card + .card { margin-top: 16px; }
+
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      background: var(--surface2);
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .input-group { margin-bottom: 18px; }
+
+    /* ── Deck Color Picker ── */
+    .deck-picker-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .deck-picker {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .mana-choice {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px 4px;
+      border-radius: var(--radius-sm);
+      border: 2px solid transparent;
+      background: transparent;
+      transition: border-color 0.15s, background 0.15s, transform 0.12s;
+      position: relative;
+    }
+
+    .mana-choice:hover { transform: translateY(-2px); }
+
+    .mana-choice.selected {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .mana-choice svg {
+      width: 40px;
+      height: 40px;
+      display: block;
+    }
+
+    .mana-choice .mana-name {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .mana-choice.selected .mana-name { color: var(--accent); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+      letter-spacing: -0.01em;
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 2px 12px var(--accent-glow);
+    }
+
+    .btn-primary:hover { box-shadow: 0 4px 20px var(--accent-glow); }
+
+    .btn-secondary {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .divider {
+      text-align: center;
+      color: var(--text-faint);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 22px 0;
+      position: relative;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 38%;
+      height: 1.5px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .divider::before { left: 0; }
+    .divider::after  { right: 0; }
+
+    .error-msg {
+      background: #fdecea;
+      color: #c0392b;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-top: 14px;
+      display: none;
+      border: 1.5px solid #f5c6c2;
+    }
+
+    /* ── Connecting screen ── */
+    #connecting {
+      display: none;
+      max-width: 340px;
+      margin: 48px auto;
+      text-align: center;
+    }
+
+    .mana-cycle {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .mana-cycle svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.25;
+      transform: scale(0.85) translateY(0px);
+      transition: opacity 0.35s, transform 0.35s;
+    }
+
+    .mana-cycle svg.active {
+      opacity: 1;
+      transform: scale(1.15) translateY(-6px);
+      filter: drop-shadow(0 4px 10px currentColor);
+    }
+
+    .connecting-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      animation: pulse-text 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-text {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ── Game Room ── */
+    #game { display: none; max-width: 600px; margin: 0 auto; }
+
+    .room-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      box-shadow: var(--shadow);
+      border: 1.5px solid var(--border);
+      margin-bottom: 22px;
+      gap: 12px;
+    }
+
+    .room-code-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .room-code {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: var(--surface2);
+      color: var(--text);
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn-sm:active { transform: scale(0.95); }
+
+    .btn-sm.danger {
+      border-color: #f5c6c2;
+      background: #fdecea;
+      color: #c0392b;
+    }
+
+    .players-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* ── Player Card ── */
+    .player-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 2px solid var(--pborder, var(--border));
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .player-card.is-me {
+      box-shadow: 0 0 0 3px var(--paccent, var(--accent)), var(--shadow-card);
+    }
+
+    .player-card.eliminated { opacity: 0.55; }
+
+    .player-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px 12px;
+      background: linear-gradient(135deg, var(--plight, var(--accent-light)), transparent 80%);
+      border-bottom: 1.5px solid var(--pborder, var(--border));
+    }
+
+    .player-name-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-mana-icon svg { width: 26px; height: 26px; display: block; }
+
+    .player-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .you-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      background: var(--paccent, var(--accent));
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .elim-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: #fdecea;
+      color: #c0392b;
+      padding: 4px 12px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .player-card-body { padding: 20px; }
+
+    /* ── Life Counter ── */
+    .life-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .counter-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--pborder, var(--border));
+      background: var(--surface2);
+      font-size: 1.5rem;
+      font-weight: 300;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.12s, border-color 0.12s, transform 0.1s, box-shadow 0.12s;
+      color: var(--text-muted);
+      user-select: none;
+      -webkit-user-select: none;
+      line-height: 1;
+    }
+
+    .counter-btn:hover {
+      border-color: var(--paccent, var(--accent));
+      color: var(--paccent, var(--accent));
+    }
+
+    .counter-btn:active { transform: scale(0.88); }
+
+    .counter-btn.minus:active {
+      background: #fdecea;
+      border-color: #c0392b;
+      color: #c0392b;
+    }
+
+    .counter-btn.plus:active {
+      background: var(--plight, var(--accent-light));
+      border-color: var(--paccent, var(--accent));
+      color: var(--paccent, var(--accent));
+    }
+
+    .life-display { text-align: center; min-width: 80px; }
+
+    .life-number {
+      font-size: 3.4rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      transition: color 0.3s;
+    }
+
+    .life-number.danger { color: #c0392b; }
+    .life-number.warning { color: #d4820d; }
+
+    .life-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 3px;
+    }
+
+    /* ── Sub-stats ── */
+    .stats-row { display: flex; gap: 12px; }
+
+    .stat-box {
+      flex: 1;
+      background: var(--surface2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+    }
+
+    .stat-box-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-inline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      min-width: 32px;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+
+    .poison-number { color: #7d35b0; }
+    .poison-number.danger { color: #c0392b; }
+
+    .stat-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.1s, transform 0.1s, border-color 0.1s;
+      color: var(--text-muted);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .stat-btn:active { transform: scale(0.85); background: var(--surface2); }
+
+    /* Poison dots */
+    .poison-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .poison-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .poison-dot.filled { background: #7d35b0; transform: scale(1.1); }
+    .poison-dot.danger { background: #c0392b; }
+
+    /* ── Commander Damage ── */
+    .cmd-dmg-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1.5px solid var(--border);
+    }
+
+    .cmd-dmg-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .cmd-dmg-rows { display: flex; flex-direction: column; gap: 8px; }
+
+    .cmd-dmg-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface2);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+    }
+
+    .cmd-dmg-from {
+      flex: 1;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cmd-from-icon svg { width: 16px; height: 16px; display: block; flex-shrink: 0; }
+
+    .cmd-dmg-num {
+      font-size: 1.1rem;
+      font-weight: 900;
+      min-width: 30px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+    }
+
+    .cmd-dmg-num.warning { color: #d4820d; }
+    .cmd-dmg-num.danger  { color: #c0392b; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(90px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 999;
+      white-space: nowrap;
+    }
+
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── Responsive ── */
+    @media (min-width: 480px) {
+      .counter-btn { width: 62px; height: 62px; }
+      .life-number { font-size: 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Mana SVG Defs (reusable) ── -->
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <!-- W Plains: Sun -->
+    <symbol id="mana-white" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22" fill="#f9f0d0" stroke="#c9a227" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="7" fill="#c9a227"/>
+      <g stroke="#c9a227" stroke-width="2.5" stroke-linecap="round">
+        <line x1="24" y1="3"  x2="24" y2="11"/>
+        <line x1="24" y1="37" x2="24" y2="45"/>
+        <line x1="3"  y1="24" x2="11" y2="24"/>
+        <line x1="37" y1="24" x2="45" y2="24"/>
+        <line x1="8.5"  y1="8.5"  x2="14.1" y2="14.1"/>
+        <line x1="33.9" y1="33.9" x2="39.5" y2="39.5"/>
+        <line x1="39.5" y1="8.5"  x2="33.9" y2="14.1"/>
+        <line x1="14.1" y1="33.9" x2="8.5"  y2="39.5"/>
+      </g>
+    </symbol>
+    <!-- U Island: Wave -->
+    <symbol id="mana-blue" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22" fill="#cce3f5" stroke="#1a5fa8" stroke-width="2.5"/>
+      <g stroke="#1a5fa8" stroke-width="2.8" fill="none" stroke-linecap="round">
+        <path d="M6 18 Q12 13 18 18 Q24 23 30 18 Q36 13 42 18"/>
+        <path d="M6 24 Q12 19 18 24 Q24 29 30 24 Q36 19 42 24"/>
+        <path d="M6 30 Q12 25 18 30 Q24 35 30 30 Q36 25 42 30"/>
+      </g>
+    </symbol>
+    <!-- B Swamp: Skull -->
+    <symbol id="mana-black" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22" fill="#2a1d38" stroke="#9b59b6" stroke-width="2.5"/>
+      <path d="M24 10 C16 10 11 16 11 22 C11 27 14 30 15 32 L15 38 L33 38 L33 32 C34 30 37 27 37 22 C37 16 32 10 24 10Z" fill="#9b59b6"/>
+      <circle cx="19.5" cy="22" r="3.5" fill="#2a1d38"/>
+      <circle cx="28.5" cy="22" r="3.5" fill="#2a1d38"/>
+      <rect x="17" y="33" width="3" height="5" rx="1" fill="#2a1d38"/>
+      <rect x="22.5" y="33" width="3" height="5" rx="1" fill="#2a1d38"/>
+      <rect x="28" y="33" width="3" height="5" rx="1" fill="#2a1d38"/>
+    </symbol>
+    <!-- R Mountain: Flame -->
+    <symbol id="mana-red" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22" fill="#ffe4dc" stroke="#c0392b" stroke-width="2.5"/>
+      <path d="M24 7 C24 7 31 14 31 21 C31 21 35.5 17 33 12 C37 16 39 23 37 29 C35.5 33.5 31 38 24 39 C17 38 12.5 33.5 11 29 C9 23 11 16 15 12 C12.5 17 17 21 17 21 C17 14 24 7 24 7Z" fill="#c0392b"/>
+      <path d="M24 21 C24 21 27.5 24.5 27.5 28 C27.5 30.7 26 32.5 24 32.5 C22 32.5 20.5 30.7 20.5 28 C20.5 24.5 24 21 24 21Z" fill="#ff7f5e"/>
+    </symbol>
+    <!-- G Forest: Tree -->
+    <symbol id="mana-green" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22" fill="#ccecd5" stroke="#1e6b35" stroke-width="2.5"/>
+      <polygon points="24,8 12,24 20,24 14,36 34,36 28,24 36,24" fill="#1e6b35"/>
+      <rect x="21.5" y="36" width="5" height="6" rx="1.5" fill="#1e6b35"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="app-header">
+  <h1>⚔ Commander Tracker</h1>
+  <p class="subtitle">Magic: The Gathering · Multiplayer</p>
+</div>
+
+<!-- ── Lobby ── -->
+<div id="lobby">
+  <div class="card">
+    <h2>Join the Table</h2>
+
+    <div class="input-group">
+      <label for="playerName">Your name</label>
+      <input type="text" id="playerName" placeholder="Planeswalker name…" maxlength="20" autocomplete="off" />
+    </div>
+
+    <div class="deck-picker-label">Choose your deck color</div>
+    <div class="deck-picker" id="deckPicker">
+      <button class="mana-choice" data-color="white" aria-label="Plains – White">
+        <svg><use href="#mana-white"/></svg>
+        <span class="mana-name">Plains</span>
+      </button>
+      <button class="mana-choice" data-color="blue" aria-label="Island – Blue">
+        <svg><use href="#mana-blue"/></svg>
+        <span class="mana-name">Island</span>
+      </button>
+      <button class="mana-choice" data-color="black" aria-label="Swamp – Black">
+        <svg><use href="#mana-black"/></svg>
+        <span class="mana-name">Swamp</span>
+      </button>
+      <button class="mana-choice" data-color="red" aria-label="Mountain – Red">
+        <svg><use href="#mana-red"/></svg>
+        <span class="mana-name">Mountain</span>
+      </button>
+      <button class="mana-choice selected" data-color="green" aria-label="Forest – Green">
+        <svg><use href="#mana-green"/></svg>
+        <span class="mana-name">Forest</span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary" id="createBtn">Create New Game</button>
+
+    <div class="divider">or join one</div>
+
+    <div class="input-group">
+      <label for="roomInput">Room code</label>
+      <input type="text" id="roomInput" placeholder="ABC123" maxlength="6" autocomplete="off"
+             style="text-transform:uppercase;letter-spacing:0.18em;font-size:1.3rem;font-weight:800;" />
+    </div>
+    <button class="btn btn-secondary" id="joinBtn">Join Game</button>
+
+    <div class="error-msg" id="errorMsg"></div>
+  </div>
+</div>
+
+<!-- ── Connecting ── -->
+<div id="connecting">
+  <div class="mana-cycle" id="manaCycle">
+    <svg style="color:#c9a227"><use href="#mana-white"/></svg>
+    <svg style="color:#1a5fa8"><use href="#mana-blue"/></svg>
+    <svg style="color:#9b59b6"><use href="#mana-black"/></svg>
+    <svg style="color:#c0392b"><use href="#mana-red"/></svg>
+    <svg style="color:#1e6b35"><use href="#mana-green"/></svg>
+  </div>
+  <div class="connecting-text">Connecting to game…</div>
+</div>
+
+<!-- ── Game Room ── -->
+<div id="game">
+  <div class="room-bar">
+    <div>
+      <div class="room-code-label">Room Code</div>
+      <div class="room-code" id="roomCodeDisplay">—</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+      <button class="btn-sm" id="copyLinkBtn">Copy Link</button>
+      <button class="btn-sm danger" id="resetAllBtn" style="display:none">Reset All</button>
+    </div>
+  </div>
+  <div class="players-grid" id="playersGrid"></div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  // ── Mana cycle animation ──
+  const manaSymbols = document.querySelectorAll('#manaCycle svg');
+  let manaIdx = 0;
+  let manaCycleTimer = null;
+
+  function startManaCycle() {
+    manaSymbols.forEach(s => s.classList.remove('active'));
+    manaSymbols[manaIdx].classList.add('active');
+    manaCycleTimer = setInterval(() => {
+      manaSymbols[manaIdx].classList.remove('active');
+      manaIdx = (manaIdx + 1) % manaSymbols.length;
+      manaSymbols[manaIdx].classList.add('active');
+    }, 450);
+  }
+
+  function stopManaCycle() {
+    clearInterval(manaCycleTimer);
+    manaSymbols.forEach(s => s.classList.remove('active'));
+  }
+
+  // ── Deck color picker ──
+  let selectedColor = 'green';
+
+  document.getElementById('deckPicker').addEventListener('click', e => {
+    const btn = e.target.closest('.mana-choice');
+    if (!btn) return;
+    document.querySelectorAll('.mana-choice').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedColor = btn.dataset.color;
+    applyTheme(selectedColor);
+  });
+
+  function applyTheme(color) {
+    document.body.className = `theme-${color}`;
+  }
+
+  // ── State ──
+  let ws = null;
+  let myId = null;
+  let roomCode = null;
+  let roomState = null;
+  let isHost = false;
+
+  // ── DOM refs ──
+  const lobbyEl     = document.getElementById('lobby');
+  const connectEl   = document.getElementById('connecting');
+  const gameEl      = document.getElementById('game');
+  const playerNameEl= document.getElementById('playerName');
+  const roomInputEl = document.getElementById('roomInput');
+  const errorMsgEl  = document.getElementById('errorMsg');
+  const roomCodeDisp= document.getElementById('roomCodeDisplay');
+  const playersGrid = document.getElementById('playersGrid');
+  const copyLinkBtn = document.getElementById('copyLinkBtn');
+  const resetAllBtn = document.getElementById('resetAllBtn');
+  const toastEl     = document.getElementById('toast');
+
+  // ── URL pre-fill ──
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlRoom = urlParams.get('room');
+  if (urlRoom) roomInputEl.value = urlRoom.toUpperCase();
+
+  // ── WebSocket ──
+  function connect(onOpen) {
+    const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+    ws = new WebSocket(`${proto}://${location.host}`);
+    ws.onopen = () => onOpen();
+    ws.onmessage = e => {
+      const msg = JSON.parse(e.data);
+      if (msg.type === 'joined') {
+        myId = msg.playerId;
+        roomCode = msg.roomCode;
+        stopManaCycle();
+        showGame();
+      } else if (msg.type === 'room_state') {
+        roomState = msg.room;
+        isHost = roomState.hostId === myId;
+        renderRoom();
+      } else if (msg.type === 'error') {
+        showError(msg.message);
+        stopManaCycle();
+        showLobby();
+      }
+    };
+    ws.onclose = () => {
+      showToast('Disconnected. Reconnecting…');
+      setTimeout(() => location.reload(), 2000);
+    };
+  }
+
+  // ── Lobby actions ──
+  document.getElementById('createBtn').addEventListener('click', () => {
+    const name = playerNameEl.value.trim();
+    if (!name) { showError('Please enter your name.'); return; }
+    showConnecting();
+    connect(() => ws.send(JSON.stringify({ type: 'create_room', name, color: selectedColor })));
+  });
+
+  document.getElementById('joinBtn').addEventListener('click', joinRoom);
+  roomInputEl.addEventListener('keydown', e => { if (e.key === 'Enter') joinRoom(); });
+
+  function joinRoom() {
+    const name = playerNameEl.value.trim();
+    const code = roomInputEl.value.trim().toUpperCase();
+    if (!name) { showError('Please enter your name.'); return; }
+    if (!code) { showError('Please enter a room code.'); return; }
+    showConnecting();
+    connect(() => ws.send(JSON.stringify({ type: 'join_room', name, roomCode: code, color: selectedColor })));
+  }
+
+  copyLinkBtn.addEventListener('click', () => {
+    const url = `${location.origin}${location.pathname}?room=${roomCode}`;
+    navigator.clipboard.writeText(url).then(() => showToast('Link copied! Share with your table.'));
+  });
+
+  resetAllBtn.addEventListener('click', () => {
+    if (confirm('Reset all players to 40 life?')) {
+      ws.send(JSON.stringify({ type: 'reset_all' }));
+    }
+  });
+
+  function sendUpdate(field, data) {
+    ws.send(JSON.stringify({ type: 'update_player', field, ...data }));
+  }
+
+  // ── Mana symbol helper ──
+  function manaIcon(color, size = 24) {
+    const id = `mana-${color || 'green'}`;
+    return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"><use href="#${id}"/></svg>`;
+  }
+
+  // ── Render Room ──
+  function renderRoom() {
+    if (!roomState) return;
+    roomCodeDisp.textContent = roomCode;
+    resetAllBtn.style.display = isHost ? 'inline-flex' : 'none';
+
+    const players = roomState.players;
+    const otherIds = Object.keys(players).filter(id => id !== myId);
+
+    playersGrid.innerHTML = '';
+
+    if (players[myId]) {
+      playersGrid.appendChild(buildCard(myId, players[myId], players, true));
+    }
+    otherIds.forEach(id => {
+      playersGrid.appendChild(buildCard(id, players[id], players, false));
+    });
+  }
+
+  function buildCard(id, player, allPlayers, isMe) {
+    const color = player.color || 'green';
+    const card = document.createElement('div');
+    card.className = 'player-card' + (isMe ? ' is-me' : '') + (player.eliminated ? ' eliminated' : '');
+    card.setAttribute('data-pcolor', color);
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'player-card-header';
+
+    const nameRow = document.createElement('div');
+    nameRow.className = 'player-name-row';
+
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'player-mana-icon';
+    iconWrap.innerHTML = manaIcon(color, 26);
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'player-name';
+    nameEl.textContent = player.name;
+
+    nameRow.appendChild(iconWrap);
+    nameRow.appendChild(nameEl);
+
+    const badgeEl = document.createElement('div');
+    if (player.eliminated) {
+      badgeEl.className = 'elim-badge';
+      const reason = { life: 'No Life', poison: 'Poisoned', commander: 'Cmd Dmg' };
+      badgeEl.textContent = reason[player.eliminatedBy] || 'Eliminated';
+    } else if (isMe) {
+      badgeEl.className = 'you-badge';
+      badgeEl.textContent = 'You';
+    }
+
+    header.appendChild(nameRow);
+    header.appendChild(badgeEl);
+    card.appendChild(header);
+
+    // Body
+    const body = document.createElement('div');
+    body.className = 'player-card-body';
+
+    // Life
+    const lifeSection = document.createElement('div');
+    lifeSection.className = 'life-section';
+
+    const lifeClass = player.life <= 0 ? 'danger' : player.life <= 10 ? 'danger' : player.life <= 20 ? 'warning' : '';
+    const lifeWrap = document.createElement('div');
+    lifeWrap.className = 'life-display';
+
+    const lifeNum = document.createElement('div');
+    lifeNum.className = `life-number ${lifeClass}`.trim();
+    lifeNum.textContent = player.life;
+
+    const lifeLbl = document.createElement('div');
+    lifeLbl.className = 'life-label';
+    lifeLbl.textContent = 'Life';
+
+    lifeWrap.appendChild(lifeNum);
+    lifeWrap.appendChild(lifeLbl);
+
+    if (isMe && !player.eliminated) {
+      const minusBtn = mkBtn('counter-btn minus', '−', 'Lose 1 life', () => sendUpdate('life', { delta: -1 }));
+      const plusBtn  = mkBtn('counter-btn plus',  '+', 'Gain 1 life', () => sendUpdate('life', { delta: 1 }));
+      lifeSection.appendChild(minusBtn);
+      lifeSection.appendChild(lifeWrap);
+      lifeSection.appendChild(plusBtn);
+    } else {
+      lifeSection.appendChild(lifeWrap);
+    }
+
+    body.appendChild(lifeSection);
+
+    // Stats row
+    const statsRow = document.createElement('div');
+    statsRow.className = 'stats-row';
+
+    // Poison box
+    const poisonBox = document.createElement('div');
+    poisonBox.className = 'stat-box';
+
+    const poisonLbl = document.createElement('div');
+    poisonLbl.className = 'stat-box-label';
+    poisonLbl.textContent = '☠ Poison';
+    poisonBox.appendChild(poisonLbl);
+
+    const poisonInline = document.createElement('div');
+    poisonInline.className = 'stat-inline';
+
+    if (isMe && !player.eliminated) {
+      poisonInline.appendChild(mkStatBtn('−', 'Remove poison', () => sendUpdate('poison', { delta: -1 })));
+    }
+
+    const pNum = document.createElement('div');
+    pNum.className = `stat-number poison-number${player.poison >= 7 ? ' danger' : ''}`;
+    pNum.textContent = player.poison;
+    poisonInline.appendChild(pNum);
+
+    if (isMe && !player.eliminated) {
+      poisonInline.appendChild(mkStatBtn('+', 'Add poison', () => sendUpdate('poison', { delta: 1 })));
+    }
+
+    poisonBox.appendChild(poisonInline);
+
+    const dots = document.createElement('div');
+    dots.className = 'poison-dots';
+    for (let i = 0; i < 10; i++) {
+      const d = document.createElement('div');
+      d.className = 'poison-dot' + (i < player.poison ? (player.poison >= 7 ? ' danger' : ' filled') : '');
+      dots.appendChild(d);
+    }
+    poisonBox.appendChild(dots);
+    statsRow.appendChild(poisonBox);
+
+    // Reset (me) or life display (opponent)
+    if (isMe) {
+      const resetBox = document.createElement('div');
+      resetBox.className = 'stat-box';
+      resetBox.style.cssText = 'display:flex;align-items:center;justify-content:center;';
+      const rb = document.createElement('button');
+      rb.className = 'btn-sm';
+      rb.style.width = '100%';
+      rb.textContent = 'Reset Me';
+      rb.addEventListener('click', () => { if (confirm('Reset your life to 40?')) sendUpdate('reset', {}); });
+      resetBox.appendChild(rb);
+      statsRow.appendChild(resetBox);
+    }
+
+    body.appendChild(statsRow);
+
+    // Commander damage
+    if (isMe) {
+      const others = Object.entries(allPlayers).filter(([pid]) => pid !== myId);
+      if (others.length > 0) {
+        const sec = document.createElement('div');
+        sec.className = 'cmd-dmg-section';
+        const lbl = document.createElement('div');
+        lbl.className = 'cmd-dmg-label';
+        lbl.textContent = '⚔ Commander Damage Received';
+        sec.appendChild(lbl);
+
+        const rows = document.createElement('div');
+        rows.className = 'cmd-dmg-rows';
+
+        others.forEach(([fromId, fromPlayer]) => {
+          const dmg = (player.commanderDamage?.[fromId]) || 0;
+          const row = document.createElement('div');
+          row.className = 'cmd-dmg-row';
+
+          const fromDiv = document.createElement('div');
+          fromDiv.className = 'cmd-dmg-from';
+          const fromIcon = document.createElement('span');
+          fromIcon.className = 'cmd-from-icon';
+          fromIcon.innerHTML = manaIcon(fromPlayer.color, 16);
+          const fromName = document.createElement('span');
+          fromName.textContent = fromPlayer.name;
+          fromDiv.appendChild(fromIcon);
+          fromDiv.appendChild(fromName);
+          row.appendChild(fromDiv);
+
+          const dmgNum = document.createElement('div');
+          dmgNum.className = 'cmd-dmg-num' + (dmg >= 21 ? ' danger' : dmg >= 14 ? ' warning' : '');
+          dmgNum.textContent = dmg;
+          row.appendChild(dmgNum);
+
+          if (!player.eliminated) {
+            row.appendChild(mkStatBtn('−', `Remove cmd dmg from ${fromPlayer.name}`, () => sendUpdate('commander_damage', { fromId, delta: -1 })));
+            row.appendChild(mkStatBtn('+', `Add cmd dmg from ${fromPlayer.name}`, () => sendUpdate('commander_damage', { fromId, delta: 1 })));
+          }
+          rows.appendChild(row);
+        });
+
+        sec.appendChild(rows);
+        body.appendChild(sec);
+      }
+    } else {
+      // Show my commander damage against this opponent
+      const dmgFromMe = (player.commanderDamage?.[myId]) || 0;
+      if (Object.keys(allPlayers).length > 1) {
+        const sec = document.createElement('div');
+        sec.className = 'cmd-dmg-section';
+        const lbl = document.createElement('div');
+        lbl.className = 'cmd-dmg-label';
+        lbl.textContent = '⚔ Your Cmd Damage to Them';
+        sec.appendChild(lbl);
+
+        const row = document.createElement('div');
+        row.className = 'cmd-dmg-row';
+        const fn = document.createElement('div');
+        fn.className = 'cmd-dmg-from';
+        fn.textContent = `${player.name}`;
+        row.appendChild(fn);
+        const dn = document.createElement('div');
+        dn.className = 'cmd-dmg-num' + (dmgFromMe >= 21 ? ' danger' : dmgFromMe >= 14 ? ' warning' : '');
+        dn.textContent = dmgFromMe;
+        row.appendChild(dn);
+        sec.appendChild(row);
+        body.appendChild(sec);
+      }
+    }
+
+    card.appendChild(body);
+    return card;
+  }
+
+  // ── Helpers ──
+  function mkBtn(cls, text, label, onClick) {
+    const b = document.createElement('button');
+    b.className = cls;
+    b.setAttribute('aria-label', label);
+    b.innerHTML = text;
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function mkStatBtn(text, label, onClick) {
+    return mkBtn('stat-btn', text, label, onClick);
+  }
+
+  // ── Screen helpers ──
+  function showLobby() {
+    lobbyEl.style.display = '';
+    connectEl.style.display = 'none';
+    gameEl.style.display = 'none';
+  }
+
+  function showConnecting() {
+    lobbyEl.style.display = 'none';
+    connectEl.style.display = '';
+    gameEl.style.display = 'none';
+    errorMsgEl.style.display = 'none';
+    startManaCycle();
+  }
+
+  function showGame() {
+    lobbyEl.style.display = 'none';
+    connectEl.style.display = 'none';
+    gameEl.style.display = '';
+    roomCodeDisp.textContent = roomCode;
+    const url = new URL(window.location);
+    url.searchParams.set('room', roomCode);
+    history.replaceState({}, '', url);
+  }
+
+  function showError(msg) {
+    errorMsgEl.textContent = msg;
+    errorMsgEl.style.display = 'block';
+    showLobby();
+  }
+
+  let toastTimer;
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
+  }
+
+  // Apply default theme
+  applyTheme(selectedColor);
+</script>
+</body>
+</html>
