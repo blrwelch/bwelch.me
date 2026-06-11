@@ -67,7 +67,8 @@
       "Bash(sed -i '' 's/Internal · AI · Lextech/Internal · AI · Enterprise/' /Users/brittanywelch/Documents/public_html/files/index.html)",
       "Bash(export TMPDIR=/tmp)",
       "Bash(grep -n \"Lextech\" /Users/brittanywelch/Documents/public_html/files/index.html)",
-      "Bash(rm /private/tmp/claude-501/-Users-brittanywelch-Documents-public-html/d4b08464-daf6-471c-86c1-3234d4db95d3/tasks/b974lo67t.output)"
+      "Bash(rm /private/tmp/claude-501/-Users-brittanywelch-Documents-public-html/d4b08464-daf6-471c-86c1-3234d4db95d3/tasks/b974lo67t.output)",
+      "WebFetch(domain:www.indeed.com)"
     ]
   }
 }
