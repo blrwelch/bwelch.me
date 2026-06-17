@@ -615,11 +615,11 @@ hr.divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; 
   /* Resume layout: force two-column regardless of viewport width */
   .resume-layout {
     display: grid !important;
-    grid-template-columns: 2in 1fr !important;
+    grid-template-columns: 1.85in 1fr !important;
     max-width: none !important;
     margin: 0 !important;
-    padding: 0.38in 0.35in 0.3in 0.3in !important;
-    gap: 0.32in !important;
+    padding: 0.28in 0.3in 0.2in 0.28in !important;
+    gap: 0.28in !important;
     height: 11in !important;
     overflow: hidden !important;
     align-items: start !important;
@@ -630,106 +630,101 @@ hr.divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; 
     position: static !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 18pt !important;
+    gap: 12pt !important;
   }
 
   .sidebar-section h3 {
-    font-size: 6.5pt;
-    margin-bottom: 8pt;
-    padding-bottom: 5pt;
+    font-size: 6pt;
+    margin-bottom: 6pt;
+    padding-bottom: 4pt;
     color: #1a5f7a !important;
   }
 
-  .tag-cloud { gap: 4pt; }
+  .tag-cloud { gap: 3pt; }
 
   .tag {
-    font-size: 6.5pt;
-    padding: 2pt 7pt;
+    font-size: 6pt;
+    padding: 1.5pt 6pt;
     background: #e8f4f8 !important;
     border-color: #b8d8e8 !important;
     color: #1a5f7a !important;
     border-radius: 99pt;
   }
 
+  .tool-list { gap: 5pt !important; }
+
   .tool-list li,
   .edu-block,
   .edu-block strong,
-  .edu-block span { font-size: 7.5pt; color: #333 !important; }
+  .edu-block span { font-size: 7pt; color: #333 !important; }
 
   .tool-list li::before { background: #1a5f7a !important; }
 
   /* Hero */
   .resume-hero {
-    padding-bottom: 14pt;
+    padding-bottom: 8pt;
     border-color: #ddd !important;
     margin-bottom: 0;
   }
 
   .resume-hero h1 {
-    font-size: 28pt;
+    font-size: 24pt;
     color: #000 !important;
-    margin-bottom: 3pt;
+    margin-bottom: 2pt;
   }
 
   .resume-hero .title-tag {
-    font-size: 7pt;
-    color: #1a5f7a !important;
-    margin-bottom: 8pt;
-  }
-
-  .resume-hero .tagline {
-    font-size: 9pt;
-    color: #444 !important;
-    margin-bottom: 10pt;
-    max-width: none;
-  }
-
-  .contact-row { gap: 4pt 14pt; }
-
-  .contact-row a,
-  .contact-row span { font-size: 7.5pt; color: #555 !important; }
-
-  /* Sections */
-  .main-content { gap: 18pt; }
-
-  .resume-section h2 {
     font-size: 6.5pt;
     color: #1a5f7a !important;
-    margin-bottom: 10pt;
-    padding-bottom: 5pt;
+    margin-bottom: 6pt;
+  }
+
+  .contact-row { gap: 3pt 12pt; }
+
+  .contact-row a,
+  .contact-row span { font-size: 7pt; color: #555 !important; }
+
+  /* Sections */
+  .main-content { gap: 12pt; }
+
+  .resume-section h2 {
+    font-size: 6pt;
+    color: #1a5f7a !important;
+    margin-bottom: 7pt;
+    padding-bottom: 4pt;
     border-color: #ddd !important;
   }
 
-  .profile-text { font-size: 8pt; color: #333 !important; line-height: 1.55; }
+  .profile-text { font-size: 7.5pt; color: #333 !important; line-height: 1.5; }
 
   /* Jobs */
   .job {
-    margin-bottom: 12pt;
-    padding-bottom: 12pt;
+    margin-bottom: 8pt;
+    padding-bottom: 8pt;
     border-color: #ddd !important;
   }
 
   .job:last-child { margin-bottom: 0; padding-bottom: 0; }
 
-  .job-title { font-size: 9.5pt; color: #000 !important; }
-  .job-dates { font-size: 7pt; color: #666 !important; }
-  .job-company { font-size: 7.5pt; color: #1a5f7a !important; margin-bottom: 7pt; }
+  .job-title { font-size: 9pt; color: #000 !important; }
+  .job-dates { font-size: 6.5pt; color: #666 !important; }
+  .job-company { font-size: 7pt; color: #1a5f7a !important; margin-bottom: 5pt; }
 
-  .job-bullets { gap: 4pt; }
+  .job-bullets { gap: 3pt; }
 
   .job-bullets li {
-    font-size: 7.5pt;
+    font-size: 7pt;
     color: #333 !important;
-    line-height: 1.45;
-    padding-left: 11pt;
+    line-height: 1.4;
+    padding-left: 10pt;
   }
 
   .job-bullets li::before {
     background: #1a5f7a !important;
     opacity: 0.7;
-    top: 5pt;
-    width: 3.5pt;
-    height: 3.5pt;
+    top: 4.5pt;
+    width: 3pt;
+    height: 3pt;
   }
 
   /* Cover letter print */
