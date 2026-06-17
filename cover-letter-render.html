@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cover Letter – Britt Welch | Staff Design Engineer, Render</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #0a1628;
+    --surface:    #142845;
+    --surface-2:  #1a3358;
+    --border:     rgba(176, 193, 212, 0.18);
+    --border-strong: rgba(176, 193, 212, 0.34);
+    --teal:       #2dd4bf;
+    --teal-bright: #5eead4;
+    --teal-soft:  rgba(45, 212, 191, 0.12);
+    --text:       #f1f5f9;
+    --text-strong: #ffffff;
+    --text-muted: #cbd5e1;
+    --text-dim:   #b0c1d4;
+    --on-teal:    #0a1628;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+    background: var(--bg);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ── Top accent bar ──────────────────────────────────── */
+  .accent-bar {
+    height: 4px;
+    background: var(--teal);
+    width: 100%;
+  }
+
+  /* ── Header ──────────────────────────────────────────── */
+  .header {
+    background: var(--surface);
+    padding: 22px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--text-strong);
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--teal); }
+
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.03em;
+    text-align: right;
+  }
+  .header-meta strong {
+    display: block;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  /* ── Content area ────────────────────────────────────── */
+  .content {
+    padding: 48px 48px 56px;
+  }
+
+  /* ── Eyebrow ─────────────────────────────────────────── */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--teal);
+    display: block;
+  }
+
+  /* ── Subject heading ─────────────────────────────────── */
+  .subject {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--text-strong);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .date-line {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+
+  /* ── Divider ─────────────────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .divider::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 48px;
+    height: 2px;
+    background: var(--teal);
+    margin-top: -0.5px;
+  }
+
+  /* ── Body text ───────────────────────────────────────── */
+  .salutation {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-strong);
+    margin-bottom: 20px;
+  }
+
+  .body p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    max-width: 620px;
+    line-height: 1.75;
+  }
+
+  /* ── Sign-off ─────────────────────────────────────────── */
+  .signoff {
+    margin-top: 36px;
+  }
+  .signoff-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .signoff-name {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-strong);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .signoff-rule {
+    width: 64px;
+    height: 2px;
+    background: var(--teal);
+    margin-bottom: 12px;
+    border-radius: 1px;
+  }
+  .signoff-links {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .signoff-links a {
+    color: var(--teal-bright);
+    text-decoration: none;
+  }
+  .signoff-links .sep {
+    color: var(--border-strong);
+  }
+
+  /* ── Footer ───────────────────────────────────────────── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  footer .footer-teal {
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Print button (screen only) ──────────────────────── */
+  .print-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+  }
+  .print-btn {
+    background: var(--teal);
+    color: var(--on-teal);
+    border: none;
+    border-radius: 12px;
+    padding: 14px 22px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 32px rgba(45, 212, 191, 0.35);
+    transition: background 0.2s;
+  }
+  .print-btn:hover { background: var(--teal-bright); }
+  .print-btn svg { width: 16px; height: 16px; }
+
+  /* ── Print styles ─────────────────────────────────────── */
+  @media print {
+    @page {
+      size: letter;
+      margin: 0;
+    }
+
+    html, body {
+      background: #0a1628 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .print-bar { display: none !important; }
+
+    .page {
+      max-width: 100%;
+      min-height: 100vh;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="accent-bar"></div>
+
+  <header class="header">
+    <div class="logo">b<span>.</span>welch</div>
+    <div class="header-meta">
+      <strong>Brittany Welch</strong>
+      Senior UI/UX Designer · Brandon, MS
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="eyebrow">Cover letter</div>
+
+    <h1 class="subject">Staff Design Engineer</h1>
+    <p class="date-line">Render &nbsp;·&nbsp; June 2026</p>
+
+    <div class="divider"></div>
+
+    <p class="salutation">Hi Render team,</p>
+
+    <div class="body">
+      <p>I've spent 17 years in product design, and the work I'm proudest of has always been where design and engineering overlap. Not handing things off, but building them myself. That's why this role caught my attention.</p>
+      <p>My background is genuinely hybrid. I've shipped frontend code alongside design work and spent years in complex, data-heavy products where the gap between a comp and a working interface is where things go sideways. Closing that gap isn't a workaround for me, it's just how I work.</p>
+      <p>I've also spent the last few years consulting on AI-native product design, which has sharpened how I think about developer-facing tools. Technical users lose trust fast when an interface feels sloppy. Render's focus on craft and clear mental models for complex systems is exactly the kind of work I want to be doing.</p>
+      <p>On React and TypeScript, I have a solid working foundation and I grow quickly into a codebase. I won't pretend to know every tool on your stack, but I care deeply about what ships and I've never treated the code as someone else's problem.</p>
+      <p>Would love to connect.</p>
+    </div>
+
+    <div class="signoff">
+      <p class="signoff-text">Warmly,</p>
+      <div class="signoff-name">Britt Welch</div>
+      <div class="signoff-rule"></div>
+      <div class="signoff-links">
+        <a href="https://bwelch.me">bwelch.me</a>
+        <span class="sep">·</span>
+        <a href="mailto:blrwelch@gmail.com">blrwelch@gmail.com</a>
+        <span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/blrwelch/">linkedin.com/in/blrwelch</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Brittany Welch. All rights reserved.</p>
+    <span class="footer-teal">bwelch.me</span>
+  </footer>
+</div>
+
+<div class="print-bar">
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+</body>
+</html>

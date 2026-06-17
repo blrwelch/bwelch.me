@@ -88,7 +88,21 @@
       "mcp__Claude_in_Chrome__javascript_tool",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://bwelchme-production.up.railway.app)",
       "WebFetch(domain:www.engadget.com)",
-      "WebFetch(domain:gizmodo.com)"
+      "WebFetch(domain:gizmodo.com)",
+      "Bash(python3 -c \"from reportlab.lib.pagesizes import letter; print\\('reportlab ok'\\)\")",
+      "Bash(fc-list)",
+      "Bash(/usr/local/bin/python3 --version)",
+      "Bash(brew list *)",
+      "Read(//usr/local/**)",
+      "Read(//opt/homebrew/**)",
+      "Read(//Users/brittanywelch/.pyenv/**)",
+      "Bash(python3 -c \"import sys; print\\(sys.path\\)\")",
+      "Bash(python3 -c \"import reportlab\")",
+      "Bash(python3 -m ensurepip)",
+      "Bash(python3 -m pip install reportlab)",
+      "Bash(curl -sS https://bootstrap.pypa.io/get-pip.py)",
+      "Bash(python3)",
+      "Bash(curl -sS https://bootstrap.pypa.io/pip/3.8/get-pip.py)"
     ]
   }
 }
