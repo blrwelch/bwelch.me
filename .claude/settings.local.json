@@ -102,7 +102,9 @@
       "Bash(python3 -m pip install reportlab)",
       "Bash(curl -sS https://bootstrap.pypa.io/get-pip.py)",
       "Bash(python3)",
-      "Bash(curl -sS https://bootstrap.pypa.io/pip/3.8/get-pip.py)"
+      "Bash(curl -sS https://bootstrap.pypa.io/pip/3.8/get-pip.py)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -rn \"—\\\\|–\" /Users/brittanywelch/Documents/public_html/case-studies/autozone.html /Users/brittanywelch/Documents/public_html/case-studies/cspire.html /Users/brittanywelch/Documents/public_html/case-studies/easyvax.html)",
+      "Bash(python3 -)"
     ]
   }
 }

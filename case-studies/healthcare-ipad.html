@@ -353,7 +353,7 @@
 <section class="cs-section">
   <div class="container">
     <h2 class="reveal">What changed</h2>
-    <p class="lead reveal">Specific metrics covered in the full case study (request access below). Public-facing highlights:</p>
+    <p class="lead reveal">Specific metrics covered in the full case study Public-facing highlights:</p>
 
     <div class="outcomes">
       <div class="outcome-card reveal">
@@ -397,38 +397,22 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section>
+<!-- Contact -->
+<section class="contact">
   <div class="container">
     <div class="cs-cta reveal">
-      <span class="cs-eyebrow">Request full case study</span>
-      <h2>Want to see the actual designs?</h2>
-      <p>The complete case study, including screens, IA artifacts, and impact data, is available as a password-protected PDF. Drop your details and I'll send it over.</p>
-
-      <form id="csForm" novalidate>
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required autocomplete="name" />
-          <input type="email" name="email" placeholder="Email" aria-label="Email address" required autocomplete="email" />
-        </div>
-        <input type="text" name="company" placeholder="Company / role (optional)" aria-label="Company or role, optional" autocomplete="organization" />
-        <textarea name="message" placeholder="Anything else? (optional)" aria-label="Additional message, optional"></textarea>
-        <input type="hidden" name="_subject" value="Portfolio Request | Healthcare iPad case study" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="case_study" value="Healthcare iPad app" />
-        <div class="form-submit">
-          <button type="submit" class="btn btn-primary" id="csSubmit">
-            <span class="submit-label">Request the PDF</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-          <p class="form-note">Password-protected &amp; watermarked. Sent within 1 business day; password follows in a separate message.</p>
-        </div>
-        <p class="form-error" id="csError">Something went wrong. Please try again or email blrwelch@gmail.com.</p>
-      </form>
-
-      <div class="form-success" id="csSuccess" role="status">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        <span>Request received. I'll be in touch shortly.</span>
+      <span class="cs-eyebrow">Get in touch</span>
+      <h2>Let's build something users love.</h2>
+      <p>I'm currently exploring lead and senior UI/UX design opportunities. If you're hiring, collaborating, or just want to chat about design, I'd love to hear from you.</p>
+      <div class="contact-ctas">
+        <a href="mailto:blrwelch@gmail.com?subject=Hello%20Brittany" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email me
+        </a>
+        <a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          Connect on LinkedIn
+        </a>
       </div>
     </div>
   </div>
@@ -462,7 +446,6 @@
 </footer>
 
 <script>
-  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/blrwelch@gmail.com';
   document.querySelectorAll('svg:not([aria-label]):not([role="img"])').forEach(svg => {
     if (!svg.hasAttribute('aria-hidden')) svg.setAttribute('aria-hidden', 'true');
   });
@@ -521,31 +504,6 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  const csForm = document.getElementById('csForm');
-  const csError = document.getElementById('csError');
-  const csSuccess = document.getElementById('csSuccess');
-  const csSubmit = document.getElementById('csSubmit');
-  const submitLabel = csSubmit.querySelector('.submit-label');
-
-  csForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    csError.classList.remove('visible');
-    if (!csForm.checkValidity()) { csForm.reportValidity(); return; }
-    const data = Object.fromEntries(new FormData(csForm));
-    const cs = data.case_study || 'Portfolio';
-    data._subject = `Portfolio Request | ${cs} | ${data.name}${data.company ? ` (${data.company})` : ''}`;
-    data._autoresponse = `Hi ${data.name},\n\nThanks for requesting my ${cs} case study. I'll send a password-protected, watermarked PDF within one business day, with the password in a separate message for security.\n\nIf you have any questions in the meantime, just reply to this email.\n\nBrittany Welch\nbwelch.me`;
-    const formBody = new FormData();
-    Object.entries(data).forEach(([k, v]) => formBody.append(k, v));
-    csSubmit.style.opacity = '0.6'; csSubmit.style.pointerEvents = 'none';
-    submitLabel.textContent = 'Sending...';
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formBody
-      });
       if (!res.ok) throw new Error();
       csForm.style.display = 'none';
       csSuccess.classList.add('visible');

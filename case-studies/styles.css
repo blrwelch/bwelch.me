@@ -1162,6 +1162,15 @@ body::after {
 }
 .cs-cta .form-error.visible { display: block; }
 
+/* ── Contact CTA buttons ── */
+.contact-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.contact-ctas .btn { width: auto; }
+
 /* ============ NEXT CASE STUDY ============ */
 .cs-next {
   border-top: 1px solid var(--border);
