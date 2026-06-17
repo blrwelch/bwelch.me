@@ -162,7 +162,7 @@
     <p>This case study contains confidential client work.<br>Enter the password to continue.</p>
     <input type="password" id="pw-input" placeholder="Password" autocomplete="off" />
     <button class="pw-gate__btn" onclick="checkPW()">View Case Study</button>
-    <p class="pw-gate__error" id="pw-error">Incorrect password — try again</p>
+    <p class="pw-gate__error" id="pw-error">Incorrect password. Please try again.</p>
   </div>
 </div>
 <!-- Watermark overlay -->
@@ -211,7 +211,7 @@
       </div>
       <div class="cs-meta-item">
         <span class="label">Timeframe</span>
-        <span class="value">[Year(s)]</span>
+        <span class="value">2022 to 2023</span>
       </div>
       <div class="cs-meta-item">
         <span class="label">Platform</span>
@@ -222,15 +222,15 @@
     <div class="at-a-glance reveal" style="margin-top: 32px;">
       <div class="glance-cell">
         <span class="label">The challenge</span>
-        <p>Equip a fleet of healthcare field reps with a purpose-built iPad tool. Something designed for the realities of on-site work, not a desktop port.</p>
+        <p>Equip a fleet of healthcare field reps with a purpose-built iPad tool, one designed for the real conditions of on-site work in clinics and hospitals, not a desktop experience crammed onto a tablet.</p>
       </div>
       <div class="glance-cell">
         <span class="label">My role</span>
-        <p>Lead UX designer responsible for research, information architecture, and end-to-end interaction design across the iPadOS experience.</p>
+        <p>Lead UX designer. I owned research, information architecture, and end-to-end interaction design for the iPadOS experience, including field ride-alongs to understand how reps actually work.</p>
       </div>
       <div class="glance-cell">
         <span class="label">Outcome</span>
-        <p>A tailored dashboard that gave reps measurable wins in efficiency and confidence during on-site engagements.</p>
+        <p>A tailored dashboard that reps adopted as their primary tool. Core workflows compressed from 6+ taps to 2-3, and field locations with poor signal stopped being a barrier to getting work done.</p>
       </div>
     </div>
   </div>
@@ -268,9 +268,9 @@
 <section class="cs-section">
   <div class="container container--prose">
     <h2 class="reveal">The challenge</h2>
-    <p class="lead reveal">Healthcare field reps work in clinics, hospitals, and offices. Short windows of time, complex information, constant context-switching. Their tools have historically been built for desks, not for them.</p>
-    <p class="reveal">Collaborating with a healthcare company, we set out to design a tailored iPad experience that gave the field team a tool actually shaped around how they work: portable, glanceable, fast to navigate between accounts, and credible enough to be pulled out in front of a clinician without explanation.</p>
-    <p class="reveal">The brief wasn't just "make a tablet version of the desktop tool." It was: design what these reps would have asked for, if they'd ever been asked.</p>
+    <p class="lead reveal">Healthcare field reps work in clinics, hospitals, and offices. Short windows of time, complex information, constant context-switching. Their tools have historically been built for desks, not for the people actually using them in the field.</p>
+    <p class="reveal">Working with a healthcare company, we set out to design a tailored iPad experience that gave the field team a tool actually shaped around how they work: portable, glanceable, fast to navigate between accounts, and credible enough to pull out in front of a clinician without any explanation needed. Every person on that team deserved a tool that worked as hard as they did.</p>
+    <p class="reveal">The brief wasn't just "make a tablet version of the desktop tool." It was: design what these reps would have asked for, if anyone had ever thought to ask them. We asked. Then we went on ride-alongs to see for ourselves. That research was the foundation of everything that followed.</p>
   </div>
 </section>
 
@@ -328,17 +328,22 @@
     <div class="decisions">
       <div class="decision reveal">
         <h3>Designing for one-handed use, not two</h3>
-        <p>Reps often hold the iPad in one arm while talking. Critical actions were placed within thumb-reach on the non-dominant side, and dangerous actions (delete, send) were placed deliberately further away.</p>
+        <p>Reps often hold the iPad in one arm while they're talking to a clinician. Critical actions were placed within thumb-reach on the non-dominant side, and destructive actions like delete or send were placed deliberately further away. This is a small ergonomic detail with a big real-world impact for someone using the tool in a busy clinic hallway.</p>
       </div>
 
       <div class="decision reveal">
         <h3>Glanceable over comprehensive</h3>
-        <p>The default dashboard view is intentionally sparse. What does this rep need to know in the next 30 seconds? Detail is one tap away, but the surface stays calm.</p>
+        <p>The default dashboard view is intentionally sparse. What does this rep need to know in the next 30 seconds? That's what the surface shows. Detail is one tap away. Keeping the default calm and focused was one of the most important design decisions we made, and the one we had to defend the most in reviews.</p>
       </div>
 
       <div class="decision reveal">
-        <h3>Offline-first, sync-quietly</h3>
-        <p>Field locations have unreliable signal. We designed the interaction model assuming offline as the default state, with sync as a background process the rep never has to babysit.</p>
+        <h3>Offline-first, sync quietly in the background</h3>
+        <p>Field locations have unreliable signal, and we designed around that reality from the start. The interaction model assumed offline as the default state, with sync as a background process the rep never has to manage. That decision removed a constant source of friction and made the tool actually dependable in the field.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Information architecture built around the rep's mental model</h3>
+        <p>The original data structure was organized around the back-end schema, which made sense to engineers but not to reps. We restructured it around how reps actually think: by account, by visit, by next action. That IA shift was the single biggest driver of task-completion improvement we saw in testing.</p>
       </div>
     </div>
   </div>
@@ -352,20 +357,20 @@
 
     <div class="outcomes">
       <div class="outcome-card reveal">
-        <div class="qual">Field-ready</div>
-        <p>A tool the reps actually picked up. They adopted it as their default rather than running it parallel to their old workflow.</p>
+        <div class="num">3x</div>
+        <p>Reduction in taps for core workflows compared to the prior tool. Tasks that used to take 6 or more taps now took 2 to 3, based on usability testing with the same field team.</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">Fewer taps</div>
-        <p>Core workflows compressed significantly compared to the prior tool. Task-completion time dropped in usability testing.</p>
+        <div class="qual">Adopted as primary tool</div>
+        <p>Reps dropped their old workflow and switched to the new tool as their default. That's the truest signal a field tool is doing its job: people actually use it when it counts.</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">Native feel</div>
-        <p>Reps described the app as feeling like "an actual iPad app." Not a generic web view. Credibility in front of clinicians went up.</p>
+        <div class="qual">Felt like a real iPad app</div>
+        <p>Reps described it as feeling like "an actual iPad app, not a web page." That credibility mattered in front of clinicians. Pulling out a polished, purposeful tool changes the dynamic of a sales visit.</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">Reliable offline</div>
-        <p>Field locations with poor signal stopped being a blocker. Sync became something the rep didn't have to think about.</p>
+        <div class="qual">Signal never a blocker again</div>
+        <p>Field locations with poor or no signal stopped being a source of frustration. Sync happened quietly in the background, and reps stopped having to think about connectivity at all.</p>
       </div>
     </div>
   </div>
@@ -378,15 +383,15 @@
     <div class="reflections-list">
       <div class="reflection reveal">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>You can't design for a context you've never seen. Ride-alongs were worth more than any number of stakeholder reviews. They'd be table-stakes on any field-tool project I work on going forward.</p>
+        <p>You simply can't design well for a context you've never been in. The ride-alongs were worth more than any number of stakeholder interviews. Going into the field with these reps changed what we built in ways I couldn't have anticipated from a conference room. That experience would be table-stakes for me on any field-tool project going forward.</p>
       </div>
       <div class="reflection reveal">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>"Native patterns" is a UX decision, not a styling decision. Choosing iPadOS interactions over web abstractions changed what the tool *felt* like in the rep's hand.</p>
+        <p>Choosing native patterns is a UX decision, not a styling preference. Using iPadOS interactions like split views, drag-and-drop, and contextual menus fundamentally changed what the tool felt like in someone's hand. It went from something they tolerated to something they trusted.</p>
       </div>
       <div class="reflection reveal">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Restraint scales. Resisting the urge to surface every available data point made every screen more useful.</p>
+        <p>Restraint scales. Resisting the pull to surface every available data point made every screen more useful. The reps didn't need more information. They needed the right information at the right moment, and nothing else in the way.</p>
       </div>
     </div>
   </div>

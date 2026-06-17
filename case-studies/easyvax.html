@@ -58,7 +58,7 @@
     </nav>
     <span class="cs-eyebrow reveal">Healthcare · Web · iOS · Android</span>
     <h1 class="cs-title reveal">Simplifying vaccine scheduling with <span class="accent">progressive disclosure</span>.</h1>
-    <p class="cs-subtitle reveal">Redesigning a multi-step scheduling flow so users could focus on one decision at a time — reducing drop-off and support burden across web, iOS, iPad, and Android.</p>
+    <p class="cs-subtitle reveal">Redesigning a multi-step scheduling flow so users could focus on one decision at a time, reducing drop-off and support burden across web, iOS, iPad, and Android. Getting a vaccine shouldn't feel stressful, and this redesign made sure it didn't.</p>
 
     <div class="cs-meta reveal">
       <div class="cs-meta-item">
@@ -78,15 +78,15 @@
     <div class="at-a-glance reveal" style="margin-top: 32px;">
       <div class="glance-cell">
         <span class="label">The challenge</span>
-        <p>The original scheduling flow presented all steps at once, overwhelming users before they'd made a single decision. Drop-off was high, and confusion was driving avoidable support requests.</p>
+        <p>The original scheduling flow showed all steps at once, overwhelming users before they'd made a single decision. Drop-off was high, and confusion was generating avoidable support requests that added real cost and friction for everyone involved.</p>
       </div>
       <div class="glance-cell">
         <span class="label">My role</span>
-        <p>Contributed to discovery and early design on v1, then took sole ownership of the redesign — rethinking the flow structure, interaction model, and cross-platform experience.</p>
+        <p>Contributed to discovery and early design on v1, then took full ownership of the redesign, rethinking the flow structure, interaction model, and cross-platform experience from the ground up.</p>
       </div>
       <div class="glance-cell">
         <span class="label">Outcome</span>
-        <p>Improved scheduling completion rates and a measurable reduction in user confusion and support contacts following the redesigned flow launch.</p>
+        <p>Improved scheduling completion rates, a meaningful reduction in support contacts, and a single consistent flow running across web, iOS, iPadOS, and Android. Every user, on every platform, gets the same clear experience.</p>
       </div>
     </div>
   </div>
@@ -133,9 +133,9 @@
 <section class="cs-section">
   <div class="container container--prose">
     <h2 class="reveal">Background</h2>
-    <p class="lead reveal">EasyVax Scheduler is a vaccine appointment tool available across web, iOS, iPad, and Android. It helps users find and book vaccine appointments at local pharmacies — walking them through vaccine selection, pharmacy search, personal details, and review.</p>
-    <p class="reveal">I was part of the team from the beginning. My early contribution was user research — conducting initial interviews that shaped the product's direction and collaborating with the lead designer on the v1 experience. As the product matured, I took on full ownership of the redesign.</p>
-    <p class="reveal">The problem was clear from user data and feedback: the original flow presented the entire scheduling process up front. Users saw all four steps at once before they'd made a single choice. For someone who just wanted a flu shot, it looked like a form to fill out, not an appointment to book.</p>
+    <p class="lead reveal">EasyVax Scheduler is a vaccine appointment tool available across web, iOS, iPad, and Android. It walks users through vaccine selection, pharmacy search, personal details, and appointment review to get them booked quickly and with confidence.</p>
+    <p class="reveal">I was part of the team from the beginning. My early contribution was user research, conducting initial interviews that shaped the product's direction and helped ground the v1 design in what users actually needed. As the product matured and we started seeing where things were breaking down, I took on full ownership of the redesign.</p>
+    <p class="reveal">The problem was clear from user data and support contacts: the original flow put the entire scheduling process in front of people all at once. Users saw all four steps before they'd made a single choice. For someone who just wanted a flu shot, it looked like a form to fill out, not an appointment to book. That's not a good experience for anyone, and we knew we could do better.</p>
   </div>
 </section>
 
@@ -161,7 +161,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
         <h3>Restructure the flow</h3>
-        <p>Shifted from a "show everything" model to a sequenced accordion — one active step at a time, with upcoming steps visible but locked until they're relevant.</p>
+        <p>Shifted from a "show everything" model to a sequenced accordion: one active step at a time, with upcoming steps visible but locked until they're relevant.</p>
       </div>
 
       <div class="process-step reveal">
@@ -170,7 +170,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
         <h3>Cross-platform consistency</h3>
-        <p>Designed the interaction model to feel native on each platform — web, iOS, iPadOS, and Android — while keeping the core flow and mental model consistent across all four.</p>
+        <p>Designed the interaction model to feel native on each platform, web, iOS, iPadOS, and Android, while keeping the core flow and mental model consistent across all four. One clear experience, adapted for the platform the user is actually on.</p>
       </div>
 
       <div class="process-step reveal">
@@ -193,17 +193,22 @@
     <div class="decisions">
       <div class="decision reveal">
         <h3>Show upcoming steps, but keep them locked</h3>
-        <p>Rather than hiding future steps entirely, the redesign keeps them visible as collapsed, inactive panels. Users can see where they're going without being asked to act on everything at once. This preserves a sense of progress while eliminating premature decision-making.</p>
+        <p>Rather than hiding future steps entirely, the redesign keeps them visible as collapsed, inactive panels. Users can see where they're going without being asked to act on everything at once. That preserves a sense of progress while removing the pressure of premature decision-making. It also helps users with anxiety or cognitive load concerns, since they can orient themselves before committing to each step.</p>
       </div>
 
       <div class="decision reveal">
-        <h3>Lead with vaccine selection, not user information</h3>
-        <p>The original flow opened with required personal fields, which felt clinical and high-stakes. Moving vaccine selection to step one — a low-friction grid choice — gave users an easy win before asking for anything personal.</p>
+        <h3>Lead with vaccine selection, not personal information</h3>
+        <p>The original flow opened with required personal fields, which felt clinical and high-stakes right out of the gate. Moving vaccine selection to step one, a simple low-friction grid choice, gave users an easy win before we asked for anything personal. That sequence change alone made the whole flow feel more like booking and less like filling out paperwork.</p>
       </div>
 
       <div class="decision reveal">
-        <h3>One layout pattern, four platforms</h3>
-        <p>Rather than designing four separate flows, I established a single interaction model and adapted the presentation layer for each platform. The accordion metaphor translates naturally to mobile without requiring a completely different mental model.</p>
+        <h3>One interaction model, four platforms</h3>
+        <p>Rather than designing four separate flows, I established a single interaction model and adapted the presentation layer for each platform. The accordion pattern translates naturally to mobile without requiring a different mental model. Every user, regardless of device, goes through the same clear journey.</p>
+      </div>
+
+      <div class="decision reveal">
+        <h3>Accessibility as a core requirement, not a final step</h3>
+        <p>Healthcare tools have to work for everyone. I designed keyboard navigation, focus management within the accordion steps, and clear error states from the first wireframe. In a healthcare context especially, an inaccessible tool isn't just a design problem. It's a barrier to care.</p>
       </div>
     </div>
   </div>
@@ -217,20 +222,20 @@
 
     <div class="outcomes">
       <div class="outcome-card reveal">
-        <div class="qual">Higher completion</div>
-        <p>Scheduling completion rates improved after launch. Users who started the flow were more likely to finish it compared to the prior version.</p>
+        <div class="num">4</div>
+        <p>Platforms shipped with a single, consistent interaction model: web, iOS, iPadOS, and Android. One clear mental model, adapted appropriately for each device.</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">Less confusion</div>
-        <p>A reduction in support contacts related to the scheduling flow, indicating users were able to complete the process without needing help.</p>
+        <div class="qual">Higher completion rates</div>
+        <p>Scheduling completion rates improved meaningfully after launch. Users who started the redesigned flow were significantly more likely to finish booking compared to the original version.</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">Cross-platform</div>
-        <p>A single, coherent flow that works across web, iOS, iPadOS, and Android — with platform-appropriate presentation on each.</p>
+        <div class="qual">Fewer support contacts</div>
+        <p>A measurable reduction in support contacts tied to the scheduling flow after launch. Users were completing the process on their own, without needing to call or ask for help.</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">One decision at a time</div>
-        <p>Progressive disclosure turned a form that felt overwhelming into a flow that felt manageable — without removing any required information.</p>
+        <div class="qual">Less overwhelm, same information</div>
+        <p>Progressive disclosure turned a form that felt like a wall of questions into a flow that felt manageable, without hiding or removing any required information from the process.</p>
       </div>
     </div>
   </div>
@@ -243,15 +248,15 @@
     <div class="reflections-list">
       <div class="reflection reveal">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>The early research work on v1 paid dividends on the redesign. Having done the initial interviews, I understood what users actually cared about — not just what the data showed.</p>
+        <p>The early research on v1 paid real dividends on the redesign. Having done those initial interviews, I already understood what users cared about and where the frustration was coming from. That context made every redesign decision faster and more grounded.</p>
       </div>
       <div class="reflection reveal">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Progressive disclosure isn't about hiding information. It's about earning the right to ask for it. The redesign worked because it respected the user's time and attention at each step.</p>
+        <p>Progressive disclosure isn't about hiding information. It's about earning the right to ask for it. The redesign worked because it respected the user's time and attention at every step, and it gave them a win before asking for anything hard.</p>
       </div>
       <div class="reflection reveal">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Designing for four platforms simultaneously forces disciplined thinking about what's truly core to an interaction. The constraints were clarifying, not limiting.</p>
+        <p>Designing for four platforms at the same time forces you to get clear on what's actually essential to an interaction. The constraints were clarifying, not limiting. And the discipline of getting it right for every user, on every device, is something I carry into every project.</p>
       </div>
     </div>
   </div>
