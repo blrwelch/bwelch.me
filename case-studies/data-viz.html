@@ -496,16 +496,6 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-      if (!res.ok) throw new Error();
-      csForm.style.display = 'none';
-      csSuccess.classList.add('visible');
-    } catch (err) {
-      csError.classList.add('visible');
-    } finally {
-      csSubmit.style.opacity = ''; csSubmit.style.pointerEvents = '';
-      submitLabel.textContent = 'Request the PDF';
-    }
-  });
 </script>
 
 <script src="device-animate.js"></script>

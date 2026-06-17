@@ -107,7 +107,9 @@
       "Bash(python3 -)",
       "Bash(node mtg/server.js)",
       "Bash(curl -s http://localhost:3742/og-image.png)",
-      "Bash(echo \"size: $\\(curl -s http://localhost:3742/og-image.png)"
+      "Bash(echo \"size: $\\(curl -s http://localhost:3742/og-image.png)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"pw-gate\\\\|pw-gate.js\\\\|checkPW\" /Users/brittanywelch/Documents/public_html/case-studies/autozone.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp2 grep -n \"\\\\.reveal\" /Users/brittanywelch/Documents/public_html/case-studies/styles.css)"
     ]
   }
 }
