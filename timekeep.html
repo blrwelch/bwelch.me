@@ -424,6 +424,131 @@
       .nest-btn { width: 170px; height: 170px; }
       .nest-btn-icon { font-size: 36px; }
     }
+
+    .share-btn {
+      height: 36px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--teal-100);
+      background: var(--surface);
+      color: var(--teal-700);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .share-btn:hover { background: var(--teal-50); }
+    .share-btn i { font-size: 15px; }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-header h2 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-faint);
+      font-size: 20px;
+      line-height: 1;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+    }
+    .modal-close:hover { color: var(--text); }
+
+    .modal canvas {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .download-btn {
+      flex: 1;
+      height: 42px;
+      border-radius: var(--radius);
+      border: none;
+      background: var(--teal-600);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background: var(--teal-700); }
+    .download-btn i { font-size: 16px; }
+
+    .copy-btn {
+      height: 42px;
+      padding: 0 16px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border-mid);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: var(--surface-2); }
+    .copy-btn i { font-size: 15px; }
+
+    .modal-hint {
+      font-size: 12px;
+      color: var(--text-faint);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
   </style>
 </head>
 <body>
@@ -465,11 +590,35 @@
 
     <div class="log-header">
       <h2>Time log</h2>
-      <button class="clear-btn" onclick="clearLog()">Clear all</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="share-btn" onclick="openShareModal()">
+          <i class="ti ti-share" aria-hidden="true"></i> Share snapshot
+        </button>
+        <button class="clear-btn" onclick="clearLog()">Clear all</button>
+      </div>
     </div>
 
     <div id="logList">
       <div class="log-empty">No entries yet. Start the timer to begin.</div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="shareModal" onclick="closeShareModal(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Share snapshot">
+      <div class="modal-header">
+        <h2>Social snapshot</h2>
+        <button class="modal-close" onclick="closeShareModal()" aria-label="Close"><i class="ti ti-x" aria-hidden="true"></i></button>
+      </div>
+      <canvas id="shareCanvas"></canvas>
+      <div class="modal-actions">
+        <button class="download-btn" onclick="downloadSnapshot()">
+          <i class="ti ti-download" aria-hidden="true"></i> Download image
+        </button>
+        <button class="copy-btn" id="copyBtn" onclick="copySnapshot()">
+          <i class="ti ti-copy" aria-hidden="true"></i> Copy
+        </button>
+      </div>
+      <p class="modal-hint">Download and post to LinkedIn, Facebook, or anywhere you share updates.</p>
     </div>
   </div>
 
@@ -661,6 +810,185 @@
     document.getElementById('newProjectInput').addEventListener('keydown', function(ev) {
       if (ev.key === 'Enter') addProject();
       if (ev.key === 'Escape') hideNewProject();
+    });
+
+    function getTotals() {
+      var map = {};
+      var grand = 0;
+      entries.forEach(function(e) {
+        var key = e.projectLabel || 'Unassigned';
+        map[key] = (map[key] || 0) + e.duration;
+        grand += e.duration;
+      });
+      var rows = Object.keys(map).map(function(k) { return { label: k, ms: map[k] }; });
+      rows.sort(function(a, b) { return b.ms - a.ms; });
+      return { rows: rows, grand: grand };
+    }
+
+    function fmtDur(ms) {
+      var s = Math.floor(ms / 1000);
+      var h = Math.floor(s / 3600);
+      var m = Math.floor((s % 3600) / 60);
+      var sec = s % 60;
+      if (h > 0) return h + 'h ' + pad(m) + 'm';
+      if (m > 0) return m + 'm ' + pad(sec) + 's';
+      return sec + 's';
+    }
+
+    function drawSnapshot() {
+      var dpr = window.devicePixelRatio || 1;
+      var W = 1200, H;
+      var totals = getTotals();
+      var rowCount = Math.min(totals.rows.length, 8);
+      H = 628 + Math.max(0, rowCount - 3) * 56;
+
+      var canvas = document.getElementById('shareCanvas');
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = '100%';
+      canvas.style.height = 'auto';
+      var ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      var BG = '#0d2e22', CARD = '#132e22', TEAL = '#1D9E75', TEAL_L = '#5DCAA5';
+      var WHITE = '#e0f5ee', MUTED = '#7abfa8', FAINT = '#3d7060';
+
+      ctx.fillStyle = BG;
+      ctx.fillRect(0, 0, W, H);
+
+      function roundRect(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+      }
+
+      var pad2 = 72;
+
+      ctx.fillStyle = '#1a3d2e';
+      roundRect(pad2, 48, W - pad2 * 2, H - 96, 28);
+      ctx.fill();
+
+      ctx.font = '500 28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.fillStyle = FAINT;
+      ctx.letterSpacing = '3px';
+      ctx.fillText('TIMEKEEP', pad2 + 52, 120);
+      ctx.letterSpacing = '0px';
+
+      var dateStr = new Date().toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      ctx.font = '400 26px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.fillStyle = MUTED;
+      ctx.textAlign = 'right';
+      ctx.fillText(dateStr, W - pad2 - 52, 120);
+      ctx.textAlign = 'left';
+
+      ctx.strokeStyle = '#2a5040';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(pad2 + 52, 138);
+      ctx.lineTo(W - pad2 - 52, 138);
+      ctx.stroke();
+
+      ctx.font = '300 100px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.fillStyle = TEAL_L;
+      ctx.textAlign = 'center';
+      ctx.fillText(fmtDur(totals.grand), W / 2, 270);
+
+      ctx.font = '400 26px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.fillStyle = MUTED;
+      ctx.fillText('total time tracked today', W / 2, 310);
+
+      ctx.strokeStyle = '#2a5040';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(pad2 + 52, 346);
+      ctx.lineTo(W - pad2 - 52, 346);
+      ctx.stroke();
+
+      ctx.textAlign = 'left';
+      var rowY = 400;
+      var barMaxW = W - pad2 * 2 - 104 - 280;
+
+      totals.rows.slice(0, 8).forEach(function(row, i) {
+        var frac = totals.grand > 0 ? row.ms / totals.grand : 0;
+
+        ctx.fillStyle = '#2a5040';
+        roundRect(pad2 + 52, rowY - 28, barMaxW, 36, 8);
+        ctx.fill();
+
+        ctx.fillStyle = i === 0 ? TEAL : TEAL_L;
+        var bw = Math.max(frac * barMaxW, 8);
+        roundRect(pad2 + 52, rowY - 28, bw, 36, 8);
+        ctx.fill();
+
+        ctx.font = '500 28px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+        ctx.fillStyle = WHITE;
+        ctx.fillText(row.label, pad2 + 52 + barMaxW + 32, rowY);
+
+        ctx.font = '400 26px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+        ctx.fillStyle = TEAL_L;
+        ctx.textAlign = 'right';
+        ctx.fillText(fmtDur(row.ms), W - pad2 - 52, rowY);
+        ctx.textAlign = 'left';
+
+        rowY += 56;
+      });
+
+      ctx.font = '400 22px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.fillStyle = FAINT;
+      ctx.textAlign = 'center';
+      ctx.fillText('Made with Timekeep', W / 2, H - 56);
+    }
+
+    function openShareModal() {
+      if (entries.length === 0) {
+        alert('Log some time first, then share your snapshot!');
+        return;
+      }
+      document.getElementById('shareModal').classList.add('open');
+      setTimeout(drawSnapshot, 50);
+    }
+
+    function closeShareModal(e) {
+      if (!e || e.target === document.getElementById('shareModal')) {
+        document.getElementById('shareModal').classList.remove('open');
+      }
+    }
+
+    function downloadSnapshot() {
+      var canvas = document.getElementById('shareCanvas');
+      var link = document.createElement('a');
+      link.download = 'timekeep-' + new Date().toISOString().slice(0, 10) + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function copySnapshot() {
+      var canvas = document.getElementById('shareCanvas');
+      canvas.toBlob(function(blob) {
+        try {
+          navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]).then(function() {
+            var btn = document.getElementById('copyBtn');
+            btn.innerHTML = '<i class="ti ti-check" aria-hidden="true"></i> Copied!';
+            setTimeout(function() {
+              btn.innerHTML = '<i class="ti ti-copy" aria-hidden="true"></i> Copy';
+            }, 2000);
+          });
+        } catch(err) {
+          downloadSnapshot();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', function(ev) {
+      if (ev.key === 'Escape') closeShareModal();
     });
   </script>
 </body>
