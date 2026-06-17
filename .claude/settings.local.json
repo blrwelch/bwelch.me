@@ -86,7 +86,9 @@
       "Bash(curl -s http://localhost:5500/)",
       "mcp__Claude_in_Chrome__read_console_messages",
       "mcp__Claude_in_Chrome__javascript_tool",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://bwelchme-production.up.railway.app)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://bwelchme-production.up.railway.app)",
+      "WebFetch(domain:www.engadget.com)",
+      "WebFetch(domain:gizmodo.com)"
     ]
   }
 }
