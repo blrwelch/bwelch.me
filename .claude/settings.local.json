@@ -109,7 +109,12 @@
       "Bash(curl -s http://localhost:3742/og-image.png)",
       "Bash(echo \"size: $\\(curl -s http://localhost:3742/og-image.png)",
       "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"pw-gate\\\\|pw-gate.js\\\\|checkPW\" /Users/brittanywelch/Documents/public_html/case-studies/autozone.html)",
-      "Bash(CLAUDE_CODE_TMPDIR=/tmp2 grep -n \"\\\\.reveal\" /Users/brittanywelch/Documents/public_html/case-studies/styles.css)"
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp2 grep -n \"\\\\.reveal\" /Users/brittanywelch/Documents/public_html/case-studies/styles.css)",
+      "Bash(python3 -m http.server 5501)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5501/)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"aria-live\\\\|role=\\\\\"alert\\\\\"\" /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"focus trap\\\\|focusTrap\\\\|focus.*modal\\\\|modal.*focus\" /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n '<nav ' /Users/brittanywelch/Documents/public_html/index.html)"
     ]
   }
 }
