@@ -602,7 +602,7 @@ body::after {
 .mockup-ipad__shell {
   background: #1c1c1e;
   border: 2px solid rgba(255,255,255,0.10);
-  border-radius: 22px;
+  border-radius: 12px;
   padding: 18px 8px;
   display: flex;
   flex-direction: column;
@@ -619,7 +619,7 @@ body::after {
   width: 100%;
   aspect-ratio: 3 / 4;
   background: #e8edf2;
-  border-radius: 3px;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
 }
@@ -657,7 +657,7 @@ body::after {
 .mockup-iphone__shell {
   background: #1c1c1e;
   border: 2px solid rgba(255,255,255,0.10);
-  border-radius: 38px;
+  border-radius: 22px;
   padding: 14px 6px;
   display: flex;
   flex-direction: column;
@@ -676,7 +676,7 @@ body::after {
   width: 100%;
   aspect-ratio: 9 / 19.5;
   background: #e8edf2;
-  border-radius: 6px;
+  border-radius: 14px;
   overflow: hidden;
   position: relative;
 }
@@ -713,7 +713,7 @@ body::after {
 .mockup-ipad--landscape .mockup-ipad__shell {
   flex-direction: row;
   padding: 5px 10px;
-  border-radius: 16px;
+  border-radius: 10px;
   gap: 6px;
   align-items: center;
 }
@@ -739,24 +739,27 @@ body::after {
 /* iPad landscape + iPhone side-by-side */
 .device-showcase--with-iphone {
   align-items: flex-end;
-  gap: 20px;
+  gap: 32px;
+  padding: 56px 40px 36px;
 }
-.device-showcase--with-iphone .mockup-ipad--landscape {
-  width: min(720px, 80%);
+.device-showcase--with-iphone .mockup-ipad--landscape,
+.device-showcase--with-iphone.device-showcase--ipad .mockup-ipad {
+  width: min(820px, 78%);
   margin-bottom: 0;
   flex-shrink: 1;
 }
 .device-showcase--with-iphone .mockup-iphone {
-  width: min(130px, 16%);
+  width: min(200px, 20%);
   flex-shrink: 0;
   margin-bottom: 0;
   opacity: 1;
   transform: none;
 }
 @media (max-width: 640px) {
-  .device-showcase--with-iphone { flex-direction: column; align-items: center; }
-  .device-showcase--with-iphone .mockup-ipad--landscape { width: 95%; }
-  .device-showcase--with-iphone .mockup-iphone { width: 110px; }
+  .device-showcase--with-iphone { flex-direction: column; align-items: center; padding: 32px 20px 24px; }
+  .device-showcase--with-iphone .mockup-ipad--landscape,
+  .device-showcase--with-iphone.device-showcase--ipad .mockup-ipad { width: 95%; }
+  .device-showcase--with-iphone .mockup-iphone { width: 140px; }
 }
 
 /* iPhone solo and responsive */
