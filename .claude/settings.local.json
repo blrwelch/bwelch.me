@@ -114,7 +114,13 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5501/)",
       "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"aria-live\\\\|role=\\\\\"alert\\\\\"\" /Users/brittanywelch/Documents/public_html/index.html)",
       "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"focus trap\\\\|focusTrap\\\\|focus.*modal\\\\|modal.*focus\" /Users/brittanywelch/Documents/public_html/index.html)",
-      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n '<nav ' /Users/brittanywelch/Documents/public_html/index.html)"
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n '<nav ' /Users/brittanywelch/Documents/public_html/index.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Contact CTA\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/ai-practice.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/data-viz.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/cspire.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/autozone.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/healthcare-ipad.html)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/easyvax.html)"
     ]
   }
 }
