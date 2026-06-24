@@ -106,22 +106,20 @@
 
   <div class="letter-body">
 
-    <p>Dear <span id="greeting" contenteditable="true" class="placeholder">Hiring Team</span>,</p>
+    <p>To Whom It May Concern,</p>
 
-    <p>I've spent 17 years designing products that have to work for real people at real scale. From Fortune 500 e-commerce to AI agent interfaces to enterprise platforms built for regulated industries, I've consistently operated at the intersection of craft, systems, and product thinking. The <span id="role" contenteditable="true" class="placeholder">[Role Title]</span> role at <span id="company1" contenteditable="true" class="placeholder">[Company]</span> is the kind of work I've been building toward.</p>
+    <p>I've been a product designer for 17 years, spanning Fortune 500 e-commerce, enterprise platforms in regulated industries, and most recently the AI frontier. I feel I really shine at the intersection of design, technology, and user-thinking. The <span contenteditable="true" class="placeholder">[Role Title]</span> role at <span contenteditable="true" class="placeholder">[Company]</span> is exactly what I've been preparing for.</p>
 
-    <p>Design systems are where a lot of my recent work lives. I've built and maintained them for clients in pharma, where consistency and accessibility requirements are unforgiving. More recently, I took one of those systems and migrated it into Claude Design's Design Systems tool, adapting component architecture and visual standards to fit an entirely different product environment. That kind of translation work requires knowing not just how to build a system, but how to evaluate one critically and evolve it without breaking what already works.</p>
+    <p>Design systems are essential for a good, consistent user experience. I've built and maintained them for pharma clients, where a good design foundation and accessibility are critical. Recently, I migrated one of our clients' systems to Claude Design's Design Systems tool, adapting both the architecture and visuals to a different environment to simplify the design-to-dev workflow and enable faster, cleaner iteration.</p>
 
-    <p>Motion and visual design are central to how I communicate ideas. I use Figma's advanced prototyping and Adobe After Effects to move from concept to something you can actually feel before a line of code gets written. At AutoZone, prototypes were how I got engineering and product aligned on a full site redesign that shipped with zero reported traffic loss. At C Spire, I owned UX, motion, and front-end development across the flagship wireless platform. I know how to design at a high level of craft and get it across the finish line.</p>
+    <p>Motion and visual design are central to how I think through a user's journey. How we use motion in interactive experiences has evolved over the decades. Good motion design is almost invisible yet measurable in the user's ability to move effortlessly through a good experience. Motion, to me, isn't aesthetic; it's a guide.</p>
 
-    <p contenteditable="true" class="placeholder">[Add a company-specific paragraph here — what draws you to this team, how their work connects to yours, or how your background maps to a specific requirement.]</p>
-
-    <p>My portfolio is at bwelch.me. I'd love to talk about the team's work and what I can bring to it.</p>
+    <p contenteditable="true" class="placeholder">[Company-specific paragraph — what draws you to this team, how their work connects to yours, and your closing.]</p>
 
   </div>
 
   <div class="letter-close">
-    <p>Thank you for your time.</p>
+    <p>Sincerely,</p>
     <strong>Brittany Welch</strong>
   </div>
 
@@ -132,13 +130,11 @@
 
   document.querySelectorAll('[contenteditable]').forEach(el => {
     el.addEventListener('focus', () => {
-      if (el.textContent.startsWith('[')) el.textContent = '';
+      if (el.classList.contains('placeholder')) el.textContent = '';
       el.classList.remove('placeholder');
     });
     el.addEventListener('blur', () => {
-      if (!el.textContent.trim()) {
-        el.classList.add('placeholder');
-      }
+      if (!el.textContent.trim()) el.classList.add('placeholder');
     });
   });
 </script>
