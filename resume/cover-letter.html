@@ -8,6 +8,71 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+@media print {
+  @page { margin: 0; size: 8.5in 11in; }
+
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    background: #fff !important;
+    color: #1a1a2e !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .site-nav { display: none !important; }
+
+  .letter-wrap {
+    padding: 0.55in 0.65in !important;
+    max-width: none !important;
+  }
+
+  .letter-byline h1 {
+    font-size: 22pt !important;
+    color: #000 !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .letter-byline .title {
+    font-size: 8pt !important;
+    color: #1a5f7a !important;
+    margin-bottom: 10pt !important;
+  }
+
+  .letter-contact {
+    gap: 14pt !important;
+    padding-bottom: 16pt !important;
+    margin-bottom: 22pt !important;
+    border-color: #ddd !important;
+  }
+
+  .letter-contact a,
+  .letter-contact span { font-size: 8pt !important; color: #555 !important; }
+
+  .letter-date { font-size: 9pt !important; color: #444 !important; margin-bottom: 22pt !important; }
+
+  .letter-body p {
+    font-size: 10pt !important;
+    color: #222 !important;
+    line-height: 1.65 !important;
+    margin-bottom: 14pt !important;
+  }
+
+  .letter-close { margin-top: 24pt !important; font-size: 10pt !important; color: #222 !important; }
+
+  .letter-close strong {
+    font-size: 11pt !important;
+    color: #000 !important;
+    margin-top: 20pt !important;
+  }
+
+  [contenteditable]:hover,
+  [contenteditable]:focus { background: transparent !important; box-shadow: none !important; }
+
+  .placeholder { color: #222 !important; font-style: normal !important; }
+}
+</style>
 </head>
 <body>
 
@@ -20,7 +85,7 @@
   </a>
   <button class="nav-btn" onclick="window.print()">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-    Print / Save PDF
+    Save PDF
   </button>
 </nav>
 
@@ -28,7 +93,7 @@
 
   <div class="letter-byline">
     <h1>Brittany Welch</h1>
-    <p class="title">Senior Product Designer</p>
+    <p class="title">Staff Product Designer</p>
     <div class="letter-contact">
       <a href="mailto:blrwelch@gmail.com">blrwelch@gmail.com</a>
       <a href="https://bwelch.me" target="_blank">bwelch.me</a>
@@ -39,30 +104,24 @@
 
   <p class="letter-date" id="letterDate"></p>
 
-  <div class="letter-addressee">
-    <p contenteditable="true" class="placeholder">Hiring Manager Name</p>
-    <p contenteditable="true" class="placeholder">Company Name</p>
-    <p contenteditable="true" class="placeholder">Company Address (optional)</p>
-  </div>
-
   <div class="letter-body">
 
-    <p>Dear <span contenteditable="true" class="placeholder">Hiring Manager</span>,</p>
+    <p>Dear <span id="greeting" contenteditable="true" class="placeholder">Hiring Team</span>,</p>
 
-    <p contenteditable="true">I'm writing to express my interest in the <span class="placeholder">[Role Title]</span> position at <span class="placeholder">[Company]</span>. With 17+ years of experience designing digital products across healthcare, e-commerce, telecom, and AI-driven tools, I bring the kind of broad experience and deep craft that lets me hit the ground running on complex, cross-functional projects.</p>
+    <p>I've spent 17 years designing products that have to work for real people at real scale. From Fortune 500 e-commerce to AI agent interfaces to enterprise platforms built for regulated industries, I've consistently operated at the intersection of craft, systems, and product thinking. The <span id="role" contenteditable="true" class="placeholder">[Role Title]</span> role at <span id="company1" contenteditable="true" class="placeholder">[Company]</span> is the kind of work I've been building toward.</p>
 
-    <p contenteditable="true">What draws me to <span class="placeholder">[Company]</span> is <span class="placeholder">[specific reason — product, mission, team, challenge]</span>. I've spent my career working on products where the stakes for the user are real, and I'm drawn to teams that take that seriously.</p>
+    <p>Design systems are where a lot of my recent work lives. I've built and maintained them for clients in pharma, where consistency and accessibility requirements are unforgiving. More recently, I took one of those systems and migrated it into Claude Design's Design Systems tool, adapting component architecture and visual standards to fit an entirely different product environment. That kind of translation work requires knowing not just how to build a system, but how to evaluate one critically and evolve it without breaking what already works.</p>
 
-    <p contenteditable="true">Most recently, I've led design across multiple client products simultaneously, from AI agent frameworks for mid-market companies to an internal AI practice hub and a cross-platform vaccine scheduling redesign. Each required a different flavor of the same discipline: listening carefully, synthesizing quickly, and designing with enough rigor that engineers and stakeholders both trust what's in front of them.</p>
+    <p>Motion and visual design are central to how I communicate ideas. I use Figma's advanced prototyping and Adobe After Effects to move from concept to something you can actually feel before a line of code gets written. At AutoZone, prototypes were how I got engineering and product aligned on a full site redesign that shipped with zero reported traffic loss. At C Spire, I owned UX, motion, and front-end development across the flagship wireless platform. I know how to design at a high level of craft and get it across the finish line.</p>
 
-    <p contenteditable="true"><span class="placeholder">[Customize this paragraph to map your experience to the specific requirements in the job description.]</span></p>
+    <p contenteditable="true" class="placeholder">[Add a company-specific paragraph here — what draws you to this team, how their work connects to yours, or how your background maps to a specific requirement.]</p>
 
-    <p contenteditable="true">I'd love the opportunity to learn more about the team and share how my work could contribute to <span class="placeholder">[Company]</span>'s goals. My portfolio is at <a href="https://bwelch.me" style="color:var(--teal);">bwelch.me</a>, and I'm happy to walk through any of the case studies in more depth.</p>
+    <p>My portfolio is at bwelch.me. I'd love to talk about the team's work and what I can bring to it.</p>
 
   </div>
 
   <div class="letter-close">
-    <p>Thank you for your time and consideration.</p>
+    <p>Thank you for your time.</p>
     <strong>Brittany Welch</strong>
   </div>
 
@@ -72,23 +131,16 @@
   document.getElementById('letterDate').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
   document.querySelectorAll('[contenteditable]').forEach(el => {
-    el.addEventListener('focus', () => el.classList.remove('placeholder'));
+    el.addEventListener('focus', () => {
+      if (el.textContent.startsWith('[')) el.textContent = '';
+      el.classList.remove('placeholder');
+    });
+    el.addEventListener('blur', () => {
+      if (!el.textContent.trim()) {
+        el.classList.add('placeholder');
+      }
+    });
   });
-
-  if (new URLSearchParams(window.location.search).get('generated')) {
-    const letter = sessionStorage.getItem('generatedLetter');
-    if (letter) {
-      const paras = letter.split('\n\n').filter(p => p.trim());
-      const bodyParas = document.querySelectorAll('.letter-body p[contenteditable]');
-      paras.forEach((text, i) => {
-        if (bodyParas[i]) {
-          bodyParas[i].textContent = text.trim();
-          bodyParas[i].classList.remove('placeholder');
-        }
-      });
-      sessionStorage.removeItem('generatedLetter');
-    }
-  }
 </script>
 
 </body>
