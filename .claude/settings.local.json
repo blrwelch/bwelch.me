@@ -120,7 +120,11 @@
       "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/cspire.html)",
       "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/autozone.html)",
       "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/healthcare-ipad.html)",
-      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/easyvax.html)"
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp grep -n \"What I'd carry forward\\\\|Let's build something\\\\|love talking about design\\\\|people trying to solve\" /Users/brittanywelch/Documents/public_html/case-studies/easyvax.html)",
+      "Bash(npm --version)",
+      "Read(//usr/bin/**)",
+      "Read(//Users/brittanywelch/.nvm/versions/**)",
+      "WebFetch(domain:www.pinterestcareers.com)"
     ]
   }
 }
