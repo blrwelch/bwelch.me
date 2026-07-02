@@ -124,7 +124,15 @@
       "Bash(npm --version)",
       "Read(//usr/bin/**)",
       "Read(//Users/brittanywelch/.nvm/versions/**)",
-      "WebFetch(domain:www.pinterestcareers.com)"
+      "WebFetch(domain:www.pinterestcareers.com)",
+      "Bash(npm list *)",
+      "Bash(node build-docx.js)",
+      "Bash(python3 '/Users/brittanywelch/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/15750573-c0c4-432b-9007-5af0918fba35/59537eff-6b0c-4c35-9aaa-5f419f6b3f26/skills/docx/scripts/office/validate.py' /Users/brittanywelch/Documents/public_html/resume/Brittany-Welch-Resume.docx)",
+      "Bash(command -v python3.11 python3.12 python3.10 pyenv brew)",
+      "Bash(brew --prefix)",
+      "Bash(python3.11 -m pip install --quiet defusedxml lxml)",
+      "Bash(extract-text /Users/brittanywelch/Documents/public_html/resume/Brittany-Welch-Resume.docx)",
+      "Bash(pandoc /Users/brittanywelch/Documents/public_html/resume/Brittany-Welch-Resume.docx -t markdown)"
     ]
   }
 }

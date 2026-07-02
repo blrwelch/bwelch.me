@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cover Letter - Brittany Welch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.fillable {
+  border-bottom: 1px dashed var(--teal);
+  color: var(--teal-bright);
+  padding: 0 2px;
+}
+.fillable:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-dim);
+  font-style: italic;
+}
+.fill-bar {
+  max-width: 700px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.fill-bar label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-dim);
+  flex: 1;
+  min-width: 200px;
+}
+.fill-bar input {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 8px 10px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+}
+@media print {
+  @page { margin: 0; size: 8.5in 11in; }
+
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    background: #fff !important;
+    color: #1a1a2e !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .site-nav, .fill-bar { display: none !important; }
+
+  .letter-wrap {
+    padding: 0.55in 0.65in !important;
+    max-width: none !important;
+  }
+
+  .letter-byline h1 {
+    font-size: 22pt !important;
+    color: #000 !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .letter-byline .title {
+    font-size: 8pt !important;
+    color: #1a5f7a !important;
+    margin-bottom: 10pt !important;
+  }
+
+  .letter-contact {
+    gap: 14pt !important;
+    padding-bottom: 16pt !important;
+    margin-bottom: 22pt !important;
+    border-color: #ddd !important;
+  }
+
+  .letter-contact a,
+  .letter-contact span { font-size: 8pt !important; color: #555 !important; }
+
+  .letter-date { font-size: 9pt !important; color: #444 !important; margin-bottom: 22pt !important; }
+
+  .letter-body p {
+    font-size: 10pt !important;
+    color: #222 !important;
+    line-height: 1.65 !important;
+    margin-bottom: 14pt !important;
+  }
+
+  .letter-close { margin-top: 24pt !important; font-size: 10pt !important; color: #222 !important; }
+
+  .letter-close strong {
+    font-size: 11pt !important;
+    color: #000 !important;
+    margin-top: 20pt !important;
+  }
+
+  .fillable {
+    border-bottom: none !important;
+    color: #222 !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="https://bwelch.me" class="nav-logo">b<span>.</span> welch</a>
+  <a href="index.html" class="nav-link">← Resume</a>
+  <button class="nav-btn" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save PDF
+  </button>
+</nav>
+
+<div class="fill-bar">
+  <label>Job Title
+    <input type="text" id="jobTitleInput" placeholder="e.g. Senior Product Designer">
+  </label>
+  <label>Company
+    <input type="text" id="companyInput" placeholder="e.g. Acme Inc.">
+  </label>
+</div>
+
+<div class="letter-wrap">
+
+  <div class="letter-byline">
+    <h1>Brittany Welch</h1>
+    <p class="title">Staff Product Designer · Design Systems, AI Product Design, Motion Design</p>
+    <div class="letter-contact">
+      <a href="mailto:blrwelch@gmail.com">blrwelch@gmail.com</a>
+      <a href="https://bwelch.me" target="_blank">bwelch.me</a>
+      <a href="https://linkedin.com/in/blrwelch" target="_blank">linkedin.com/in/blrwelch</a>
+      <span>Brandon, MS · 662-550-0523</span>
+    </div>
+  </div>
+
+  <p class="letter-date" id="letterDate"></p>
+
+  <div class="letter-body">
+
+    <p>Dear Hiring Manager,</p>
+
+    <p>I'm writing to apply for the <span class="fillable" contenteditable="true" data-placeholder="[Job Title]" id="jobTitleLetter"></span> role at <span class="fillable" contenteditable="true" data-placeholder="[Company]" id="companyLetter1"></span>. I'm a product designer with 17 years of experience building design systems and product experiences across enterprise and consumer platforms, and I think my background lines up well with what this role needs.</p>
+
+    <p>Throughout my career, I've led design system work in Fortune 500 e-commerce and regulated pharma environments, building component libraries and design language that hold up across large, fast-moving teams. More recently, I've focused on AI-native product design, translating emerging AI capabilities into interfaces that are usable and easy to trust. I bring both the systems thinking and the visual craft to back it up, along with experience in motion design and prototyping to communicate ideas clearly before they're built.</p>
+
+    <p>I'd welcome the chance to talk about how I could contribute to <span class="fillable" contenteditable="true" data-placeholder="[Company]" id="companyLetter2"></span>'s team. Thank you for your time and consideration.</p>
+
+  </div>
+
+  <div class="letter-close">
+    <p>Sincerely,</p>
+    <strong>Brittany Welch</strong>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('letterDate').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  const jobTitleInput = document.getElementById('jobTitleInput');
+  const companyInput = document.getElementById('companyInput');
+  const jobTitleLetter = document.getElementById('jobTitleLetter');
+  const companyLetter1 = document.getElementById('companyLetter1');
+  const companyLetter2 = document.getElementById('companyLetter2');
+
+  jobTitleInput.addEventListener('input', () => {
+    jobTitleLetter.textContent = jobTitleInput.value;
+  });
+  companyInput.addEventListener('input', () => {
+    companyLetter1.textContent = companyInput.value;
+    companyLetter2.textContent = companyInput.value;
+  });
+
+  document.title = 'Cover Letter - Brittany Welch';
+</script>
+
+</body>
+</html>
