@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Letter Generator — Brittany Welch</title>
+<title>Cover Letter Generator | Brittany Welch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
@@ -21,20 +21,20 @@
 
   <div class="page-header">
     <h1>Cover Letter Generator</h1>
-    <p>Paste a job description and generate a tailored cover letter using Claude. Uses the <a href="https://console.anthropic.com" target="_blank">Anthropic API</a> — your key is never stored.</p>
+    <p>Paste a job description and generate a tailored cover letter using Claude. Uses the <a href="https://console.anthropic.com" target="_blank">Anthropic API</a>. Your key is never stored.</p>
   </div>
 
   <div class="field">
     <label for="apiKey">Anthropic API Key</label>
     <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off">
-    <p style="font-size:12px;color:var(--text-dim);margin-top:6px;">Get a key at <a href="https://console.anthropic.com" target="_blank" style="color:var(--teal);">console.anthropic.com</a>. Only used in this browser tab — never stored or sent anywhere except Anthropic.</p>
+    <p style="font-size:12px;color:var(--text-dim);margin-top:6px;">Get a key at <a href="https://console.anthropic.com" target="_blank" style="color:var(--teal);">console.anthropic.com</a>. Only used in this browser tab, never stored or sent anywhere except Anthropic.</p>
   </div>
 
   <hr class="divider">
 
   <div class="field">
     <label for="company">Company &amp; Role</label>
-    <input type="text" id="company" placeholder="e.g. Stripe — Senior Product Designer">
+    <input type="text" id="company" placeholder="e.g. Stripe, Senior Product Designer">
   </div>
 
   <div class="field">
@@ -85,29 +85,29 @@
 
 <script>
 const RESUME_CONTEXT = `
-Brittany Welch — Senior Product Designer
+Brittany Welch, Senior Product Designer
 Location: Brandon, MS | Phone: 662-550-0523 | Email: blrwelch@gmail.com | Website: bwelch.me | LinkedIn: linkedin.com/in/blrwelch
 
 Tagline: Turning complex systems into intuitive products, and helping organizations design their future with AI.
 
 PROFILE:
-Senior product designer with 17+ years of experience making complex systems feel simple — from Fortune 500 e-commerce platforms and flagship wireless sites, to the AI agents and dashboards now reshaping how organizations work. I partner with cross-functional teams to design products that are both rigorous and human, and I consult with mid-market companies to help them integrate AI in ways that are practical, accessible, and built around real people.
+Senior product designer with 17+ years of experience making complex systems feel simple, from Fortune 500 e-commerce platforms and flagship wireless sites, to the AI agents and dashboards now reshaping how organizations work. I partner with cross-functional teams to design products that are both rigorous and human, and I consult with mid-market companies to help them integrate AI in ways that are practical, accessible, and built around real people.
 
 EXPERIENCE:
 
-Senior Product Designer — Enterprise Software Company (Chicago, IL, Remote) | 2021–Present
+Senior Product Designer, Enterprise Software Company (Chicago, IL, Remote) | 2021–Present
 - Design and maintain the internal website for the company's AI Practice, including IA, content strategy, and UX for the hub powering the AI agent and AI Skills division.
 - Consult with mid-market clients to identify and develop agentic AI solutions across Finance, HR, Engineering, and Leadership, delivering agent profiles, workflow frameworks, and integration roadmaps.
 - Facilitate cross-departmental discovery interviews to validate AI use cases, building stakeholder trust and producing stronger, more targeted solutions.
 - Lead end-to-end design across a diverse client portfolio, from research and strategy through delivery, in fast-moving agile environments.
 
-Senior UI Designer — AutoZone (Memphis, TN) | 2019–2021
+Senior UI Designer, AutoZone (Memphis, TN) | 2019–2021
 - Designed and shipped digital experiences for a high-traffic Fortune 500 e-commerce platform; served as design lead within a cross-functional Product Discovery team.
 - Co-led redesign and launch of a fully responsive site with zero reported traffic loss, a significant result at that scale and pace.
 - Mentored junior designers and managed design reviews and new-hire onboarding.
 
-UX Developer II — C Spire (Ridgeland, MS) | 2011–2019
-- Led UX design and front-end development on the full redesign and launch of C Spire's flagship wireless site, careers site, and business services site — all responsive, user-centered, and brand-aligned.
+UX Developer II, C Spire (Ridgeland, MS) | 2011–2019
+- Led UX design and front-end development on the full redesign and launch of C Spire's flagship wireless site, careers site, and business services site, all responsive, user-centered, and brand-aligned.
 - Built deep domain expertise in wireless industry UX: product catalogs, account management flows, upgrade eligibility, and complex promotional mechanics.
 - Collaborated cross-functionally with marketing, product, and engineering to deliver cohesive, high-quality digital experiences across a broad portfolio.
 
@@ -115,7 +115,7 @@ SKILLS: AI Agent Design, AI Strategy, Product Design, UX Research, Design System
 
 TOOLS: Figma, Adobe Creative Cloud, Sketch/Zeplin, Jira/Azure DevOps, Claude/ChatGPT/Gemini, Cursor/VS Code, Notion
 
-EDUCATION: B.S. Graphic Design — Samford University, Birmingham AL (2008)
+EDUCATION: B.S. Graphic Design, Samford University, Birmingham AL (2008)
 `;
 
 let selectedTone = 'confident and warm';
@@ -170,11 +170,12 @@ Write a cover letter that:
 - Weaves in 1–2 specific, relevant experiences from her resume that map to the job requirements
 - Ends with a clear, confident call to action
 - Does NOT use tired phrases like "I am passionate about", "results-driven", "leverage", or "synergy"
-- Does NOT include the date, address blocks, or "Dear Hiring Manager" — just the letter body starting after the salutation
+- Does NOT include the date, address blocks, or "Dear Hiring Manager", just the letter body starting after the salutation
+- Does NOT use em dashes (—) anywhere in the letter; use commas, periods, or plain sentence breaks instead
 
 Start with: "Dear [Name or Hiring Team],"
 
-Output only the letter body — no commentary, no notes, no subject line.`;
+Output only the letter body, no commentary, no notes, no subject line.`;
 
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {

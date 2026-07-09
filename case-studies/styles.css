@@ -461,38 +461,9 @@ body::after {
   overflow: hidden;
   width: 100%;
 }
-.mockup-laptop__browser-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #2c2c2e;
-  padding: 7px 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.mockup-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  flex-shrink: 0;
-}
-.mockup-address-bar {
-  flex: 1;
-  background: rgba(255,255,255,0.08);
-  border-radius: 4px;
-  font-size: 10px;
-  color: rgba(255,255,255,0.4);
-  padding: 3px 8px;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.01em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
 .mockup-laptop__screen {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 19 / 10;
   background: #e8edf2;
   overflow: hidden;
   position: relative;
@@ -784,24 +755,24 @@ body::after {
 
 /* ============ DEVICE ANIMATIONS ============ */
 
-/* Laptop: lid swings up from closed angle */
-.mockup-laptop__shell {
-  transform-origin: bottom center;
-  transform: rotateX(-65deg);
-  transition: transform 1.1s cubic-bezier(0.34, 1.2, 0.64, 1);
-  will-change: transform;
+/* Laptop: fades in and gently expands into place */
+.mockup-laptop {
+  opacity: 0;
+  transform: scale(0.96) translateY(16px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
 }
-.device-showcase.animated .mockup-laptop__shell,
-.device-showcase.animated .mockup-laptop__frame {
-  transform: rotateX(0deg);
+.device-showcase.animated .mockup-laptop {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
-/* Screen image fades in after lid opens */
+/* Screen image fades in just after the mockup settles */
 .mockup-laptop__screen img,
 .mockup-ipad__screen img,
 .mockup-iphone__screen img {
   opacity: 0;
-  transition: opacity 0.6s ease 0.9s;
+  transition: opacity 0.6s ease 0.3s;
 }
 .device-showcase.animated .mockup-laptop__screen img,
 .device-showcase.animated .mockup-ipad__screen img,
@@ -838,7 +809,8 @@ body::after {
 .device-showcase--iphone .mockup-iphone { transition-delay: 0.1s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .mockup-laptop__frame, .mockup-laptop__shell { transform: none; transition: none; }
+  .mockup-laptop__frame { transform: none; transition: none; }
+  .mockup-laptop { opacity: 1; transform: none; transition: none; }
   .mockup-ipad { opacity: 1; transform: none; transition: none; }
   .mockup-iphone { opacity: 1; transform: none; transition: none; }
   .mockup-laptop__screen img,

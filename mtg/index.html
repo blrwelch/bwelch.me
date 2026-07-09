@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Commander Tracker — MTG Life Tracker</title>
+  <title>Commander Tracker | MTG Life Tracker</title>
   <meta name="description" content="Track life totals, poison counters, and commander damage for your whole playgroup in real-time. Join with a room code." />
   <!-- Open Graph -->
-  <meta property="og:title" content="Commander Tracker — MTG Life Tracker" />
+  <meta property="og:title" content="Commander Tracker | MTG Life Tracker" />
   <meta property="og:description" content="Real-time multiplayer life tracker for Magic: The Gathering Commander. Track life, poison, and commander damage. Join with a room code." />
   <meta property="og:image" content="https://bwelchme-production.up.railway.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="Commander Tracker" />
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Commander Tracker — MTG Life Tracker" />
+  <meta name="twitter:title" content="Commander Tracker | MTG Life Tracker" />
   <meta name="twitter:description" content="Real-time multiplayer life tracker for Magic: The Gathering Commander. Join with a room code." />
   <meta name="twitter:image" content="https://bwelchme-production.up.railway.app/og-image.png" />
   <style>
@@ -690,7 +690,7 @@
     if (players[myId]) grid.appendChild(buildCard(myId, players[myId], players, true));
     others.forEach(id => grid.appendChild(buildCard(id, players[id], players, false)));
     if (others.length === 0) {
-      grid.appendChild(placeholder('🃏','Waiting for players','Share the room code or copy the link above — others will appear here when they join.'));
+      grid.appendChild(placeholder('🃏','Waiting for players','Share the room code or copy the link above. Others will appear here when they join.'));
     }
   }
 

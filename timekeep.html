@@ -571,7 +571,7 @@
     <div class="project-section">
       <div class="project-row">
         <select class="project-select" id="projectSelect">
-          <option value="">— no project —</option>
+          <option value="">(no project)</option>
         </select>
         <button class="new-project-btn" title="New project" onclick="showNewProject()">
           <i class="ti ti-plus" aria-hidden="true"></i>
@@ -728,7 +728,7 @@
     }
 
     function rebuildSelects() {
-      var html = '<option value="">— no project —</option>';
+      var html = '<option value="">(no project)</option>';
       projects.forEach(function(p) {
         html += '<option value="' + p.id + '">' + esc(p.name) + '</option>';
       });
@@ -756,7 +756,7 @@
         var wrap = document.createElement('div');
         wrap.className = 'log-entry-wrap';
 
-        var pOpts = '<option value="">— no project —</option>';
+        var pOpts = '<option value="">(no project)</option>';
         projects.forEach(function(p) {
           pOpts += '<option value="' + p.id + '"' + (e.project == p.id ? ' selected' : '') + '>' + esc(p.name) + '</option>';
         });
