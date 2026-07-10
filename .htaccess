@@ -3,3 +3,5 @@ ErrorDocument 404 /404.html
 ErrorDocument 500 /500.html
 ErrorDocument 502 /500.html
 ErrorDocument 503 /500.html
+
+AddType text/vcard .vcf

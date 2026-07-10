@@ -132,7 +132,8 @@
       "Bash(brew --prefix)",
       "Bash(python3.11 -m pip install --quiet defusedxml lxml)",
       "Bash(extract-text /Users/brittanywelch/Documents/public_html/resume/Brittany-Welch-Resume.docx)",
-      "Bash(pandoc /Users/brittanywelch/Documents/public_html/resume/Brittany-Welch-Resume.docx -t markdown)"
+      "Bash(pandoc /Users/brittanywelch/Documents/public_html/resume/Brittany-Welch-Resume.docx -t markdown)",
+      "Bash(xxd brittany-welch.vcf)"
     ]
   }
 }
