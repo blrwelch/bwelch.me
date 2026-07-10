@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cover Letter | Brittany Welch | Deloitte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+@media print {
+  @page { margin: 0; size: 8.5in 11in; }
+
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    background: #fff !important;
+    color: #1a1a2e !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .site-nav { display: none !important; }
+
+  .letter-wrap {
+    padding: 0.55in 0.65in !important;
+    max-width: none !important;
+  }
+
+  .letter-byline h1 {
+    font-size: 22pt !important;
+    color: #000 !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .letter-byline .title {
+    font-size: 8pt !important;
+    color: #1a5f7a !important;
+    margin-bottom: 10pt !important;
+  }
+
+  .letter-contact {
+    gap: 14pt !important;
+    padding-bottom: 16pt !important;
+    margin-bottom: 22pt !important;
+    border-color: #ddd !important;
+  }
+
+  .letter-contact a,
+  .letter-contact span { font-size: 8pt !important; color: #555 !important; }
+
+  .letter-date { font-size: 9pt !important; color: #444 !important; margin-bottom: 10pt !important; }
+
+  .letter-addressee p { font-size: 9pt !important; color: #444 !important; }
+
+  .letter-addressee { margin-bottom: 22pt !important; }
+
+  .letter-body p {
+    font-size: 10pt !important;
+    color: #222 !important;
+    line-height: 1.65 !important;
+    margin-bottom: 14pt !important;
+  }
+
+  .letter-close { margin-top: 24pt !important; font-size: 10pt !important; color: #222 !important; }
+
+  .letter-close strong {
+    font-size: 11pt !important;
+    color: #000 !important;
+    margin-top: 20pt !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="https://bwelch.me" class="nav-logo">b<span>.</span> welch</a>
+  <a href="index.html" class="nav-link">← Resume</a>
+  <button class="nav-btn" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print / Save PDF
+  </button>
+</nav>
+
+<div class="letter-wrap">
+
+  <div class="letter-byline">
+    <h1>Brittany Welch</h1>
+    <p class="title">Product Designer</p>
+    <div class="letter-contact">
+      <a href="mailto:blrwelch@gmail.com">blrwelch@gmail.com</a>
+      <a href="https://bwelch.me" target="_blank">bwelch.me</a>
+      <a href="https://linkedin.com/in/blrwelch" target="_blank">linkedin.com/in/blrwelch</a>
+      <span>Brandon, MS · 662-550-0523</span>
+    </div>
+  </div>
+
+  <p class="letter-date" id="letterDate"></p>
+
+  <div class="letter-addressee">
+    <p>Deloitte Hiring Team</p>
+    <p>Deloitte</p>
+  </div>
+
+  <div class="letter-body">
+
+    <p>Dear Deloitte Hiring Team,</p>
+
+    <p>I'm writing to apply for the UX Product Designer role with the Encore Program. I've spent 17 years as a product designer, and what drew me to this posting is the balance it asks for: strategic thinking paired with real, hands-on craft. That balance is how I've always liked to work.</p>
+
+    <p>Most of my career has been spent building design systems and leading UX research for teams in regulated industries and Fortune 500 e-commerce, so I'm comfortable moving between the big picture and the small details, from wireframes and user flows to prototypes and production. I also care a lot about mentoring the people I work with. Helping a newer designer find their footing is one of the most rewarding parts of this job to me.</p>
+
+    <p>I'd love the chance to bring that experience to your team. Thank you for taking the time to consider my application.</p>
+
+  </div>
+
+  <div class="letter-close">
+    <p>Sincerely,</p>
+    <strong>Brittany Welch</strong>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('letterDate').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+</script>
+
+</body>
+</html>
