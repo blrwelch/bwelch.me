@@ -174,9 +174,9 @@
   <div class="container nav-inner">
     <a href="../index.html" class="logo">b<span>.</span>welch</a>
     <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#work">Work</a></li>
       <li><a href="../index.html#about">About</a></li>
       <li><a href="../index.html#expertise">Expertise</a></li>
-      <li><a href="../index.html#work">Work</a></li>
       <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
@@ -252,16 +252,6 @@
   </div>
 </div>
 
-<!-- CONTEXT -->
-<section class="cs-section">
-  <div class="container container--prose">
-    <h2 class="reveal">The challenge</h2>
-    <p class="lead reveal">The AI was doing its job. The problem was that nobody could use what it was producing.</p>
-    <p class="reveal">A global healthcare brand had invested in an AI system that analyzed complex industry data and surfaced insights across their operations. But the output landed as raw data exports and dense reports that required a data analyst to interpret before anyone could act on them. Executives were still waiting on weekly summary PDFs. Operations teams were running parallel spreadsheets to double-check what the AI was saying. The technology was there. The trust and usability weren't.</p>
-    <p class="reveal">My job was to lead the UX for a dashboard that would change that. That meant getting close to the people who'd use it every day, understanding what they actually needed to see, and designing an interface that made AI-generated insights feel clear, trustworthy, and ready to act on. Dense healthcare data doesn't have to be hard to understand. That's exactly what this project set out to prove.</p>
-  </div>
-</section>
-
 <!-- APPROACH -->
 <section class="cs-section">
   <div class="container">
@@ -275,7 +265,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         </div>
         <h3>Understand the actual users</h3>
-        <p>Interviews and workshops with executives, ops leads, and analysts. Not to learn what data existed, but to understand what decisions they were trying to make, what they were unsure of, and where they were losing time waiting on information.</p>
+        <p>Interviews with executives, ops leads, and analysts to learn what decisions they were trying to make and where they were losing time waiting on information.</p>
       </div>
 
       <div class="process-step reveal">
@@ -284,7 +274,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
         </div>
         <h3>Establish information hierarchy</h3>
-        <p>Mapped AI-generated outputs to a visual hierarchy based on how often each insight was acted on. What surfaces at a glance, what lives one click away, what belongs in drill-down detail. This is where most of the real design work happened.</p>
+        <p>Mapped AI-generated outputs by how often each insight got acted on: what surfaces at a glance, what's one click away, what belongs in drill-down detail.</p>
       </div>
 
       <div class="process-step reveal">
@@ -293,7 +283,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
         <h3>Design for AI transparency</h3>
-        <p>Healthcare executives needed to trust what the AI was telling them before they'd act on it. I designed confidence indicators, data source labels, and plain-language explanations of AI outputs so users could understand not just what the insight was, but how it was derived.</p>
+        <p>Confidence indicators, data source labels, and plain-language explanations so users understood not just the insight, but how the AI got there.</p>
       </div>
 
       <div class="process-step reveal">
@@ -302,7 +292,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h3>Iterate with real users on real data</h3>
-        <p>Live walk-throughs with the same executives and ops leads who shaped the brief, using actual client data. We refined until the dashboard answered their first three questions without scrolling, and until they trusted what it was showing them.</p>
+        <p>Live walk-throughs with the same executives and ops leads, using actual client data, until the dashboard answered their first three questions without scrolling.</p>
       </div>
     </div>
   </div>
@@ -316,22 +306,17 @@
     <div class="decisions">
       <div class="decision reveal">
         <h3>Making AI outputs feel trustworthy, not just present</h3>
-        <p>The biggest barrier to adoption wasn't the interface. It was trust. Healthcare executives weren't going to act on an insight they didn't understand. I designed plain-language explanations for every AI-generated output, confidence indicators, and clear data source labels. Showing the "why" behind each insight was as important as showing the insight itself.</p>
+        <p>Healthcare executives weren't going to act on an insight they didn't understand. Every AI-generated output got a plain-language explanation, a confidence indicator, and a clear data source label, because the "why" mattered as much as the insight itself.</p>
       </div>
 
       <div class="decision reveal">
         <h3>One primary question per view</h3>
-        <p>The temptation in any data-heavy product is to surface everything you have. We held firm on focus. Each view was designed to answer one primary question clearly, with supporting detail one click away. That discipline made every screen faster to read and easier to act on.</p>
+        <p>The temptation in any data-heavy product is to surface everything you have. We held firm on focus: each view answers one primary question clearly, with supporting detail one click away.</p>
       </div>
 
       <div class="decision reveal">
         <h3>Designing empty and low-confidence states as carefully as loaded ones</h3>
-        <p>In a healthcare context, a dashboard that goes silent without explanation is genuinely dangerous. Empty states, low-confidence AI outputs, and "data still loading" views all got first-class design treatment, because those are the exact moments when a user's trust either holds or breaks.</p>
-      </div>
-
-      <div class="decision reveal">
-        <h3>Filters built around user mental models, not the data schema</h3>
-        <p>The default filter sets matched how executives and ops teams actually think about their work, by region, by product line, by time period, not how the underlying database was organized. That one IA decision had a bigger impact on adoption than any visual design choice we made.</p>
+        <p>In a healthcare context, a dashboard that goes silent without explanation is genuinely dangerous. Empty states and low-confidence outputs got first-class design treatment, because those are the moments trust holds or breaks.</p>
       </div>
     </div>
   </div>
@@ -364,27 +349,6 @@
   </div>
 </section>
 
-<!-- REFLECTIONS -->
-<section class="cs-section">
-  <div class="container container--prose">
-    <h2 class="reveal">What I'd carry forward</h2>
-    <div class="reflections-list">
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>If users don't understand where an insight came from or how confident the AI is, they won't act on it, no matter how accurate it is. Explaining the reasoning behind each output in plain language mattered as much as any chart or layout decision I made.</p>
-      </div>
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Once you figure out the two or three things a user actually needs to see right now, the visual work becomes pretty straightforward. Getting that clarity is where the real design work happens, before you open a single tool.</p>
-      </div>
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>A dashboard nobody opens is a design failure. It doesn't matter how impressive the AI behind it is. The measure of success was whether real people were checking it every day to make real decisions. That's the bar I designed toward.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Contact -->
 <section class="contact">
   <div class="container">
@@ -408,10 +372,10 @@
 
 <section class="cs-next">
   <div class="container">
-    <a href="cspire.html" class="cs-next-link reveal">
+    <a href="healthcare-ipad.html" class="cs-next-link reveal">
       <div>
         <span class="label">Next case study</span>
-        <div class="title">A mobile-first rebrand for C Spire →</div>
+        <div class="title">An iPad-native tool for field representatives →</div>
       </div>
       <div class="arrow">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
