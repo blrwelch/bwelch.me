@@ -5,3 +5,13 @@ ErrorDocument 502 /500.html
 ErrorDocument 503 /500.html
 
 AddType text/vcard .vcf
+
+# The old printed QR code points straight at brittany-welch.vcf. iOS still
+# gets the raw vCard (Safari's native "Add Contact" handling is already
+# ideal), everyone else gets routed to the branded add-me.html landing page.
+# ?direct=1 is the escape hatch add-me.html's own button uses so it doesn't
+# loop back into this same redirect.
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} !(iPhone|iPad|iPod) [NC]
+RewriteCond %{QUERY_STRING} !direct=1
+RewriteRule ^brittany-welch\.vcf$ /add-me.html [R=302,L]
