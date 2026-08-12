@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pw-gate.css">
 <script>
   (function() {
     try {
@@ -25,131 +26,6 @@
     } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   })();
 </script>
-
-<style>
-/* ── PASSWORD GATE ──────────────────────────── */
-.pw-gate {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(5, 12, 24, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-.pw-gate__card {
-  background: #0f1e36;
-  border: 1px solid rgba(176,193,212,0.2);
-  border-radius: 20px;
-  padding: 48px 40px;
-  width: min(420px, 90vw);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  text-align: center;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-}
-.pw-gate__lock {
-  width: 56px;
-  height: 56px;
-  background: rgba(45,212,191,0.12);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 4px;
-}
-.pw-gate__lock svg { color: #2dd4bf; }
-.pw-gate__card h2 {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  margin: 0;
-}
-.pw-gate__card p {
-  font-size: 14px;
-  color: #94a3b8;
-  line-height: 1.6;
-  margin: 0;
-}
-.pw-gate__card input[type="password"] {
-  width: 100%;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(176,193,212,0.22);
-  border-radius: 10px;
-  padding: 13px 16px;
-  font-size: 15px;
-  color: #f1f5f9;
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  text-align: center;
-  letter-spacing: 0.1em;
-  transition: border-color 0.2s;
-  margin-top: 4px;
-}
-.pw-gate__card input[type="password"]::placeholder { letter-spacing: 0; color: #64748b; }
-.pw-gate__card input[type="password"]:focus { border-color: #2dd4bf; }
-.pw-gate__btn {
-  width: 100%;
-  background: #2dd4bf;
-  color: #0a1628;
-  border: none;
-  border-radius: 10px;
-  padding: 13px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.pw-gate__btn:hover { background: #5eead4; }
-.pw-gate__error {
-  font-size: 13px;
-  color: #f87171;
-  opacity: 0;
-  transition: opacity 0.3s;
-  margin: 0;
-  min-height: 18px;
-}
-
-/* ── WATERMARK (screenshot deterrent) ────────── */
-.pw-watermark {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 80px,
-    rgba(255,255,255,0.018) 80px,
-    rgba(255,255,255,0.018) 160px
-  );
-  background-size: 200px 200px;
-}
-/* Repeating text watermark via pseudo — shows in screenshots */
-.pw-watermark::after {
-  content: 'CONFIDENTIAL · bwelch.me · CONFIDENTIAL · bwelch.me · CONFIDENTIAL · bwelch.me';
-  position: absolute;
-  width: 200%;
-  top: 50%;
-  left: -50%;
-  transform: rotate(-30deg) translateY(-50%);
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  color: rgba(255,255,255,0.04);
-  white-space: nowrap;
-  word-spacing: 3em;
-  line-height: 4;
-  pointer-events: none;
-}
-</style>
 </head>
 <body>
 <!-- PASSWORD GATE -->
