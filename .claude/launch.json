@@ -3,14 +3,14 @@
   "configurations": [
     {
       "name": "site",
-      "runtimeExecutable": "/usr/local/bin/npx",
-      "runtimeArgs": ["serve", "/Users/brittanywelch/Documents/public_html", "-p", "5501", "--no-clipboard"],
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["/Users/brittanywelch/Documents/bwelch.me/serve_preview.py", "5501"],
       "port": 5501
     },
     {
       "name": "mtg-preview",
       "runtimeExecutable": "/usr/bin/python3",
-      "runtimeArgs": ["/Users/brittanywelch/Documents/public_html/mtg/serve_preview.py", "5500"],
+      "runtimeArgs": ["/Users/brittanywelch/Documents/bwelch.me/mtg/serve_preview.py", "5500"],
       "port": 5500
     }
   ]
