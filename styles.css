@@ -862,18 +862,20 @@
   .tcard__meta {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 12px;
-    padding: 14px 20px;
-    background: var(--surface-2);
-    border-bottom: 1px solid var(--border);
+    padding: 18px 24px 0;
   }
   .tcard__badge {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 7px;
     flex-shrink: 0;
     white-space: nowrap;
+    padding: 12px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
   }
   .tcard__badge strong {
     font-family: 'Fraunces', serif;
