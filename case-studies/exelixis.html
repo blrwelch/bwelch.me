@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Designing for a Lot of Data | Brittany Welch</title>
-<meta name="description" content="A case study on turning sprawling datasets into clear, decision-ready interfaces. Dashboards that decision-makers actually use." />
+<title>Exelixis | Brittany Welch</title>
+<meta name="description" content="A case study on concept design work for Exelixis, a biopharmaceutical company." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="pw-gate.css">
 <script>
   (function() {
     try {
@@ -28,21 +27,14 @@
 </script>
 </head>
 <body>
-<!-- PASSWORD GATE -->
-<div id="pw-gate" class="pw-gate">
-  <div class="pw-gate__card">
-    <div class="pw-gate__lock">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    </div>
-    <h2>Protected Work</h2>
-    <p>This case study contains confidential client work.<br>Enter the password to continue.</p>
-    <input type="password" id="pw-input" placeholder="Password" autocomplete="off" />
-    <button class="pw-gate__btn" onclick="checkPW()">View Case Study</button>
-    <p class="pw-gate__error" id="pw-error">Incorrect password. Please try again.</p>
-  </div>
-</div>
-<!-- Watermark overlay -->
-<div class="pw-watermark" aria-hidden="true"></div>
+
+<!--
+  SCAFFOLD — this page was built as a starting structure, not finished copy.
+  Everything in [brackets] is a placeholder. Swap in the real project details,
+  screenshots, and (if you have them) real metrics before treating this as live.
+  No specific claims about Exelixis's product or outcomes have been invented here —
+  only the layout and honest framing ("concept work") are filled in.
+-->
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -70,59 +62,43 @@
       <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       <a href="../index.html#work">Work</a>
       <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-      <span aria-current="page">AI Insights Dashboard</span>
+      <span aria-current="page">Exelixis</span>
     </nav>
-    <span class="cs-eyebrow reveal">AI Prototyping · Healthcare · Enterprise</span>
-    <h1 class="cs-title reveal">Making <span class="accent">AI-generated insights</span> something people actually act on.</h1>
-    <p class="cs-subtitle reveal">This started as a rapid prototype, built solo in Lovable to show what AI-assisted prototyping could do with a global healthcare brand's data. The concept was compelling enough that an engineering team picked it up, and I worked with them to develop it into a real dashboard for executives and operations teams.</p>
+    <span class="cs-eyebrow reveal">Concept · Healthcare · Web</span>
+    <h1 class="cs-title reveal">Concept design work for <span class="accent">Exelixis</span>, a biopharmaceutical client.</h1>
+    <p class="cs-subtitle reveal">[One or two sentences on what this concept work was for — what Exelixis needed and what you explored. Since this was concept-stage work, frame it honestly as exploration rather than a shipped product.]</p>
 
     <div class="cs-meta reveal">
       <div class="cs-meta-item">
         <span class="label">Role</span>
-        <span class="value">Senior UI/UX Designer</span>
+        <span class="value">[Your role/title on this project]</span>
       </div>
       <div class="cs-meta-item">
-        <span class="label">Focus</span>
-        <span class="value">AI Prototyping · Data Visualization · Healthcare</span>
+        <span class="label">Company</span>
+        <span class="value">Exelixis</span>
       </div>
       <div class="cs-meta-item">
         <span class="label">Timeframe</span>
-        <span class="value">2023 to 2024</span>
+        <span class="value">[Year(s)]</span>
       </div>
       <div class="cs-meta-item">
-        <span class="label">Platform</span>
-        <span class="value">Web · Enterprise</span>
+        <span class="label">Status</span>
+        <span class="value">Concept work</span>
       </div>
     </div>
 
     <div class="at-a-glance reveal" style="margin-top: 32px;">
       <div class="glance-cell">
         <span class="label">The challenge</span>
-        <p>The brief was as much a proof of concept as a product ask: could AI-assisted prototyping turn raw, AI-generated healthcare data into an interface people would actually trust and use, fast enough to matter? The raw AI output wasn't usable on its own.</p>
+        <p>[What was the concept exploring, and for whom?]</p>
       </div>
       <div class="glance-cell">
         <span class="label">My role</span>
-        <p>Senior UI/UX Designer. I designed and built the original concept solo as a rapid AI-assisted prototype in Lovable. There was no formal user research on this pass, decisions on hierarchy and trust signals came from my own UX judgment and informal stakeholder feedback. Once the concept proved out, I worked with an engineering team to develop it into a production-ready dashboard.</p>
+        <p>[What you specifically owned — visual direction, UX exploration, prototyping, etc.]</p>
       </div>
       <div class="glance-cell">
         <span class="label">Outcome</span>
-        <p>The prototype was strong enough to move from demo to development. An engineering team built it into a real dashboard, and the design system held up as new AI outputs, data sources, and user roles were added.</p>
-      </div>
-    </div>
-
-    <!-- METRICS: kept to scope/process facts rather than usage or adoption numbers, since this pass had no formal user research to back a validated outcome metric. Swap "5+" for the real count of data sources if you want to be precise. -->
-    <div class="cs-metrics reveal">
-      <div class="metric-tile">
-        <div class="metric-num">5<span class="metric-delta">+</span></div>
-        <p class="metric-label">Disparate data sources unified into one interface<span class="metric-note">Directional — confirm exact count</span></p>
-      </div>
-      <div class="metric-tile">
-        <div class="metric-qual">Prototype → production</div>
-        <p class="metric-label">Time from a solo Lovable concept to an engineering-built, shipped dashboard</p>
-      </div>
-      <div class="metric-tile">
-        <div class="metric-qual">Design system held</div>
-        <p class="metric-label">Hierarchy, trust signals, and empty-state patterns carried into production largely unchanged</p>
+        <p>[How the concept work was received, or what it fed into.]</p>
       </div>
     </div>
   </div>
@@ -133,45 +109,44 @@
     <div class="mockup-laptop">
       <div class="mockup-laptop__shell">
         <div class="mockup-laptop__screen">
-          <!-- SWAP: replace src with your screenshot -->
-          <img src="../images/data-viz-hero.jpeg" alt="AI insights dashboard" onerror="this.style.display='none'" />
+          <!-- SWAP: replace src with a real screenshot once you have one to share -->
+          <img src="../images/PLACEHOLDER-exelixis-hero.jpeg" alt="Exelixis concept work" onerror="this.style.display='none'" />
           <div class="mockup-placeholder" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         </div>
       </div>
       <div class="mockup-laptop__base"><div class="mockup-laptop__notch"></div></div>
     </div>
-    </div>
   </div>
 </div>
 
-<!-- CONCEPT TO PRODUCTION — placeholder frames, swap in real screenshots when you have them -->
+<!-- KEY VISUALS — placeholder frames, replace with real screenshots -->
 <section class="cs-section cs-section--narrow">
   <div class="container">
-    <h2 class="reveal">Concept to production</h2>
-    <p class="lead reveal">The solo Lovable prototype vs. the dashboard engineering shipped. Same hierarchy and trust signals, refined for production.</p>
+    <h2 class="reveal">A closer look</h2>
+    <p class="lead reveal">[A line or two setting up what these screens show.]</p>
     <div class="progress-gallery progress-gallery--pair reveal">
       <figure class="progress-shot">
-        <span class="progress-shot__label">Prototype</span>
-        <img src="../images/PLACEHOLDER-dataviz-prototype.jpeg" alt="Original Lovable prototype" onerror="this.style.display='none'" />
+        <span class="progress-shot__label">Concept 1</span>
+        <img src="../images/PLACEHOLDER-exelixis-1.jpeg" alt="Exelixis concept screen" onerror="this.style.display='none'" />
         <div class="progress-shot__placeholder" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add original Lovable prototype screenshot</span>
+          <span>Add a screenshot</span>
         </div>
       </figure>
       <figure class="progress-shot">
-        <span class="progress-shot__label">Production</span>
-        <img src="../images/PLACEHOLDER-dataviz-production.jpeg" alt="Production dashboard built by engineering" onerror="this.style.display='none'" />
+        <span class="progress-shot__label">Concept 2</span>
+        <img src="../images/PLACEHOLDER-exelixis-2.jpeg" alt="Exelixis concept screen" onerror="this.style.display='none'" />
         <div class="progress-shot__placeholder" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add production dashboard screenshot</span>
+          <span>Add a screenshot</span>
         </div>
       </figure>
       <figure class="progress-shot">
-        <span class="progress-shot__label">Drill-down</span>
-        <img src="../images/PLACEHOLDER-dataviz-detail.jpeg" alt="Drill-down detail view" onerror="this.style.display='none'" />
+        <span class="progress-shot__label">Concept 3</span>
+        <img src="../images/PLACEHOLDER-exelixis-3.jpeg" alt="Exelixis concept screen" onerror="this.style.display='none'" />
         <div class="progress-shot__placeholder" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add detail/drill-down screenshot</span>
+          <span>Add a screenshot</span>
         </div>
       </figure>
     </div>
@@ -182,67 +157,32 @@
 <section class="cs-section">
   <div class="container">
     <h2 class="reveal">How I approached it</h2>
-    <p class="lead reveal">The design work for a tool like this happens long before anyone opens a chart library. It starts with understanding what people actually need to know.</p>
+    <p class="lead reveal">[A sentence framing your process on this one.]</p>
 
     <div class="process-grid">
       <div class="process-step reveal">
-        <span class="step-num">01 · Concept</span>
+        <span class="step-num">01</span>
         <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-        <h3>Start from domain expertise, not interviews</h3>
-        <p>No formal user research on this pass. I drew on prior experience designing for healthcare executives and operations teams, plus informal feedback from stakeholders who saw early demos, to shape what the prototype needed to prove.</p>
+        <h3>[Step one]</h3>
+        <p>[What happened in this phase.]</p>
       </div>
-
       <div class="process-step reveal">
-        <span class="step-num">02 · Prioritize</span>
+        <span class="step-num">02</span>
         <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
-        <h3>Establish information hierarchy</h3>
-        <p>Structured AI-generated outputs by assumed priority, based on judgment rather than usage data: what surfaces at a glance, what's one click away, what belongs in drill-down detail.</p>
+        <h3>[Step two]</h3>
+        <p>[What happened in this phase.]</p>
       </div>
-
       <div class="process-step reveal">
-        <span class="step-num">03 · Build trust</span>
+        <span class="step-num">03</span>
         <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
-        <h3>Design for AI transparency</h3>
-        <p>Confidence indicators, data source labels, and plain-language explanations so users could see not just the insight, but how the AI got there, a principle applied by design, not validated through testing.</p>
-      </div>
-
-      <div class="process-step reveal">
-        <span class="step-num">04 · Hand off</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <h3>Prove it, then build it for real</h3>
-        <p>The prototype, built solo in Lovable, was compelling enough that an engineering team picked it up and developed it into a production dashboard.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DECISIONS -->
-<section class="cs-section">
-  <div class="container container--prose">
-    <h2 class="reveal">Decisions that mattered</h2>
-
-    <div class="decisions">
-      <div class="decision reveal">
-        <h3>Making AI outputs feel trustworthy, not just present</h3>
-        <p>Healthcare executives weren't going to act on an insight they didn't understand. Every AI-generated output got a plain-language explanation, a confidence indicator, and a clear data source label, because the "why" mattered as much as the insight itself.</p>
-      </div>
-
-      <div class="decision reveal">
-        <h3>One primary question per view</h3>
-        <p>The temptation in any data-heavy product is to surface everything you have. I held firm on focus: each view answers one primary question clearly, with supporting detail one click away.</p>
-      </div>
-
-      <div class="decision reveal">
-        <h3>Designing empty and low-confidence states as carefully as loaded ones</h3>
-        <p>In a healthcare context, a dashboard that goes silent without explanation is genuinely dangerous. Empty states and low-confidence outputs got first-class design treatment, because those are the moments trust holds or breaks.</p>
+        <h3>[Step three]</h3>
+        <p>[What happened in this phase.]</p>
       </div>
     </div>
   </div>
@@ -251,21 +191,21 @@
 <!-- OUTCOMES -->
 <section class="cs-section">
   <div class="container">
-    <h2 class="reveal">What changed</h2>
-    <p class="lead reveal">Public-facing highlights:</p>
+    <h2 class="reveal">What I'd carry forward</h2>
+    <p class="lead reveal">[What did this project teach you, even at the concept stage?]</p>
 
     <div class="outcomes">
       <div class="outcome-card reveal">
-        <div class="qual">Prototype to production</div>
-        <p>The Lovable prototype was compelling enough on its own that an engineering team picked it up and built it into a real, production dashboard for executives and operations teams.</p>
+        <div class="qual">[Takeaway one]</div>
+        <p>[Detail.]</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">Design system that held up</div>
-        <p>The information hierarchy, trust signals, and empty-state patterns from the original prototype carried through to the production build largely unchanged, and have continued to scale as new AI outputs and data sources were added.</p>
+        <div class="qual">[Takeaway two]</div>
+        <p>[Detail.]</p>
       </div>
       <div class="outcome-card reveal">
-        <div class="qual">A case for AI-assisted prototyping</div>
-        <p>The project became a working example of how far a design concept can get, and how quickly, when AI prototyping tools are used to test an idea before committing engineering time to it.</p>
+        <div class="qual">[Takeaway three]</div>
+        <p>[Detail.]</p>
       </div>
     </div>
   </div>
@@ -276,7 +216,7 @@
   <div class="container">
     <div class="cs-cta reveal">
       <span class="cs-eyebrow">Get in touch</span>
-      <h2>Working with complex data? Let's talk.</h2>
+      <h2>Working in a regulated space and need a designer who gets it? Let's talk.</h2>
       <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd genuinely love to hear from you.</p>
       <div class="contact-ctas">
         <a href="mailto:blrwelch@gmail.com?subject=Hello%20Brittany" class="btn btn-primary">
@@ -294,10 +234,10 @@
 
 <section class="cs-next">
   <div class="container">
-    <a href="healthcare-ipad.html" class="cs-next-link reveal">
+    <a href="easyvax.html" class="cs-next-link reveal">
       <div>
         <span class="label">Next case study</span>
-        <div class="title">An iPad-native tool for field representatives →</div>
+        <div class="title">Simplifying vaccine scheduling with progressive disclosure →</div>
       </div>
       <div class="arrow">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -325,7 +265,6 @@
   });
   document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
 
-  // ===== THEME SWITCHER =====
   (function() {
     var navInner = document.querySelector('.nav-inner');
     if (!navInner) return;
@@ -381,7 +320,5 @@
 </script>
 
 <script src="device-animate.js"></script>
-
-<script src="pw-gate.js"></script>
 </body>
 </html>

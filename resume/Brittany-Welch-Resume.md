@@ -20,6 +20,7 @@ Staff Product Designer with 17 years of building design systems and AI-native pr
 - Built and maintained design systems for 2 pharmaceutical clients, establishing component libraries and usage guidelines adopted across product and marketing teams.
 - Created motion design and interactive prototypes and deliverables in Figma and After Effects to validate flows, communicate interaction intent, train teams, and align interdepartmental teams before development.
 - Facilitated discovery workshops and stakeholder interviews to validate design directions and build alignment across product, engineering, and leadership.
+- Led primary research for AstraZeneca: wrote the interview protocol and conducted structured interviews with pharmaceutical reps spanning new-hire to senior experience levels to surface training gaps, then manually synthesized findings into journey maps, a solution prioritization, and a quote gallery that shaped the training redesign.
 - Led multiple internal and customer-facing AI initiatives, including end-to-end design of the company's AI Practice platform.
 - Interviewed teammates to establish a baseline of AI readiness and capability.
 - Rapidly experimented with and iterated on various AI tools to identify best-fit solutions, pivoting quickly as needed.
@@ -29,14 +30,16 @@ Staff Product Designer with 17 years of building design systems and AI-native pr
 **AutoZone** · Memphis, TN · 2019 – 2021
 
 - Led design on a cross-functional Product Discovery team for AutoZone.com, a Fortune 500 e-commerce platform serving 60M active users.
-- Led interaction design and component architecture for the full responsive redesign of AutoZone.com, establishing patterns and standards adopted across the design org.
+- Designed and shipped the Product Finder, still in production on autozone.com, expanding coverage from 3 to 8+ vehicle-specific product categories.
+- Led interaction design and component architecture for the full responsive redesign of AutoZone.com, which shipped with zero reported traffic loss at cutover, establishing patterns and standards adopted across the design org.
 - Drove design quality through critique and review rituals, raising the craft standard and giving junior designers a clearer feedback model to grow from.
 - Mentored junior designers and led new-hire onboarding, helping build a more consistent and confident design practice across the team.
 
 ### UX Developer II
 **C Spire** · Ridgeland, MS · 2011 – 2019
 
-- Owned UX design and front-end development for the full redesign and launch of C Spire's flagship wireless site, careers site, and business services site, all responsive and built to production.
+- Owned UX design and front-end development for 3 full flagship site redesigns over 8 years: C Spire's consumer wireless site, careers site, and business services site, all responsive and built to production.
+- Built and maintained the Techmvmt design system, supporting $3M+ in scholarship and STEM program initiatives including MVMT, the C3 Coding Challenge, and Microsoft TEALS.
 - Built and maintained the company's pattern library and design standards, establishing a shared visual language that held up across every product surface and team.
 - Developed deep expertise in complex consumer product flows: account management, upgrade eligibility, product catalogs, and multi-step promotional mechanics.
 - Partnered across marketing, product, and engineering to ship unified digital experiences across a broad and fast-moving product portfolio.
