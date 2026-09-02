@@ -760,12 +760,49 @@
   }
   .project-cta:hover svg { transform: translateX(4px); }
 
+  /* ============ SELECTED WORK — FILTERS ============ */
+  .tcard-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .tcard-filter {
+    padding: 9px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+  }
+  .tcard-filter:hover {
+    border-color: var(--teal);
+    color: var(--teal-bright);
+  }
+  .tcard-filter.is-active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--on-teal);
+  }
+  .tcard-empty {
+    color: var(--text-muted);
+    font-size: 15px;
+    padding: 40px 0;
+    text-align: center;
+  }
+  .tcard-empty:not([hidden]) { display: block; }
+
   /* ============ SELECTED WORK — TRADING CARDS ============ */
   .tcard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
   }
+  .tcard.is-hidden { display: none; }
   .tcard {
     --tc-accent: var(--teal);
     display: flex;
@@ -825,21 +862,11 @@
   .tcard__meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 12px;
     padding: 14px 20px;
     background: var(--surface-2);
     border-bottom: 1px solid var(--border);
-  }
-  .tcard__tag {
-    color: var(--teal-bright);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
   .tcard__badge {
     display: flex;
