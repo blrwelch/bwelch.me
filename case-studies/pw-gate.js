@@ -31,6 +31,11 @@
     document.body.style.overflow = '';
   }
 
+  // Leave the gated page entirely without unlocking it (no password = no content shown)
+  window.leaveGate = function () {
+    window.location.href = '../index.html';
+  };
+
   // Allow Enter key to submit
   document.addEventListener('DOMContentLoaded', function () {
     var input = document.getElementById('pw-input');
@@ -50,6 +55,19 @@
 
     // Lock scroll behind gate
     document.body.style.overflow = 'hidden';
+
+    // Click the backdrop (not the card itself) to leave
+    var gateEl = document.getElementById('pw-gate');
+    if (gateEl) {
+      gateEl.addEventListener('click', function (e) {
+        if (e.target === gateEl) window.leaveGate();
+      });
+    }
+
+    // Escape key to leave
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') window.leaveGate();
+    });
   });
 
   // --- Screenshot deterrents ---

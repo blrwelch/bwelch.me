@@ -11,6 +11,7 @@
   -webkit-backdrop-filter: blur(20px);
 }
 .pw-gate__card {
+  position: relative;
   background: #0f1e36;
   border: 1px solid rgba(176,193,212,0.2);
   border-radius: 20px;
@@ -23,6 +24,42 @@
   text-align: center;
   box-shadow: 0 40px 80px rgba(0,0,0,0.6);
 }
+.pw-gate__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(176,193,212,0.22);
+  border-radius: 8px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.pw-gate__close:hover {
+  background: rgba(45,212,191,0.12);
+  border-color: #2dd4bf;
+  color: #5eead4;
+}
+.pw-gate__close svg { width: 16px; height: 16px; }
+.pw-gate__leave {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 4px;
+  margin-top: -4px;
+}
+.pw-gate__leave:hover { color: #cbd5e1; }
 .pw-gate__lock {
   width: 56px;
   height: 56px;
