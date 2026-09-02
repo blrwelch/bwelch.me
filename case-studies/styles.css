@@ -890,15 +890,15 @@ body::after {
 .cs-stat-pills {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 10px;
-  margin: 20px 0 28px;
+  justify-content: flex-start;
+  gap: 14px;
+  margin: 28px 0 36px;
 }
 .cs-stat-pill {
   display: inline-flex;
   align-items: baseline;
   gap: 7px;
-  padding: 9px 18px;
+  padding: 14px 18px;
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: 999px;
@@ -919,16 +919,10 @@ body::after {
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
-.cs-stat-pill--qual {
-  padding: 9px 18px;
-}
 .cs-stat-pill--qual strong {
   font-size: 14px;
   text-transform: none;
   letter-spacing: -0.005em;
-}
-@media (max-width: 640px) {
-  .cs-stat-pills { justify-content: flex-start; }
 }
 
 /* ============ PROGRESS / BEFORE-AFTER GALLERY ============ */
