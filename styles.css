@@ -349,24 +349,34 @@
 
   .hero-stats {
     display: flex;
-    gap: 40px;
-    margin-top: 56px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 40px;
+  }
+  .hero-stats .stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    white-space: nowrap;
   }
   .stat .num {
     font-family: 'Fraunces', serif;
-    font-size: 36px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
     color: var(--teal-bright);
+    letter-spacing: -0.01em;
     line-height: 1;
   }
   .stat .label {
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 600;
     color: var(--text-muted);
-    margin-top: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
   }
 
   /* Hero portrait */
@@ -1245,8 +1255,8 @@
   }
 
   @media (max-width: 540px) {
-    .hero-stats { flex-wrap: wrap; gap: 24px; }
-    .stat .num { font-size: 30px; }
+    .hero-stats { gap: 10px; }
+    .hero-stats .stat { padding: 12px 16px; }
     .toolbox { padding: 28px 24px; }
     .project-body { padding: 22px; }
     .modal { padding: 28px 24px; }
