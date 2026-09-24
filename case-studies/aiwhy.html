@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>aiwhy.io Brand Identity | Brittany Welch</title>
-<meta name="description" content="A case study on establishing the brand identity for aiwhy.io, a customer-facing marketplace for AI agents and skills." />
+<title>AIWhy.io | Brittany Welch</title>
+<meta name="description" content="Creating the AIWhy.io brand system and site through three fast iterations, and extending it to decks, PDFs, workshop pages and proposals." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -25,19 +25,24 @@
     } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   })();
 </script>
+<style>
+/* EasyVax: screenshots already include device frames, so show them as-is */
+.ev-hero{margin:40px 0 56px;padding:32px 24px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--border);text-align:center}
+.ev-hero img{width:100%;max-width:1100px;height:auto;display:inline-block}
+.ev-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:40px 0 16px}
+.ev-steps figure,.ev-platforms figure{margin:0;text-align:center}
+.ev-steps img,.ev-platforms img{width:100%;height:auto;display:block;margin:0 auto}
+.ev-steps figcaption,.ev-platforms figcaption{margin-top:12px;font-size:14px;line-height:1.45;color:var(--text-muted,inherit)}
+.ev-steps figcaption strong,.ev-platforms figcaption strong{display:block;color:var(--text,inherit);font-size:15px;margin-bottom:2px}
+.ev-platforms{display:grid;grid-template-columns:2.4fr 1fr .62fr;gap:32px;align-items:end;margin:40px 0 16px}
+.ev-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:28px 0 48px}.ev-compare figure{margin:0}.ev-compare img{width:100%;height:auto;display:block}.ev-compare figcaption{margin-top:10px;font-size:14px;line-height:1.5}.ev-compare figcaption strong{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}.ev-compare h3{grid-column:1/-1;margin:0 0 -8px}.ev-levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:32px 28px;margin:40px 0 16px}.ev-levels figure{margin:0}.ev-levels img{width:100%;height:auto;display:block}.ev-levels figcaption{margin-top:8px;font-size:14px;line-height:1.5;padding:0 8px}.ev-levels figcaption strong{display:block;font-size:15px;margin-bottom:2px}.ev-level{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal,#0f766e);margin-bottom:4px}
+.az-finder{display:grid;grid-template-columns:2.2fr 1fr;gap:32px;align-items:start;margin:40px 0 16px}.az-finder figure,.az-flow figure{margin:0}.az-finder img,.az-flow img{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--border)}.az-finder figcaption,.az-flow figcaption{margin-top:10px;font-size:14px;line-height:1.5}.az-finder figcaption strong,.az-flow figcaption strong{display:block;font-size:15px;margin-bottom:2px}.az-flow{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:40px 0 16px}.az-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0 8px}.az-paths div{padding:20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}.az-paths strong{display:block;margin-bottom:6px}.az-paths p{margin:0;font-size:14px;line-height:1.5}.az-phones{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:640px;margin:40px auto 16px}.az-phones figure{margin:0;text-align:center}.az-phones img{width:100%;height:auto}.az-phones figcaption{margin-top:10px;font-size:14px}
+.theme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:32px 0 8px}.theme-card{padding:24px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}.theme-card .who{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;opacity:.75}.theme-card h3{margin:0 0 8px}.theme-card p{margin:0;font-size:15px;line-height:1.55}.shot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:32px 0 8px}.shot-grid .progress-shot{aspect-ratio:16/10}.shot-cap{margin-top:8px;font-size:14px;line-height:1.5}.ver-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:32px 0 8px}.ver-row h3{margin:12px 0 4px;font-size:17px}.ver-row p{margin:0;font-size:14px;line-height:1.5}
+.ev-before{margin:32px 0 0;padding:28px;border:1px dashed var(--border);border-radius:var(--radius);text-align:center;font-size:14px}
+@media (max-width:760px){.ai-desk{grid-template-columns:1fr!important}.ai-phones{grid-template-columns:1fr 1fr!important}.cs-feature{grid-template-columns:1fr!important}.theme-grid,.ver-row{grid-template-columns:1fr}.az-finder,.az-flow,.az-paths{grid-template-columns:1fr}.ev-compare{grid-template-columns:1fr}.ev-steps{grid-template-columns:repeat(2,1fr)}.ev-platforms{grid-template-columns:1fr}.ev-platforms figure:nth-child(2){max-width:320px;margin:0 auto}.ev-platforms figure:nth-child(3){max-width:220px;margin:0 auto}}
+</style>
 </head>
 <body>
-
-<!--
-  HOLD — DO NOT LINK THIS PAGE FROM index.html OR ANY cs-next CHAIN
-  until you've actually checked with Nelson about publishing aiwhy.io brand work publicly.
-  It's built and ready so you can preview it (open this file directly) and decide.
-
-  SCAFFOLD NOTE: the challenge/role framing below is grounded in your real resume line
-  ("Established and implemented branding for aiwhy.io, the customer-facing marketplace
-  for AI agents and skills"). Metrics and visuals are still [bracketed] placeholders —
-  fill in real specifics (and get the go-ahead) before this goes live.
--->
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -65,151 +70,93 @@
       <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       <a href="../index.html#work">Work</a>
       <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-      <span aria-current="page">aiwhy.io</span>
+      <span aria-current="page">AIWhy.io</span>
     </nav>
-    <span class="cs-eyebrow reveal">Brand Identity · AI · Marketplace</span>
-    <h1 class="cs-title reveal">Building the brand for <span class="accent">aiwhy.io</span>, a marketplace for AI agents and skills.</h1>
-    <p class="cs-subtitle reveal">I established and implemented the brand identity for aiwhy.io, the customer-facing marketplace where teams discover and adopt AI agents and skills. [Add a sentence on the specific brand challenge — e.g. what aiwhy needed to feel like next to more established AI products, or what tone you were going for.]</p>
-
-    <div class="cs-meta reveal">
-      <div class="cs-meta-item">
-        <span class="label">Role</span>
-        <span class="value">Senior Product Designer</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Company</span>
-        <span class="value">Lextech Global Services</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Timeframe</span>
-        <span class="value">[Year(s)]</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Focus</span>
-        <span class="value">Brand Identity · Visual Design</span>
-      </div>
+    <span class="cs-eyebrow reveal">Lextech · Brand · Web · AI services</span>
+    <h1 class="cs-title reveal">Building the AIWhy.io brand, and <span class="accent">three sites in three weeks</span>.</h1>
+    <div class="cs-stat-pills reveal">
+      <span class="cs-stat-pill"><strong>3</strong><span>Site versions, about a week each</span></span>
+      <span class="cs-stat-pill"><strong>~30</strong><span>Clients helped with AI adoption</span></span>
     </div>
-
+    <p class="cs-subtitle reveal">AIWhy.io is Lextech’s external site for its AI agent services. I created the brand system (everything except the logo) and designed the site through three rebuilds. I then carried the brand into slide decks, PDFs, workshop pages and proposal templates.</p>
+    <div class="cs-meta reveal">
+      <div class="cs-meta-item"><span class="label">Role</span><span class="value">Senior Product Designer</span></div>
+      <div class="cs-meta-item"><span class="label">Company</span><span class="value">Lextech Global Services</span></div>
+      <div class="cs-meta-item"><span class="label">Timeframe</span><span class="value">Winter 2025 – spring 2026</span></div>
+      <div class="cs-meta-item"><span class="label">Status</span><span class="value">Live at <a href="https://aiwhy.io" target="_blank" rel="noopener">aiwhy.io</a></span></div>
+    </div>
     <div class="at-a-glance reveal" style="margin-top: 32px;">
-      <div class="glance-cell">
-        <span class="label">The challenge</span>
-        <p>Give a customer-facing AI agent and skills marketplace a brand identity from the ground up — [add specifics: what did "credible" need to look like for this audience?]</p>
-      </div>
-      <div class="glance-cell">
-        <span class="label">My role</span>
-        <p>I established and implemented the brand identity for aiwhy.io — [add specifics: logo, color system, typography, voice, marketing templates, etc. — whatever you actually owned.]</p>
-      </div>
-      <div class="glance-cell">
-        <span class="label">Outcome</span>
-        <p>[How the brand identity was received, where it shipped, and what it's being used for now.]</p>
-      </div>
+      <div class="glance-cell"><span class="label">The challenge</span><p>Launch a credible brand and site for a new AI services offering, fast, and make sure the site could be found by the AI tools it was about.</p></div>
+      <div class="glance-cell"><span class="label">My role</span><p>Color, type, visual language and site design, plus decks, PDFs, workshop promo pages and BetterProposals templates for statements of work.</p></div>
+      <div class="glance-cell"><span class="label">Where it landed</span><p>The site is live, and the team has helped roughly 30 clients with AI adoption using the materials built on this brand.</p></div>
     </div>
   </div>
 </header>
 
 <div class="container">
-  <div class="device-showcase device-showcase--laptop reveal">
-    <div class="mockup-laptop">
-      <div class="mockup-laptop__shell">
-        <div class="mockup-laptop__screen">
-          <!-- SWAP: replace src with a real screenshot once you have one to share -->
-          <img src="../images/PLACEHOLDER-aiwhy-hero.jpeg" alt="aiwhy.io brand identity" onerror="this.style.display='none'" />
-          <div class="mockup-placeholder" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        </div>
-      </div>
-      <div class="mockup-laptop__base"><div class="mockup-laptop__notch"></div></div>
-    </div>
-  </div>
+  <figure class="ev-hero reveal">
+    <img src="../images/aiwhy/hero.webp" alt="AIWhy.io on laptop and phone" width="2200" height="1323" />
+  </figure>
 </div>
 
-<!-- BRAND SYSTEM — placeholder frames, replace with real screenshots -->
-<section class="cs-section cs-section--narrow">
+
+<section class="cs-section">
   <div class="container">
     <h2 class="reveal">The brand system</h2>
-    <p class="lead reveal">[A line or two on the logo, color, and type decisions.]</p>
-    <div class="progress-gallery progress-gallery--pair reveal">
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Logo &amp; mark</span>
-        <img src="../images/PLACEHOLDER-aiwhy-logo.jpeg" alt="aiwhy.io logo and mark" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add logo/mark screenshot</span>
-        </div>
-      </figure>
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Marketplace UI</span>
-        <img src="../images/PLACEHOLDER-aiwhy-ui.jpeg" alt="aiwhy.io marketplace UI" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add marketplace UI screenshot</span>
-        </div>
-      </figure>
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Marketing</span>
-        <img src="../images/PLACEHOLDER-aiwhy-marketing.jpeg" alt="aiwhy.io marketing materials" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add marketing-materials screenshot</span>
-        </div>
-      </figure>
+    <p class="lead reveal">The AIWhy logo already existed. I built everything around it: a dark, high-contrast base, bold headings, bright accent colors for each topic, and callouts written in the client’s own words.</p>
+    <figure class="cs-wide reveal" style="margin:32px 0 8px">
+      <img src="../images/aiwhy/slide.webp" alt="AIWhy slide: The Road to AIWhy, with color-coded cards for meeting preparation and report automation" width="1920" height="1334" loading="lazy" style="width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--border)" />
+      <figcaption class="shot-cap"><strong>Presentation slide.</strong> Each client problem gets a color-coded card, a quote in the client’s own words, and a plain-language explanation.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">Three versions in three weeks</h2>
+    <p class="lead reveal">Each version took about a week. The first two had the same problem: they were built as JavaScript apps that search engines and AI assistants couldn’t read well. For a company selling AI services, being invisible to AI search wasn’t an option.</p>
+    <div class="ver-row">
+      <div class="theme-card reveal"><span class="who">Version 1</span><h3>Lovable</h3><p>Built in about a week, but as a React app that AI search couldn’t read.</p></div>
+      <div class="theme-card reveal"><span class="who">Version 2</span><h3>Circle</h3><p>Rebuilt in Circle, and ran into the same readability problem.</p></div>
+      <div class="theme-card reveal"><span class="who">Version 3 · Live</span><h3>Built with Claude</h3><p>The version that launched and is still live: plain HTML that search engines and AI tools can read, plus Markdown versions of key pages written for AI answer engines.</p></div>
+    </div>
+    <h3 class="reveal" style="margin-top:48px">The live site</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:20px 0 8px" class="ai-desk">
+      <figure class="reveal" style="margin:0"><img src="../images/aiwhy/site-5percent.webp" alt="AIWhy 5% Success Bundle page on desktop" width="1400" height="838" loading="lazy" style="width:100%;height:auto;display:block" /><figcaption class="shot-cap" style="text-align:center">5% Success Bundle</figcaption></figure>
+      <figure class="reveal" style="margin:0"><img src="../images/aiwhy/site-guild.webp" alt="AIWhy Builders Guild page on desktop" width="1400" height="838" loading="lazy" style="width:100%;height:auto;display:block" /><figcaption class="shot-cap" style="text-align:center">Builders Guild community</figcaption></figure>
+      <figure class="reveal" style="margin:0"><img src="../images/aiwhy/site-staff.webp" alt="AIWhy Task Agents and Digital Staff page on desktop" width="1400" height="838" loading="lazy" style="width:100%;height:auto;display:block" /><figcaption class="shot-cap" style="text-align:center">Task Agents &amp; Digital Staff</figcaption></figure>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:32px 0 8px" class="ai-phones">
+      <figure class="reveal" style="margin:0"><img src="../images/aiwhy/m-home.webp" alt="AIWhy home page on mobile" width="620" height="1074" loading="lazy" style="width:100%;height:auto;display:block" /><figcaption class="shot-cap" style="text-align:center">Home</figcaption></figure>
+      <figure class="reveal" style="margin:0"><img src="../images/aiwhy/m-5percent.webp" alt="AIWhy 5% Success Bundle on mobile" width="620" height="1074" loading="lazy" style="width:100%;height:auto;display:block" /><figcaption class="shot-cap" style="text-align:center">5% Success Bundle</figcaption></figure>
+      <figure class="reveal" style="margin:0"><img src="../images/aiwhy/m-guild.webp" alt="AIWhy Builders Guild on mobile" width="620" height="1074" loading="lazy" style="width:100%;height:auto;display:block" /><figcaption class="shot-cap" style="text-align:center">Builders Guild</figcaption></figure>
+      <figure class="reveal" style="margin:0"><img src="../images/aiwhy/m-staff.webp" alt="AIWhy Digital Staff on mobile" width="620" height="1074" loading="lazy" style="width:100%;height:auto;display:block" /><figcaption class="shot-cap" style="text-align:center">Digital Staff</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- APPROACH -->
 <section class="cs-section">
   <div class="container">
-    <h2 class="reveal">How I approached it</h2>
-    <p class="lead reveal">[A sentence framing your process — where you started and what you were solving for.]</p>
-
-    <div class="process-grid">
-      <div class="process-step reveal">
-        <span class="step-num">01</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-        <h3>[Step one]</h3>
-        <p>[What happened in this phase.]</p>
+    <h2 class="reveal">Beyond the website</h2>
+    <p class="lead reveal">The brand had to work everywhere the team met clients: slide decks, PDFs, promotional pages for AI workshops, and the statement-of-work templates I set up in BetterProposals.</p>
+    <div class="cs-feature" style="display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start;margin-top:32px">
+      <div class="reveal">
+        <h3>“The Road to AIWhy” flyer</h3>
+        <p>A one-page flyer that turns a list of services into a journey. Each stop along the road is a common client problem, such as “I spend 20 minutes preparing for each meeting,” paired with what an AI agent can take off their plate. It ends at the goal: every employee using AI in their day-to-day work.</p>
+        <p>The same cards, colors and client-voice quotes carry over into the slide decks, so a client sees one consistent story from the first handout to the proposal.</p>
       </div>
-      <div class="process-step reveal">
-        <span class="step-num">02</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-        </div>
-        <h3>[Step two]</h3>
-        <p>[What happened in this phase.]</p>
-      </div>
-      <div class="process-step reveal">
-        <span class="step-num">03</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        </div>
-        <h3>[Step three]</h3>
-        <p>[What happened in this phase.]</p>
-      </div>
+      <figure class="reveal" style="margin:0"><a href="../images/aiwhy/flyer.webp" target="_blank" rel="noopener" style="display:block;max-height:760px;overflow:auto;border-radius:var(--radius);border:1px solid var(--border)"><img src="../images/aiwhy/flyer.webp" alt="The Road to AIWhy flyer: a winding road connecting six client problems, from meeting preparation to knowledge flow" width="1920" height="2780" loading="lazy" style="width:100%;height:auto;display:block" /></a><figcaption class="shot-cap">Scroll or click to see it full size.</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- OUTCOMES -->
 <section class="cs-section">
-  <div class="container">
-    <h2 class="reveal">What changed</h2>
-    <p class="lead reveal">[What did this brand identity make possible?]</p>
-
-    <div class="outcomes">
-      <div class="outcome-card reveal">
-        <div class="qual">[Outcome one]</div>
-        <p>[Detail.]</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="qual">[Outcome two]</div>
-        <p>[Detail.]</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="qual">[Outcome three]</div>
-        <p>[Detail.]</p>
-      </div>
+  <div class="container container--prose">
+    <h2 class="reveal">Decisions that mattered</h2>
+    <div class="decisions">
+      <div class="decision reveal"><h3>Rebuild quickly instead of patching</h3><p>When a version didn’t meet the bar, we moved on after about a week instead of spending months working around its limits. The brand stayed the same across all three, which is what made switching fast.</p></div>
+      <div class="decision reveal"><h3>Design for AI readers, not just people</h3><p>An AI services site that AI assistants can’t read undercuts its own pitch. That’s why the final site is plain HTML generated with Claude, with added Markdown files that give AI answer engines a clean version of each page (answer engine optimization, or AEO).</p></div>
+      <div class="decision reveal"><h3>One system for every touchpoint</h3><p>Decks, PDFs, workshop pages and proposals all use the same colors, type and layout patterns, so a client sees one consistent company from first visit to signed SOW.</p></div>
     </div>
   </div>
 </section>
@@ -219,8 +166,8 @@
   <div class="container">
     <div class="cs-cta reveal">
       <span class="cs-eyebrow">Get in touch</span>
-      <h2>Building an AI product that needs a real brand? Let's talk.</h2>
-      <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd genuinely love to hear from you.</p>
+      <h2>Launching an AI product that needs a real brand? Let’s talk.</h2>
+      <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd love to hear from you.</p>
       <div class="contact-ctas">
         <a href="mailto:blrwelch@gmail.com?subject=Hello%20Brittany" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -232,6 +179,20 @@
         </a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="cs-next">
+  <div class="container">
+    <a href="data-viz.html" class="cs-next-link reveal">
+      <div>
+        <span class="label">Next case study</span>
+        <div class="title">AI insights dashboard for an enterprise healthcare client →</div>
+      </div>
+      <div class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -254,6 +215,7 @@
   });
   document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
 
+  // ===== THEME SWITCHER =====
   (function() {
     var navInner = document.querySelector('.nav-inner');
     if (!navInner) return;
@@ -282,10 +244,8 @@
     document.addEventListener('click', function(e) { if (!switcher.contains(e.target) && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); } });
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); tb.focus(); } });
   })();
-
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
-
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => {
@@ -296,18 +256,10 @@
     navLinks.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
   }));
-
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));</script>
 <script src="device-animate.js"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Internal AI Initiative | Brittany Welch</title>
-<meta name="description" content="A case study on designing an internal home for an enterprise AI Practice. IA, content strategy, and UX for a hub that supports AI agent work and helps teams put AI to use day-to-day." />
+<title>AI readiness research | Brittany Welch</title>
+<meta name="description" content="Internal research at Lextech: interviewing over a dozen colleagues about their willingness, concerns and ideas for using AI." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -25,6 +25,22 @@
     } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   })();
 </script>
+<style>
+/* EasyVax: screenshots already include device frames, so show them as-is */
+.ev-hero{margin:40px 0 56px;padding:32px 24px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--border);text-align:center}
+.ev-hero img{width:100%;max-width:1100px;height:auto;display:inline-block}
+.ev-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:40px 0 16px}
+.ev-steps figure,.ev-platforms figure{margin:0;text-align:center}
+.ev-steps img,.ev-platforms img{width:100%;height:auto;display:block;margin:0 auto}
+.ev-steps figcaption,.ev-platforms figcaption{margin-top:12px;font-size:14px;line-height:1.45;color:var(--text-muted,inherit)}
+.ev-steps figcaption strong,.ev-platforms figcaption strong{display:block;color:var(--text,inherit);font-size:15px;margin-bottom:2px}
+.ev-platforms{display:grid;grid-template-columns:2.4fr 1fr .62fr;gap:32px;align-items:end;margin:40px 0 16px}
+.ev-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:28px 0 48px}.ev-compare figure{margin:0}.ev-compare img{width:100%;height:auto;display:block}.ev-compare figcaption{margin-top:10px;font-size:14px;line-height:1.5}.ev-compare figcaption strong{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}.ev-compare h3{grid-column:1/-1;margin:0 0 -8px}.ev-levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:32px 28px;margin:40px 0 16px}.ev-levels figure{margin:0}.ev-levels img{width:100%;height:auto;display:block}.ev-levels figcaption{margin-top:8px;font-size:14px;line-height:1.5;padding:0 8px}.ev-levels figcaption strong{display:block;font-size:15px;margin-bottom:2px}.ev-level{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal,#0f766e);margin-bottom:4px}
+.az-finder{display:grid;grid-template-columns:2.2fr 1fr;gap:32px;align-items:start;margin:40px 0 16px}.az-finder figure,.az-flow figure{margin:0}.az-finder img,.az-flow img{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--border)}.az-finder figcaption,.az-flow figcaption{margin-top:10px;font-size:14px;line-height:1.5}.az-finder figcaption strong,.az-flow figcaption strong{display:block;font-size:15px;margin-bottom:2px}.az-flow{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:40px 0 16px}.az-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0 8px}.az-paths div{padding:20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}.az-paths strong{display:block;margin-bottom:6px}.az-paths p{margin:0;font-size:14px;line-height:1.5}.az-phones{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:640px;margin:40px auto 16px}.az-phones figure{margin:0;text-align:center}.az-phones img{width:100%;height:auto}.az-phones figcaption{margin-top:10px;font-size:14px}
+.theme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:32px 0 8px}.theme-card{padding:24px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}.theme-card .who{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;opacity:.75}.theme-card h3{margin:0 0 8px}.theme-card p{margin:0;font-size:15px;line-height:1.55}.shot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:32px 0 8px}.shot-grid .progress-shot{aspect-ratio:16/10}.shot-cap{margin-top:8px;font-size:14px;line-height:1.5}.ver-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:32px 0 8px}.ver-row h3{margin:12px 0 4px;font-size:17px}.ver-row p{margin:0;font-size:14px;line-height:1.5}
+.ev-before{margin:32px 0 0;padding:28px;border:1px dashed var(--border);border-radius:var(--radius);text-align:center;font-size:14px}
+@media (max-width:760px){.theme-grid,.ver-row{grid-template-columns:1fr}.az-finder,.az-flow,.az-paths{grid-template-columns:1fr}.ev-compare{grid-template-columns:1fr}.ev-steps{grid-template-columns:repeat(2,1fr)}.ev-platforms{grid-template-columns:1fr}.ev-platforms figure:nth-child(2){max-width:320px;margin:0 auto}.ev-platforms figure:nth-child(3){max-width:220px;margin:0 auto}}
+</style>
 </head>
 <body>
 
@@ -54,222 +70,62 @@
       <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       <a href="../index.html#work">Work</a>
       <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-      <span aria-current="page">Internal AI Initiative</span>
+      <span aria-current="page">AI readiness research</span>
     </nav>
-    <span class="cs-eyebrow reveal">Internal · AI · Enterprise</span>
-    <h1 class="cs-title reveal">An internal initiative <span class="accent">promoting AI</span> adoption.</h1>
-
-    <!-- METRICS: "40+" is a directional example — swap in a real count of teams/colleagues engaging with the hub if you can pull one, or reword to something you're comfortable defending. -->
+    <span class="cs-eyebrow reveal">Lextech · Internal research · AI adoption</span>
+    <h1 class="cs-title reveal">Asking our own team what they <span class="accent">actually think</span> about AI.</h1>
     <div class="cs-stat-pills reveal">
-      <span class="cs-stat-pill"><strong>40+</strong><span>Teams engaged</span></span>
-      <span class="cs-stat-pill cs-stat-pill--qual"><strong>Active cross-org adoption</strong></span>
-      <span class="cs-stat-pill cs-stat-pill--qual"><strong>Client-facing credibility</strong></span>
+      <span class="cs-stat-pill"><strong>12+</strong><span>Interviews</span></span>
+      <span class="cs-stat-pill"><strong>30–45</strong><span>Minutes each</span></span>
+      <span class="cs-stat-pill"><strong>4</strong><span>Themes that shaped next steps</span></span>
     </div>
-
-    <p class="cs-subtitle reveal">I led the design of an internal home for an enterprise AI Practice. That covers the information architecture, content strategy, and UX for a hub that supports AI agent and AI Skills work, and gives our teams and clients a real, credible place to start using AI in their everyday work.</p>
-
+    <p class="cs-subtitle reveal">Lextech wanted to understand where its own people stood on AI. I wrote the interview script, scheduled and ran the interviews, and synthesized what I heard into a data set of the team’s willingness, concerns and ideas for using AI.</p>
     <div class="cs-meta reveal">
-      <div class="cs-meta-item">
-        <span class="label">Role</span>
-        <span class="value">Senior UI/UX Designer</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Company</span>
-        <span class="value">Enterprise Software</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Timeframe</span>
-        <span class="value">2024 to Present</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Focus</span>
-        <span class="value">Internal · IA · UX · Adoption</span>
-      </div>
+      <div class="cs-meta-item"><span class="label">Role</span><span class="value">Senior Product Designer · Research lead</span></div>
+      <div class="cs-meta-item"><span class="label">Company</span><span class="value">Lextech Global Services</span></div>
+      <div class="cs-meta-item"><span class="label">Timeframe</span><span class="value">Late 2025 – early 2026</span></div>
+      <div class="cs-meta-item"><span class="label">Methods</span><span class="value">Interviews · Synthesis · Documentation</span></div>
     </div>
-
     <div class="at-a-glance reveal" style="margin-top: 32px;">
-      <div class="glance-cell">
-        <span class="label">The challenge</span>
-        <p>Make AI adoption feel real for our own teams, not just something we sell externally. Build the internal home that supports our AI agent work and gives colleagues a credible, approachable place to start.</p>
-      </div>
-      <div class="glance-cell">
-        <span class="label">My role</span>
-        <p>Senior UI/UX Designer leading end-to-end design of the internal AI Practice hub. Information architecture, content strategy, and the UX patterns that surface our AI agents and Skills work in a way people actually want to engage with.</p>
-      </div>
-      <div class="glance-cell">
-        <span class="label">Outcome</span>
-        <p>A living internal hub adopted as a working reference across the organization, actively used to drive AI agent adoption and pulled into broader conversations about our AI strategy with clients.</p>
-      </div>
+      <div class="glance-cell"><span class="label">The question</span><p>How willing is our team to use AI, what’s holding people back, and where do they see it helping?</p></div>
+      <div class="glance-cell"><span class="label">My role</span><p>I ran the study end to end: script, scheduling, interviews, synthesis and the write-up.</p></div>
+      <div class="glance-cell"><span class="label">Where it landed</span><p>I documented the findings in Notion. Several members of leadership used them to plan the initiatives that followed.</p></div>
     </div>
   </div>
 </header>
 
-<div class="container">
-  <div class="device-showcase device-showcase--laptop reveal">
-    <div class="mockup-laptop">
-      <div class="mockup-laptop__shell">
-        <div class="mockup-laptop__screen">
-          <!-- SWAP: replace src with your screenshot -->
-          <img src="../images/ai-practice-hero.jpeg" alt="AI Practice website" onerror="this.style.display='none'" />
-          <div class="mockup-placeholder" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        </div>
-      </div>
-      <div class="mockup-laptop__base"><div class="mockup-laptop__notch"></div></div>
-    </div>
-    </div>
-  </div>
-</div>
-
-<!-- FLOW — placeholder frames, swap in real screenshots when you have them -->
-<section class="cs-section cs-section--narrow">
-  <div class="container">
-    <h2 class="reveal">Inside the hub</h2>
-    <p class="lead reveal">The information architecture that makes agent and skill work legible to people who didn't build it.</p>
-    <div class="progress-gallery progress-gallery--pair reveal">
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Hub home</span>
-        <img src="../images/PLACEHOLDER-aipractice-home.jpeg" alt="AI Practice hub home" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add hub home screenshot</span>
-        </div>
-      </figure>
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Agent detail</span>
-        <img src="../images/PLACEHOLDER-aipractice-agent.jpeg" alt="Agent detail page" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add agent detail screenshot</span>
-        </div>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- CONTEXT -->
-<section class="cs-section">
-  <div class="container container--prose">
-    <h2 class="reveal">The challenge</h2>
-    <p class="lead reveal">AI moves fast. The hard part is making it move at the speed of your own organization, too.</p>
-    <p class="reveal">The company wanted an internal home for their AI practice. Somewhere their own teams could go to see what was being built, how AI agents and skills slotted into real work, and where the practice was heading next. The brief wasn't just "make a page about AI." It was: design the experience that turns AI from a buzzword into something colleagues actually pull into their day-to-day work. There was no playbook for this. We had to build one.</p>
-    <p class="reveal">My job was to lead the design of that internal hub end to end. That meant figuring out the information architecture, shaping the content strategy, and designing the UI/UX patterns that make the practice make sense to the rest of the organization. It also meant staying close to what was actually landing with people and adapting fast when something wasn't working.</p>
-  </div>
-</section>
-
-<!-- APPROACH -->
 <section class="cs-section">
   <div class="container">
-    <h2 class="reveal">How I approached it</h2>
-    <p class="lead reveal">An internal product deserves the same design care as anything we'd ship externally. Our own teams are users too, and they deserve a good experience.</p>
-
+    <h2 class="reveal">How I ran it</h2>
     <div class="process-grid">
-      <div class="process-step reveal">
-        <span class="step-num">01 · IA</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        </div>
-        <h3>Information architecture</h3>
-        <p>Structured the practice around how our teams actually use it. Agents, skills, and patterns up front, with the deeper "why we built it this way" content one click away.</p>
-      </div>
-
-      <div class="process-step reveal">
-        <span class="step-num">02 · Content</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <h3>Content strategy</h3>
-        <p>Shaped what every page should say and in what order. The site reads like a confident, working reference, not a marketing page trying to sound smart about AI.</p>
-      </div>
-
-      <div class="process-step reveal">
-        <span class="step-num">03 · UX</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-        </div>
-        <h3>UX patterns</h3>
-        <p>Designed the patterns for showing agents, skills, and use cases. Recognizable surfaces that hold up as the practice grows.</p>
-      </div>
-
-      <div class="process-step reveal">
-        <span class="step-num">04 · Adoption</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <h3>Driving adoption</h3>
-        <p>Closed the loop with teams using the site. Refined the IA, the content, and the prompts that get colleagues to actually try the agents and patterns we'd built.</p>
-      </div>
+      <div class="process-step reveal"><span class="step-num">01 · Script</span><h3>Write the questions</h3><p>A consistent interview script covering how people felt about AI, what worried them, and where they thought it could help in their own work.</p></div>
+      <div class="process-step reveal"><span class="step-num">02 · Interviews</span><h3>Talk to over a dozen people</h3><p>I scheduled and led each conversation, 30 to 45 minutes long, across the team.</p></div>
+      <div class="process-step reveal"><span class="step-num">03 · Synthesis</span><h3>Find the patterns</h3><p>I turned the notes into a data set of willingness, concerns and ideas, then grouped it into themes.</p></div>
+      <div class="process-step reveal"><span class="step-num">04 · Share</span><h3>Make it usable</h3><p>I wrote the findings up in Notion so leadership could reference them when planning what came next.</p></div>
     </div>
   </div>
 </section>
 
-<!-- DECISIONS -->
-<section class="cs-section">
-  <div class="container container--prose">
-    <h2 class="reveal">Decisions that mattered</h2>
-
-    <div class="decisions">
-      <div class="decision reveal">
-        <h3>Treat the internal site like a product, not a wiki</h3>
-        <p>It would've been easy to ship this as documentation and move on. We chose to give it real product thinking. Clean IA, intentional content, designed patterns. Internal teams deserve the same UX care as anything we'd send out the door.</p>
-      </div>
-
-      <div class="decision reveal">
-        <h3>Lead with patterns, not theory</h3>
-        <p>Most "AI at work" content starts with what AI is. We led with what AI does. Specific agents, specific patterns, specific use cases. The philosophy moved further down the page for the people who wanted it.</p>
-      </div>
-
-      <div class="decision reveal">
-        <h3>Make adoption the actual design goal</h3>
-        <p>The success metric for this site isn't traffic. It's whether a colleague clicked through and actually used an agent or pattern in their own work that week. Every design decision came back to that.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OUTCOMES -->
 <section class="cs-section">
   <div class="container">
-    <h2 class="reveal">What's changed</h2>
-    <p class="lead reveal">Specific examples are covered in the full case study Public highlights:</p>
-
-    <div class="outcomes">
-      <div class="outcome-card reveal">
-        <div class="qual">Active cross-org adoption</div>
-        <p>The hub is referenced daily across multiple teams and departments as the go-to starting point for AI agent and Skills work. Not a static one-pager collecting dust.</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="qual">Client-facing credibility</div>
-        <p>The practice site gets pulled into client conversations about our AI strategy, giving us a professional, polished way to show how we think about AI adoption.</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="qual">Patterns that grow</div>
-        <p>The UX patterns I designed for agents, skills, and use cases have held up as the practice has expanded. New additions slot in without breaking what's already there.</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="qual">Measurable engagement</div>
-        <p>Teams who engaged with the hub showed higher rates of actually trying the AI agents and patterns we'd built. That was the real metric we were designing toward.</p>
-      </div>
+    <h2 class="reveal">What we heard</h2>
+    <p class="lead reveal">The concerns that came up most were practical ones: knowing where to start, protecting client data, and finding the time.</p>
+    <div class="theme-grid">
+      <div class="theme-card reveal"><span class="who">Many people</span><h3>“Where do I even start?”</h3><p>Many people had no idea where to begin with AI and said they needed training.</p></div>
+      <div class="theme-card reveal"><span class="who">Many people</span><h3>Client confidentiality</h3><p>A consistent worry: what is safe to put into an AI tool when you work with client data every day?</p></div>
+      <div class="theme-card reveal"><span class="who">Many people</span><h3>No time to learn</h3><p>Many worried about how they’d find time to learn AI on top of their daily client work.</p></div>
+      <div class="theme-card reveal"><span class="who">Some people</span><h3>Job security</h3><p>Some people worried AI would eventually replace parts of their role, or all of it.</p></div>
     </div>
   </div>
 </section>
 
-<!-- REFLECTIONS -->
 <section class="cs-section">
   <div class="container container--prose">
-    <h2 class="reveal">What I'd carry forward</h2>
-    <div class="reflections-list">
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Your own teams are users too. Treating their tools with the same design care as anything you'd ship externally actually paid off here, in adoption, in credibility, and in the quality of conversations it opened up with clients.</p>
-      </div>
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Adoption happens when you lower the barrier to trying something today, not when you explain how exciting it might be someday. That distinction shaped almost every decision we made on this project.</p>
-      </div>
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>The core challenge here, taking something complex and making it actually usable, is one I've been solving for 17 years. AI is new territory, but the problem felt familiar. That's probably why I picked it up fast.</p>
-      </div>
+    <h2 class="reveal">What I took from it</h2>
+    <div class="decisions">
+      <div class="decision reveal"><h3>Adoption starts with training</h3><p>For many people, the gap wasn’t interest. It was knowing where to start, and knowing what was safe.</p></div>
+      <div class="decision reveal"><h3>Time has to be part of the plan</h3><p>Asking people to learn on top of full client workloads wasn’t realistic. Any rollout needed time set aside for it.</p></div>
+      <div class="decision reveal"><h3>Say the quiet worries out loud</h3><p>Confidentiality and job security came up again and again. Naming them directly in the findings made them things leadership could address, not just background anxiety.</p></div>
     </div>
   </div>
 </section>
@@ -279,8 +135,8 @@
   <div class="container">
     <div class="cs-cta reveal">
       <span class="cs-eyebrow">Get in touch</span>
-      <h2>Got an AI challenge? I'd love to hear about it.</h2>
-      <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd genuinely love to hear from you.</p>
+      <h2>Working out how your team feels about AI? Let’s talk.</h2>
+      <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd love to hear from you.</p>
       <div class="contact-ctas">
         <a href="mailto:blrwelch@gmail.com?subject=Hello%20Brittany" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -297,10 +153,10 @@
 
 <section class="cs-next">
   <div class="container">
-    <a href="data-viz.html" class="cs-next-link reveal">
+    <a href="aiwhy.html" class="cs-next-link reveal">
       <div>
         <span class="label">Next case study</span>
-        <div class="title">AI insights dashboard for an enterprise healthcare client →</div>
+        <div class="title">Building the AIWhy.io brand in three quick iterations →</div>
       </div>
       <div class="arrow">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
