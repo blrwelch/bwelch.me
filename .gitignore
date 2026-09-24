@@ -1,2 +1,7 @@
 node_modules/
 .DS_Store
+
+# Private / scratch — never deploy
+_tmp/
+Claude outputs/
+resume/*References*

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AutoZone | Leading Product Discovery Design | Brittany Welch</title>
-<meta name="description" content="A case study on senior UI design and team leadership at AutoZone. Designing the Product Finder, AutoZone Rewards flows, and contributing to a full site relaunch with no reported loss in traffic." />
+<title>AutoZone | Brittany Welch</title>
+<meta name="description" content="A case study on product discovery design at AutoZone: the Product Finder, AutoZone Rewards enrollment flows, and the 2020 site relaunch." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -25,6 +25,21 @@
     } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   })();
 </script>
+<style>
+/* EasyVax: screenshots already include device frames, so show them as-is */
+.ev-hero{margin:40px 0 56px;padding:32px 24px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--border);text-align:center}
+.ev-hero img{width:100%;max-width:1100px;height:auto;display:inline-block}
+.ev-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:40px 0 16px}
+.ev-steps figure,.ev-platforms figure{margin:0;text-align:center}
+.ev-steps img,.ev-platforms img{width:100%;height:auto;display:block;margin:0 auto}
+.ev-steps figcaption,.ev-platforms figcaption{margin-top:12px;font-size:14px;line-height:1.45;color:var(--text-muted,inherit)}
+.ev-steps figcaption strong,.ev-platforms figcaption strong{display:block;color:var(--text,inherit);font-size:15px;margin-bottom:2px}
+.ev-platforms{display:grid;grid-template-columns:2.4fr 1fr .62fr;gap:32px;align-items:end;margin:40px 0 16px}
+.ev-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:28px 0 48px}.ev-compare figure{margin:0}.ev-compare img{width:100%;height:auto;display:block}.ev-compare figcaption{margin-top:10px;font-size:14px;line-height:1.5}.ev-compare figcaption strong{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}.ev-compare h3{grid-column:1/-1;margin:0 0 -8px}.ev-levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:32px 28px;margin:40px 0 16px}.ev-levels figure{margin:0}.ev-levels img{width:100%;height:auto;display:block}.ev-levels figcaption{margin-top:8px;font-size:14px;line-height:1.5;padding:0 8px}.ev-levels figcaption strong{display:block;font-size:15px;margin-bottom:2px}.ev-level{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal,#0f766e);margin-bottom:4px}
+.az-finder{display:grid;grid-template-columns:2.2fr 1fr;gap:32px;align-items:start;margin:40px 0 16px}.az-finder figure,.az-flow figure{margin:0}.az-finder img,.az-flow img{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--border)}.az-finder figcaption,.az-flow figcaption{margin-top:10px;font-size:14px;line-height:1.5}.az-finder figcaption strong,.az-flow figcaption strong{display:block;font-size:15px;margin-bottom:2px}.az-flow{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:40px 0 16px}.az-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0 8px}.az-paths div{padding:20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}.az-paths strong{display:block;margin-bottom:6px}.az-paths p{margin:0;font-size:14px;line-height:1.5}.az-phones{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:640px;margin:40px auto 16px}.az-phones figure{margin:0;text-align:center}.az-phones img{width:100%;height:auto}.az-phones figcaption{margin-top:10px;font-size:14px}
+.ev-before{margin:32px 0 0;padding:28px;border:1px dashed var(--border);border-radius:var(--radius);text-align:center;font-size:14px}
+@media (max-width:760px){.az-finder,.az-flow,.az-paths{grid-template-columns:1fr}.ev-compare{grid-template-columns:1fr}.ev-steps{grid-template-columns:repeat(2,1fr)}.ev-platforms{grid-template-columns:1fr}.ev-platforms figure:nth-child(2){max-width:320px;margin:0 auto}.ev-platforms figure:nth-child(3){max-width:220px;margin:0 auto}}
+</style>
 </head>
 <body>
 
@@ -56,157 +71,120 @@
       <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       <span aria-current="page">AutoZone</span>
     </nav>
-    <span class="cs-eyebrow reveal">Retail · E-commerce · Fortune 500</span>
-    <h1 class="cs-title reveal">Leading <span class="accent">Product Discovery</span> design at AutoZone.</h1>
+    <span class="cs-eyebrow reveal">AutoZone · Retail e-commerce · Web · Mobile web</span>
+    <h1 class="cs-title reveal">Helping people know a part <span class="accent">fits their car</span> before they buy it.</h1>
 
-    <!-- METRICS: real, from the outcomes section below — surfaced here too since these are numbers worth leading with. -->
     <div class="cs-stat-pills reveal">
-      <span class="cs-stat-pill"><strong>0%</strong><span>Traffic lost</span></span>
-      <span class="cs-stat-pill"><strong>3→8+</strong><span>Categories</span></span>
-      <span class="cs-stat-pill"><strong>3</strong><span>Rewards states</span></span>
-      <span class="cs-stat-pill"><strong>60M</strong><span>Active users</span></span>
+      <span class="cs-stat-pill"><strong>3&rarr;8</strong><span>Product Finder categories</span></span>
+      <span class="cs-stat-pill"><strong>3</strong><span>Rewards enrollment paths</span></span>
+      <span class="cs-stat-pill"><strong>~12</strong><span>Designers &amp; interns mentored</span></span>
     </div>
 
-    <p class="cs-subtitle reveal">Senior UI design and team leadership for a Fortune 500 e-commerce site used by millions of customers. I shipped the Product Finder, the AutoZone Rewards (AZ Rewards) flows, and contributed to a full site relaunch that went live with no reported loss in traffic, right in the middle of a global pandemic.</p>
+    <p class="cs-subtitle reveal">Most AutoZone customers aren’t browsing. Something broke, and they need the right part for their specific vehicle. As a Senior UI Designer and design lead for the Product Discovery team, I designed the Product Finder and the AutoZone Rewards enrollment flows, and I contributed to the full site relaunch in 2020.</p>
 
     <div class="cs-meta reveal">
-      <div class="cs-meta-item">
-        <span class="label">Role</span>
-        <span class="value">Senior UI Designer</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Team</span>
-        <span class="value">Product Discovery · Design lead</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Timeframe</span>
-        <span class="value">2019 to 2021</span>
-      </div>
-      <div class="cs-meta-item">
-        <span class="label">Company</span>
-        <span class="value">AutoZone · Memphis, TN</span>
-      </div>
+      <div class="cs-meta-item"><span class="label">Role</span><span class="value">Senior UI Designer · Design lead, Product Discovery</span></div>
+      <div class="cs-meta-item"><span class="label">Company</span><span class="value">AutoZone · Memphis, TN</span></div>
+      <div class="cs-meta-item"><span class="label">Timeframe</span><span class="value">2019–2021</span></div>
+      <div class="cs-meta-item"><span class="label">Platform</span><span class="value">Web · Mobile web</span></div>
     </div>
 
     <div class="at-a-glance reveal" style="margin-top: 32px;">
       <div class="glance-cell">
         <span class="label">The challenge</span>
-        <p>Modernize the e-commerce experience for a Fortune 500 parts retailer used by millions. Make it easier for customers to confidently find the right product for their specific vehicle, then ship a full site relaunch without losing the people who depend on it.</p>
+        <p>Customers usually don’t know their oil weight, wiper sizes or spark plug type. They guess, or leave to look it up. At the same time, the whole site was being rebuilt, during a pandemic, for millions of customers.</p>
       </div>
       <div class="glance-cell">
         <span class="label">My role</span>
-        <p>Senior UI Designer and design lead for a cross-functional Product Discovery team. Hands-on UI work, team direction, design approvals, and mentorship for junior and associate designers.</p>
+        <p>Hands-on UI design for Product Discovery, plus direction, design approvals and mentoring for nearly a dozen designers and interns.</p>
       </div>
       <div class="glance-cell">
-        <span class="label">Outcome</span>
-        <p>Shipped the Product Finder (still in production, expanded from 3 to 8+ product categories), all AutoZone Rewards enrollment states, and contributed to a full site relaunch with zero reported traffic loss at cutover.</p>
+        <span class="label">Where it landed</span>
+        <p>The Product Finder shipped with 3 categories and grew to 8. It has since been retired, and AutoZone now shows fit with tags on each product. The relaunched site went live in 2020 with no reported drop in traffic.</p>
       </div>
     </div>
   </div>
 </header>
 
 <div class="container">
-  <div class="device-showcase device-showcase--laptop reveal">
-    <div class="mockup-laptop">
-      <div class="mockup-laptop__shell">
-        <div class="mockup-laptop__screen">
-          <!-- SWAP: replace src with your screenshot -->
-          <img src="../images/autozone-hero.jpeg" alt="AutoZone product discovery design" onerror="this.style.display='none'" />
-          <div class="mockup-placeholder" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        </div>
-      </div>
-      <div class="mockup-laptop__base"><div class="mockup-laptop__notch"></div></div>
-    </div>
-    </div>
-  </div>
+  <figure class="ev-hero reveal">
+    <img src="../images/autozone/hero.webp" alt="AutoZone.com on desktop and phone" width="2200" height="1323" />
+  </figure>
 </div>
 
-<!-- BEFORE / AFTER — placeholder frames, swap in real screenshots when you have them -->
-<section class="cs-section cs-section--narrow">
+<!-- PRODUCT FINDER -->
+<section class="cs-section">
   <div class="container">
-    <h2 class="reveal">Product Finder &amp; Rewards, in flow</h2>
-    <p class="lead reveal">A closer look at the Product Finder results and the Rewards enrollment states.</p>
-    <div class="progress-gallery progress-gallery--pair reveal">
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Product Finder</span>
-        <img src="../images/PLACEHOLDER-autozone-finder.jpeg" alt="Product Finder vehicle-specific results" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add Product Finder screenshot</span>
-        </div>
+    <h2 class="reveal">The Product Finder</h2>
+    <p class="lead reveal">Once a customer set their vehicle, the top of the product list showed that vehicle’s specs: wiper sizes for each side, oil weight, type and capacity, or spark plug count and metal. I designed the UI and helped work out which specs to show. It launched with oil, wipers and spark plugs, then expanded to antifreeze, wheel nuts, brake fluid and transmission fluid.</p>
+    <div class="az-finder">
+      <figure class="reveal">
+        <img src="../images/autozone/finder-desktop.webp" alt="Product Finder on desktop: wiper sizes, oil specs and spark plugs for different vehicles" width="1400" height="1739" loading="lazy" />
+        <figcaption><strong>Desktop</strong>One layout that adapts to each category, down to vehicles that need two kinds of spark plug.</figcaption>
       </figure>
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Rewards enrollment</span>
-        <img src="../images/PLACEHOLDER-autozone-rewards.jpeg" alt="AutoZone Rewards enrollment flow" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add Rewards enrollment screenshot</span>
-        </div>
-      </figure>
-      <figure class="progress-shot">
-        <span class="progress-shot__label">Mobile</span>
-        <img src="../images/PLACEHOLDER-autozone-mobile.jpeg" alt="AutoZone mobile site" onerror="this.style.display='none'" />
-        <div class="progress-shot__placeholder" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Add mobile screenshot</span>
-        </div>
+      <figure class="reveal">
+        <img src="../images/autozone/finder-mobile-production.webp" alt="Product Finder in production on mobile, above an oil product with a fits your vehicle tag" width="540" height="1985" loading="lazy" />
+        <figcaption><strong>Mobile, in production</strong>Specs sit directly above matching products, each marked “fits your vehicle.”</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<!-- CONTEXT -->
+<!-- REWARDS -->
 <section class="cs-section">
-  <div class="container container--prose">
-    <h2 class="reveal">The challenge</h2>
-    <p class="lead reveal">A Fortune 500 e-commerce site where every customer's first question is: "will this part fit my vehicle?"</p>
-    <p class="reveal">AutoZone serves millions of customers who aren't browsing for fun. They show up because something broke, something needs replacing, or they're mid-repair and missing a part. The hardest design problem in this space isn't selling. It's confidence: helping a customer feel absolutely sure that the product on the page is the right one for the vehicle sitting in their driveway.</p>
-    <p class="reveal">When I joined as Senior UI Designer leading the Product Discovery team, the company was deep into a complete site relaunch. My job was hands-on UI work across our key initiatives, team leadership and mentorship, and making sure the new site shipped without disrupting the millions of customers who depended on it. And we had to do all of that during a global pandemic, when DIY auto repair was surging and the stakes for getting it right were higher than ever. We figured it out and shipped anyway.</p>
+  <div class="container">
+    <h2 class="reveal">AutoZone Rewards enrollment</h2>
+    <p class="lead reveal">Joining Rewards at checkout sounds like one flow, but customers came in three different situations, each with its own prompts, errors and recovery paths.</p>
+    <div class="az-paths">
+      <div class="reveal"><strong>Not signed in, no Rewards ID</strong><p>Offer to create an account and join in one step, without losing the cart.</p></div>
+      <div class="reveal"><strong>Not signed in, has an in-store ID</strong><p>Let them link the Rewards ID they already use at the register.</p></div>
+      <div class="reveal"><strong>Signed in, not enrolled</strong><p>Prompt at the cart to enter an existing ID or create one, then confirm it was applied.</p></div>
+    </div>
+    <div class="az-flow">
+      <figure class="reveal">
+        <a href="../images/autozone/rewards-flow-known-unknown.webp" target="_blank" rel="noopener"><img src="../images/autozone/rewards-flow-known-unknown.webp" alt="Wireflow for Rewards enrollment when the customer is not signed in" width="1360" height="1920" loading="lazy" /></a>
+        <figcaption><strong>Wireflow: not signed in</strong>Both anonymous paths, including what happens if someone closes the modal. Click to enlarge.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <a href="../images/autozone/rewards-flow-signed-in.webp" target="_blank" rel="noopener"><img src="../images/autozone/rewards-flow-signed-in.webp" alt="Wireflow for Rewards enrollment when the customer is signed in but not enrolled" width="1360" height="1930" loading="lazy" /></a>
+        <figcaption><strong>Wireflow: signed in, not enrolled</strong>From the cart prompt through a linked ID and completed purchase. Click to enlarge.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
-<!-- KEY PROJECTS -->
+<!-- BEFORE / AFTER -->
 <section class="cs-section">
   <div class="container">
-    <h2 class="reveal">Selected projects</h2>
-    <p class="lead reveal">The work that defined the role.</p>
+    <h2 class="reveal">The relaunch</h2>
+    <p class="lead reveal">I contributed to the redesign of AutoZone.com that launched in 2020. The “today” screens show the site as it looks now. It has kept evolving since I left, but it still follows the structure the relaunch set up.</p>
+    <div class="ev-compare reveal">
+      <h3>Home page</h3>
+      <figure>
+        <img src="../images/autozone/before-home.webp" alt="AutoZone.com before the relaunch: Home page" width="1400" height="838" loading="lazy" />
+        <figcaption><strong>Before (2018–19)</strong>Dense header, a mix of promo styles, and vehicle selection tucked into a small “My Vehicles” link.</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/autozone/after-home.webp" alt="AutoZone.com today: Home page" width="1400" height="838" loading="lazy" />
+        <figcaption><strong>Today</strong>A simpler header with “Add Vehicle,” search and the customer’s store in one bar.</figcaption>
+      </figure>
+    </div>
 
-    <div class="process-grid">
-      <div class="process-step reveal">
-        <span class="step-num">Discovery</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-        <h3>Product Finder (still in production)</h3>
-        <p>Designed the UI for a feature that shows customers vehicle-specific specs like oil weight and capacity, wiper blade sizes, and spark plug type once they've set their vehicle. We launched with 3 product categories: oil, wipers, and plugs. After launch it expanded to 8 categories including antifreeze, wheel nuts, brake fluid, and transmission fluid. It's still running on autozone.com today.</p>
-      </div>
+    <div class="ev-compare reveal">
+      <h3>Product list</h3>
+      <figure>
+        <img src="../images/autozone/before-plp.webp" alt="AutoZone.com before the relaunch: Product list" width="1400" height="838" loading="lazy" />
+        <figcaption><strong>Before (2018–19)</strong>A generic “Tell us what you drive” banner above the list.</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/autozone/after-plp.webp" alt="AutoZone.com today: Product list" width="1400" height="838" loading="lazy" />
+        <figcaption><strong>Today</strong>Fit filters in the sidebar and a “Fits your vehicle” tag on every product.</figcaption>
+      </figure>
+    </div>
 
-      <div class="process-step reveal">
-        <span class="step-num">Rewards</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <h3>AutoZone (AZ) Rewards flows</h3>
-        <p>Designed multi-state enrollment flows covering every Rewards scenario: anonymous customer with no ID, anonymous customer with an ID from prior in-store visits, and a signed-in customer who hasn't enrolled yet. All 3 paths needed their own prompts, their own friction points, and their own recovery flows. Designing each state explicitly is what made the whole thing feel seamless.</p>
-      </div>
-
-      <div class="process-step reveal">
-        <span class="step-num">Relaunch</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <h3>Full site relaunch</h3>
-        <p>Contributed to the design and launch of a completely redesigned, responsive AutoZone.com. It went live at the height of the COVID-19 pandemic with zero reported loss in traffic at cutover. On a site serving millions of customers, that kind of clean handoff doesn't happen by accident. It takes every team aligned and every design decision made with stability in mind.</p>
-      </div>
-
-      <div class="process-step reveal">
-        <span class="step-num">Leadership</span>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Team leadership</h3>
-        <p>Led design across Product Discovery: direction-setting, approvals, and onboarding new designers. Mentored junior and associate designers and helped them grow their craft. Teaching what I know has always been something I care about, and a strong team compounds everybody's impact.</p>
-      </div>
+    <div class="az-phones">
+      <figure class="reveal"><img src="../images/autozone/mobile-home.webp" alt="AutoZone.com home page on mobile" width="620" height="1074" loading="lazy" /><figcaption>Home, mobile</figcaption></figure>
+      <figure class="reveal"><img src="../images/autozone/mobile-plp.webp" alt="AutoZone.com windshield wipers list on mobile, prompting to add a vehicle" width="620" height="1074" loading="lazy" /><figcaption>Product list, mobile</figcaption></figure>
     </div>
   </div>
 </section>
@@ -215,26 +193,22 @@
 <section class="cs-section">
   <div class="container container--prose">
     <h2 class="reveal">Decisions that mattered</h2>
-
     <div class="decisions">
       <div class="decision reveal">
-        <h3>Surfacing vehicle specs at the point of decision</h3>
-        <p>Most customers don't know their oil weight, wiper blade size, or spark plug spec off the top of their head. They look it up or they guess. We surfaced those specs directly on product list pages once a customer had set their vehicle. That removed the uncertainty right at the moment they were deciding what to buy, which is exactly where it needed to be removed.</p>
+        <h3>Show the spec where the decision happens</h3>
+        <p>Instead of sending people to an owner’s manual or a separate lookup, the Product Finder put the answer at the top of the product list, right above the products that match it.</p>
       </div>
-
       <div class="decision reveal">
-        <h3>Designing every Rewards state, not just the easy one</h3>
-        <p>The Rewards experience had to work for first-time anonymous customers, for returning customers who had an ID from in-store visits but had never enrolled online, and for signed-in customers who hadn't yet joined Rewards. Each had different friction and different goals. Designing each path on its own terms is what made the whole thing feel natural instead of confusing.</p>
+        <h3>One component, many kinds of parts</h3>
+        <p>Wipers need three sizes, oil needs weight, type and capacity, and some engines need two kinds of spark plug. I designed one flexible layout for all of them, which made it easier to grow from 3 categories to 8.</p>
       </div>
-
       <div class="decision reveal">
-        <h3>Treating stability as a design value, not just a QA concern</h3>
-        <p>For a site this large, a relaunch isn't a hero moment. It's a high-wire act. We held the line on continuity, backward compatibility, and consistency all the way through. Zero reported traffic loss at cutover doesn't happen because QA caught everything. It happens because every design decision along the way respected the customers who were already there.</p>
+        <h3>Design every Rewards situation, not just the common one</h3>
+        <p>Each of the three enrollment paths started from a different place and could fail in different ways. Mapping all three, including closed modals and wrong passwords, kept edge cases from turning into dead ends at checkout.</p>
       </div>
-
       <div class="decision reveal">
-        <h3>Accessibility built in from the start</h3>
-        <p>With millions of customers and a wide range of contexts, from a phone screen in a parking lot to a laptop at a repair shop, accessible design wasn't optional. We designed for keyboard navigation, clear tap targets, color contrast, and screen reader compatibility from the first wireframe, not as a final pass.</p>
+        <h3>Growing the team</h3>
+        <p>I set direction, handled design approvals and onboarded new designers. I also mentored nearly a dozen junior and associate designers and interns.</p>
       </div>
     </div>
   </div>
@@ -244,46 +218,11 @@
 <section class="cs-section">
   <div class="container">
     <h2 class="reveal">What changed</h2>
-    <p class="lead reveal">Specific metrics covered in the full case study Public-facing highlights:</p>
-
     <div class="outcomes">
-      <div class="outcome-card reveal">
-        <div class="num">8+</div>
-        <p>Product categories in the Product Finder at peak, up from 3 at launch. The UI I designed is still in production on autozone.com today.</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="num">0%</div>
-        <p>Reported traffic loss at full site relaunch cutover, in the middle of a global pandemic when DIY auto repair demand was surging. That's a rare outcome on a redesign of this scale.</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="num">3</div>
-        <p>Distinct AZ Rewards enrollment states fully designed and shipped, each with its own flow, prompts, and recovery paths. No state left to the happy path.</p>
-      </div>
-      <div class="outcome-card reveal">
-        <div class="qual">Team grown</div>
-        <p>Mentored and onboarded junior and associate designers across the Product Discovery team. Strong teams compound their impact, and this one did.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REFLECTIONS -->
-<section class="cs-section">
-  <div class="container container--prose">
-    <h2 class="reveal">What I'd carry forward</h2>
-    <div class="reflections-list">
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>In auto parts e-commerce, the whole question is "will this fit my car?" The Product Finder was about removing that doubt at the exact moment of decision, not before, not after. That's where conversion lives in this category.</p>
-      </div>
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Enrollment flows fall apart when you only design the happy path. Knowing exactly which state a user is in and designing for it explicitly is what makes the whole thing feel natural instead of duct-taped together.</p>
-      </div>
-      <div class="reflection reveal">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p>Leading a design team is its own skill, separate from doing design. Mentorship, direction-setting, and onboarding aren't overhead. They're how you multiply your impact past what you can build yourself.</p>
-      </div>
+      <div class="outcome-card reveal"><div class="num">3&rarr;8</div><p>Product Finder categories, from oil, wipers and spark plugs to antifreeze, wheel nuts, brake fluid and transmission fluid.</p></div>
+      <div class="outcome-card reveal"><div class="num">3</div><p>Rewards enrollment paths designed end to end, each with its own error and recovery states.</p></div>
+      <div class="outcome-card reveal"><div class="num">0</div><p>Reported drop in traffic when the relaunched site went live in 2020, mid-pandemic.</p></div>
+      <div class="outcome-card reveal"><div class="qual">Where it went</div><p>The Product Finder was later retired. Fit is now shown with tags on product listings, which carries the same idea: answer “will this fit?” on the product itself.</p></div>
     </div>
   </div>
 </section>
@@ -294,7 +233,7 @@
     <div class="cs-cta reveal">
       <span class="cs-eyebrow">Get in touch</span>
       <h2>Have an e-commerce problem? Let's build something.</h2>
-      <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd genuinely love to hear from you.</p>
+      <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd love to hear from you.</p>
       <div class="contact-ctas">
         <a href="mailto:blrwelch@gmail.com?subject=Hello%20Brittany" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
