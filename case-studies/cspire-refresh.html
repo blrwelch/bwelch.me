@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C Spire | Brittany Welch</title>
+<meta name="description" content="Eight years designing and building at C Spire: the Repair Center, a carrier comparison tool, a telehealth launch page, Techmvmt and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260902f">
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved && ['dark','dark-hc','light','light-hc'].indexOf(saved) >= 0) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia) {
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var hc = window.matchMedia('(prefers-contrast: more)').matches;
+        document.documentElement.setAttribute('data-theme', (light ? 'light' : 'dark') + (hc ? '-hc' : ''));
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch(e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+<style>
+/* EasyVax: screenshots already include device frames, so show them as-is */
+.ev-hero{margin:40px 0 56px;padding:32px 24px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--border);text-align:center}
+.ev-hero img{width:100%;max-width:1100px;height:auto;display:inline-block}
+.ev-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:40px 0 16px}
+.ev-steps figure,.ev-platforms figure{margin:0;text-align:center}
+.ev-steps img,.ev-platforms img{width:100%;height:auto;display:block;margin:0 auto}
+.ev-steps figcaption,.ev-platforms figcaption{margin-top:12px;font-size:14px;line-height:1.45;color:var(--text-muted,inherit)}
+.ev-steps figcaption strong,.ev-platforms figcaption strong{display:block;color:var(--text,inherit);font-size:15px;margin-bottom:2px}
+.ev-platforms{display:grid;grid-template-columns:2.4fr 1fr .62fr;gap:32px;align-items:end;margin:40px 0 16px}
+.ev-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:28px 0 48px}.ev-compare figure{margin:0}.ev-compare img{width:100%;height:auto;display:block}.ev-compare figcaption{margin-top:10px;font-size:14px;line-height:1.5}.ev-compare figcaption strong{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}.ev-compare h3{grid-column:1/-1;margin:0 0 -8px}.ev-levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:32px 28px;margin:40px 0 16px}.ev-levels figure{margin:0}.ev-levels img{width:100%;height:auto;display:block}.ev-levels figcaption{margin-top:8px;font-size:14px;line-height:1.5;padding:0 8px}.ev-levels figcaption strong{display:block;font-size:15px;margin-bottom:2px}.ev-level{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal,#0f766e);margin-bottom:4px}
+.az-finder{display:grid;grid-template-columns:2.2fr 1fr;gap:32px;align-items:start;margin:40px 0 16px}.az-finder figure,.az-flow figure{margin:0}.az-finder img,.az-flow img{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--border)}.az-finder figcaption,.az-flow figcaption{margin-top:10px;font-size:14px;line-height:1.5}.az-finder figcaption strong,.az-flow figcaption strong{display:block;font-size:15px;margin-bottom:2px}.az-flow{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:40px 0 16px}.az-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0 8px}.az-paths div{padding:20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}.az-paths strong{display:block;margin-bottom:6px}.az-paths p{margin:0;font-size:14px;line-height:1.5}.az-phones{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:640px;margin:40px auto 16px}.az-phones figure{margin:0;text-align:center}.az-phones img{width:100%;height:auto}.az-phones figcaption{margin-top:10px;font-size:14px}
+.ev-before{margin:32px 0 0;padding:28px;border:1px dashed var(--border);border-radius:var(--radius);text-align:center;font-size:14px}
+@media (max-width:760px){.az-finder,.az-flow,.az-paths{grid-template-columns:1fr}.ev-compare{grid-template-columns:1fr}.ev-steps{grid-template-columns:repeat(2,1fr)}.ev-platforms{grid-template-columns:1fr}.ev-platforms figure:nth-child(2){max-width:320px;margin:0 auto}.ev-platforms figure:nth-child(3){max-width:220px;margin:0 auto}}
+</style>
+<!-- REFRESH DRAFT: .todo marks info still needed. Remove before publishing. -->
+<style>.todo{background:#fde68a;color:#1a1a1a;padding:1px 6px;border-radius:4px;font-weight:600;font-size:.92em}
+.cs-feature{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:start;margin:40px 0 16px}.cs-feature figure{margin:0}.cs-feature img,.cs-wide img,.cs-trio img{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--border)}.cs-feature figcaption,.cs-wide figcaption,.cs-trio figcaption{margin-top:10px;font-size:14px;line-height:1.5}.cs-feature figcaption strong,.cs-wide figcaption strong,.cs-trio figcaption strong{display:block;font-size:15px;margin-bottom:2px}.cs-tall{max-height:760px;overflow:auto;border-radius:var(--radius);border:1px solid var(--border)}.cs-tall img{border:0;border-radius:0}.cs-wide{margin:28px 0}.cs-wide figure{margin:0}.cs-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin:28px 0}.cs-trio figure{margin:0}.cs-list{margin:16px 0 0;padding-left:20px;line-height:1.7}
+@media (max-width:760px){.cs-feature,.cs-trio{grid-template-columns:1fr}}</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo">b<span>.</span>welch</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#expertise">Expertise</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="cs-header">
+  <div class="container">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="../index.html#work">Work</a>
+      <svg class="bc-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span aria-current="page">C Spire</span>
+    </nav>
+    <span class="cs-eyebrow reveal">C Spire · Telecom · Design + front-end</span>
+    <h1 class="cs-title reveal">Eight years of designing <span class="accent">and building</span> for a regional carrier.</h1>
+
+    <div class="cs-stat-pills reveal">
+      <span class="cs-stat-pill"><strong>8</strong><span>Years in-house</span></span>
+      <span class="cs-stat-pill"><strong>3</strong><span>Flagship site redesigns</span></span>
+      <span class="cs-stat-pill"><strong>3</strong><span>Clicks to a free repair estimate</span></span>
+    </div>
+
+    <p class="cs-subtitle reveal">As a UX Developer at C Spire, I designed pages and then built their front end. The work ranged from full redesigns of the wireless, business and careers sites to one-off launches. The pages below launched while I was there. Most have since been replaced, so the screens come from my portfolio at the time.</p>
+
+    <div class="cs-meta reveal">
+      <div class="cs-meta-item"><span class="label">Role</span><span class="value">UX Developer II</span></div>
+      <div class="cs-meta-item"><span class="label">Company</span><span class="value">C Spire · Ridgeland, MS</span></div>
+      <div class="cs-meta-item"><span class="label">Timeframe</span><span class="value"><span class="todo">2011 or 2012?</span>–2019</span></div>
+      <div class="cs-meta-item"><span class="label">Discipline</span><span class="value">Design + front-end development</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- REPAIR CENTER -->
+<section class="cs-section">
+  <div class="container">
+    <span class="cs-eyebrow reveal">Featured · Launched 2018</span>
+    <h2 class="reveal">Repair Center: fix it instead of replacing it</h2>
+    <p class="lead reveal">In 2018, C Spire started offering certified phone repair in its stores, for less than other repair shops charged. The idea was simple: a cracked screen or a dying battery shouldn’t mean buying a new phone. Repairing saves people money and keeps working phones out of the landfill. I designed and built the landing page that introduced the service.</p>
+    <div class="cs-feature">
+      <div>
+        <figure class="reveal" style="margin:0 0 28px">
+          <img src="../images/cspire/repair-estimate.webp" alt="Free repair estimate with three dropdowns: phone brand, model, and what needs fixing" width="822" height="330" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--border)" />
+          <figcaption style="margin-top:10px;font-size:14px;line-height:1.5"><strong style="display:block;font-size:15px">A free estimate in 3 clicks</strong>Brand, model, and what needs fixing. Free and no commitment.</figcaption>
+        </figure>
+        <ul class="cs-list reveal">
+          <li><strong>The estimate comes first.</strong> Cost is the first thing people want to know, so the estimate sits directly under the headline.</li>
+          <li><strong>Any phone, any carrier.</strong> The page says plainly that you don’t need to be a C Spire customer.</li>
+          <li><strong>The list of fixes is a checklist.</strong> People can scan it for their problem, from cracked screens to charging issues.</li>
+          <li><strong>A store near you.</strong> Every repair location has directions and a link to book an appointment.</li>
+        </ul>
+      </div>
+      <figure class="reveal"><a class="cs-tall" href="../images/cspire/repair.webp" target="_blank" rel="noopener" style="display:block"><img src="../images/cspire/repair.webp" alt="Full Repair Center landing page" width="836" height="2416" loading="lazy" /></a><figcaption><strong>The full landing page</strong>Scroll or click to see it full size.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TOOL -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">Carrier comparison tool and the money tree</h2>
+    <p class="lead reveal">A tool that let people compare their current carrier bill with C Spire in three quick questions. I designed it, including the animation: coins falling from a money tree on the home page, and a plant that grows along a savings timeline on the results page. <span class="todo">[CONFIRM: did this tool launch, or was it the Concert Series that went live?]</span></p>
+    <div class="cs-wide reveal">
+      <figure><img src="../images/cspire/compare-home.webp" alt="Comparison tool home banner: See how your carrier stacks up, with carrier bubbles and a money tree" width="1700" height="465" loading="lazy" />
+      <figcaption><strong>Home page entry</strong>Carrier bubbles sit in the branches of a money tree, with coins falling. On hover, each bubble fills with that carrier’s brand color, so people spot theirs faster.</figcaption></figure>
+    </div>
+    <div class="cs-feature" style="grid-template-columns:1fr 1fr">
+      <figure class="reveal"><img src="../images/cspire/compare-steps.webp" alt="Three steps: who is your carrier, how many lines, how much is your current plan" width="1478" height="2386" loading="lazy" />
+        <figcaption><strong>A separate funnel for email and social</strong>People arriving from a campaign got a full-page version: carrier, number of lines, then monthly bill. For more than four lines, the tool sends people to a rep instead of guessing.</figcaption></figure>
+      <figure class="reveal"><img src="../images/cspire/compare-results.webp" alt="Results pages showing yearly savings with a growing plant, and an alternate page when C Spire isn't cheaper" width="1647" height="1781" loading="lazy" />
+        <figcaption><strong>Honest results either way</strong>If C Spire was cheaper, the page showed the yearly savings, with a plant growing along the timeline. If it wasn’t, the page acknowledged their current deal (“You might think that’s good…”) and made the case on network and service instead.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TELEHEALTH -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">Telehealth app launch page</h2>
+    <p class="lead reveal">A launch page for a telehealth app built by C Spire and UMMC. It had a lot to explain (how it works, what it treats, who’s behind it, FAQs), so I designed and built a page that people could scan in order.</p>
+    <div class="cs-feature">
+      <figure class="reveal" style="align-self:start">
+        <img src="../images/cspire/telehealth-infographic.webp" alt="Infographic: 30 minutes for a video appointment versus 121 minutes for an office visit, shown as a pill" width="669" height="371" loading="lazy" />
+        <figcaption><strong>An infographic that’s easy to swallow</strong>Time comparisons drawn as two pills: a small one for a 30-minute video visit, and a large one for the 121 minutes an average office visit takes.</figcaption>
+      </figure>
+      <figure class="reveal"><a class="cs-tall" href="../images/cspire/telehealth.webp" target="_blank" rel="noopener" style="display:block"><img src="../images/cspire/telehealth.webp" alt="Telehealth landing page on desktop and mobile" width="916" height="2385" loading="lazy" /></a><figcaption><strong>Desktop and mobile</strong>Scroll or click to see it full size.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TECHMVMT + CONCERTS -->
+<section class="cs-section">
+  <div class="container">
+    <h2 class="reveal">Techmvmt and the Concert Series</h2>
+    <p class="lead reveal">Techmvmt was C Spire’s umbrella for tech education in Mississippi: the MVMT conference, the C3 student coding challenge, Microsoft TEALS, coding academies and scholarships. New pieces kept being added, so I built a shared visual language they could all use rather than designing each page from scratch.</p>
+    <div class="cs-wide reveal">
+      <figure><a href="../images/cspire/techmvmt.webp" target="_blank" rel="noopener"><img src="../images/cspire/techmvmt.webp" alt="Techmvmt hub, MVMT 2018 conference pages, and C3 coding challenge page" width="2000" height="2156" loading="lazy" /></a>
+      <figcaption><strong>Techmvmt hub, MVMT 2018 and the C3 coding challenge</strong>Rounded photo crops, bracketed headings and a single accent color tie the pages together. Click to enlarge.</figcaption></figure>
+    </div>
+    <div class="cs-feature" style="grid-template-columns:1fr 1.4fr">
+      <div class="reveal">
+        <h3>C Spire Concert Series</h3>
+        <p>A landing page for C Spire’s concert series at its two main venues. It needed to show featured artists, dates by venue, ticket links and a customer-only pre-sale. I explored several layouts built around the event photography we had.</p>
+      </div>
+      <figure class="reveal"><a class="cs-tall" href="../images/cspire/concert.webp" target="_blank" rel="noopener" style="display:block"><img src="../images/cspire/concert.webp" alt="Concert Series landing page concepts" width="1126" height="2405" loading="lazy" /></a><figcaption><strong>Layout explorations</strong>Scroll or click to see them full size.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="cs-section">
+  <div class="container container--prose">
+    <h2 class="reveal">What this role taught me</h2>
+    <div class="decisions">
+      <div class="decision reveal">
+        <h3>Designing what I’d also build</h3>
+        <p>I worked in the design files and the code, sometimes on the same day. Knowing what was easy or expensive to build made my designs more realistic, my handoffs cleaner, and my conversations with engineers more honest.</p>
+      </div>
+      <div class="decision reveal">
+        <h3>Lead with what people came for</h3>
+        <p>The repair estimate went above the fold. So did the carrier choice in the comparison tool and the time comparison on the telehealth page. Each page opened with the answer people were looking for.</p>
+      </div>
+      <div class="decision reveal">
+        <h3>Design for the unfavorable result too</h3>
+        <p>The comparison tool couldn’t always beat someone’s current price. Rather than hide that outcome, I designed a separate results page for it that acknowledged their deal and made the case on network and service.</p>
+      </div>
+      <div class="decision reveal">
+        <h3>Build systems for things that keep growing</h3>
+        <p>Techmvmt kept adding events and programs. A shared set of patterns meant each new page fit in on day one.</p>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:32px">Beyond these pages, I also designed and built three flagship redesigns (the consumer wireless site, the business site and the careers site), plus eight years of promotions, device pages and support flows.</p>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact">
+  <div class="container">
+    <div class="cs-cta reveal">
+      <span class="cs-eyebrow">Get in touch</span>
+      <h2>Let's talk.</h2>
+      <p>I love talking about design and hard problems. Drop me a line or connect on LinkedIn. I'd love to hear from you.</p>
+      <div class="contact-ctas">
+        <a href="mailto:blrwelch@gmail.com?subject=Hello%20Brittany" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email me
+        </a>
+        <a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-next">
+  <div class="container">
+    <a href="ai-practice.html" class="cs-next-link reveal">
+      <div>
+        <span class="label">Next case study</span>
+        <div class="title">Building the internal home for an enterprise AI Practice →</div>
+      </div>
+      <div class="arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span class="js-year">2026</span> Brittany Welch. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:blrwelch@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/blrwelch/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // A11y: hide decorative SVGs from screen readers
+  document.querySelectorAll('svg:not([aria-label]):not([role="img"])').forEach(svg => {
+    if (!svg.hasAttribute('aria-hidden')) svg.setAttribute('aria-hidden', 'true');
+  });
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  // ===== THEME SWITCHER =====
+  (function() {
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner) return;
+    var switcher = document.createElement('div');
+    switcher.className = 'theme-switcher';
+    switcher.innerHTML = '<button class="theme-toggle" type="button" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false" title="Choose theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg><span class="theme-label">Theme</span></button><ul class="theme-menu" role="menu" hidden><li><button type="button" data-set-theme="dark" role="menuitem">Dark</button></li><li><button type="button" data-set-theme="dark-hc" role="menuitem">Dark, high contrast</button></li><li><button type="button" data-set-theme="light" role="menuitem">Light</button></li><li><button type="button" data-set-theme="light-hc" role="menuitem">Light, high contrast</button></li></ul>';
+    var navToggleBtn = navInner.querySelector('.nav-toggle');
+    if (navToggleBtn) navInner.insertBefore(switcher, navToggleBtn);
+    else navInner.appendChild(switcher);
+    var tb = switcher.querySelector('.theme-toggle');
+    var menu = switcher.querySelector('.theme-menu');
+    function mark() {
+      var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      menu.querySelectorAll('button[data-set-theme]').forEach(function(b){ b.setAttribute('aria-current', String(b.dataset.setTheme === cur)); });
+    }
+    mark();
+    tb.addEventListener('click', function() { var o = !menu.hidden; menu.hidden = o; tb.setAttribute('aria-expanded', String(!o)); });
+    menu.querySelectorAll('button[data-set-theme]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = b.dataset.setTheme;
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('theme', t); } catch(e) {}
+        mark(); menu.hidden = true; tb.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) { if (!switcher.contains(e.target) && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; tb.setAttribute('aria-expanded', 'false'); tb.focus(); } });
+  })();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));</script>
+<script src="device-animate.js"></script>
+</body>
+</html>
