@@ -130,6 +130,15 @@ footer{padding-block:56px 72px;border-top:1px solid var(--line);display:flex;fle
 .proto iframe{width:390px;height:844px;border:0;display:block;transform:scale(.76923);transform-origin:0 0}
 .try a{font-size:14px;font-weight:600}
 @media (max-width:1000px){.try{grid-template-columns:minmax(0,1fr)}}
+/* landscape */
+.landrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.landrow .land{border-radius:26px}
+.lproto{width:600px;height:277px;max-width:100%;border:9px solid #07090d;border-radius:30px;box-shadow:0 0 0 1.5px #4b5260,0 24px 60px rgba(0,0,0,.45);overflow:hidden;background:#363b44;box-sizing:content-box}
+.lproto iframe{width:844px;height:390px;border:0;display:block;transform:scale(.71090);transform-origin:0 0}
+.try-land{display:flex;flex-wrap:wrap;gap:32px;justify-content:center;margin-top:48px}
+.try-land figure{align-items:center;text-align:center}
+@media (max-width:700px){.lproto{display:none}}
+@media (max-width:900px){.landrow{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:900px){
   .hero,.before,.dial-note,.optb{grid-template-columns:minmax(0,1fr)}
   .goals,.screens{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -219,7 +228,7 @@ footer{padding-block:56px 72px;border-top:1px solid var(--line);display:flex;fle
     <div class="goals">
       <div class="goal"><div class="fig">Dial</div><p>Reuse the ring, chevrons and big number from the home screen.</p></div>
       <div class="goal"><div class="fig">44 px</div><p>Every control meets the minimum touch target, most go well past it.</p></div>
-      <div class="goal"><div class="fig">Portrait</div><p>Stay in the same orientation as the rest of the Nest app.</p></div>
+      <div class="goal"><div class="fig">Any way</div><p>Works held upright or turned sideways. The layout adapts instead of forcing a turn.</p></div>
       <div class="goal"><div class="fig">Nest look</div><p>Nest’s slate background, orange for heat and blue for cool.</p></div>
     </div>
   </section>
@@ -290,11 +299,31 @@ footer{padding-block:56px 72px;border-top:1px solid var(--line);display:flex;fle
 
   <hr class="rule">
 
+  <section aria-labelledby="orient">
+    <div class="section-head">
+      <div class="eyebrow">Orientation</div>
+      <h2 id="orient">Upright or sideways</h2>
+      <p class="prose">The old schedule only worked sideways. The redesign works either way: turn the phone and the dial stays pinned on the left while the day, mode, time and list move to the right. Sheets and dialogs center on screen so they never stretch edge to edge.</p>
+    </div>
+    <div class="landrow">
+      <figure>
+        <div class="land"><img src="img/A-land.jpg" alt="Direction A in landscape: the 24-hour dial on the left, day buttons, mode, start time and Add temperature on the right"></div>
+        <figcaption><b>Direction A</b> sideways. The list scrolls on the right while the dial stays in view.</figcaption>
+      </figure>
+      <figure>
+        <div class="land"><img src="img/B-land.jpg" alt="Direction B in landscape: temperature dial on the left, timeline with a selected block and Update temperature on the right"></div>
+        <figcaption><b>Direction B</b> sideways. The timeline moves up beside the dial.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="rule">
+
   <section aria-labelledby="try">
     <div class="section-head">
       <div class="eyebrow">Prototype</div>
       <h2 id="try">Try it</h2>
-      <p class="prose">These are the working prototypes. Tap a day, drag a dot around the dial, open the mode menu, swipe a row left, or scroll Option B’s timeline.</p>
+      <p class="prose">These are the working prototypes, upright and sideways. Tap a day, drag a dot around the dial, open the mode menu, swipe a row left, or scroll Option B’s timeline.</p>
     </div>
     <div class="try">
       <figure>
@@ -308,6 +337,20 @@ footer{padding-block:56px 72px;border-top:1px solid var(--line);display:flex;fle
       <figure>
         <div class="proto"><iframe src="demo/OptionB.dc.html" title="Direction B prototype: timeline and temperature dial" loading="lazy"></iframe></div>
         <figcaption><b>Direction B</b> · timeline + temperature dial<br><a href="demo/OptionB.dc.html" target="_blank" rel="noopener">Open full size</a></figcaption>
+      </figure>
+    </div>
+    <div class="try-land">
+      <figure>
+        <div class="lproto"><iframe src="demo/MainLandscape.dc.html" title="Direction A prototype in landscape" loading="lazy"></iframe></div>
+        <figcaption><b>Direction A</b> · landscape<br><a href="demo/MainLandscape.dc.html" target="_blank" rel="noopener">Open full size</a></figcaption>
+      </figure>
+      <figure>
+        <div class="lproto"><iframe src="demo/OptionBLandscape.dc.html" title="Direction B prototype in landscape" loading="lazy"></iframe></div>
+        <figcaption><b>Direction B</b> · landscape<br><a href="demo/OptionBLandscape.dc.html" target="_blank" rel="noopener">Open full size</a></figcaption>
+      </figure>
+      <figure>
+        <div class="lproto"><iframe src="demo/EmptyLandscape.dc.html" title="First-time user prototype in landscape" loading="lazy"></iframe></div>
+        <figcaption><b>First-time user</b> · landscape<br><a href="demo/EmptyLandscape.dc.html" target="_blank" rel="noopener">Open full size</a></figcaption>
       </figure>
     </div>
   </section>

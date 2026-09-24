@@ -22,9 +22,14 @@ button:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
 .menu-row:focus-visible{outline:2px solid #1a73e8;outline-offset:-2px}
 .menu-row:active{background:#e6e9ee}
 a{color:#8ab8ff}a:hover{color:#b3d0ff}
+.land{display:grid !important;grid-template-columns:400px minmax(0,1fr);grid-auto-rows:min-content;align-content:start;overflow-y:auto;overflow-x:hidden;padding:8px 0 20px !important}
+.land > *{grid-column:2}
+.land > .a-dial{grid-column:1;grid-row:1 / span 30;position:sticky;top:17px;align-self:start;margin:17px 0 0 48px !important;transform:none !important}
+.land > .a-list{overflow:visible !important;min-height:auto !important;flex-grow:0 !important}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #363b44; display: flex; flex-direction: column; box-sizing: border-box; padding-top: 12px">
+<div style="width: {{W}}px; height: {{H}}px; position: relative; overflow: hidden; background: #363b44">
+  <div class="{{contentClass}}" style="height: 100%; display: flex; flex-direction: column; box-sizing: border-box; padding-top: 12px">
 
   <div style="height: 52px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 8px">
     <button aria-label="Back to Hallway thermostat" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center">
@@ -76,7 +81,7 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
     </div>
   </div>
 
-  <div onPointerMove="{{dialMove}}" onPointerUp="{{dialUp}}" onPointerCancel="{{dialUp}}" style="position: relative; width: 340px; height: 340px; margin: 6px auto -41px; transform: scale(.88); transform-origin: top center; touch-action: none; flex-shrink: 0">
+  <div class="a-dial" onPointerMove="{{dialMove}}" onPointerUp="{{dialUp}}" onPointerCancel="{{dialUp}}" style="position: relative; width: 340px; height: 340px; margin: 6px auto -41px; transform: scale(.88); transform-origin: top center; touch-action: none; flex-shrink: 0">
     <svg width="340" height="340" viewBox="0 0 340 340" aria-hidden="true" style="position: absolute; left: 0; top: 0">
       <circle cx="170" cy="170" r="152" fill="#3a3f48"></circle>
       <circle cx="170" cy="170" r="112" fill="#363b44"></circle>
@@ -154,7 +159,7 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
     <button class="step" onClick="{{tlFwd}}" aria-label="Scroll timeline later" style="position: absolute; right: 0; top: 0; width: 44px; height: 104px; display: flex; align-items: center; justify-content: center; background: #2d3139; z-index: 2">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
     </button>
-    <div ref="{{tlRef}}" onPointerDown="{{panDown}}" onPointerMove="{{panMove}}" onPointerUp="{{panUp}}" onPointerCancel="{{panUp}}" onWheel="{{panWheel}}" style="position: absolute; left: 44px; top: 0; width: 270px; height: 104px; overflow-x: auto; overflow-y: hidden; touch-action: pan-x; scrollbar-width: none; cursor: grab; border-left: 1px solid #3e434c; border-right: 1px solid #3e434c; box-sizing: border-box">
+    <div ref="{{tlRef}}" onPointerDown="{{panDown}}" onPointerMove="{{panMove}}" onPointerUp="{{panUp}}" onPointerCancel="{{panUp}}" onWheel="{{panWheel}}" style="position: absolute; left: 44px; top: 0; width: {{tlViewW}}px; height: 104px; overflow-x: auto; overflow-y: hidden; touch-action: pan-x; scrollbar-width: none; cursor: grab; border-left: 1px solid #3e434c; border-right: 1px solid #3e434c; box-sizing: border-box">
       <div style="position: relative; width: {{tlWidth}}px; height: 104px">
         <sc-for list="{{hours}}" as="h" hint-placeholder-count="25">
           <span style="position: absolute; left: {{h.x}}px; top: 8px; width: 1px; height: {{h.tick}}px; background: #5a616c"></span>
@@ -219,7 +224,7 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
     </sc-if>
   </div>
 
-  <div style="flex-grow: 1; min-height: 0; overflow-y: auto">
+  <div class="a-list" style="flex-grow: 1; min-height: 0; overflow-y: auto">
     <sc-if value="{{noPoints}}" hint-placeholder-val="{{false}}">
       <ol style="margin: 0; padding: 18px 20px 0; list-style: none; display: flex; flex-direction: column; gap: 14px" aria-label="Get started">
         <li style="display: flex; align-items: center; gap: 14px; font-size: 17px">
@@ -248,7 +253,7 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
             <span>Remove</span>
           </button>
         </div>
-        <div onPointerDown="{{p.down}}" onPointerMove="{{p.move}}" onPointerUp="{{p.up}}" onPointerCancel="{{p.up}}" style="position: absolute; left: 0; top: 0; width: 390px; height: 56px; display: flex; align-items: center; background: {{p.bg}}; transform: translateX({{p.dx}}px); transition: {{p.trans}}; touch-action: pan-y">
+        <div onPointerDown="{{p.down}}" onPointerMove="{{p.move}}" onPointerUp="{{p.up}}" onPointerCancel="{{p.up}}" style="position: absolute; left: 0; top: 0; width: {{rowW}}px; height: 56px; display: flex; align-items: center; background: {{p.bg}}; transform: translateX({{p.dx}}px); transition: {{p.trans}}; touch-action: pan-y">
           <button onClick="{{p.pick}}" aria-pressed="{{p.pressed}}" aria-label="{{p.aria}}" style="flex-grow: 1; height: 56px; display: flex; align-items: center; gap: 14px; padding: 0 4px 0 20px; text-align: left">
             <span style="width: 12px; height: 12px; border-radius: 6px; background: {{p.fill}}; opacity: {{p.dotOpacity}}"></span>
             <span style="flex-grow: 1; display: flex; flex-direction: column">
@@ -274,15 +279,17 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
     </sc-for>
   </div>
 
+  </div>
+
   <sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
     <div role="status" style="position: absolute; left: 16px; right: 16px; bottom: 28px; padding: 14px 16px; border-radius: 12px; background: #e8eaed; color: #202124; font-size: 15px; font-weight: 500">{{toast}}</div>
   </sc-if>
 
   <sc-if value="{{timeOpen}}" hint-placeholder-val="{{false}}">
-    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.5)"></div>
-    <div role="dialog" aria-label="Set start time" style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 0 12px 24px; background: #f4f6f9; color: #202124; border-radius: 16px 16px 0 0; display: flex; flex-direction: column">
+    <div style="position: absolute; left: 0; top: 0; width: {{W}}px; height: {{H}}px; background: rgba(0,0,0,.5)"></div>
+    <div role="dialog" aria-label="Set start time" style="position: absolute; left: {{sheetX}}px; bottom: 0; width: 390px; box-sizing: border-box; padding: 0 12px 24px; background: #f4f6f9; color: #202124; border-radius: 16px 16px 0 0; display: flex; flex-direction: column">
       <div style="height: 56px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 500; border-bottom: 1px solid #dde1e6">Set start time:</div>
-      <div ref="{{timeListRef}}" style="height: 432px; overflow-y: auto">
+      <div ref="{{timeListRef}}" style="height: {{timeListH}}px; overflow-y: auto">
         <sc-for list="{{timeOpts}}" as="o" hint-placeholder-count="8">
           <button class="menu-row" onClick="{{o.pick}}" disabled="{{o.taken}}" aria-pressed="{{o.pressed}}" style="width: 100%; height: 54px; display: flex; align-items: center; gap: 14px; padding: 0 12px; border-bottom: 1px solid #e3e6ea; text-align: left; font-size: 18px; font-variant-numeric: tabular-nums; background: {{o.bg}}">
             <span style="flex-grow: 1; font-weight: {{o.weight}}">{{o.label}}</span>
@@ -300,8 +307,8 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
   </sc-if>
 
   <sc-if value="{{confirmOpen}}" hint-placeholder-val="{{false}}">
-    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.55)"></div>
-    <div role="alertdialog" aria-modal="true" aria-label="{{confirmTitle}}" style="position: absolute; left: 24px; top: 250px; width: 342px; box-sizing: border-box; padding: 24px 20px 16px; border-radius: 24px; background: #f4f6f9; color: #202124; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 40px rgba(0,0,0,.45)">
+    <div style="position: absolute; left: 0; top: 0; width: {{W}}px; height: {{H}}px; background: rgba(0,0,0,.55)"></div>
+    <div role="alertdialog" aria-modal="true" aria-label="{{confirmTitle}}" style="position: absolute; left: {{modalX}}px; top: {{modalY}}px; width: 342px; box-sizing: border-box; padding: 24px 20px 16px; border-radius: 24px; background: #f4f6f9; color: #202124; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 40px rgba(0,0,0,.45)">
       <div style="font-size: 20px; line-height: 26px; font-weight: 500">{{confirmTitle}}</div>
       <div style="font-size: 15px; line-height: 22px; color: #5f6368; margin-bottom: 8px">{{confirmBody}}</div>
       <button onClick="{{confirmSave}}" style="height: 52px; border-radius: 26px; background: #1a73e8; color: #ffffff; font-size: 16px; font-weight: 600">{{confirmSaveText}}</button>
@@ -311,8 +318,8 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
   </sc-if>
 
   <sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
-    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.5)"></div>
-    <div role="dialog" aria-label="{{menuTitle}}" style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 0 12px 24px; background: #f4f6f9; color: #202124; border-radius: 16px 16px 0 0; display: flex; flex-direction: column">
+    <div style="position: absolute; left: 0; top: 0; width: {{W}}px; height: {{H}}px; background: rgba(0,0,0,.5)"></div>
+    <div role="dialog" aria-label="{{menuTitle}}" style="position: absolute; left: {{sheetX}}px; bottom: 0; width: 390px; box-sizing: border-box; padding: 0 12px 24px; background: #f4f6f9; color: #202124; border-radius: 16px 16px 0 0; display: flex; flex-direction: column">
       <div style="height: 56px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 500; border-bottom: 1px solid #dde1e6">{{menuTitle}}</div>
       <sc-for list="{{menuItems}}" as="it" hint-placeholder-count="3">
         <button class="menu-row" onClick="{{it.pick}}" aria-pressed="{{it.pressed}}" style="height: 64px; display: flex; align-items: center; gap: 18px; padding: 0 8px; border-bottom: 1px solid #dde1e6; text-align: left; font-size: 19px">
@@ -332,8 +339,8 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
   </sc-if>
 
   <sc-if value="{{sheet}}" hint-placeholder-val="{{false}}">
-    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.55)"></div>
-    <div role="dialog" aria-label="Copy schedule" style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 24px 16px 28px; background: #2d3139; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; gap: 18px">
+    <div style="position: absolute; left: 0; top: 0; width: {{W}}px; height: {{H}}px; background: rgba(0,0,0,.55)"></div>
+    <div role="dialog" aria-label="Copy schedule" style="position: absolute; left: {{sheetX}}px; bottom: 0; width: 390px; box-sizing: border-box; padding: 24px 16px 28px; background: #2d3139; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; gap: 18px">
       <div style="font-size: 20px; font-weight: 500">{{copyTitle}}</div>
       <div style="height: 48px; padding: 2px; box-sizing: border-box; border-radius: 24px; background: #3a3f48; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px" role="group" aria-label="What to copy">
         <button onClick="{{scopePoint}}" aria-pressed="{{scopePointOn}}" style="height: 44px; border-radius: 22px; font-size: 14px; font-weight: 600; background: {{scopePointBg}}">{{scopePointText}}</button>
@@ -358,7 +365,7 @@ a{color:#8ab8ff}a:hover{color:#b3d0ff}
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"startEmpty":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"landscape":{"editor":"boolean","default":false},"startEmpty":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
   defaults() {
     // Each temperature keeps its own mode; heat and cool targets are both stored so switching modes never loses a value.
@@ -743,6 +750,14 @@ class Component extends DCLogic {
     var target = range ? (editLo ? 'heat-to temperature' : 'cool-to temperature') : 'temperature';
 
     return {
+      // Landscape (844 x 390): dial pinned on the left, controls and list scroll on the right; sheets and dialogs center.
+      W: this.props.landscape ? 844 : 390, H: this.props.landscape ? 390 : 844,
+      contentClass: this.props.landscape ? 'land' : '',
+      sheetX: this.props.landscape ? 227 : 0,
+      modalX: this.props.landscape ? 251 : 24, modalY: this.props.landscape ? 24 : 250,
+      timeListH: this.props.landscape ? 206 : 432,
+      rowW: this.props.landscape ? 444 : 390,
+      tlViewW: this.props.landscape ? 324 : 270,
       hasPoints: hasPoints, noPoints: !hasPoints,
       isDirty: sel >= 0, notDirty: sel < 0, isNewSel: isNewSel, isExisting: sel >= 0 && !isNewSel,
       updateLabel: (isNewSel ? 'Add ' : 'Update ') + this.fmt(cur.t) + ' temperature',
