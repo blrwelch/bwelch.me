@@ -1,5 +1,5 @@
 # Brittany Welch
-**Staff Product Designer · Design Systems, AI Product Design, Motion Design**
+**Senior Product Designer | Design Systems for Enterprise Products**
 
 Brandon, MS · 662-550-0523 · blrwelch@gmail.com · [bwelch.me](https://bwelch.me) · [linkedin.com/in/blrwelch](https://linkedin.com/in/blrwelch)
 
@@ -7,56 +7,52 @@ Brandon, MS · 662-550-0523 · blrwelch@gmail.com · [bwelch.me](https://bwelch.
 
 ## Summary
 
-Staff Product Designer with 17 years of building design systems and AI-native product experiences for enterprise and consumer platforms. I've led design language development in Fortune 500 e-commerce and pharma-regulated environments, bridging systems thinking with high-craft execution across visual design, motion, and prototyping. I bring deep expertise in translating emerging AI capabilities into scalable, usable product experiences.
+Nearly two decades of experience designing digital products across consumer and enterprise platforms. Very comfortable with ambiguity and nebulous problems. Works through research, workshops, and prototyping to find the right direction before committing to one. Created and maintained design systems for two regulated pharmaceutical companies. Eight years designing for a consumer wireless business, including account management, upgrades, and multi-step promotions. Worked in consulting and agency-style environments, across multiple clients and teams, while maintaining quality and consistency. Partners directly with engineers, with a hands-on front-end development background. Uses AI tools like Claude as a regular part of the design process.
 
 ---
 
 ## Experience
 
 ### Senior Product Designer
-**Lextech Global Services** · Chicago, IL (Remote) · 2021 – Present
+**Lextech Global Services** · Chicago, IL (Remote) · July 2021 – July 2026
 
-- Migrated an enterprise design system from regulated pharma into Claude Design's Design Systems tool, translating hundreds of components and visual standards into an AI product environment while maintaining compliance requirements.
-- Built and maintained design systems for 2 pharmaceutical clients, establishing component libraries and usage guidelines adopted across product and marketing teams.
-- Created motion design and interactive prototypes and deliverables in Figma and After Effects to validate flows, communicate interaction intent, train teams, and align interdepartmental teams before development.
+- Migrated an enterprise design system from regulated pharma into Claude, translating hundreds of components into an AI product environment while maintaining compliance requirements and WCAG 2.1 AA accessibility standards.
+- Built and maintained design systems for two pharmaceutical clients, establishing component libraries and usage guidelines adopted across product and marketing teams.
 - Facilitated discovery workshops and stakeholder interviews to validate design directions and build alignment across product, engineering, and leadership.
-- Led primary research for AstraZeneca: wrote the interview protocol and conducted structured interviews with pharmaceutical reps spanning new-hire to senior experience levels to surface training gaps, then manually synthesized findings into journey maps, a solution prioritization, and a quote gallery that shaped the training redesign.
-- Led multiple internal and customer-facing AI initiatives, including end-to-end design of the company's AI Practice platform.
-- Interviewed teammates to establish a baseline of AI readiness and capability.
-- Rapidly experimented with and iterated on various AI tools to identify best-fit solutions, pivoting quickly as needed.
-- Established and implemented branding for aiwhy.io, the customer-facing marketplace for AI agents and skills.
+- Led primary research and interviewed pharmaceutical reps to surface training gaps, then synthesized the findings into journey maps and a solution prioritization that shaped the training redesign.
+- Led end-to-end design of the company's internal AI Practice platform, one of several AI initiatives owned across the org.
+- Researched, designed, and maintained multiple websites, cross-platform apps, design systems, and component libraries for clients across a variety of industries including automotive, hospitality, pharmaceutical, and other healthcare.
 
 ### Senior UI Designer
-**AutoZone** · Memphis, TN · 2019 – 2021
+**AutoZone** · Memphis, TN · February 2019 – June 2021
 
-- Led design on a cross-functional Product Discovery team for AutoZone.com, a Fortune 500 e-commerce platform serving 60M active users.
-- Designed and shipped the Product Finder, still in production on autozone.com, expanding coverage from 3 to 8+ vehicle-specific product categories.
-- Led interaction design and component architecture for the full responsive redesign of AutoZone.com, which shipped with zero reported traffic loss at cutover, establishing patterns and standards adopted across the design org.
-- Drove design quality through critique and review rituals, raising the craft standard and giving junior designers a clearer feedback model to grow from.
-- Mentored junior designers and led new-hire onboarding, helping build a more consistent and confident design practice across the team.
+- Led design on a Product Discovery team for AutoZone.com, a Fortune 500 e-commerce platform serving 60M active users.
+- Designed and shipped the Product Finder, expanding coverage from 3 to 8+ vehicle-specific product categories.
+- Led interaction design and component architecture for the full responsive redesign of AutoZone.com, which shipped with zero reported traffic loss and set patterns adopted across the design org.
+- Drove critique and review rituals, raising the design standards and giving junior designers feedback and a clearer model for improvement.
+- Mentored junior designers and led new-hire onboarding, building a more consistent design practice across the team.
 
 ### UX Developer II
-**C Spire** · Ridgeland, MS · 2011 – 2019
+**C Spire** · Ridgeland, MS · March 2011 – February 2019
 
-- Owned UX design and front-end development for 3 full flagship site redesigns over 8 years: C Spire's consumer wireless site, careers site, and business services site, all responsive and built to production.
-- Built and maintained the Techmvmt design system, supporting $3M+ in scholarship and STEM program initiatives including MVMT, the C3 Coding Challenge, and Microsoft TEALS.
-- Built and maintained the company's pattern library and design standards, establishing a shared visual language that held up across every product surface and team.
-- Developed deep expertise in complex consumer product flows: account management, upgrade eligibility, product catalogs, and multi-step promotional mechanics.
-- Partnered across marketing, product, and engineering to ship unified digital experiences across a broad and fast-moving product portfolio.
+- Co-owned UX design and front-end development for three full flagship site redesigns over eight years, spanning C Spire's consumer wireless, fiber internet, and business services sites.
+- Developed deep expertise in complex consumer product flows, including account management, upgrade eligibility, product catalogs, and multi-step promotions.
+- Built and maintained the Techmvmt website, supporting $3M+ in scholarship and STEM program initiatives including MVMT, the C3 Coding Challenge, and Microsoft TEALS.
+- Partnered across marketing, product, and engineering to ship unified digital experiences across a broad, fast-moving product portfolio.
 
 ---
 
 ## Skills
 
-**Design Systems & Platform** · Design Systems Architecture · Component Libraries · Multi-Platform Design (iOS & Android) · Design Language Development · Design Tokens
+**Systems & Platform:** Design Systems Architecture, Component Libraries, Design Tokens, Multi-Platform Design (iOS & Android), Design Language Development
 
-**Product & Interaction** · Product Design · Interaction Design · Rapid Prototyping · User Flows · Information Architecture · AI-Native Product Design
+**Product & Interaction:** Product Design, Interaction Design, Rapid Prototyping, User Flows, Information Architecture
 
-**Visual & Motion** · Visual Design · Motion Design · Advanced Prototyping · Responsive Design
+**Collaboration & Craft:** UX Research, Discovery Workshops, Stakeholder Facilitation, Cross-Team Collaboration, Mentorship
 
-**Research & Collaboration** · UX Research · Discovery Workshops · Stakeholder Facilitation · Cross-Team Collaboration · Mentorship
+**Visual & Motion:** Visual Design, Motion Design, Advanced Prototyping, Responsive Design, Videography
 
-**Tools** · Figma (Advanced Prototyping) · Adobe After Effects · Adobe Creative Cloud · Sketch · Zeplin · Claude · ChatGPT · Cursor · Jira · Azure DevOps · Notion
+**Tools:** Figma (Advanced Prototyping), Adobe After Effects, Adobe Creative Cloud, Sketch, Zeplin, Claude, ChatGPT, Cursor, Jira, Azure DevOps, Notion
 
 ---
 
