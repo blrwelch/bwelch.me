@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thermostat schedule, timeline option</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#1f2328;font-family:'Google Sans','Figtree',system-ui,sans-serif;color:#ffffff}
+button{font-family:inherit;color:inherit;border:0;background:none;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:disabled{opacity:.35;cursor:default}
+button:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
+.wedge:focus-visible{outline:none}.wedge:focus-visible path:first-child{stroke:#ffffff;stroke-width:2}
+.wedge:active path:first-child{fill:#525964}
+.step:active,.modebtn:active{background:#4d545f}
+.seg:focus-visible{outline:2px solid #ffffff;outline-offset:1px}
+.menu-row:focus-visible{outline:2px solid #1a73e8;outline-offset:-2px}
+.menu-row:active{background:#e6e9ee}
+a{color:#8ab8ff}a:hover{color:#b3d0ff}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #363b44; display: flex; flex-direction: column; box-sizing: border-box; padding-top: 12px">
+
+  <div style="height: 52px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 8px">
+    <button aria-label="Back to Hallway thermostat" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+    </button>
+    <div style="display: flex; flex-direction: column; align-items: center">
+      <div style="font-size: 20px; font-weight: 500">Schedule</div>
+      <div style="font-size: 13px; color: #aeb4bc">Hallway</div>
+    </div>
+    <div style="width: 48px; height: 48px"></div>
+  </div>
+
+  <div style="margin: 10px 16px 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; flex-shrink: 0" role="group" aria-label="Day of week">
+    <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+      <button onClick="{{d.pick}}" aria-label="{{d.name}}" aria-pressed="{{d.pressed}}" style="height: 52px; border-radius: 14px; font-size: 15px; font-weight: 600; background: {{d.bg}}; color: #ffffff; border: {{d.border}}; box-sizing: border-box">{{d.letter}}</button>
+    </sc-for>
+  </div>
+
+  
+
+  <div style="margin: 12px 16px 0; height: 56px; flex-shrink: 0; display: flex; gap: 8px">
+    <button class="modebtn" onClick="{{openMenu}}" aria-haspopup="dialog" aria-label="{{modeAria}}" style="flex-grow: 1; min-width: 0; height: 56px; padding: 0 10px 0 12px; border-radius: 16px; background: #454b55; display: flex; align-items: center; gap: 8px; text-align: left">
+  <sc-if value="{{isHeat}}" hint-placeholder-val="{{false}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="#ff8a3d"></path></svg>
+      </sc-if>
+      <sc-if value="{{isCool}}" hint-placeholder-val="{{true}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="#5aa2ff"></path></svg>
+      </sc-if>
+      <sc-if value="{{isRange}}" hint-placeholder-val="{{false}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="#ff8a3d"></path><path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="#5aa2ff"></path></svg>
+      </sc-if>
+      <span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: .06em; color: #c9ced4">MODE</span>
+        <span style="font-size: 16px; font-weight: 500; white-space: nowrap">{{modeName}}</span>
+      </span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8ab8ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+    </button>
+    <div style="width: 200px; flex-shrink: 0; height: 56px; border-radius: 16px; background: #2d3139; overflow: hidden; display: flex; align-items: center" role="group" aria-label="Start time">
+      <button class="step" onClick="{{earlier}}" aria-label="Start 15 minutes earlier" style="width: 44px; flex-shrink: 0; height: 56px; border-radius: 16px 0 0 16px; display: flex; align-items: center; justify-content: center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+      </button>
+      <button class="step" onClick="{{openTime}}" aria-haspopup="dialog" aria-label="{{timeAria}}" style="flex-grow: 1; min-width: 0; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; border-left: 1px solid #3e434c; border-right: 1px solid #3e434c">
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: .06em; color: #aeb4bc">STARTS AT</span>
+        <span style="display: flex; align-items: center; gap: 4px; font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap" aria-live="polite">{{selTime}}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8ab8ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></span>
+      </button>
+      <button class="step" onClick="{{later}}" aria-label="Start 15 minutes later" style="width: 44px; flex-shrink: 0; height: 56px; border-radius: 0 16px 16px 0; display: flex; align-items: center; justify-content: center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div onPointerMove="{{dialMove}}" onPointerUp="{{dialUp}}" onPointerCancel="{{dialUp}}" style="position: relative; width: 340px; height: 340px; margin: 6px auto -41px; transform: scale(.88); transform-origin: top center; touch-action: none; flex-shrink: 0">
+    <svg width="340" height="340" viewBox="0 0 340 340" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+      <circle cx="170" cy="170" r="152" fill="#3a3f48"></circle>
+      <circle cx="170" cy="170" r="112" fill="#363b44"></circle>
+      <path d="{{dimPath}}" stroke="#7a818b" stroke-width="2" stroke-linecap="round" fill="none"></path>
+      <path d="{{heatArc}}" stroke="#ff8a3d" stroke-width="3" stroke-linecap="round" fill="none"></path>
+      <path d="{{coolArc}}" stroke="#5aa2ff" stroke-width="3" stroke-linecap="round" fill="none"></path>
+    </svg>
+    <button onPointerDown="{{ringDown}}" tabIndex="-1" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 340px; height: 340px; border-radius: 170px; touch-action: none; cursor: pointer"></button>
+
+    <div style="position: absolute; left: 50px; top: 298px; width: 40px; text-align: right; font-size: 11px; font-weight: 600; color: #aeb4bc; pointer-events: none">50°</div>
+    <div style="position: absolute; left: 0px; top: 122px; width: 30px; text-align: left; font-size: 11px; font-weight: 600; color: #aeb4bc; pointer-events: none">60°</div>
+    <div style="position: absolute; left: 150px; top: 2px; width: 40px; text-align: center; font-size: 11px; font-weight: 600; color: #aeb4bc; pointer-events: none">70°</div>
+    <div style="position: absolute; left: 310px; top: 122px; width: 30px; text-align: right; font-size: 11px; font-weight: 600; color: #aeb4bc; pointer-events: none">80°</div>
+    <div style="position: absolute; left: 250px; top: 298px; width: 40px; text-align: left; font-size: 11px; font-weight: 600; color: #aeb4bc; pointer-events: none">90°</div>
+
+    <sc-for list="{{knobs}}" as="m" hint-placeholder-count="1">
+      <button onPointerDown="{{m.grab}}" onClick="{{m.pick}}" aria-label="{{m.label}}" aria-pressed="{{m.pressed}}" style="position: absolute; left: {{m.x}}px; top: {{m.y}}px; width: 52px; height: 52px; border-radius: 26px; display: flex; align-items: center; justify-content: center; touch-action: none">
+        <sc-if value="{{m.selected}}" hint-placeholder-val="{{true}}">
+          <span style="width: 30px; height: 30px; border-radius: 15px; box-sizing: border-box; background: {{m.fill}}; border: 4px solid #ffffff; box-shadow: 0 0 0 6px {{m.halo}}, 0 2px 10px rgba(0,0,0,.5)"></span>
+        </sc-if>
+        <sc-if value="{{m.unselected}}" hint-placeholder-val="{{false}}">
+          <span style="width: 18px; height: 18px; border-radius: 9px; box-sizing: border-box; background: {{m.fill}}; border: 3px solid #3a3f48"></span>
+        </sc-if>
+      </button>
+    </sc-for>
+
+    <sc-if value="{{hasPoints}}" hint-placeholder-val="{{true}}">
+    <div style="position: absolute; left: 70px; top: 92px; width: 200px; pointer-events: none; display: flex; flex-direction: column; align-items: center">
+      <div style="font-size: 13px; font-weight: 500; letter-spacing: .06em; color: #c9ced4">{{modeLabel}}</div>
+      <sc-if value="{{single}}" hint-placeholder-val="{{true}}">
+        <div style="font-size: 88px; line-height: 96px; font-weight: 500; letter-spacing: -.02em; font-variant-numeric: tabular-nums" aria-live="polite">{{selTemp}}</div>
+      </sc-if>
+      <sc-if value="{{isRange}}" hint-placeholder-val="{{false}}">
+        <div style="height: 96px; display: flex; align-items: center; gap: 2px" role="group" aria-label="Pick which temperature to adjust">
+          <button onClick="{{editLo}}" aria-pressed="{{loPressed}}" aria-label="{{loAria}}" style="pointer-events: auto; width: 84px; height: 84px; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: {{loOpacity}}">
+            <span style="font-size: 60px; line-height: 64px; font-weight: 500; font-variant-numeric: tabular-nums">{{selLo}}</span>
+            <span style="width: 32px; height: 4px; border-radius: 2px; background: {{loBar}}"></span>
+          </button>
+          <span style="width: 6px; height: 6px; border-radius: 3px; background: #aeb4bc"></span>
+          <button onClick="{{editHi}}" aria-pressed="{{hiPressed}}" aria-label="{{hiAria}}" style="pointer-events: auto; width: 84px; height: 84px; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: {{hiOpacity}}">
+            <span style="font-size: 60px; line-height: 64px; font-weight: 500; font-variant-numeric: tabular-nums">{{selHi}}</span>
+            <span style="width: 32px; height: 4px; border-radius: 2px; background: {{hiBar}}"></span>
+          </button>
+        </div>
+      </sc-if>
+      <div style="font-size: 13px; color: #aeb4bc; margin-top: 2px">{{untilText}}</div>
+    </div>
+    </sc-if>
+    <sc-if value="{{noPoints}}" hint-placeholder-val="{{false}}">
+      <div style="position: absolute; left: 70px; top: 104px; width: 200px; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+        <div style="font-size: 13px; font-weight: 500; letter-spacing: .06em; color: #c9ced4">NOTHING SCHEDULED</div>
+        <div style="font-size: 26px; line-height: 32px; font-weight: 500">{{dayName}} is empty</div>
+        <div style="font-size: 14px; line-height: 20px; color: #aeb4bc">Turn the dial, pick a mode or a time to start</div>
+      </div>
+    </sc-if>
+
+    <button class="wedge" onClick="{{tempDown}}" aria-label="{{downAria}}" style="position: absolute; left: 94px; top: 258px; width: 76px; height: 66px; display: block">
+      <svg width="76" height="66" viewBox="94 258 76 66" aria-hidden="true" style="display: block; overflow: visible">
+        <path d="M95 299.9 A150 150 0 0 0 168.4 320 L168.8 282 A112 112 0 0 1 114 267 Z" fill="#454b55"></path>
+        <path d="M134 293 l7 7 l7 -7" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+    <button class="wedge" onClick="{{tempUp}}" aria-label="{{upAria}}" style="position: absolute; left: 170px; top: 258px; width: 76px; height: 66px; display: block">
+      <svg width="76" height="66" viewBox="170 258 76 66" aria-hidden="true" style="display: block; overflow: visible">
+        <path d="M171.6 320 A150 150 0 0 0 245 299.9 L226 267 A112 112 0 0 1 171.2 282 Z" fill="#454b55"></path>
+        <path d="M192 300 l7 -7 l7 7" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div style="margin: 12px 16px 0; height: 104px; flex-shrink: 0; position: relative; border-radius: 16px; background: #2d3139; overflow: hidden" role="group" aria-label="{{tlAria}}">
+    <button class="step" onClick="{{tlBack}}" aria-label="Scroll timeline earlier" style="position: absolute; left: 0; top: 0; width: 44px; height: 104px; display: flex; align-items: center; justify-content: center; background: #2d3139; z-index: 2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </button>
+    <button class="step" onClick="{{tlFwd}}" aria-label="Scroll timeline later" style="position: absolute; right: 0; top: 0; width: 44px; height: 104px; display: flex; align-items: center; justify-content: center; background: #2d3139; z-index: 2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+    </button>
+    <div ref="{{tlRef}}" onPointerDown="{{panDown}}" onPointerMove="{{panMove}}" onPointerUp="{{panUp}}" onPointerCancel="{{panUp}}" onWheel="{{panWheel}}" style="position: absolute; left: 44px; top: 0; width: 270px; height: 104px; overflow-x: auto; overflow-y: hidden; touch-action: pan-x; scrollbar-width: none; cursor: grab; border-left: 1px solid #3e434c; border-right: 1px solid #3e434c; box-sizing: border-box">
+      <div style="position: relative; width: {{tlWidth}}px; height: 104px">
+        <sc-for list="{{hours}}" as="h" hint-placeholder-count="25">
+          <span style="position: absolute; left: {{h.x}}px; top: 8px; width: 1px; height: {{h.tick}}px; background: #5a616c"></span>
+          <span style="position: absolute; left: {{h.lx}}px; top: 6px; width: 40px; font-size: 12px; font-weight: 600; color: #aeb4bc; pointer-events: none">{{h.label}}</span>
+        </sc-for>
+        <sc-if value="{{noPoints}}" hint-placeholder-val="{{false}}">
+          <div style="position: absolute; left: 16px; top: 30px; width: 1440px; height: 60px; border-radius: 10px; border: 1px dashed #6b727c; box-sizing: border-box"></div>
+        </sc-if>
+        <sc-for list="{{segs}}" as="g" hint-placeholder-count="5">
+          <button class="seg" onClick="{{g.pick}}" aria-label="{{g.label}}" aria-pressed="{{g.pressed}}" style="position: absolute; left: {{g.x}}px; top: 30px; width: {{g.w}}px; height: 60px; padding: 0 1px; box-sizing: border-box">
+            <span style="height: 60px; border-radius: 8px; background: {{g.fill}}; opacity: {{g.opacity}}; display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,.35)">{{g.text}}</span>
+          </button>
+        </sc-for>
+        <sc-if value="{{hasTrim}}" hint-placeholder-val="{{true}}">
+          <div style="position: absolute; left: {{trimX}}px; top: 27px; width: {{trimW}}px; height: 66px; box-sizing: border-box; border-top: 3px solid #ffffff; border-bottom: 3px solid #ffffff; border-radius: 10px; pointer-events: none"></div>
+          <button onPointerDown="{{startDown}}" onPointerMove="{{edgeMove}}" onPointerUp="{{edgeUp}}" onPointerCancel="{{edgeUp}}" onKeyDown="{{startKey}}" aria-label="{{startAria}}" style="position: absolute; left: {{startHX}}px; top: 27px; width: 44px; height: 66px; touch-action: none; cursor: ew-resize">
+            <span style="position: absolute; left: 14px; top: 0; width: 16px; height: 66px; border-radius: 10px 3px 3px 10px; background: #ffffff; display: flex; align-items: center; justify-content: center">
+              <svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><path d="M7 2L3 7l4 5" fill="none" stroke="#202124" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+          </button>
+          <sc-if value="{{hasEnd}}" hint-placeholder-val="{{true}}">
+            <button onPointerDown="{{endDown}}" onPointerMove="{{edgeMove}}" onPointerUp="{{edgeUp}}" onPointerCancel="{{edgeUp}}" onKeyDown="{{endKey}}" aria-label="{{endAria}}" style="position: absolute; left: {{endHX}}px; top: 27px; width: 44px; height: 66px; touch-action: none; cursor: ew-resize">
+              <span style="position: absolute; left: 14px; top: 0; width: 16px; height: 66px; border-radius: 3px 10px 10px 3px; background: #ffffff; display: flex; align-items: center; justify-content: center">
+                <svg width="10" height="14" viewBox="0 0 10 14" aria-hidden="true"><path d="M3 2l4 5-4 5" fill="none" stroke="#202124" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+            </button>
+          </sc-if>
+          <sc-if value="{{showTip}}" hint-placeholder-val="{{false}}">
+            <span style="position: absolute; left: {{tipX}}px; top: 3px; width: 84px; height: 22px; border-radius: 11px; background: #ffffff; color: #202124; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; pointer-events: none">{{tipText}}</span>
+          </sc-if>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{notDirty}}" hint-placeholder-val="{{true}}">
+  <button onClick="{{add}}" disabled="{{addDisabled}}" aria-label="{{addLabel}}" style="margin: 10px 16px 0; height: 56px; flex-shrink: 0; border-radius: 28px; background: #1a73e8; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; font-weight: 600; box-shadow: 0 2px 10px rgba(0,0,0,.3)">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+    <span>Add temperature</span>
+  </button>
+  </sc-if>
+  <sc-if value="{{isDirty}}" hint-placeholder-val="{{false}}">
+  <div style="margin: 10px 16px 0; height: 56px; flex-shrink: 0; display: flex; gap: 8px">
+    <button onClick="{{cancelEdit}}" style="width: 104px; height: 56px; border-radius: 28px; background: #454b55; font-size: 16px; font-weight: 500">Cancel</button>
+    <button onClick="{{commitEdit}}" aria-label="{{updateLabel}}" style="flex-grow: 1; height: 56px; border-radius: 28px; background: #1a73e8; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 17px; font-weight: 600; box-shadow: 0 2px 10px rgba(0,0,0,.3)">
+      <sc-if value="{{isExisting}}" hint-placeholder-val="{{true}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+        <span>Update temperature</span>
+      </sc-if>
+      <sc-if value="{{isNewSel}}" hint-placeholder-val="{{false}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        <span>Add temperature</span>
+      </sc-if>
+    </button>
+  </div>
+  </sc-if>
+
+  <div style="flex-shrink: 0; margin-top: 16px; height: 36px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #4a5059; font-size: 13px; color: #aeb4bc">
+    <span>{{dayName}} · {{countText}}</span>
+    <sc-if value="{{hasPoints}}" hint-placeholder-val="{{true}}">
+    <span>Swipe left to copy or remove</span>
+    </sc-if>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; overflow-y: auto">
+    <sc-if value="{{noPoints}}" hint-placeholder-val="{{false}}">
+      <ol style="margin: 0; padding: 18px 20px 0; list-style: none; display: flex; flex-direction: column; gap: 14px" aria-label="Get started">
+        <li style="display: flex; align-items: center; gap: 14px; font-size: 17px">
+          <span style="width: 32px; height: 32px; border-radius: 10px; background: #454b55; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">1</span>
+          <span>Choose a day</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 14px; font-size: 17px">
+          <span style="width: 32px; height: 32px; border-radius: 10px; background: #454b55; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">2</span>
+          <span>Choose a mode</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 14px; font-size: 17px">
+          <span style="width: 32px; height: 32px; border-radius: 10px; background: #454b55; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">3</span>
+          <span>Choose a time</span>
+        </li>
+      </ol>
+    </sc-if>
+    <sc-for list="{{rows}}" as="p" hint-placeholder-count="4">
+      <div style="position: relative; height: 56px; overflow: hidden; border-bottom: 1px solid #4a5059">
+        <div style="position: absolute; right: 0; top: 0; height: 56px; display: flex">
+          <button onClick="{{p.copy}}" tabIndex="{{p.actTab}}" aria-label="{{p.copyLabel}}" style="width: 80px; height: 56px; background: #5f6875; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: 13px; font-weight: 600">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>
+            <span>Copy</span>
+          </button>
+          <button onClick="{{p.remove}}" disabled="{{p.removeDisabled}}" tabIndex="{{p.actTab}}" aria-label="{{p.removeLabel}}" style="width: 80px; height: 56px; background: #b3261e; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: 13px; font-weight: 600">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"></path></svg>
+            <span>Remove</span>
+          </button>
+        </div>
+        <div onPointerDown="{{p.down}}" onPointerMove="{{p.move}}" onPointerUp="{{p.up}}" onPointerCancel="{{p.up}}" style="position: absolute; left: 0; top: 0; width: 390px; height: 56px; display: flex; align-items: center; background: {{p.bg}}; transform: translateX({{p.dx}}px); transition: {{p.trans}}; touch-action: pan-y">
+          <button onClick="{{p.pick}}" aria-pressed="{{p.pressed}}" aria-label="{{p.aria}}" style="flex-grow: 1; height: 56px; display: flex; align-items: center; gap: 14px; padding: 0 4px 0 20px; text-align: left">
+            <span style="width: 12px; height: 12px; border-radius: 6px; background: {{p.fill}}; opacity: {{p.dotOpacity}}"></span>
+            <span style="flex-grow: 1; display: flex; flex-direction: column">
+              <span style="font-size: 17px; font-variant-numeric: tabular-nums">{{p.time}}</span>
+              <span style="font-size: 12px; color: #aeb4bc">{{p.modeName}}</span>
+            </span>
+            <sc-if value="{{p.isSingle}}" hint-placeholder-val="{{true}}">
+              <span style="font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; color: {{p.tempColor}}">{{p.temp}}</span>
+            </sc-if>
+            <sc-if value="{{p.isRange}}" hint-placeholder-val="{{false}}">
+              <span style="display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums">
+                <span style="color: #ffa066">{{p.lo}}</span>
+                <span style="color: #aeb4bc">–</span>
+                <span style="color: #8fbcff">{{p.hi}}</span>
+              </span>
+            </sc-if>
+          </button>
+          <button onClick="{{p.toggle}}" aria-label="{{p.moreLabel}}" aria-expanded="{{p.open}}" style="width: 48px; height: 56px; display: flex; align-items: center; justify-content: center; margin-right: 4px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#aeb4bc"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+          </button>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+    <div role="status" style="position: absolute; left: 16px; right: 16px; bottom: 28px; padding: 14px 16px; border-radius: 12px; background: #e8eaed; color: #202124; font-size: 15px; font-weight: 500">{{toast}}</div>
+  </sc-if>
+
+  <sc-if value="{{timeOpen}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.5)"></div>
+    <div role="dialog" aria-label="Set start time" style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 0 12px 24px; background: #f4f6f9; color: #202124; border-radius: 16px 16px 0 0; display: flex; flex-direction: column">
+      <div style="height: 56px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 500; border-bottom: 1px solid #dde1e6">Set start time:</div>
+      <div ref="{{timeListRef}}" style="height: 432px; overflow-y: auto">
+        <sc-for list="{{timeOpts}}" as="o" hint-placeholder-count="8">
+          <button class="menu-row" onClick="{{o.pick}}" disabled="{{o.taken}}" aria-pressed="{{o.pressed}}" style="width: 100%; height: 54px; display: flex; align-items: center; gap: 14px; padding: 0 12px; border-bottom: 1px solid #e3e6ea; text-align: left; font-size: 18px; font-variant-numeric: tabular-nums; background: {{o.bg}}">
+            <span style="flex-grow: 1; font-weight: {{o.weight}}">{{o.label}}</span>
+            <sc-if value="{{o.taken}}" hint-placeholder-val="{{false}}">
+              <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #5f6368"><span style="width: 10px; height: 10px; border-radius: 5px; background: {{o.fill}}"></span>Scheduled</span>
+            </sc-if>
+            <sc-if value="{{o.on}}" hint-placeholder-val="{{false}}">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <button class="menu-row" onClick="{{closeTime}}" style="height: 64px; flex-shrink: 0; font-size: 19px; font-weight: 500; border-top: 1px solid #dde1e6">Cancel</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{confirmOpen}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.55)"></div>
+    <div role="alertdialog" aria-modal="true" aria-label="{{confirmTitle}}" style="position: absolute; left: 24px; top: 250px; width: 342px; box-sizing: border-box; padding: 24px 20px 16px; border-radius: 24px; background: #f4f6f9; color: #202124; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 40px rgba(0,0,0,.45)">
+      <div style="font-size: 20px; line-height: 26px; font-weight: 500">{{confirmTitle}}</div>
+      <div style="font-size: 15px; line-height: 22px; color: #5f6368; margin-bottom: 8px">{{confirmBody}}</div>
+      <button onClick="{{confirmSave}}" style="height: 52px; border-radius: 26px; background: #1a73e8; color: #ffffff; font-size: 16px; font-weight: 600">{{confirmSaveText}}</button>
+      <button onClick="{{confirmDiscard}}" style="height: 52px; border-radius: 26px; border: 1px solid #c4c9d0; color: #b3261e; font-size: 16px; font-weight: 600">Discard changes</button>
+      <button class="menu-row" onClick="{{confirmStay}}" style="height: 48px; border-radius: 24px; color: #1a73e8; font-size: 16px; font-weight: 500">Keep editing</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.5)"></div>
+    <div role="dialog" aria-label="{{menuTitle}}" style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 0 12px 24px; background: #f4f6f9; color: #202124; border-radius: 16px 16px 0 0; display: flex; flex-direction: column">
+      <div style="height: 56px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 500; border-bottom: 1px solid #dde1e6">{{menuTitle}}</div>
+      <sc-for list="{{menuItems}}" as="it" hint-placeholder-count="3">
+        <button class="menu-row" onClick="{{it.pick}}" aria-pressed="{{it.pressed}}" style="height: 64px; display: flex; align-items: center; gap: 18px; padding: 0 8px; border-bottom: 1px solid #dde1e6; text-align: left; font-size: 19px">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="{{it.c1}}"></path>
+            <path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="{{it.c2}}"></path>
+            <path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="{{it.c3}}"></path>
+          </svg>
+          <span style="flex-grow: 1">{{it.label}}</span>
+          <sc-if value="{{it.on}}" hint-placeholder-val="{{false}}">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+          </sc-if>
+        </button>
+      </sc-for>
+      <button class="menu-row" onClick="{{closeMenu}}" style="height: 64px; font-size: 19px; font-weight: 500">Cancel</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{sheet}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(0,0,0,.55)"></div>
+    <div role="dialog" aria-label="Copy schedule" style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 24px 16px 28px; background: #2d3139; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; gap: 18px">
+      <div style="font-size: 20px; font-weight: 500">{{copyTitle}}</div>
+      <div style="height: 48px; padding: 2px; box-sizing: border-box; border-radius: 24px; background: #3a3f48; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px" role="group" aria-label="What to copy">
+        <button onClick="{{scopePoint}}" aria-pressed="{{scopePointOn}}" style="height: 44px; border-radius: 22px; font-size: 14px; font-weight: 600; background: {{scopePointBg}}">{{scopePointText}}</button>
+        <button onClick="{{scopeDay}}" aria-pressed="{{scopeDayOn}}" style="height: 44px; border-radius: 22px; font-size: 14px; font-weight: 600; background: {{scopeDayBg}}">Whole day</button>
+      </div>
+      <div style="font-size: 14px; color: #aeb4bc">Copy to</div>
+      <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px">
+        <sc-for list="{{copyChips}}" as="c" hint-placeholder-count="7">
+          <button onClick="{{c.toggle}}" disabled="{{c.isSource}}" aria-label="{{c.name}}" aria-pressed="{{c.pressed}}" style="height: 48px; border-radius: 12px; font-size: 15px; font-weight: 600; background: {{c.bg}}; color: #ffffff; border: {{c.border}}; box-sizing: border-box">{{c.letter}}</button>
+        </sc-for>
+      </div>
+      <div style="display: flex; gap: 8px">
+        <button onClick="{{selWeekdays}}" style="height: 44px; padding: 0 16px; border-radius: 22px; border: 1px solid #6b727c; font-size: 14px; font-weight: 500">Weekdays</button>
+        <button onClick="{{selWeekend}}" style="height: 44px; padding: 0 16px; border-radius: 22px; border: 1px solid #6b727c; font-size: 14px; font-weight: 500">Weekend</button>
+        <button onClick="{{selAll}}" style="height: 44px; padding: 0 16px; border-radius: 22px; border: 1px solid #6b727c; font-size: 14px; font-weight: 500">Every day</button>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 4px">
+        <button onClick="{{closeCopy}}" style="height: 52px; border-radius: 26px; background: #454b55; font-size: 16px; font-weight: 500">Cancel</button>
+        <button onClick="{{applyCopy}}" disabled="{{copyDisabled}}" style="height: 52px; border-radius: 26px; background: #1a73e8; font-size: 16px; font-weight: 600">Copy</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startEmpty":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  defaults() {
+    // Each temperature keeps its own mode; heat and cool targets are both stored so switching modes never loses a value.
+    var wd = [[360, 'heat', 68, 76], [510, 'range', 62, 82], [1050, 'cool', 68, 76], [1320, 'range', 66, 74]];
+    var we = [[450, 'heat', 68, 76], [1350, 'range', 64, 74]];
+    return [0, 1, 2, 3, 4, 5, 6].map(function (d) {
+      return (d < 5 ? wd : we).map(function (p) { return { t: p[0], mode: p[1], heat: p[2], cool: p[3] }; });
+    });
+  }
+  s() {
+    var st = this.state || {};
+    if (!this._def) this._def = this.defaults();
+    return {
+      day: st.day == null ? 0 : st.day,
+      sel: st.sel == null ? -1 : st.sel,
+      sched: st.sched || (this.props.startEmpty ? [[], [], [], [], [], [], []] : this._def),
+      lastMode: st.lastMode || 'cool',
+      draftT: st.draftT == null ? 420 : st.draftT,
+      timeOpen: !!st.timeOpen,
+      trimEdge: st.trimEdge || null,
+      dirty: !!st.dirty, snap: st.snap || null, snapSel: st.snapSel || 0,
+      confirmOpen: !!st.confirmOpen, pending: st.pending || null, pendingT: st.pendingT == null ? null : st.pendingT,
+      sheet: !!st.sheet,
+      menuOpen: !!st.menuOpen,
+      copyDays: st.copyDays || [false, false, false, false, false, false, false],
+      dragging: !!st.dragging,
+      toast: st.toast || '',
+      openRow: st.openRow == null ? -1 : st.openRow,
+      swipeI: st.swipeI == null ? -1 : st.swipeI,
+      swipeX: st.swipeX || 0,
+      copySrc: st.copySrc == null ? 0 : st.copySrc,
+      copyScope: st.copyScope || 'point',
+      rangeEdit: st.rangeEdit || 'lo'
+    };
+  }
+  fmt(m) {
+    var h24 = Math.floor(m / 60) % 24, mm = m % 60;
+    var ap = h24 < 12 ? 'AM' : 'PM';
+    var h = h24 % 12 === 0 ? 12 : h24 % 12;
+    return h + ':' + (mm < 10 ? '0' : '') + mm + ' ' + ap;
+  }
+  // The dial maps temperature, 50° to 90°, over the same 300° arc as the main thermostat.
+  ang(v) { return 120 + ((v - 50) / 40) * 300; }
+  pt(v, r) {
+    var a = this.ang(v) * Math.PI / 180;
+    return { x: 170 + r * Math.cos(a), y: 170 + r * Math.sin(a) };
+  }
+  seg(m, r1, r2) {
+    var p1 = this.pt(m, r1), p2 = this.pt(m, r2);
+    return 'M' + p1.x.toFixed(1) + ' ' + p1.y.toFixed(1) + 'L' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+  }
+  // edit: structural changes (add, remove) that apply at once. modify: changes to an existing temperature,
+  // held as a draft until the person taps Update temperature (or Cancel to restore the snapshot).
+  edit(fn, keepDraft) {
+    var s = this.s();
+    var sched = JSON.parse(JSON.stringify(s.sched));
+    var extra = fn(sched[s.day], s) || {};
+    var next = { sched: sched, toast: '' };
+    if (!keepDraft) {
+      next.dirty = false; next.snap = null;
+      sched.forEach(function (d) { d.forEach(function (q) { delete q.isNew; }); });
+    }
+    for (var k in extra) next[k] = extra[k];
+    this.setState(next);
+  }
+  // Switching to another temperature or day with unsaved edits asks first (Save / Discard / Keep editing).
+  go(next) {
+    var s = this.s();
+    var list = s.sched[s.day];
+    var sameTarget = next.day == null && next.sel === s.sel;
+    if (!s.dirty || sameTarget) {
+      if (!sameTarget) { next.dirty = false; next.snap = null; }
+      this.setState(next);
+      return;
+    }
+    if (next.dragging) delete next.dragging;
+    var t = next.day == null && list[next.sel] ? list[next.sel].t : null;
+    this.setState({ confirmOpen: true, pending: next, pendingT: t });
+  }
+  modify(fn) {
+    var s = this.s();
+    var snap = s.snap || JSON.parse(JSON.stringify(s.sched));
+    var snapSel = s.snap ? s.snapSel : s.sel;
+    this.edit(function (l, ss) {
+      var r = fn(l, ss) || {};
+      r.dirty = true; r.snap = snap; r.snapSel = snapSel;
+      return r;
+    }, true);
+  }
+  // Move temperature i to any time of day; skip over a time another temperature already uses, then re-sort.
+  moveTo(l, i, t, dir) {
+    var norm = function (v) { return ((v % 1440) + 1440) % 1440; };
+    var others = l.filter(function (q, j) { return j !== i; }).map(function (q) { return q.t; });
+    t = norm(t);
+    for (var g = 0; g < 96 && others.indexOf(t) >= 0; g++) t = norm(t + dir * 15);
+    var p = l[i];
+    p.t = t;
+    l.sort(function (a, b) { return a.t - b.t; });
+    return l.indexOf(p);
+  }
+  componentDidMount() { this.scrollTl(true); }
+  componentDidUpdate() { this.scrollTl(false); }
+  scrollTl(force) {
+    var s = this.s();
+    var list = s.sched[s.day] || [];
+    var key = s.day + ':' + Math.min(s.sel, list.length - 1);
+    if (!this._tlEl || (!force && key === this._tlKey) || s.trimEdge) return;
+    this._tlKey = key;
+    var p = list[Math.min(s.sel, list.length - 1)];
+    var el = this._tlEl;
+    setTimeout(function () { el.scrollLeft = Math.max(0, (p ? p.t : 420) + 16 - 90); }, 0);
+  }
+  renderVals() {
+    var self = this;
+    var s = this.s();
+    var HEAT = '#ff8a3d', COOL = '#5aa2ff', CTA = '#1a73e8';
+    var list = s.sched[s.day];
+    var hasPoints = list.length > 0;
+    // Nothing selected (sel -1) = composing a new temperature from the draft shown in the controls.
+    // Tapping a scheduled one selects it for editing (Update / Cancel).
+    var sel = s.sel >= 0 && s.sel < list.length ? s.sel : -1;
+    var draftT = (function () {
+      var taken = list.map(function (q) { return q.t; });
+      if (taken.indexOf(s.draftT) < 0) return s.draftT;
+      var pts = [0].concat(taken, [1440]), best = { a: 0, b: 0 };
+      for (var g = 0; g < pts.length - 1; g++) if (pts[g + 1] - pts[g] > best.b - best.a) best = { a: pts[g], b: pts[g + 1] };
+      return Math.round(((best.a + best.b) / 2) / 15) * 15 % 1440;
+    })();
+    var draftObj = { t: draftT, mode: s.lastMode, heat: 68, cool: 76 };
+    var cur = sel >= 0 ? list[sel] : draftObj;
+    var isNewSel = sel >= 0 && !!list[sel].isNew;
+    // With nothing scheduled, any control creates the first temperature from the draft shown in the controls.
+    var ensure = function (l) {
+      if (sel >= 0 && l[sel]) return;
+      var ex = l.filter(function (q) { return q.isNew; })[0];
+      if (ex) { sel = l.indexOf(ex); return; }
+      var d = { t: draftObj.t, mode: draftObj.mode, heat: draftObj.heat, cool: draftObj.cool, isNew: true };
+      l.push(d);
+      l.sort(function (a, b) { return a.t - b.t; });
+      sel = l.indexOf(d);
+    };
+    var mod = function (fn) {
+      self.modify(function (l, ss) { var r = fn(l, ss) || {}; if (r.sel == null) r.sel = sel; return r; });
+    };
+    var mode = cur.mode, cool = mode === 'cool', heat = mode === 'heat', range = mode === 'range';
+    var nextT = sel >= 0 && sel < list.length - 1 ? list[sel + 1].t : null;
+    var names = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    var letters = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+    var modeNames = { heat: 'Heat', cool: 'Cool', range: 'Heat • Cool' };
+    var tempOf = function (p) { return p.mode === 'cool' ? p.cool : p.heat; };
+    var tempText = function (p) { return p.mode === 'range' ? 'heat ' + p.heat + '°, cool ' + p.cool + '°' : modeNames[p.mode].toLowerCase() + ' to ' + tempOf(p) + '°'; };
+    var shortTemp = function (p) { return p.mode === 'range' ? p.heat + '°–' + p.cool + '°' : tempOf(p) + '°'; };
+    var rowFill = function (p) {
+      return p.mode === 'heat' ? HEAT : (p.mode === 'cool' ? COOL : 'linear-gradient(90deg, ' + HEAT + ' 50%, ' + COOL + ' 50%)');
+    };
+
+    // Temperature ring: heat fills up to its target (orange), cool fills down to its target (blue).
+    var dim = '', ha = '', ca = '';
+    for (var k = 0; k <= 160; k++) {
+      var v = 50 + k / 4;
+      var big = k % 20 === 0;
+      var seg = this.seg(v, big ? 116 : 124, 144);
+      if (hasPoints && (heat || range) && v <= cur.heat) ha += seg;
+      else if (hasPoints && (cool || range) && v >= cur.cool) ca += seg;
+      else dim += seg;
+    }
+    var editLoNow = s.rangeEdit === 'lo';
+    var knobSpecs = range ? [{ key: 'lo', v: cur.heat, fill: HEAT, name: 'Heat to' }, { key: 'hi', v: cur.cool, fill: COOL, name: 'Cool to' }]
+      : [{ key: heat ? 'lo' : 'hi', v: tempOf(cur), fill: heat ? HEAT : COOL, name: heat ? 'Heat to' : 'Cool to' }];
+    var knobs = knobSpecs.map(function (kn) {
+      var c = self.pt(kn.v, 134);
+      var on = !range || (kn.key === 'lo') === editLoNow;
+      return {
+        x: (c.x - 26).toFixed(1), y: (c.y - 26).toFixed(1), fill: kn.fill,
+        halo: kn.fill === HEAT ? 'rgba(255,138,61,.3)' : 'rgba(90,162,255,.3)',
+        selected: on, unselected: !on, pressed: String(on),
+        label: kn.name + ' ' + kn.v + ' degrees. Drag around the dial to change.',
+        pick: function () { self.setState({ rangeEdit: kn.key }); },
+        grab: function (e) {
+          try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+          self.setState({ rangeEdit: kn.key, dragging: true });
+        }
+      };
+    });
+
+    // Trim-style timeline (like iOS video editing): a scrollable 24-hour strip, 1px per minute.
+    // The selected block gets a frame with handles: the left handle trims its start, the right trims its end.
+    var PAD = 16;
+    var tx = function (t) { return PAD + t; };
+    var blockFill = function (p) {
+      return p.mode === 'heat' ? HEAT : (p.mode === 'cool' ? COOL : 'linear-gradient(180deg, ' + HEAT + ' 50%, ' + COOL + ' 50%)');
+    };
+    var hours = [];
+    for (var hh = 0; hh <= 24; hh++) {
+      var lab = hh % 3 === 0 ? (hh % 12 === 0 ? 12 : hh % 12) + (hh < 12 || hh === 24 ? 'A' : 'P') : '';
+      hours.push({ x: tx(hh * 60), lx: tx(hh * 60) + 4, tick: hh % 3 === 0 ? 16 : 8, label: lab });
+    }
+    var segs = [];
+    if (hasPoints) {
+      var pushSeg = function (a, b, owner, lead) {
+        if (b - a < 1) return;
+        var p = list[owner], on = owner === sel && !lead;
+        segs.push({
+          x: tx(a), w: b - a, fill: blockFill(p), opacity: on ? 1 : 0.5,
+          text: b - a >= 60 ? shortTemp(p) : '',
+          pressed: String(on),
+          label: self.fmt(a) + ' to ' + (b === 1440 ? 'midnight' : self.fmt(b)) + ', ' + tempText(p) + (lead ? ', carried over from last night' : ''),
+          pick: function () { if (self._panned) return; self.go({ sel: owner }); }
+        });
+      };
+      pushSeg(0, list[0].t, list.length - 1, true);
+      list.forEach(function (p, i) { pushSeg(p.t, i < list.length - 1 ? list[i + 1].t : 1440, i, false); });
+    }
+    var endT = nextT == null ? 1440 : nextT;
+    var hasEnd = sel >= 0 && nextT != null;
+    var trimEdge = s.trimEdge || null;
+    var trimBounds = function (edge) {
+      if (edge === 'start') return { idx: sel, lo: sel > 0 ? list[sel - 1].t + 15 : 0, hi: endT - 15 };
+      return { idx: sel + 1, lo: cur.t + 15, hi: (sel + 2 < list.length ? list[sel + 2].t : 1440) - 15 };
+    };
+    var setEdge = function (edge, t) {
+      var b = trimBounds(edge);
+      t = Math.max(b.lo, Math.min(b.hi, t));
+      if (!list[b.idx] || list[b.idx].t === t) return;
+      mod(function (l) { l[b.idx].t = t; });
+    };
+    var edgeDown = function (edge) {
+      return function (e) {
+        e.stopPropagation();
+        var r = e.currentTarget.getBoundingClientRect();
+        try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+        self._trim = { edge: edge, x0: e.clientX, sc: r.width / 44, t0: edge === 'start' ? cur.t : endT };
+        self.setState({ trimEdge: edge });
+      };
+    };
+    var edgeKey = function (edge) {
+      return function (e) {
+        var d = e.key === 'ArrowLeft' ? -15 : (e.key === 'ArrowRight' ? 15 : 0);
+        if (!d) return;
+        e.preventDefault();
+        setEdge(edge, (edge === 'start' ? cur.t : endT) + d);
+      };
+    };
+
+    var OPEN = -160;
+    var removeAt = function (i) {
+      var gone = self.fmt(list[i].t);
+      self.edit(function (l) {
+        l.splice(i, 1);
+        var ns = sel > i ? sel - 1 : (sel === i ? Math.max(0, i - 1) : sel);
+        return { sel: -1, openRow: -1, toast: 'Removed ' + gone + ' temperature' };
+      });
+    };
+    var rows = list.map(function (p, i) {
+      var open = s.openRow === i;
+      var live = s.swipeI === i;
+      return {
+        time: self.fmt(p.t), modeName: modeNames[p.mode] + (p.isNew ? ' · New' : ''),
+        isSingle: p.mode !== 'range', isRange: p.mode === 'range',
+        temp: tempOf(p) + '°', tempColor: p.mode === 'cool' ? '#8fbcff' : '#ffa066',
+        lo: p.heat + '°', hi: p.cool + '°',
+        fill: rowFill(p),
+        aria: self.fmt(p.t) + ', ' + tempText(p),
+        bg: i === sel ? '#454b55' : '#363b44',
+        dotOpacity: i === sel ? 1 : 0.6,
+        pressed: String(i === sel),
+        open: String(open),
+        dx: live ? s.swipeX : (open ? OPEN : 0),
+        trans: live ? 'none' : 'transform .22s ease',
+        actTab: open ? 0 : -1,
+        removeDisabled: false,
+        copyLabel: 'Copy ' + self.fmt(p.t) + ' temperature to other days',
+        removeLabel: 'Remove ' + self.fmt(p.t) + ' temperature',
+        moreLabel: 'More actions for ' + self.fmt(p.t),
+        pick: function () {
+          if (self._justSwiped) { self._justSwiped = false; return; }
+          self.go({ sel: i, openRow: -1 });
+        },
+        toggle: function () { self.setState({ openRow: open ? -1 : i }); },
+        down: function (e) {
+          self._sw = { i: i, x: e.clientX, y: e.clientY, base: open ? OPEN : 0, moved: false };
+          if (s.openRow !== -1 && s.openRow !== i) self.setState({ openRow: -1 });
+        },
+        move: function (e) {
+          var w = self._sw;
+          if (!w || w.i !== i) return;
+          var dx = e.clientX - w.x, dy = e.clientY - w.y;
+          if (!w.moved) {
+            if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) { self._sw = null; return; }
+            if (Math.abs(dx) < 8) return;
+            w.moved = true;
+            try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+          }
+          self.setState({ swipeI: i, swipeX: Math.max(OPEN - 20, Math.min(0, w.base + dx)) });
+        },
+        up: function () {
+          var w = self._sw;
+          self._sw = null;
+          if (!w || w.i !== i || !w.moved) return;
+          self._justSwiped = true;
+          setTimeout(function () { self._justSwiped = false; }, 350);
+          var st = self.state || {};
+          var x = st.swipeX || 0;
+          self.setState({ swipeI: -1, openRow: x < OPEN / 2 ? i : -1 });
+        },
+        remove: function () { removeAt(i); },
+        copy: function () {
+          self.setState({ sheet: true, copySrc: i, copyScope: 'point', openRow: -1, sel: i, toast: '',
+            copyDays: [false, false, false, false, false, false, false] });
+        }
+      };
+    });
+
+    var days = names.map(function (n, i) {
+      var on = i === s.day;
+      return {
+        name: n, letter: letters[i], pressed: String(on),
+        bg: on ? CTA : '#2d3139',
+        border: on ? '0' : '1px solid #5a616c',
+        pick: function () { self.go({ day: i, sel: -1, openRow: -1, toast: '' }); }
+      };
+    });
+
+    var menuItems = [
+      { id: 'heat', c: ['#e8710a', '#e8710a', '#e8710a'] },
+      { id: 'cool', c: ['#1a73e8', '#1a73e8', '#1a73e8'] },
+      { id: 'range', c: ['#e8710a', '#e8710a', '#1a73e8'] }
+    ].map(function (o) {
+      var on = o.id === mode;
+      return {
+        label: modeNames[o.id], on: on, pressed: String(on),
+        c1: o.c[0], c2: o.c[1], c3: o.c[2],
+        pick: function () {
+          mod(function (l) {
+            ensure(l);
+            l[sel].mode = o.id;
+            return { lastMode: o.id, menuOpen: false, openRow: -1, rangeEdit: 'lo' };
+          });
+        }
+      };
+    });
+
+    var setCopy = function (arr) { self.setState({ copyDays: arr }); };
+    var copyChips = names.map(function (n, i) {
+      var src = i === s.day, on = !!s.copyDays[i];
+      return {
+        name: src ? n + ' (copying from)' : n, letter: letters[i], isSource: src, pressed: String(on),
+        bg: src ? '#454b55' : (on ? CTA : 'transparent'),
+        border: on || src ? '0' : '1px solid #6b727c',
+        toggle: function () { var a = s.copyDays.slice(); a[i] = !a[i]; setCopy(a); }
+      };
+    });
+    var pickSet = function (idx) {
+      return function () {
+        var a = [false, false, false, false, false, false, false];
+        idx.forEach(function (i) { if (i !== s.day) a[i] = true; });
+        setCopy(a);
+      };
+    };
+    var copyCount = s.copyDays.filter(function (v, i) { return v && i !== s.day; }).length;
+    var srcPt = list[Math.min(s.copySrc, list.length - 1)];
+
+    var editLo = s.rangeEdit === 'lo';
+    var GAP = 3;
+    var setHeat = function (p, v) {
+      p.heat = Math.max(50, Math.min(90 - GAP, v));
+      if (p.cool < p.heat + GAP) p.cool = p.heat + GAP;
+    };
+    var setCool = function (p, v) {
+      p.cool = Math.max(50 + GAP, Math.min(90, v));
+      if (p.heat > p.cool - GAP) p.heat = p.cool - GAP;
+    };
+    var step = function (d) {
+      mod(function (l) {
+        ensure(l);
+        var p = l[sel];
+        if (p.mode === 'range') { if (editLo) setHeat(p, p.heat + d); else setCool(p, p.cool + d); }
+        else if (p.mode === 'cool') setCool(p, p.cool + d);
+        else setHeat(p, p.heat + d);
+      });
+    };
+    var target = range ? (editLo ? 'heat-to temperature' : 'cool-to temperature') : 'temperature';
+
+    return {
+      hasPoints: hasPoints, noPoints: !hasPoints,
+      isDirty: sel >= 0, notDirty: sel < 0, isNewSel: isNewSel, isExisting: sel >= 0 && !isNewSel,
+      updateLabel: (isNewSel ? 'Add ' : 'Update ') + this.fmt(cur.t) + ' temperature',
+      confirmOpen: s.confirmOpen,
+      confirmTitle: isNewSel ? 'Add the new ' + this.fmt(cur.t) + ' temperature?' : 'Save changes to the ' + this.fmt(cur.t) + ' temperature?',
+      confirmBody: isNewSel ? 'You started a new temperature but haven’t added it yet.' : 'You changed this temperature but haven’t updated it yet.',
+      confirmSaveText: isNewSel ? 'Add temperature' : 'Save changes',
+      confirmSave: function () {
+        var clean = JSON.parse(JSON.stringify(s.sched));
+        clean.forEach(function (d) { d.forEach(function (q) { delete q.isNew; }); });
+        var nx = Object.assign({}, s.pending || {}, { sched: clean, dirty: false, snap: null, confirmOpen: false, pending: null, pendingT: null, toast: (isNewSel ? 'Added ' : 'Updated ') + self.fmt(cur.t) + ' temperature' });
+        self.setState(nx);
+      },
+      confirmDiscard: function () {
+        var nx = Object.assign({}, s.pending || {}, { sched: s.snap, dirty: false, snap: null, confirmOpen: false, pending: null, pendingT: null, toast: 'Changes discarded' });
+        if (s.pendingT != null && s.snap) {
+          var idx = s.snap[s.day].map(function (q) { return q.t; }).indexOf(s.pendingT);
+          if (idx >= 0) nx.sel = idx;
+        }
+        self.setState(nx);
+      },
+      confirmStay: function () { self.setState({ confirmOpen: false, pending: null, pendingT: null }); },
+      commitEdit: function () {
+        var clean = JSON.parse(JSON.stringify(s.sched));
+        clean.forEach(function (d) { d.forEach(function (q) { delete q.isNew; }); });
+        self.setState({ sched: clean, sel: -1, dirty: false, snap: null, toast: (isNewSel ? 'Added ' : 'Updated ') + self.fmt(cur.t) + ' temperature' });
+      },
+      cancelEdit: function () {
+        self.setState({ sched: s.snap || s.sched, sel: -1, dirty: false, snap: null, toast: s.dirty ? 'Changes discarded' : '' });
+      },
+      dimPath: dim, heatArc: ha, coolArc: ca, knobs: knobs,
+      segs: segs, hours: hours, tlWidth: 1440 + PAD * 2,
+      tlAria: names[s.day] + ' timeline. Drag the handles to change when the selected block starts and ends.',
+      tlRef: function (el) { self._tlEl = el; },
+      // Scrolling the timeline: chevrons jump 3 hours; mouse or pen can drag the strip; the wheel scrolls sideways; touch uses native swipe.
+      tlBack: function () { if (self._tlEl) self._tlEl.scrollBy({ left: -180, behavior: 'smooth' }); },
+      tlFwd: function () { if (self._tlEl) self._tlEl.scrollBy({ left: 180, behavior: 'smooth' }); },
+      panDown: function (e) {
+        if (e.pointerType === 'touch' || !self._tlEl) return;
+        self._pan = { x: e.clientX, left: self._tlEl.scrollLeft, id: e.pointerId, moved: false };
+      },
+      panMove: function (e) {
+        var pn = self._pan;
+        if (!pn || !self._tlEl) return;
+        var dx = e.clientX - pn.x;
+        if (!pn.moved && Math.abs(dx) < 6) return;
+        if (!pn.moved) { pn.moved = true; try { e.currentTarget.setPointerCapture(pn.id); } catch (err) {} }
+        self._tlEl.scrollLeft = pn.left - dx;
+      },
+      panUp: function () {
+        var pn = self._pan;
+        self._pan = null;
+        if (pn && pn.moved) { self._panned = true; setTimeout(function () { self._panned = false; }, 250); }
+      },
+      panWheel: function (e) {
+        if (!self._tlEl || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+        self._tlEl.scrollLeft += e.deltaY;
+      },
+      trimX: tx(cur.t) - 2, trimW: endT - cur.t + 4,
+      startHX: tx(cur.t) - 14, endHX: tx(endT) - 30,
+      hasEnd: hasEnd, hasTrim: sel >= 0,
+      startAria: 'Start of block: ' + this.fmt(cur.t) + '. Drag or use arrow keys to change.',
+      endAria: 'End of block: ' + this.fmt(endT) + '. Drag or use arrow keys to change.',
+      startDown: edgeDown('start'), endDown: edgeDown('end'),
+      startKey: edgeKey('start'), endKey: edgeKey('end'),
+      edgeMove: function (e) {
+        var tr = self._trim;
+        if (!tr) return;
+        var dt = Math.round(((e.clientX - tr.x0) / tr.sc) / 15) * 15;
+        setEdge(tr.edge, tr.t0 + dt);
+      },
+      edgeUp: function () { if (self._trim) { self._trim = null; self.setState({ trimEdge: null }); } },
+      showTip: !!trimEdge && hasPoints,
+      tipX: (trimEdge === 'end' ? tx(endT) : tx(cur.t)) - 42,
+      tipText: trimEdge === 'end' ? this.fmt(endT) : this.fmt(cur.t), rows: rows, days: days, menuItems: menuItems,
+      single: !range, isRange: range, isHeat: heat, isCool: cool,
+      modeName: modeNames[mode],
+      modeCaption: 'MODE FOR ' + this.fmt(cur.t),
+      modeAria: 'Mode for ' + this.fmt(cur.t) + ' temperature: ' + modeNames[mode] + '. Change mode',
+      menuTitle: 'Set ' + this.fmt(cur.t) + ' to:',
+      menuOpen: s.menuOpen,
+      openMenu: function () { self.setState({ menuOpen: true, openRow: -1 }); },
+      closeMenu: function () { self.setState({ menuOpen: false }); },
+      dayName: names[s.day],
+      countText: list.length + (list.length === 1 ? ' temperature' : ' temperatures'),
+      addLabel: 'Add a temperature to ' + names[s.day],
+      selTime: this.fmt(cur.t), selTemp: tempOf(cur), selLo: cur.heat, selHi: cur.cool,
+      modeLabel: cool ? 'COOL TO' : (heat ? 'HEAT TO' : 'HEAT · COOL'),
+      loPressed: String(editLo), hiPressed: String(!editLo),
+      loOpacity: editLo ? 1 : 0.5, hiOpacity: editLo ? 0.5 : 1,
+      loBar: editLo ? HEAT : 'transparent', hiBar: editLo ? 'transparent' : COOL,
+      loAria: 'Heat to ' + cur.heat + ' degrees' + (editLo ? ', adjusting' : ', tap to adjust'),
+      hiAria: 'Cool to ' + cur.cool + ' degrees' + (!editLo ? ', adjusting' : ', tap to adjust'),
+      editLo: function () { self.setState({ rangeEdit: 'lo' }); },
+      editHi: function () { self.setState({ rangeEdit: 'hi' }); },
+      downAria: 'Lower ' + target, upAria: 'Raise ' + target,
+      untilText: sel < 0 ? 'New temperature' : this.fmt(cur.t) + ' – ' + this.fmt(nextT == null ? list[0].t : nextT),
+      tempDown: function () { step(-1); },
+      tempUp: function () { step(1); },
+      earlier: function () { mod(function (l) { ensure(l); return { sel: self.moveTo(l, sel, l[sel].t - 15, -1) }; }); },
+      later: function () { mod(function (l) { ensure(l); return { sel: self.moveTo(l, sel, l[sel].t + 15, 1) }; }); },
+      timeAria: 'Starts at ' + this.fmt(cur.t) + '. Choose a start time',
+      timeOpen: s.timeOpen,
+      timeListRef: function (el) { self._timeEl = el; },
+      openTime: function () {
+        self.setState({ timeOpen: true, menuOpen: false, openRow: -1 });
+        setTimeout(function () { if (self._timeEl) self._timeEl.scrollTop = Math.max(0, (cur.t / 15) * 54 - 162); }, 30);
+      },
+      closeTime: function () { self.setState({ timeOpen: false }); },
+      timeOpts: (function () {
+        var out = [];
+        for (var m = 0; m < 1440; m += 15) {
+          (function (m) {
+            var takenBy = null;
+            list.forEach(function (q, j) { if (q.t === m && j !== sel) takenBy = q; });
+            var on = m === cur.t;
+            out.push({
+              label: self.fmt(m), on: on, pressed: String(on), taken: !!takenBy,
+              fill: takenBy ? rowFill(takenBy) : 'transparent',
+              bg: on ? '#e3edfd' : 'transparent', weight: on ? 600 : 400,
+              pick: function () {
+                mod(function (l) {
+                  ensure(l);
+                  var dir = m >= l[sel].t ? 1 : -1;
+                  return { sel: self.moveTo(l, sel, m, dir), timeOpen: false };
+                });
+              }
+            });
+          })(m);
+        }
+        return out;
+      })(),
+      dialMove: function (e) {
+        if (!self.state || !self.state.dragging) return;
+        var r = e.currentTarget.getBoundingClientRect();
+        var deg = Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180 / Math.PI;
+        var rel = ((deg - 120) % 360 + 360) % 360;
+        if (rel > 300) rel = rel > 330 ? 0 : 300;
+        var v = Math.round(50 + (rel / 300) * 40);
+        mod(function (l) {
+          ensure(l);
+          var p = l[sel];
+          var lo = p.mode === 'heat' || (p.mode === 'range' && (self.state.rangeEdit || 'lo') === 'lo');
+          if (lo) setHeat(p, v); else setCool(p, v);
+        });
+      },
+      // Tap (or press and drag) the ring to set the temperature; with Heat • Cool, the nearer target moves.
+      ringDown: function (e) {
+        var r = e.currentTarget.getBoundingClientRect();
+        var sc = r.width / 340;
+        var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        var dist = Math.sqrt(dx * dx + dy * dy) / sc;
+        if (dist < 104 || dist > 162) return;
+        var rel = ((Math.atan2(dy, dx) * 180 / Math.PI - 120) % 360 + 360) % 360;
+        if (rel > 300) return;
+        var v = Math.round(50 + (rel / 300) * 40);
+        try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+        var key = range ? (Math.abs(v - cur.heat) <= Math.abs(v - cur.cool) ? 'lo' : 'hi') : (heat ? 'lo' : 'hi');
+        mod(function (l) {
+          ensure(l);
+          var p = l[sel];
+          if (key === 'lo') setHeat(p, v); else setCool(p, v);
+          return { rangeEdit: key, dragging: true };
+        });
+      },
+      dialUp: function () { if (self.state && self.state.dragging) self.setState({ dragging: false }); },
+      addDisabled: list.length >= 8,
+      add: function () {
+        if (list.some(function (q) { return q.t === draftObj.t; })) return;
+        self.edit(function (l) {
+          l.push({ t: draftObj.t, mode: draftObj.mode, heat: draftObj.heat, cool: draftObj.cool });
+          l.sort(function (a, b) { return a.t - b.t; });
+          return { sel: -1, toast: 'Added ' + self.fmt(draftObj.t) + ' temperature' };
+        });
+      },
+      sheet: s.sheet,
+      closeCopy: function () { self.setState({ sheet: false }); },
+      copyTitle: 'Copy from ' + names[s.day],
+      scopePointText: srcPt ? self.fmt(srcPt.t) + ' · ' + shortTemp(srcPt) : 'This temperature',
+      scopePointOn: String(s.copyScope === 'point'), scopeDayOn: String(s.copyScope === 'day'),
+      scopePointBg: s.copyScope === 'point' ? CTA : 'transparent',
+      scopeDayBg: s.copyScope === 'day' ? CTA : 'transparent',
+      scopePoint: function () { self.setState({ copyScope: 'point' }); },
+      scopeDay: function () { self.setState({ copyScope: 'day' }); },
+      copyChips: copyChips,
+      selWeekdays: pickSet([0, 1, 2, 3, 4]),
+      selWeekend: pickSet([5, 6]),
+      selAll: pickSet([0, 1, 2, 3, 4, 5, 6]),
+      copyDisabled: copyCount === 0,
+      applyCopy: function () {
+        var sched = JSON.parse(JSON.stringify(s.sched));
+        var src = sched[s.day];
+        var pt = src[Math.min(s.copySrc, src.length - 1)];
+        s.copyDays.forEach(function (on, i) {
+          if (!on || i === s.day) return;
+          if (s.copyScope === 'day') { sched[i] = JSON.parse(JSON.stringify(src)); return; }
+          var l = sched[i].filter(function (q) { return Math.abs(q.t - pt.t) >= 15; });
+          if (l.length >= 8) l.pop();
+          l.push(JSON.parse(JSON.stringify(pt)));
+          l.sort(function (a, b) { return a.t - b.t; });
+          sched[i] = l;
+        });
+        self.setState({ sched: sched, dirty: false, snap: null, sheet: false, toast: 'Copied to ' + copyCount + (copyCount === 1 ? ' day' : ' days') });
+      },
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

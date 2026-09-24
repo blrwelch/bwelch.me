@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nest Schedule Case Study · Brittany Welch</title>
+<meta name="description" content="Quick WinsDay #3: a redesign of the Google Nest scheduling flow that reuses the thermostat dial.">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark;
+  --ground:#0b1426;
+  --surface:#111c33;
+  --surface-2:#172440;
+  --line:#243453;
+  --text:#eef1f5;
+  --muted:#a3aec0;
+  --faint:#7d8aa0;
+  --cyan:#1fd3ee;
+  --heat:#ff8a3d;
+  --cool:#5aa2ff;
+  --cta:#1a73e8;
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  font-size:17px;line-height:1.6;
+  background-image:
+    radial-gradient(900px 700px at 105% -5%, rgba(31,140,160,.32), transparent 70%),
+    radial-gradient(700px 600px at -10% 38%, rgba(30,110,150,.18), transparent 70%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(40px,6.4vw,74px);line-height:1.04}
+h2{font-size:clamp(30px,4vw,44px);line-height:1.1}
+h3{font-size:22px;line-height:1.25}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.lede{font-size:clamp(19px,2.2vw,22px);line-height:1.5;color:#d6dce6;max-width:40ch}
+.prose{max-width:62ch;display:flex;flex-direction:column;gap:16px;color:#d6dce6}
+
+/* hero */
+.hero{padding-block:72px 40px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:24px}
+.byline{display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px}
+.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-top:24px;border-top:1px solid var(--line)}
+.meta dt{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.meta dd{margin:4px 0 0;font-size:15px;color:var(--text)}
+.hero-art{position:relative;display:flex;justify-content:center}
+.hero-art .phone{width:min(300px,100%)}
+
+/* device frames */
+.phone{border:10px solid #07090d;border-radius:44px;box-shadow:0 0 0 1.5px #4b5260, 0 30px 70px rgba(0,0,0,.5);overflow:hidden;background:#000;max-width:100%}
+.phone img{display:block;width:100%;height:auto}
+.land{border:9px solid #07090d;border-radius:30px;box-shadow:0 0 0 1.5px #4b5260, 0 24px 60px rgba(0,0,0,.45);overflow:hidden;background:#000;max-width:100%}
+.land img{display:block;width:100%;height:auto}
+
+section{padding-block:72px}
+.section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+/* before */
+.before{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;align-items:start}
+.before .phone{width:min(260px,100%)}
+.stack{display:flex;flex-direction:column;gap:24px}
+figure{margin:0;display:flex;flex-direction:column;gap:12px}
+figcaption{font-size:14px;color:var(--muted);line-height:1.5}
+
+.issues{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:48px}
+.issue{background:var(--surface);padding:24px;display:flex;flex-direction:column;gap:8px}
+.issue b{font-weight:600;font-size:16px}
+.issue p{color:var(--muted);font-size:15px}
+
+/* goals */
+.goals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.goal{display:flex;flex-direction:column;gap:10px;padding-top:18px;border-top:2px solid var(--cyan)}
+.goal .fig{font-family:var(--serif);font-size:30px;line-height:1}
+.goal p{font-size:15px;color:var(--muted)}
+
+/* solution screens */
+.screens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.screens .phone{border-width:8px;border-radius:34px}
+.dial-note{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:center;margin-bottom:56px}
+.dial-note .phone{width:min(320px,100%);justify-self:center}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot.heat{background:var(--heat)} .dot.cool{background:var(--cool)}
+.dot.range{background:linear-gradient(90deg,var(--heat) 50%,var(--cool) 50%)}
+
+/* iteration log */
+.log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.log li{display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.log .n{font-family:var(--serif);font-size:20px;color:var(--cyan);font-variant-numeric:tabular-nums}
+.log b{font-weight:600}
+.log p{color:var(--muted);font-size:15px}
+
+/* option B */
+.optb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr);gap:32px;align-items:start}
+.optb .phone{border-width:8px;border-radius:34px}
+
+/* a11y */
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px}
+.check{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font-size:15px;color:#d6dce6}
+.check svg{margin-top:4px}
+.callout{margin-top:36px;padding:24px;border-radius:18px;background:var(--surface);border:1px solid var(--line);display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+.swatch{width:88px;height:56px;border-radius:12px;background:#ec6e00;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:#fff}
+.callout p{font-size:15px;color:var(--muted)}
+
+.next{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.next div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.next p{font-size:15px;color:var(--muted)}
+
+footer{padding-block:56px 72px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;color:var(--faint);font-size:14px}
+
+
+/* live prototype */
+.try{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;justify-items:center}
+.try figure{align-items:center;text-align:center;max-width:320px}
+.proto{width:300px;height:649px;max-width:100%;border:10px solid #07090d;border-radius:44px;box-shadow:0 0 0 1.5px #4b5260,0 30px 70px rgba(0,0,0,.5);overflow:hidden;background:#363b44;box-sizing:content-box}
+.proto iframe{width:390px;height:844px;border:0;display:block;transform:scale(.76923);transform-origin:0 0}
+.try a{font-size:14px;font-weight:600}
+@media (max-width:1000px){.try{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){
+  .hero,.before,.dial-note,.optb{grid-template-columns:minmax(0,1fr)}
+  .goals,.screens{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .next{grid-template-columns:minmax(0,1fr)}
+  .log li{grid-template-columns:40px minmax(0,1fr)}
+  .log li p{grid-column:2}
+}
+@media (max-width:560px){
+  .meta,.issues,.checks{grid-template-columns:minmax(0,1fr)}
+  .goals{grid-template-columns:minmax(0,1fr)}
+  .screens{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+  section{padding-block:52px}
+  .callout{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero-art .phone{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <nav style="padding-top:28px;font-size:15px"><a href="/" style="text-decoration:none;font-weight:600">← bwelch.me</a></nav>
+
+  <header class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Case study · Quick WinsDay #3</div>
+      <h1>Nest’s Schedule Has Never Heard Of Its Own Dial</h1>
+      <p class="lede">A redesign of the Google Nest scheduling flow that reuses the dial people already know, so setting a week of temperatures feels like setting one.</p>
+      <div class="byline">Brittany Welch</div>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product designer, self-initiated</dd></div>
+        <div><dt>Platform</dt><dd>Google Nest app, iOS</dd></div>
+        <div><dt>Deliverable</dt><dd>Interactive prototype, two directions</dd></div>
+      </dl>
+    </div>
+    <div class="hero-art">
+      <div class="phone"><img src="img/A1-idle.jpg" alt="Redesigned schedule screen: day buttons, mode and start time controls, and a 24-hour dial with orange and blue temperature dots"></div>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <section aria-labelledby="problem">
+    <div class="section-head">
+      <div class="eyebrow">The problem</div>
+      <h2 id="problem">Two taps to change the temperature. A different app to schedule it.</h2>
+    </div>
+    <div class="before">
+      <figure>
+        <div class="phone"><img src="img/old-main.jpg" alt="Current Nest thermostat screen with the Cool set to 78 dial"></div>
+        <figcaption>The home screen dial: one number, one ring, two chevrons. Familiar and fast.</figcaption>
+      </figure>
+      <div class="stack">
+        <div class="prose">
+          <p>As a Nest user, I can change the temperature in seconds. But tapping <b>Schedule</b> turns the phone sideways into a blank grid that works nothing like the dial.</p>
+          <p>Adding a temperature means finding a small text link, dragging a bubble along a crosshair, and repeating the whole thing in a separate schedule for heating.</p>
+        </div>
+        <figure>
+          <div class="land"><img src="img/old-week-bubbles.jpg" alt="Current Cool schedule week grid in landscape with two blue temperature bubbles"></div>
+          <figcaption>The week view. Heat and Cool each have their own separate schedule.</figcaption>
+        </figure>
+        <figure>
+          <div class="land"><img src="img/old-drag.jpg" alt="Current day view with a temperature bubble being dragged on a gray crosshair, and Add and Remove text links in the corner"></div>
+          <figcaption>Placing a temperature: drag the bubble on a crosshair. “Add” and “Remove” sit in the bottom corner as text links.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="issues">
+      <div class="issue"><b>It forces landscape</b><p>The rest of the app is portrait. Scheduling is the only place the phone has to turn.</p></div>
+      <div class="issue"><b>Small touch targets</b><p>“Add” and “Remove” are text links well under the 44&nbsp;×&nbsp;44&nbsp;px minimum, in the corner farthest from a thumb.</p></div>
+      <div class="issue"><b>Heat and Cool are split</b><p>Two separate schedules, with no way to set a heat-and-cool range for part of the day.</p></div>
+      <div class="issue"><b>No familiar interaction</b><p>Dragging bubbles on a crosshair shares nothing with the dial people use every day.</p></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="goals">
+    <div class="section-head">
+      <div class="eyebrow">Goals</div>
+      <h2 id="goals">Make the schedule feel like the thermostat</h2>
+    </div>
+    <div class="goals">
+      <div class="goal"><div class="fig">Dial</div><p>Reuse the ring, chevrons and big number from the home screen.</p></div>
+      <div class="goal"><div class="fig">44 px</div><p>Every control meets the minimum touch target, most go well past it.</p></div>
+      <div class="goal"><div class="fig">Portrait</div><p>Stay in the same orientation as the rest of the Nest app.</p></div>
+      <div class="goal"><div class="fig">Nest look</div><p>Nest’s slate background, orange for heat and blue for cool.</p></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="solution">
+    <div class="section-head">
+      <div class="eyebrow">Direction A</div>
+      <h2 id="solution">The dial becomes a 24-hour clock</h2>
+    </div>
+    <div class="dial-note">
+      <div class="phone"><img src="img/A3-update.jpg" alt="Editing the 8:30 AM Heat and Cool temperature, set to 64 and 82, with Cancel and Update temperature buttons"></div>
+      <div class="prose">
+        <p>The ring maps the day from midnight at the bottom left, through noon at the top, to midnight at the bottom right. Each scheduled temperature is a dot you can tap, drag, or place by tapping anywhere on the ring.</p>
+        <p>The chevrons at the bottom work exactly like they do on the home screen. Mode and start time sit in one row above the dial, away from the ring so older users can hit them without touching the dial by accident.</p>
+        <p>Each temperature keeps its own mode, so a day can mix Heat in the morning, a Heat • Cool range during the day, and Cool at night.</p>
+        <div class="legend" aria-label="Mode colors">
+          <span><i class="dot heat"></i>Heat</span>
+          <span><i class="dot cool"></i>Cool</span>
+          <span><i class="dot range"></i>Heat • Cool</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screens">
+      <figure>
+        <div class="phone"><img src="img/A1-idle.jpg" alt="Default view with Add temperature button"></div>
+        <figcaption><b>Add.</b> Pick a day, a mode and a start time, then Add temperature.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="img/A3-update.jpg" alt="Editing an existing temperature with Update and Cancel"></div>
+        <figcaption><b>Edit.</b> Tapping a scheduled temperature switches the button to Update, with Cancel.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="img/A4-mode.jpg" alt="Mode sheet listing Heat, Cool and Heat and Cool"></div>
+        <figcaption><b>Mode.</b> The same bottom sheet Nest already uses for Heat, Cool and Heat • Cool.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="img/A5-empty.jpg" alt="Empty schedule with three steps: choose a day, choose a mode, choose a time"></div>
+        <figcaption><b>Empty.</b> A first-time schedule starts with three steps, and any control gets you going.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="optb">
+    <div class="section-head">
+      <div class="eyebrow">Direction B</div>
+      <h2 id="optb">The dial sets temperature. Time becomes a timeline.</h2>
+    </div>
+    <div class="optb">
+      <figure>
+        <div class="phone"><img src="img/B0-idle.jpg" alt="Option B with a temperature dial from 50 to 90 degrees and a scrollable day timeline"></div>
+        <figcaption>The dial runs 50° to 90°, like the home screen. Heat fills up to its target in orange, cool fills down in blue.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="img/B1-trim.jpg" alt="Option B with a timeline block selected inside a white trim frame with handles"></div>
+        <figcaption>Tap a block on the timeline and drag its handles to change when it starts and ends.</figcaption>
+      </figure>
+      <div class="prose">
+        <p>The second direction keeps the dial for what people already use it for: temperature. The day moves into a scrollable timeline, one hour per 60&nbsp;px, so each 15-minute step is a real distance for a finger.</p>
+        <p>Selecting a block puts a trim frame around it, borrowed from how people cut a video on their phone. Handles stop before they run into a neighbor, and they respond to arrow keys for anyone not using touch.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="try">
+    <div class="section-head">
+      <div class="eyebrow">Prototype</div>
+      <h2 id="try">Try it</h2>
+      <p class="prose">These are the working prototypes. Tap a day, drag a dot around the dial, open the mode menu, swipe a row left, or scroll Option B’s timeline.</p>
+    </div>
+    <div class="try">
+      <figure>
+        <div class="proto"><iframe src="demo/Main.dc.html" title="Direction A prototype: 24-hour schedule dial" loading="lazy"></iframe></div>
+        <figcaption><b>Direction A</b> · 24-hour dial<br><a href="demo/Main.dc.html" target="_blank" rel="noopener">Open full size</a></figcaption>
+      </figure>
+      <figure>
+        <div class="proto"><iframe src="demo/Empty.dc.html" title="Direction A prototype starting with an empty schedule" loading="lazy"></iframe></div>
+        <figcaption><b>First-time user</b> · empty schedule<br><a href="demo/Empty.dc.html" target="_blank" rel="noopener">Open full size</a></figcaption>
+      </figure>
+      <figure>
+        <div class="proto"><iframe src="demo/OptionB.dc.html" title="Direction B prototype: timeline and temperature dial" loading="lazy"></iframe></div>
+        <figcaption><b>Direction B</b> · timeline + temperature dial<br><a href="demo/OptionB.dc.html" target="_blank" rel="noopener">Open full size</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="process">
+    <div class="section-head">
+      <div class="eyebrow">Process</div>
+      <h2 id="process">How the design changed</h2>
+      <p class="prose">I built the prototype and then worked through it screen by screen. These are the changes that mattered most, in the order I made them.</p>
+    </div>
+    <ol class="log">
+      <li><span class="n">1</span><b>Add became the primary action</b><p>The first version had Add, Remove and Copy in a bottom bar. Add moved to a full-width button under the dial; Copy and Remove moved to a swipe on each row, with a ⋯ button for anyone who can’t swipe.</p></li>
+      <li><span class="n">2</span><b>Selected vs. scheduled dots</b><p>The dot being edited became larger and filled, with a glow. Scheduled dots became small rings, so the two never look alike.</p></li>
+      <li><span class="n">3</span><b>Tried full-screen mode color, then reverted</b><p>A full orange background matched Nest’s heating screen, but white small text on that orange measured about 3.1:1, below the 4.5:1 standard. The slate background came back and color moved to the dial.</p></li>
+      <li><span class="n">4</span><b>One button color</b><p>A half-orange, half-blue button for Heat • Cool was hard to read. Every call to action now uses one blue, and orange and blue only ever mean heat and cool.</p></li>
+      <li><span class="n">5</span><b>Modes per temperature</b><p>Switching modes used to swap the whole schedule. Now each temperature keeps its own mode, and switching only changes the one being edited.</p></li>
+      <li><span class="n">6</span><b>Time controls off the dial</b><p>Arrows inside the ring were too close to it for older users. They moved to a Starts At control, with a dropdown of every time and any time allowed.</p></li>
+      <li><span class="n">7</span><b>Add vs. Update</b><p>Tapping a scheduled temperature now switches the button to Update, with Cancel. Leaving with unsaved changes asks first: Save, Discard or Keep editing.</p></li>
+      <li><span class="n">8</span><b>“Setpoint” became “temperature”</b><p>Setpoint is an HVAC term. Temperature is what people picture: “68 at 6 AM.”</p></li>
+    </ol>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="a11y">
+    <div class="section-head">
+      <div class="eyebrow">Accessibility</div>
+      <h2 id="a11y">Built for thumbs, screen readers and older eyes</h2>
+    </div>
+    <div class="checks">
+      <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1fd3ee" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Every control is at least 44&nbsp;×&nbsp;44&nbsp;px. Day buttons are 52&nbsp;px tall and the main button is 56&nbsp;px.</span></div>
+      <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1fd3ee" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Every gesture has a button alternative: arrows and a time list for the dial, a ⋯ menu for swipe actions.</span></div>
+      <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1fd3ee" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Dots, blocks and handles have spoken labels, like “Start of block: 6:00 AM.”</span></div>
+      <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1fd3ee" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Mode never relies on color alone: every row and control also names it in text.</span></div>
+    </div>
+    <div class="callout">
+      <div class="swatch">3.1 : 1</div>
+      <p>Nest’s heating orange behind white body text measures about 3.1:1. That’s fine for the big temperature number, but below the 4.5:1 AA minimum for small text, which is why the redesign keeps the slate background.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="next">
+    <div class="section-head">
+      <div class="eyebrow">Next steps</div>
+      <h2 id="next">What I’d test next</h2>
+    </div>
+    <div class="next">
+      <div><h3>A vs. B</h3><p>A task-based test with current Nest owners: build a weekday schedule in each direction and compare time and errors.</p></div>
+      <div><h3>Older users</h3><p>Check reach, tap accuracy and label size with people over 65, the group most likely to struggle with the current grid.</p></div>
+      <div><h3>Copying days</h3><p>Most households repeat weekdays. Test whether “Copy to weekdays” should appear right after the first day is set up.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span><a href="/">Brittany Welch</a> · Quick WinsDay #3</span>
+    <span>Concept work, not affiliated with Google Nest.</span>
+  </footer>
+</div>
+
+</body>
+</html>
